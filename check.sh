@@ -16,7 +16,12 @@ cd ../
 echo "Liniting  and checking"
 scripts/test.sh
 
+echo "Merging index.yaml"
+curl "$ARTIFACTORY_URL/index.yaml" -o packages/index.yaml --fail -sSL -m 5
+helm repo index packages --url=$ARTIFACTORY_URL --merge=packages/index.yaml
+
 echo "Copying chart packages and index to docs"
+rm -f packages /*.compare
 cp packages/* docs/
 
 echo "Now checkin and push charts and docs!"
