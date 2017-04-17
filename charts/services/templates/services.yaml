@@ -1,0 +1,29 @@
+{{- range .Values.services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .host }}
+  {{- if .annotations }}
+  annotations:
+  {{- range $key, $value := .annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  {{- end }}
+  {{- if .labels }}
+  labels:
+  {{- range $key, $value := .labels }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+  {{- end }}
+spec:
+  sessionAffinity: ClientIP
+  ports:
+  {{- range .ports }}
+  - name: {{ .name }}
+    port: {{ .port }}
+    targetPort: {{ .port }}
+    protocol: TCP
+  {{- end }}
+---
+{{- end }}
+

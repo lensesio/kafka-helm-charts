@@ -1,0 +1,19 @@
+{{- range .Values.services }}
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: {{ .host }}
+subsets:
+- addresses:
+  {{- range .endpoints }}
+  - ip: {{ . }}
+  {{- end }}
+  ports:
+  {{- range .ports }}
+  - name: {{ .name }}
+    port: {{ .port }}
+    protocol: TCP
+  {{- end }}
+---
+{{- end }}
+
