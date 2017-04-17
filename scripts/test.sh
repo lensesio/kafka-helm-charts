@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARTIFACTORY_URL=http://localhost:8879
+ARTIFACTORY_URL=https://datamountaineer.github.io/helm-charts/
 
 # We begin by testing if we can reach artifactory
 echo ""
