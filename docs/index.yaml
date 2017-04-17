@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   grafana:
-  - created: 2017-04-17T14:58:15.252583425+02:00
+  - created: 2017-04-17T16:26:29.105929682+02:00
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 0cebd610d583d749a680b4670192cade94018c0349f8f3173551e3a973bd76db
     engine: gotpl
@@ -14,10 +14,10 @@ entries:
     sources:
     - https://github.com/grafana/grafana
     urls:
-    - grafana-0.3.0.tgz
+    - https://datamountaineer.github.io/helm-charts/grafana-0.3.0.tgz
     version: 0.3.0
   prometheus:
-  - created: 2017-04-17T14:58:15.253198295+02:00
+  - created: 2017-04-17T16:26:29.106811235+02:00
     description: Prometheus is a monitoring system and time series database.
     digest: 5420cb83be9153465b4f45e249ae4ddd2864967eb014a52dc4c6b2741015d8a4
     engine: gotpl
@@ -32,19 +32,19 @@ entries:
     - https://github.com/prometheus/prometheus
     - https://github.com/kubernetes/kube-state-metrics
     urls:
-    - prometheus-3.0.1.tgz
+    - https://datamountaineer.github.io/helm-charts/prometheus-3.0.1.tgz
     version: 3.0.1
   services:
   - apiVersion: v1
-    created: 2017-04-17T14:58:15.253324155+02:00
+    created: 2017-04-17T16:26:29.106952054+02:00
     description: A chart containing the services and endpoints of an environment
     digest: 2520eae3f61aacedacb88b920a57ffadb9794606b429dbf0b4e6bd8f23fde381
     name: services
     urls:
-    - services-0.2.0.tgz
+    - https://datamountaineer.github.io/helm-charts/services-0.2.0.tgz
     version: 0.2.0
   spark:
-  - created: 2017-04-17T14:58:15.25358565+02:00
+  - created: 2017-04-17T16:26:29.107229802+02:00
     description: Fast and general-purpose cluster computing system.
     digest: ead5f01474462cc3068dc60dca4f0eadd58d81e235c3dfc0f896013bc3a2865a
     home: http://spark.apache.org
@@ -57,6 +57,6 @@ entries:
     - https://github.com/kubernetes/kubernetes/tree/master/examples/spark
     - https://github.com/apache/spark
     urls:
-    - spark-0.1.4.tgz
+    - https://datamountaineer.github.io/helm-charts/spark-0.1.4.tgz
     version: 0.1.4
-generated: 2017-04-17T14:58:15.251967646+02:00
+generated: 2017-04-17T16:26:29.105110402+02:00

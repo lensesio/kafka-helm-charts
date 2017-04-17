@@ -32,6 +32,7 @@ for path in `find packages -name "*.tgz"`; do
 
   # if there is no current artifact, or there is no difference between them, we are good
   if [ -a packages/$package.compare ]; then
+    echo "Comparing packages/$package and packages/$package.compare"
     if ! cmp -s packages/$package packages/$package.compare; then
       echo "ERROR: You have updated chart $package without bumping the version..."
       error=1
