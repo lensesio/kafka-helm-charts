@@ -33,6 +33,8 @@ echo "Copying chart packages and index to docs"
 rm -f packages/*.compare
 cp packages/*.tgz docs/
 cp packages/index.yaml docs/
+rm -f docs/*.compare
+rm -f charts/*.compare
 
 RET=*?
 
