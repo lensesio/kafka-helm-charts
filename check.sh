@@ -12,6 +12,11 @@ find . -iname "*.tgz" -type f | grep -v 'packages/' | xargs rm
 
 echo "Liniting  and checking"
 scripts/lint.sh
+RET=$?
+
+if [[ "${RET}" == 1 ]]; then
+    exit 1
+fi  
 
 echo "Packaging charts..."
 cd packages && helm package ../charts/*
@@ -29,5 +34,8 @@ rm -f packages/*.compare
 cp packages/*.tgz docs/
 cp packages/index.yaml docs/
 
+RET=*?
+
 echo "${GREEN}Now checkin and push charts and docs!${NC}"
+  
 

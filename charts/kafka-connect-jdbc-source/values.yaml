@@ -1,0 +1,43 @@
+# Basic info
+replicaCount: 3
+secretsRef: "__REQUIRED__"
+image:
+  repository: registry.hub.docker.com/confluentinc/cp-kafka-connect
+  tag: "__REQUIRED__"
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 128Mi
+  requests:
+    memory: 128Mi
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+
+# Connector values
+applicationId: "__REQUIRED__"
+connectorClass: io.confluent.connect.jdbc.JdbcSourceConnector
+tasksMax: "__REQUIRED__"
+topicPrefix: "__REQUIRED__"
+mode: "__REQUIRED__"
+tableWhiteList: "__REQUIRED__"
+incrementColumn: "__REQUIRED__"
+batchSize: 5000
+query: "__REQUIRED__"
+connectionUrlKey: "__REQUIRED__"
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"

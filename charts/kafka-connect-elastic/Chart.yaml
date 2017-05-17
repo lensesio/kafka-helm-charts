@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect Elastic Sink
+name: kafka-connect-elastic
+version: 0.1.0
