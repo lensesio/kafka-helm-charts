@@ -1,4 +1,4 @@
 apiVersion: v1
-description: "Kafka-Connect for a JDBC Source"
+description: "A chart containing the Kafka Connect JDBC Source"
 name: kafka-connect-jdbc-source
 version: 0.1.0
