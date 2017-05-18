@@ -7,5 +7,6 @@ spec:
   externalName: {{ .externalName | quote }}
   ports:
   {{- range .ports }}
+  - port: {{ .port }}
   {{- end }}
 
