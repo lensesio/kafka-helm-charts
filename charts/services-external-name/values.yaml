@@ -1,6 +1,5 @@
 externalName: __REQUIRED__
 serviceName: __REQUIRED__
 ports:
-  - name: __REQUIRED__
-    port: 0
+  - port: __REQUIRED__
 
