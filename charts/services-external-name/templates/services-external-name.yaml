@@ -1,11 +1,11 @@
 apiVersion: v1
-kind: Endpoints
+kind: Service
 metadata:
-  name: {{ .name | quote }}
-spec: 
-  type: "ExternalName"  
+  name: {{ .serviceName | quote }}
+spec:
+  type: "ExternalName"
   externalName: {{ .externalName | quote }}
-  ports: 
+  ports:
   {{- range .ports }}
   {{- end }}
 
