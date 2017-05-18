@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   grafana:
-  - created: 2017-05-18T14:04:25.772253338+02:00
+  - created: 2017-05-18T15:03:57.532174919+02:00
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 02fb4c752e2d67806faf5acd782939209f9ddece72174fac26f8bba2900f5c5f
     engine: gotpl
@@ -18,7 +18,7 @@ entries:
     version: 0.3.0
   kafka-connect-cassandra:
   - apiVersion: v1
-    created: 2017-05-18T14:04:25.773100711+02:00
+    created: 2017-05-18T15:03:57.532351135+02:00
     description: A chart containing the Kafka Connect Cassandra Sink
     digest: a5e7b9193a4896c3908a336e95ba97c7e5bd9022417866c42c85381a2d0782c0
     name: kafka-connect-cassandra
@@ -27,7 +27,7 @@ entries:
     version: 0.1.0
   kafka-connect-elastic:
   - apiVersion: v1
-    created: 2017-05-18T14:04:25.77339229+02:00
+    created: 2017-05-18T15:03:57.533240598+02:00
     description: A chart containing the Kafka Connect Elastic Sink
     digest: b57d1a12ce02f43c1ed691c62890c946a656a202ae4b08fa12a7e4037490e7a3
     name: kafka-connect-elastic
@@ -36,7 +36,7 @@ entries:
     version: 0.1.0
   kafka-connect-jdbc-source:
   - apiVersion: v1
-    created: 2017-05-18T14:04:25.773603161+02:00
+    created: 2017-05-18T15:03:57.533409411+02:00
     description: A chart containing the Kafka Connect JDBC Source
     digest: 837bcaac527d9fda0d9c29d78fe1af994e98fde85a8c544034036b1f22ff10ec
     name: kafka-connect-jdbc-source
@@ -44,7 +44,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-jdbc-source-0.1.0.tgz
     version: 0.1.0
   prometheus:
-  - created: 2017-05-18T14:04:25.774312958+02:00
+  - created: 2017-05-18T15:03:57.534002569+02:00
     description: Prometheus is a monitoring system and time series database.
     digest: 052f763421bde46a4bada3fcab7977bd6ac4ba56256a0127b527214b3a712023
     engine: gotpl
@@ -63,7 +63,7 @@ entries:
     version: 3.0.1
   services:
   - apiVersion: v1
-    created: 2017-05-18T14:04:25.774494619+02:00
+    created: 2017-05-18T15:03:57.534143423+02:00
     description: A chart containing the services and endpoints of an environment
     digest: b23d3af4ae34a0478ebf7374dec9dd745f45091f2f5a2e7be7a4660ffc6d52d2
     name: services
@@ -72,15 +72,15 @@ entries:
     version: 0.2.0
   services-external-name:
   - apiVersion: v1
-    created: 2017-05-18T14:04:25.774649725+02:00
+    created: 2017-05-18T15:03:57.534265645+02:00
     description: A chart containing the services and endpoints of an environment
-    digest: 6e9fd29532683a0cdb0a386bd1a35b41224bd551e7a5b95f619a59e9eaab65ed
+    digest: 9867319b3ab6f6d7a19bfd49a009329b92ef191f8d77e07d6afd749d1b884115
     name: services-external-name
     urls:
     - https://datamountaineer.github.io/helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
   spark:
-  - created: 2017-05-18T14:04:25.774977989+02:00
+  - created: 2017-05-18T15:03:57.534543677+02:00
     description: Fast and general-purpose cluster computing system.
     digest: 1e12f277c8161ce288f66c5d6c1e93445ad6233c8e398128289930c7f35a2777
     home: http://spark.apache.org
@@ -95,4 +95,4 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/spark-0.1.4.tgz
     version: 0.1.4
-generated: 2017-05-18T14:04:25.771172707+02:00
+generated: 2017-05-18T15:03:57.531549531+02:00
