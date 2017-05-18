@@ -1,4 +1,4 @@
-externalName: bla
-serviceName: lab
-ports: 9999
+externalName: __REQUIRED__
+serviceName: __REQUIRED__
+ports: __REQUIRED__
 
