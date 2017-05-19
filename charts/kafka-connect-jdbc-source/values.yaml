@@ -1,6 +1,5 @@
 # Basic info
 replicaCount: 3
-secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/confluentinc/cp-kafka-connect
   tag: "__REQUIRED__"
