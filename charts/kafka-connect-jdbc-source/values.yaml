@@ -32,8 +32,9 @@ tableWhiteList: "__REQUIRED__"
 incrementColumn: "__REQUIRED__"
 batchSize: 5000
 query: "__REQUIRED__"
-connectionUrlKey: "__REQUIRED__"
+connectionUrl: "__REQUIRED__"
 user: "__REQUIRED__"
+passwordKey: "__REQUIRED__"
 
 secretsRef: "__REQUIRED__"
 

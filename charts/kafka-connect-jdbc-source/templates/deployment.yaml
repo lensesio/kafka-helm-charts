@@ -80,9 +80,9 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key: password
+              key: {{ .Values.passwordKey | quote }}
         - name: CONNECTOR_CONNECTION_URL
-          value: {{ .Values.connectionUrlKey | quote }}
+          value: {{ .Values.connectionUrl | quote }}
         - name: CONNECTOR_INCREMENTING_COLUMN_NAME
           value: {{ .Values.incrementColumn | quote }}
         - name: CONNECTOR_TOPIC_PREFIX
