@@ -34,6 +34,9 @@ incrementColumn: "__REQUIRED__"
 batchSize: 5000
 query: "__REQUIRED__"
 connectionUrlKey: "__REQUIRED__"
+user: "__REQUIRED__"
+
+secretsRef: "__REQUIRED__"
 
 # Monitoring
 monitoring:

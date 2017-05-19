@@ -74,16 +74,22 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_MODE
           value: {{ .Values.mode | quote }}
-        - name: CONNECTOR_CONNECTION_URL
+        - name: CONNECTOR_CONNECTION_USER
+          value: {{ .Values.user | quote }}
+        - name: CONNECTOR_CONNECTION_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key: {{ .Values.connectionUrlKey | quote }}
+              key: password
+        - name: CONNECTOR_CONNECTION_URL
+          value: {{ .Values.connectionUrlKey | quote }}
         - name: CONNECTOR_INCREMENTING_COLUMN_NAME
           value: {{ .Values.incrementColumn | quote }}
         - name: CONNECTOR_TOPIC_PREFIX
           value: {{ .Values.topicPrefix | quote }}
-        - name: CONNECTOR_QUERY
-          value: {{ .Values.query | quote }}
         - name: CONNECTOR_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
+        {{ if .Values.query }}
+        - name: CONNECTOR_QUERY
+          value: {{ .Values.query | quote }}
+        {{end}}
