@@ -124,6 +124,36 @@ spec:
         - name: CONNECTOR_PARTITION_FIELD_NAME
           value: {{ .Values.partitioner.fieldName | quote }}
           {{- end }}
+          {{- if .Values.partitioner.retryBackoffMs }}
+        - name: CONNECTOR_RETRY_BACKOFF_MS
+          value: {{ .Values.partitioner.retryBackoffMs | quote }}
+          {{- end }}
+          {{- if .Values.partitioner.shutdownTimeoutMs }}
+        - name: CONNECTOR_SHUTDOWN_TIMEOUT_MS
+          value: {{ .Values.partitioner.shutdownTimeoutMs | quote }}
+          {{- end }}
+          {{- if .Values.partitioner.partitionDurationMs }}
+        - name: CONNECTOR_PARTITION_DURATION_MS
+          value: {{ .Values.partitioner.partitionDurationMs | quote }}
+          {{- end }}
+          {{- if .Values.partitioner.pathFormat }}
+        - name: CONNECTOR_PATH_FORMAT
+          value: {{ .Values.partitioner.pathFormat | quote }}
+          {{- end }}
+          {{- if .Values.partitioner.filenameOffsetZeroPadWidth }}
+        - name: CONNECTOR_FILENAME_OFFSET_ZERO_PAD_WIDTH
+          value: {{ .Values.partitioner.filenameOffsetZeroPadWidth | quote }}
+          {{- end }}
+
+        ##Schema group
+          {{- if .Values.schema.schemaCompatibility }}
+        - name: CONNECTOR_SCHEMA_COMPATIBILITY
+          value: {{ .Values.schema.schemaCompatibility | quote }}
+          {{- end }}
+          {{- if .Values.schema.schemaCacheSize }}
+        - name: CONNECTOR_SCHEMA_CACHE_SIZE
+          value: {{ .Values.schema.schemaCacheSize | quote }}
+          {{- end }}
 
         # Hive Integration
         - name: CONNECTOR_HIVE_INTEGRATION
@@ -136,6 +166,28 @@ spec:
           value: {{ .Values.hive.schemaCompatibility | quote }}
         - name: CONNECTOR_HIVE_DATABASE
           value: {{ .Values.hive.database | quote }}
+
+        ## Security
+          {{- if .Values.security.kerberosTicketRenewPeriodMs }}
+        - name: CONNECTOR_KERBEROS_TICKET_RENEW_PERIOD_MS
+          value: {{ .Values.security.kerberosTicketRenewPeriodMs | quote }}
+          {{- end }}
+          {{- if .Values.security.hdfsNamenodePrincipal }}
+        - name: CONNECTOR_HDFS_NAMENODE_PRINCIPAL
+          value: {{ .Values.security.hdfsNamenodePrincipal | quote }}
+          {{- end }}
+          {{- if .Values.security.connectHdfsKeytab }}
+        - name: CONNECTOR_CONNECT_HDFS_KEY_TAB
+          value: {{ .Values.security.connectHdfsKeytab | quote }}
+          {{- end }}
+          {{- if .Values.security.connectHdfsPrincipal }}
+        - name: CONNECTOR_CONNECT_HDFS_PRINCIPAL
+          value: {{ .Values.security.connectHdfsPrincipal | quote }}
+          {{- end }}
+          {{- if .Values.security.hdfsAuthenticationKerberos }}
+        - name: CONNECTOR_CONNECT_HDFS_AUTHENTICATION_KERBEROS
+          value: {{ .Values.security.hdfsAuthenticationKerberos | quote }}
+          {{- end }}
 
         # Cloudera properties
         {{- if .Values.cloudera.managerURL }}

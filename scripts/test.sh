@@ -40,7 +40,6 @@ for path in `find packages -name "*.tgz"`; do
     if ! cmp -s packages/$package packages/$package.compare; then
       echo -e "==> ${RED}WARNING: You have updated chart $package without bumping the version...${NC}"
       error=1
-      exit 1
     else
       echo -e "==> ${GREEN}Properly versioned: $package${NC}"
     fi

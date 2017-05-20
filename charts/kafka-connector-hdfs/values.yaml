@@ -92,28 +92,30 @@ partitioner:
   rotateIntervalMs: 900000
   rotateScheduleIntervalMs: ""
   offsetFlushIntervalMs: 60000
-  #retryBackoffMs: 5000
-  #shutdownTimeoutMs: 3000
-  #partitionDurationMs: -1
+  retryBackoffMs: 5000
+  shutdownTimeoutMs: 3000
+  partitionDurationMs: -1
 
   #This configuration is used to set the format of the data directories when partitioning with "
   #``TimeBasedPartitioner``
-  #pathFormat
-  #filenameOffsetZeroPadWidth : 10
+  pathFormat: 
+  filenameOffsetZeroPadWidth : 10
 
 ##Schema group
-#schemaCompatibility: "NONE"
-#schemaCacheSize : 1000
+schema:
+  schemaCompatibility: "NONE"
+  schemaCacheSize : 1000
 
 ## Internal Group
 #storageClass : "io.confluent.connect.hdfs.storage.HdfsStorage"
 
 ## Security
-#kerberosTicketRenewPeriodMs
-#hdfsNamenodePrincipal
-#connectHdfsKeytab
-#connectHdfsPrincipal
-#hdfsAuthenticationKerberos: false
+security:
+  kerberosTicketRenewPeriodMs:
+  hdfsNamenodePrincipal:
+  connectHdfsKeytab:
+  connectHdfsPrincipal:
+  hdfsAuthenticationKerberos: false
 
 # Monitoring
 monitoring:
