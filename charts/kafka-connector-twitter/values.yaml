@@ -1,0 +1,52 @@
+# Basic info
+replicaCount: 1
+image:
+  repository: eneco/kafka-connect-twitter
+  tag: latest
+  pullPolicy: IfNotPresent
+secretsRef: "__REQUIRED__"
+
+# Resource management
+resources:
+  limits:
+    memory: 128Mi
+  requests:
+    memory: 128Mi
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+jmxPort: 9105
+
+# Connector values
+applicationId: "__REQUIRED__"
+topic: "__REQUIRED__"
+tasksMax: 1
+connectorClass: com.eneco.trading.kafka.connect.twitter.TwitterSourceConnector
+
+# Twitter values
+stream:
+  type: filter
+track:
+  terms: ""
+  locations: ""
+  follow: ""
+batch:
+  size: 100
+  timeout: 0.1
+language: en
+output:
+  format: ""
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"

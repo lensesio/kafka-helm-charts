@@ -36,6 +36,12 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
+        # JVM Heap Allowance
+        - name: KAFKA_HEAP_OPTS
+          value: -Xmx{{ .Values.javaHeap }}
+        - name: KAFKA_JMX_PORT
+          value: {{ .Values.jmxPort | quote }}
+
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
@@ -83,13 +89,59 @@ spec:
               key: {{ .Values.passwordKey | quote }}
         - name: CONNECTOR_CONNECTION_URL
           value: {{ .Values.connectionUrl | quote }}
-        - name: CONNECTOR_INCREMENTING_COLUMN_NAME
-          value: {{ .Values.incrementColumn | quote }}
         - name: CONNECTOR_TOPIC_PREFIX
           value: {{ .Values.topicPrefix | quote }}
-        - name: CONNECTOR_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }}
+        - name: CONNECTOR_MAX_BATCH_ROWS
+          value: {{ .Values.batchMaxRows | quote }}
+        {{ if .Values.pollInterval }}
+        - name: CONNECTOR_POLL_INTERVAL
+          value: {{ .Values.pollInterval | quote }}
+        {{end}}
+        {{ if .Values.pollInterval }}
+        - name: CONNECTOR_POLL_INTERVAL
+          value: {{ .Values.pollInterval | quote }}
+        {{end}}
+        {{ if .Values.numericPrecisionMapping }}
+        - name: CONNECTOR_NUMERIC_PRECISION_MAPPING
+          value: {{ .Values.numericPrecisionMapping | quote }}
+        {{end}}
+        {{ if .Values.tablePollIntervalMs }}
+        - name: CONNECTOR_TABLE_POLL_INTERVAL_MS
+          value: {{ .Values.tablePollIntervalMs | quote }}
+        {{end}}
+        {{ if .Values.timestampColumnName }}
+        - name: CONNECTOR_TIMESTAMP_COLUMN_NAME
+          value: {{ .Values.timestampColumnName | quote }}
+        {{end}}
+        {{ if .Values.incrementColumnName }}
+        - name: CONNECTOR_INCREMENTING_COLUMN_NAME
+          value: {{ .Values.timestampColumnName | quote }}
+        {{end}}
+        {{ if .Values.tableBlackList }}
+        - name: CONNECTOR_TABLE_BLACK_LIST
+          value: {{ .Values.tableBlackList | quote }}
+        {{end}}
+        {{ if .Values.tableWhiteList }}
+        - name: CONNECTOR_TABLE_WHITE_LIST
+          value: {{ .Values.tableWhiteList | quote }}
+        {{end}}
+        {{ if .Values.schemaPattern }}
+        - name: CONNECTOR_SCHEMA_PATTERN
+          value: {{ .Values.schemaPattern | quote }}
+        {{end}}
         {{ if .Values.query }}
         - name: CONNECTOR_QUERY
           value: {{ .Values.query | quote }}
+        {{end}}
+        {{ if .Values.validateNonNull }}
+        - name: CONNECTOR_VALIDATE_NON_NULL
+          value: {{ .Values.validateNonNull | quote }}
+        {{end}}
+        {{ if .Values.timestampDelayIntervalMs }}
+        - name: CONNECTOR_TIMESTAMP_DELAY_INTERVAL_MS
+          value: {{ .Values.timestampDelayIntervalMs | quote }}
+        {{end}}
+        {{ if .Values.tableTypes }}
+        - name: CONNECTOR_TABLE_TYPES
+          value: {{ .Values.tableTypes | quote }}
         {{end}}

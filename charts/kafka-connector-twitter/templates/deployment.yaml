@@ -41,7 +41,6 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: KAFKA_JMX_PORT
           value: {{ .Values.jmxPort | quote }}
-
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
@@ -66,7 +65,7 @@ spec:
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name:  CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name: CONNECT_REST_ADVERTISED_HOST_NAME
+        - name:  CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
@@ -74,30 +73,62 @@ spec:
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
-        - name: CONNECTOR_GROUP_ID
-          value: {{ .Values.applicationId | quote }}
         - name: CONNECTOR_CONNECTOR_CLASS
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
+        - name: CONNECTOR_TOPIC
+          value: {{ .Values.topic | quote }}
 
-        ##KCQL routing  
-        - name: CONNECTOR_TOPICS
-          value: {{ .Values.topics | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_KCQL
-          value: {{ .Values.connectCassandraSinkKcql | quote }}
-
-        ##Connection  
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
-          value: {{ .Values.connectCassandraContactPoints | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
-          value: {{ .Values.connectCassandraPort | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
-          value: {{ .Values.connectCassandraKeySpace | quote }}      
-        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
-          value: {{ .Values.connectCassandraUsername | quote }}     
-        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
+        # Twitter credentials
+        - name: CONNECTOR_TWITTER_CONSUMERKEY
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key: cassandra-password
+              name: {{ .Values.secretsRef }}
+              key: twitter-consumerkey
+        - name: CONNECTOR_TWITTER_CONSUMERSECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef }}
+              key: twitter-consumersecret
+        - name: CONNECTOR_TWITTER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef }}
+              key: twitter-token
+        - name: CONNECTOR_TWITTER_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef }}
+              key: twitter-secret
+
+        # Filter or sample
+        - name: CONNECTOR_STREAM_TYPE
+          value: {{ .Values.stream.type | quote }}
+
+        # Filter configuration
+          {{- if .Values.track.terms }}
+        - name: CONNECTOR_TRACK_TERMS
+          value: {{ .Values.track.terms | quote }}
+          {{- end }}
+          {{- if .Values.track.locations }}
+        - name: CONNECTOR_TRACK_LOCATIONS
+          value: {{ .Values.track.locations | quote }}
+          {{- end }}
+          {{- if .Values.track.follow }}
+        - name: CONNECTOR_TRACK_FOLLOW
+          value: {{ .Values.track.follow | quote }}
+          {{- end }}
+
+        - name: CONNECTOR_BATCH_SIZE
+          value: {{ .Values.batch.size | quote }}
+        - name: CONNECTOR_BATCH_TIMEOUT
+          value: {{ .Values.batch.timeout | quote }}
+          {{- if .Values.language }}
+        - name: CONNECTOR_LANGUAGE
+          value: {{ .Values.language | quote }}
+          {{- end }}
+          {{- if .Values.output.format }}
+        - name: CONNECTOR_OUTPUT_FORMAT
+          value: {{ .Values.output.format | quote }}
+          {{- end }}

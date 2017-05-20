@@ -8,33 +8,66 @@ image:
 # Resource management
 resources:
   limits:
-    memory: 128Mi
+    memory: 512Mi
   requests:
-    memory: 128Mi
+    memory: 256Mi
+javaHeap: 256M
 
 # Service info
 service:
   internalPort: 8083
 
 # Connect values
+# Connect values
 clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
+jmxPort: 9105
 
 # Connector values
+#consumer group client id
 applicationId: "__REQUIRED__"
 connectorClass: io.confluent.connect.jdbc.JdbcSourceConnector
 tasksMax: "__REQUIRED__"
+#prefix for table names, the sink creates topics matching the tables names.
 topicPrefix: "__REQUIRED__"
+#The mode for updating a table each time it is polled"
 mode: "__REQUIRED__"
+#A comma separated list of tables to extract
 tableWhiteList: "__REQUIRED__"
-incrementColumn: "__REQUIRED__"
-batchSize: 5000
-query: "__REQUIRED__"
+#A comma separated list of tables to blacklist
+tableBlackList:
+#Column name to check for increments
+incrementColumnName:
+#Maximum number of rows to include in a single batch when polling for new data.
+batchMaxRows: 5000
+#JDBC connection URL.
 connectionUrl: "__REQUIRED__"
+#JDBC connection user
 user: "__REQUIRED__"
+#password key to lookup
 passwordKey: "__REQUIRED__"
+#Poll Interval (ms)
+pollInterval: 5000
+#Whether or not to attempt mapping NUMERIC values by precision to integral types
+numericPrecisionMapping: false
+#"Frequency in ms to poll for new or removed tables
+tablePollIntervalMs: 60000
+#The name of the timestamp column to use to detect new or modified rows.
+timestampColumnName:
+#Schema pattern to fetch tables metadata from the database
+schemaPattern:
+#If specified, the query to perform to select new or updated rows
+query: 
+#By default, the JDBC connector will validate that all incrementing and timestamp tables have NOT NULL set for 
+#the columns being used as their ID/timestamp
+validateNonNull: true
+#How long to wait after a row with certain timestamp appears before we include it in the result. 
+timestampDelayIntervalMs:
+#By default, the JDBC connector will only detect tables with type TABLE from the source Database.
+#This config allows a command separated list of table types to extract
+tableTypes:
 
 secretsRef: "__REQUIRED__"
 

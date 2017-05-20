@@ -36,8 +36,12 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
+        # JVM Heap Allowance
+        - name: KAFKA_HEAP_OPTS
+          value: -Xmx{{ .Values.javaHeap }}
         - name: KAFKA_JMX_PORT
-          value: {{ .Values.JmxPort | quote }}
+          value: {{ .Values.jmxPort | quote }}
+
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
@@ -84,7 +88,3 @@ spec:
           value: {{ .Values.connectElasticUrl | quote }}  
         - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
           value: {{ .Values.connectElasticClusterName | quote }}  
-
-        # JVM Heap Allowance
-        - name: KAFKA_HEAP_OPTS
-          value: -Xmx{{ .Values.javaHeap }}
