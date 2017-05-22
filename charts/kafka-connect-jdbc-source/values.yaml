@@ -1,8 +1,8 @@
 # Basic info
 replicaCount: 3
 image:
-  repository: registry.hub.docker.com/confluentinc/cp-kafka-connect
-  tag: "__REQUIRED__"
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-confluent-base
+  tag: 0.2.5
   pullPolicy: IfNotPresent
 
 # Resource management
