@@ -115,7 +115,7 @@ spec:
         {{end}}
         {{ if .Values.incrementColumnName }}
         - name: CONNECTOR_INCREMENTING_COLUMN_NAME
-          value: {{ .Values.timestampColumnName | quote }}
+          value: {{ .Values.incrementColumnName | quote }}
         {{end}}
         {{ if .Values.tableBlackList }}
         - name: CONNECTOR_TABLE_BLACK_LIST
