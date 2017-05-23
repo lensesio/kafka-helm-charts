@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+        hostPort: {{ .Values.restPort | quote }}
+        containerPort: {{ .Values.restPort | quote }}
+        pipeline: {{ .Values.monitoring.pipeline | quote }}
+      annotations:
+        prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
+        prometheus.io/port: {{ .Values.monitoring.port | quote }}
+        prometheus.io/path: {{ .Values.monitoring.path | quote }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.restPort }}
+        livenessProbe:
+          exec:
+            command:
+            - /etc/confluent/liveliness.sh
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        env:
+        - name: KAFKA_JMX_PORT
+          value: {{ .Values.jmxPort | quote }}
+        - name:  SCHEMA_REGISTRY_LISTENERS
+          value: {{ .Values.registry.listeners | quote }}
+        - name:  SCHEMA_REGISTRY_KAFKASTORE_CONNECTION__URL
+          value: {{ .Values.registry.kafkastoreConnectionUrl | quote }}
+        - name:  SCHEMA_REGISTRY_KAFKASTORE_TOPIC
+          value: {{ .Values.registry.kafkastoreTopic | quote }}  
+        - name:  SCHEMA_REGISTRY_DEBUG
+          value: {{ .Values.registry.debug | quote }}        
+        - name:  SCHEMA_REGISTRY_ADVERTISED_HOST_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

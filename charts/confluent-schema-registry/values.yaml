@@ -1,0 +1,32 @@
+# Basic info
+replicaCount: 3
+secretsRef: "__REQUIRED__"
+image:
+  repository: 
+  tag: 
+  pullPolicy: Always
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+#Schema registry configuration
+registry:
+  #listener for rest api url
+  listeners: http://0.0.0.0:8081
+  #zookeeper connection string
+  kafkastoreConnectionUrl: zookeeper:2181
+  #the name of the backing topic
+  kafkastoreTopic: _schemas
+  debug: false
