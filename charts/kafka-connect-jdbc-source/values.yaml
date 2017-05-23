@@ -35,7 +35,7 @@ topicPrefix: "__REQUIRED__"
 #The mode for updating a table each time it is polled"
 mode: "__REQUIRED__"
 #A comma separated list of tables to extract
-tableWhiteList: "__REQUIRED__"
+tableWhiteList:
 #A comma separated list of tables to blacklist
 tableBlackList:
 #Column name to check for increments

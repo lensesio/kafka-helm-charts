@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   confluent-schema-registry:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.33282851+02:00
+    created: 2017-05-23T23:47:12.510506162+02:00
     description: A chart containing the Confluents Schema Registry
     digest: cf1ffaaacf6ad5d13f83b6a06672538432710d2c47270af2c381338c2ea3e539
     name: confluent-schema-registry
@@ -10,7 +10,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/confluent-schema-registry-0.1.0.tgz
     version: 0.1.0
   grafana:
-  - created: 2017-05-23T22:42:00.334053525+02:00
+  - created: 2017-05-23T23:47:12.510953586+02:00
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 02fb4c752e2d67806faf5acd782939209f9ddece72174fac26f8bba2900f5c5f
     engine: gotpl
@@ -27,7 +27,7 @@ entries:
     version: 0.3.0
   kafka-connect-cassandra:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.335110057+02:00
+    created: 2017-05-23T23:47:12.511127328+02:00
     description: A chart containing the Kafka Connect Cassandra Sink
     digest: ed09d0bd81bb70e8c4a9e5ed227b3d89ef278e11eb93660f2622ca0e995844bf
     name: kafka-connect-cassandra
@@ -36,7 +36,7 @@ entries:
     version: 0.1.0
   kafka-connect-elastic:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.335299806+02:00
+    created: 2017-05-23T23:47:12.511284081+02:00
     description: A chart containing the Kafka Connect Elastic Sink
     digest: fd550518741a214f8d256739bd3b0b2d64e23b08c73b13ccba03cd8add3b0104
     name: kafka-connect-elastic
@@ -45,16 +45,16 @@ entries:
     version: 0.1.0
   kafka-connect-jdbc-source:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.335499913+02:00
+    created: 2017-05-23T23:47:12.511478366+02:00
     description: A chart containing the Kafka Connect JDBC Source
-    digest: 652ca0b053bf61ba6570a7d3e4ebeb43863145eb5ceecd522dc0b8c50806ab57
+    digest: 61014d5a18ce3b8d489e01fcd08df928827d2cbe648f8675d43b2efbe2bf1863
     name: kafka-connect-jdbc-source
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-jdbc-source-0.1.0.tgz
     version: 0.1.0
   kafka-connector-hdfs:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.335723917+02:00
+    created: 2017-05-23T23:47:12.511721936+02:00
     description: Kafka-Connect for HDFS
     digest: 0778233c374c35b56a02a02acd6b595b2c5ae8a0d7f0fca601da6b091204b7a1
     name: kafka-connector-hdfs
@@ -63,7 +63,7 @@ entries:
     version: 0.1.0
   kafka-connector-twitter:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.33591001+02:00
+    created: 2017-05-23T23:47:12.511901369+02:00
     description: Kafka-Connect for Twitter
     digest: 5febb81c4404d2971fca4df16fdcc8bb4ff68c52ec625cfb9a412271e5036481
     name: kafka-connector-twitter
@@ -71,7 +71,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/kafka-connector-twitter-0.1.0.tgz
     version: 0.1.0
   prometheus:
-  - created: 2017-05-23T22:42:00.336566484+02:00
+  - created: 2017-05-23T23:47:12.512550091+02:00
     description: Prometheus is a monitoring system and time series database.
     digest: 052f763421bde46a4bada3fcab7977bd6ac4ba56256a0127b527214b3a712023
     engine: gotpl
@@ -90,7 +90,7 @@ entries:
     version: 3.0.1
   services:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.336704344+02:00
+    created: 2017-05-23T23:47:12.512687905+02:00
     description: A chart containing the services and endpoints of an environment
     digest: b23d3af4ae34a0478ebf7374dec9dd745f45091f2f5a2e7be7a4660ffc6d52d2
     name: services
@@ -99,7 +99,7 @@ entries:
     version: 0.2.0
   services-external-name:
   - apiVersion: v1
-    created: 2017-05-23T22:42:00.33683312+02:00
+    created: 2017-05-23T23:47:12.512811934+02:00
     description: A chart containing the services and endpoints of an environment
     digest: a6bd511a84cb452d1b38425092bea1bbc729eb3dbe994f0a8b88020c120b19bd
     name: services-external-name
@@ -107,7 +107,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
   spark:
-  - created: 2017-05-23T22:42:00.337133219+02:00
+  - created: 2017-05-23T23:47:12.513109659+02:00
     description: Fast and general-purpose cluster computing system.
     digest: 1e12f277c8161ce288f66c5d6c1e93445ad6233c8e398128289930c7f35a2777
     home: http://spark.apache.org
@@ -122,4 +122,4 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/spark-0.1.4.tgz
     version: 0.1.4
-generated: 2017-05-23T22:42:00.332306043+02:00
+generated: 2017-05-23T23:47:12.509295474+02:00
