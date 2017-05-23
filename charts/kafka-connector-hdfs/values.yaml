@@ -22,7 +22,6 @@ clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
-jmxPort: 9105
 
 # Cloudera values
 cloudera:

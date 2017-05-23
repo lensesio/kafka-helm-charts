@@ -39,8 +39,6 @@ spec:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
-        - name: KAFKA_JMX_PORT
-          value: {{ .Values.jmxPort | quote }}
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
