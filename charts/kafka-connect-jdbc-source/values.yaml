@@ -26,6 +26,7 @@ restPort: 8083
 
 # Connector values
 #consumer group client id
+tasksMax: "__REQUIRED__"
 applicationId: "__REQUIRED__"
 connectorClass: io.confluent.connect.jdbc.JdbcSourceConnector
 tasksMax: "__REQUIRED__"

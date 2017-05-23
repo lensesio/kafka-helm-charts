@@ -76,6 +76,10 @@ spec:
           value: {{ .Values.applicationId | quote }}
         - name: CONNECTOR_CONNECTOR_CLASS
           value: {{ .Values.connectorClass | quote }}
+        - name: CONNECTOR_TASKS_MAX
+          value: {{ .Values.tasksMax | quote }}
+
+
         - name: CONNECTOR_MODE
           value: {{ .Values.mode | quote }}
         - name: CONNECTOR_CONNECTION_USER
