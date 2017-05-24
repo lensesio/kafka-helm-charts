@@ -1,0 +1,70 @@
+# Basic info
+replicaCount: 3
+secretsRef: "__REQUIRED__"
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
+  tag: 0.2.5
+  pullPolicy: Always
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+applicationId: "__REQUIRED__"
+connectorClass: com.datamountaineer.streamreactor.connect.cassandra.sink.CassandraSinkConnector
+tasksMax: 3
+topics: "__REQUIRED__"
+connectCassandraSinkKcql: "__REQUIRED__"
+
+# Connection
+connectCassandraContactPoints: "__REQUIRED__"
+connectCassandraPort: "__REQUIRED__"
+connectCassandraKeySpace: "__REQUIRED__"
+connectCassandraUsername: "__REQUIRED__"
+
+#SSL
+connectCassandraSslEnabled: false
+connectCassandraTrustStorePath: "__REQUIRED__"
+connectCassandraTrustStorePasswordKey: "TrustStorePasswordKey"
+connectCassandraTrustStorePassword: "__REQUIRED__"
+connectCassandraTrustStoreType: "JKS"
+connectCassandraSslClientCertAuth: false
+connectCassandraKeyStorePath: "__REQUIRED__"
+connectCassandraKeyStorePasswordKey: "KeyStorePasswordKey"
+connectCassandraKeyStorePassword: "__REQUIRED__"
+connectCassandraKeyStoreType: "JKS"
+
+#Error policies
+connectCassandraErrorPolicy: "THROW"
+connectCassandraRetryInterval: "60000"
+connectCassandraMxRetries: 20
+
+## Performance
+#The sink inserts all the data concurrently. To fail fast in case of an error, the sink has its own thread pool.
+# Set the value to zero and the threadpool will default to 4* NO_OF_CPUs. Set a value greater than 0
+# and that would be the size of this threadpool
+connectCassandrasinkThreadPoolSize: 0
+connectProgressEnabled: true
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"

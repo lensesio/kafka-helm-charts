@@ -30,3 +30,4 @@ registry:
   #the name of the backing topic
   kafkastoreTopic: _schemas
   debug: false
+  logLevel: INFO

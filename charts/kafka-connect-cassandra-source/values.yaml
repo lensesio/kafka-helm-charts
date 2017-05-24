@@ -1,0 +1,75 @@
+# Basic info
+replicaCount: 3
+secretsRef: "__REQUIRED__"
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
+  tag: 0.2.5
+  pullPolicy: Always
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+applicationId: "__REQUIRED__"
+connectorClass: com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector
+tasksMax: 3
+topics: "__REQUIRED__"
+connectCassandraSourceKcql: "__REQUIRED__"
+
+# Connection
+connectCassandraContactPoints: "__REQUIRED__"
+connectCassandraPort: "__REQUIRED__"
+connectCassandraKeySpace: "__REQUIRED__"
+connectCassandraUsername: "__REQUIRED__"
+
+#SSL
+connectCassandraSslEnabled: false
+connectCassandraTrustStorePath: "__REQUIRED__"
+connectCassandraTrustStorePasswordKey: "TrustStorePasswordKey"
+connectCassandraTrustStorePassword: "__REQUIRED__"
+connectCassandraTrustStoreType: "JKS"
+connectCassandraSslClientCertAuth: false
+connectCassandraKeyStorePath: "__REQUIRED__"
+connectCassandraKeyStorePasswordKey: "KeyStorePasswordKey"
+connectCassandraKeyStorePassword: "__REQUIRED__"
+connectCassandraKeyStoreType: "JKS"
+
+#Error policies
+connectCassandraErrorPolicy: "THROW"
+connectCassandraRetryInterval: "60000"
+connectCassandraMxRetries: 20
+
+# Source specific
+connectCassandraImportMode: "__REQUIRED__"
+connectCassandraSourceTaskBatchSize: 100
+connectCassandraSourceFetchSize: 5000
+connectCassandraSourceTaskBufferSize: 10000
+connectCassandraImportSourceAllowFiltering: true
+connectCassandraConsistencyLevel: ""
+connectCassandraSourceTimestampType: "timeuuid"
+
+
+connectProgressEnabled: true
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"

@@ -36,17 +36,19 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
-        - name: KAFKA_JMX_PORT
+        - name: SCHEMA_REGISTRY_JMX_PORT
           value: {{ .Values.jmxPort | quote }}
-        - name:  SCHEMA_REGISTRY_LISTENERS
+        - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
+          value: {{ .Values.logLevel | quote }}
+        - name: SCHEMA_REGISTRY_LISTENERS
           value: {{ .Values.registry.listeners | quote }}
-        - name:  SCHEMA_REGISTRY_KAFKASTORE_CONNECTION__URL
+        - name: SCHEMA_REGISTRY_KAFKASTORE_CONNECTION__URL
           value: {{ .Values.registry.kafkastoreConnectionUrl | quote }}
-        - name:  SCHEMA_REGISTRY_KAFKASTORE_TOPIC
+        - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
           value: {{ .Values.registry.kafkastoreTopic | quote }}  
-        - name:  SCHEMA_REGISTRY_DEBUG
+        - name: SCHEMA_REGISTRY_DEBUG
           value: {{ .Values.registry.debug | quote }}        
-        - name:  SCHEMA_REGISTRY_ADVERTISED_HOST_NAME
+        - name: SCHEMA_REGISTRY_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP

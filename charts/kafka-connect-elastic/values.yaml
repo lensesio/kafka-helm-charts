@@ -23,6 +23,7 @@ clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
+logLevel: INFO
 
 # Connector values
 applicationId: "__REQUIRED__"

@@ -39,6 +39,8 @@ spec:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
+        - name: CONNECT_LOG4J_ROOT_LOGLEVEL
+          value: {{ .Values.logLevel | quote }}
 
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
@@ -99,3 +101,45 @@ spec:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key: cassandra-password
+        
+        ##SSL
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
+          value: {{ .Values.connectCassandraSslEnabled }}
+        {{ if .Values.connectCassandraSslEnabled }} 
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
+          value: {{ .Values.connectCassandraTrustStorePath }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectCassandraTrustStorePasswordKey }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
+          value: {{ .Values.connectCassandraTrustStoreType }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
+          value: {{ .Values.connectCassandraSslClientCertAuth }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
+          value: {{ .Values.connectCassandraKeyStorePath }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectCassandraKeyStorePasswordKey }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
+          value: {{ .Values.connectCassandraKeyStoreType }}  
+        {{end}}
+
+        ##Error policies
+        - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
+          value: {{ .Values.connectCassandraErrorPolicy }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
+          value: {{ .Values.connectCassandraRetryInterval }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
+          value: {{ .Values.connectCassandraMxRetries }}
+
+        ##Progress counter
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.connectProgressEnabled }} 
+
+        ##Performance  
+        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_THREAD_POOL_SIZE
+          value: {{ .Values.connectCassandrasinkThreadPoolSize }} 

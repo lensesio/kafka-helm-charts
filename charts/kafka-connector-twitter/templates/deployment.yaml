@@ -39,6 +39,8 @@ spec:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
+        - name: CONNECT_LOG4J_ROOT_LOGLEVEL
+          value: {{ .Values.logLevel | quote }}
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
