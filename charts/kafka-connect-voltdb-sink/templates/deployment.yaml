@@ -81,65 +81,29 @@ spec:
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
 
-        ##KCQL routing  
-        - name: CONNECTOR_TOPICS
-          value: {{ .Values.topics | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_KCQL
-          value: {{ .Values.connectCassandraSinkKcql | quote }}
+        ##Connection 
+        - name: CONNECTOR_VOLT_CONNECTION_SERVERS
+          value: {{ .Values.connectVoltConnectionServers | quote }}
+        - name: CONNECTOR_VOLT_CONNECTION_USER
+          value: {{ .Values.connectVoltConnectionUser | quote }}
+        - name: CONNECTOR_VOLT_CONNECTION_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectVoltConnectionPasswordKey }}
 
-        ##Connection  
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
-          value: {{ .Values.connectCassandraContactPoints | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
-          value: {{ .Values.connectCassandraPort | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
-          value: {{ .Values.connectCassandraKeySpace | quote }}      
-        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
-          value: {{ .Values.connectCassandraUsername | quote }}     
-        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key: cassandra-password
-        
-        ##SSL
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
-          value: {{ .Values.connectCassandraSslEnabled }}
-        {{ if .Values.connectCassandraSslEnabled }} 
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
-          value: {{ .Values.connectCassandraTrustStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraTrustStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
-          value: {{ .Values.connectCassandraTrustStoreType }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
-          value: {{ .Values.connectCassandraSslClientCertAuth }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
-          value: {{ .Values.connectCassandraKeyStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraKeyStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
-          value: {{ .Values.connectCassandraKeyStoreType }}  
-        {{end}}
+        #KCQL
+        - name: CONNECTOR_VOLTD_SINK_KCQL
+          value: {{ .Values.connectVoltSinkKcql | quote }}    
 
         ##Error policies
-        - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
-          value: {{ .Values.connectCassandraErrorPolicy }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
-          value: {{ .Values.connectCassandraRetryInterval }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
-          value: {{ .Values.connectCassandraMaxRetries }}
+        - name: CONNECTOR_CONNECT_VOLT_ERROR_POLICY
+          value: {{ .Values.connectVoltErrorPolicy | quote}}
+        - name: CONNECTOR_CONNECT_VOLT_RETRY_INTERVAL
+          value: {{ .Values.connectVoltRetryInterval | quote}}
+        - name: CONNECTOR_CONNECT_VOLT_MAX_RETRIES
+          value: {{ .Values.connectVoltMaxRetries | quote}}
 
         ##Progress counter
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.connectProgressEnabled }} 
-
-        ##Performance  
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_THREAD_POOL_SIZE
-          value: {{ .Values.connectCassandrasinkThreadPoolSize }} 
+          value: {{ .Values.connectProgressEnabled | quote}} 

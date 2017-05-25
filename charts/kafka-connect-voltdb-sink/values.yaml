@@ -1,0 +1,55 @@
+# Basic info
+replicaCount:
+secretsRef:
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-voltdb
+  tag: 0.2.6
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: 
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+applicationId: 
+connectorClass: com.datamountaineer.streamreactor.connect.votldb.sink.VoltDbSinkConnector
+tasksMax:
+topics: 
+
+# Connection
+connectVoltConnectionServers: 
+
+connectVoltConnectionUser:
+connectVoltConnectionPasswordKey:
+
+#KCQL
+connectVoltSinkKcql:
+
+#Error policies
+connectVoltErrorPolicy: "THROW"
+connectVoltRetryInterval: "60000"
+connectVoltMaxRetries: 20
+
+connectProgressEnabled: true
+
+# Monitoring
+monitoring:
+  pipeline:
+  enabled: true
+  port: 9102
+  path: "/metrics"

@@ -1,0 +1,54 @@
+# Basic info
+replicaCount:
+secretsRef:
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-rethink
+  tag: 0.2.6
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: 
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+applicationId: 
+connectorClass: com.datamountaineer.streamreactor.connect.rethink.source.RethinkSourceConnector
+tasksMax:
+topics: 
+
+# Connection
+connectMongoConnection: 
+connectMongoDatabase:
+connectMongoBatchSize: 100
+
+#KCQL
+connectMongoSinkKcql:
+
+#Error policies
+connectMongoErrorPolicy: "THROW"
+connectMongoRetryInterval: "60000"
+connectMongoMaxRetries: 20
+
+connectProgressEnabled: true
+
+# Monitoring
+monitoring:
+  pipeline:
+  enabled: true
+  port: 9102
+  path: "/metrics"

@@ -1,6 +1,6 @@
 # Basic info
 replicaCount: 3
-secretsRef: "__REQUIRED__"
+secretsRef: ""
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
   tag: 0.2.5
@@ -19,41 +19,41 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: "__REQUIRED__"
+clusterName: ""
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: "__REQUIRED__"
+applicationId: ""
 connectorClass: com.datamountaineer.streamreactor.connect.cassandra.sink.CassandraSinkConnector
 tasksMax: 3
-topics: "__REQUIRED__"
-connectCassandraSinkKcql: "__REQUIRED__"
+topics: ""
+connectCassandraSinkKcql: ""
 
 # Connection
-connectCassandraContactPoints: "__REQUIRED__"
-connectCassandraPort: "__REQUIRED__"
-connectCassandraKeySpace: "__REQUIRED__"
-connectCassandraUsername: "__REQUIRED__"
+connectCassandraContactPoints: ""
+connectCassandraPort: ""
+connectCassandraKeySpace: ""
+connectCassandraUsername: ""
 
 #SSL
 connectCassandraSslEnabled: false
-connectCassandraTrustStorePath: "__REQUIRED__"
+connectCassandraTrustStorePath: ""
 connectCassandraTrustStorePasswordKey: "TrustStorePasswordKey"
-connectCassandraTrustStorePassword: "__REQUIRED__"
+connectCassandraTrustStorePassword: ""
 connectCassandraTrustStoreType: "JKS"
 connectCassandraSslClientCertAuth: false
-connectCassandraKeyStorePath: "__REQUIRED__"
+connectCassandraKeyStorePath: ""
 connectCassandraKeyStorePasswordKey: "KeyStorePasswordKey"
-connectCassandraKeyStorePassword: "__REQUIRED__"
+connectCassandraKeyStorePassword: ""
 connectCassandraKeyStoreType: "JKS"
 
 #Error policies
 connectCassandraErrorPolicy: "THROW"
 connectCassandraRetryInterval: "60000"
-connectCassandraMxRetries: 20
+connectCassandraMaxRetries: 20
 
 ## Performance
 #The sink inserts all the data concurrently. To fail fast in case of an error, the sink has its own thread pool.
@@ -64,7 +64,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline: "__REQUIRED__"
+  pipeline: ""
   enabled: true
   port: 9102
   path: "/metrics"

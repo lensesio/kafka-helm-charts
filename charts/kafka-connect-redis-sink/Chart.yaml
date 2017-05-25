@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect Redis Sink
+name: kafka-connect-redis-sink
+version: 0.2.6

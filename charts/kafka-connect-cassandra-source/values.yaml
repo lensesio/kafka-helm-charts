@@ -1,6 +1,6 @@
 # Basic info
 replicaCount: 3
-secretsRef: "__REQUIRED__"
+secretsRef: 
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
   tag: 0.2.5
@@ -19,44 +19,44 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: "__REQUIRED__"
+clusterName: 
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: "__REQUIRED__"
+applicationId:
 connectorClass: com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector
 tasksMax: 3
-topics: "__REQUIRED__"
-connectCassandraSourceKcql: "__REQUIRED__"
+topics: 
+connectCassandraSourceKcql: 
 
 # Connection
-connectCassandraContactPoints: "__REQUIRED__"
-connectCassandraPort: "__REQUIRED__"
-connectCassandraKeySpace: "__REQUIRED__"
-connectCassandraUsername: "__REQUIRED__"
+connectCassandraContactPoints: 
+connectCassandraPort: 
+connectCassandraKeySpace: 
+connectCassandraUsername: 
 
 #SSL
 connectCassandraSslEnabled: false
-connectCassandraTrustStorePath: "__REQUIRED__"
+connectCassandraTrustStorePath: 
 connectCassandraTrustStorePasswordKey: "TrustStorePasswordKey"
-connectCassandraTrustStorePassword: "__REQUIRED__"
+connectCassandraTrustStorePassword: 
 connectCassandraTrustStoreType: "JKS"
 connectCassandraSslClientCertAuth: false
-connectCassandraKeyStorePath: "__REQUIRED__"
+connectCassandraKeyStorePath: 
 connectCassandraKeyStorePasswordKey: "KeyStorePasswordKey"
-connectCassandraKeyStorePassword: "__REQUIRED__"
+connectCassandraKeyStorePassword: 
 connectCassandraKeyStoreType: "JKS"
 
 #Error policies
 connectCassandraErrorPolicy: "THROW"
 connectCassandraRetryInterval: "60000"
-connectCassandraMxRetries: 20
+connectCassandraMaxRetries: 20
 
 # Source specific
-connectCassandraImportMode: "__REQUIRED__"
+connectCassandraImportMode:
 connectCassandraSourceTaskBatchSize: 100
 connectCassandraSourceFetchSize: 5000
 connectCassandraSourceTaskBufferSize: 10000
@@ -64,12 +64,11 @@ connectCassandraImportSourceAllowFiltering: true
 connectCassandraConsistencyLevel: ""
 connectCassandraSourceTimestampType: "timeuuid"
 
-
 connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline: "__REQUIRED__"
+  pipeline: 
   enabled: true
   port: 9102
   path: "/metrics"

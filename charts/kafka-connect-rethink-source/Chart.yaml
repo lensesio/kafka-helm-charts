@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect ReThinkDB Source
+name: kafka-connect-rethink-source
+version: 0.2.6

@@ -84,73 +84,29 @@ spec:
         ##KCQL routing  
         - name: CONNECTOR_TOPICS
           value: {{ .Values.topics | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_KCQL
-          value: {{ .Values.connectCassandraSinkKcql | quote }}
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_KCQL
+          value: {{ .Values.connectRethinkSinkKcql | quote }}
 
         ##Connection  
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
-          value: {{ .Values.connectCassandraContactPoints | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
-          value: {{ .Values.connectCassandraPort | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
-          value: {{ .Values.connectCassandraKeySpace | quote }}      
-        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
-          value: {{ .Values.connectCassandraUsername | quote }}     
-        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key: cassandra-password
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_HOST
+          value: {{ .Values.connectRethinkSinkHost | quote }}  
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_PORT
+          value: {{ .Values.connectRethinkSinkPort | quote }}  
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_DB
+          value: {{ .Values.connectRethinkSinkDB | quote }}  
 
-        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_MODE
-          value: {{ .Values.connectCassandraImportMode }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SOURCE_TASK_BATCH_SIZE
-          value: {{ .Values.connectCassandraSourceTaskBatchSize }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SOURCE_FETCH_SIZE
-          value: {{ .Values.connectCassandraSourceFetchSize }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_SOURCE_TASK_BUFFER_SIZE
-          value: {{ .Values.connectCassandraSourceTaskBufferSize }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_SOURCE_ALLOW_FILTERING
-          value: {{ .Values.connectCassandraImportSourceAllowFiltering }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONSISTENCY_LEVEL
-          value: {{ .Values.connectCassandraConsistencyLevel }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SOURCE_TIMESTAMP_TYPE
-          value: {{ .Values.connectCassandraSourceTimestampType }}
-        
-        ##SSL
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
-          value: {{ .Values.connectCassandraSslEnabled }}
-        {{ if .Values.connectCassandraSslEnabled }} 
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
-          value: {{ .Values.connectCassandraTrustStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraTrustStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
-          value: {{ .Values.connectCassandraTrustStoreType }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
-          value: {{ .Values.connectCassandraSslClientCertAuth }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
-          value: {{ .Values.connectCassandraKeyStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraKeyStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
-          value: {{ .Values.connectCassandraKeyStoreType }}  
-        {{end}}
+        ## SHOULD BE REPLACED BY KCQL
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_BATCH_SIZE
+          value: {{ .Values.connectRethinkSinkBatchSize | quote }}  
 
         ##Error policies
-        - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
-          value: {{ .Values.connectCassandraErrorPolicy }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
-          value: {{ .Values.connectCassandraRetryInterval }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
-          value: {{ .Values.connectCassandraMaxRetries }}
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_ERROR_POLICY
+          value: {{ .Values.connectRethinkSinkErrorPolicy | quote }}
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_RETRY_INTERVAL
+          value: {{ .Values.connectRethinkSinkRetryInterval | quote}}
+        - name: CONNECTOR_CONNECT_RETHINK_SINK_MAX_RETRIES
+          value: {{ .Values.connectRethinkSinkMaxRetries | quote}}
 
         ##Progress counter
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.connectProgressEnabled }} 
+          value: {{ .Values.connectProgressEnabled | quote}} 

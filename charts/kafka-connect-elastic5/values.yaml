@@ -2,9 +2,9 @@
 replicaCount: 3
 secretsRef: ""
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-elastic
-  tag: 0.2.5
-  pullPolicy: Always
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-elastic5
+  tag: 0.2.6
+  pullPolicy: IfNotPresent
 
 # Resource management
 resources:
@@ -26,13 +26,20 @@ restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: ""
+applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.elastic.sink.ElasticSinkConnector
-tasksMax: 3
-topics: ""
-connectElasticSinkKcql: ""
-connectElasticUrl: ""
-connectElasticClusterName: ""
+tasksMax: 
+topics: 
+connectElasticSinkKcql: 
+connectElasticUrl: 
+connectElasticClusterName:
+connectElasticUrlPrefix: "elasticsearch"
+connectElasticWriteTimeout: 300000
+connectElasticMaxRetries: 20
+connectElasticErrorPolicy: "THROW"
+connectProgressEnabled: true
+connectElasticXpackPlugins:
+connectElasticXpackSettings:
 
 # Monitoring
 monitoring:

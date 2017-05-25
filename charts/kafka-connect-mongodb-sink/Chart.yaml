@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect MongoDB Sink
+name: kafka-connect-mongodb-sink
+version: 0.2.6

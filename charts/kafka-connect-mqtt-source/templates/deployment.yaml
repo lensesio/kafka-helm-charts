@@ -82,64 +82,46 @@ spec:
           value: {{ .Values.tasksMax | quote }}
 
         ##KCQL routing  
-        - name: CONNECTOR_TOPICS
-          value: {{ .Values.topics | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_KCQL
-          value: {{ .Values.connectCassandraSinkKcql | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_SOURCE_KCQL
+          value: {{ .Values.connectMqttSourceKcql | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_HOSTS
+          value: {{ .Values.connectMqttHosts | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_SERVICE_QUALITY
+          value: {{ .Values.connectMqttServiceQuality | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_USER
+          value: {{ .Values.connectMqttUser | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CLIENT_ID
+          value: {{ .Values.connectMqttClientId | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_TIMEOUT
+          value: {{ .Values.connectMqttConnectionTimeout | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_CLEAN
+          value: {{ .Values.connectMqttConnectionClean | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_KEEP_ALIVE
+          value: {{ .Values.connectMqttConnectionKeepAlive | quote }}
 
-        ##Connection  
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
-          value: {{ .Values.connectCassandraContactPoints | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
-          value: {{ .Values.connectCassandraPort | quote }}  
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
-          value: {{ .Values.connectCassandraKeySpace | quote }}      
-        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
-          value: {{ .Values.connectCassandraUsername | quote }}     
-        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
+        ## Converters   
+        - name: CONNECTOR_CONNECT_MQTT_SOURCE_CONVERTERS
+          value: {{ .Values.connectMqttSourceConverters | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CONVERTER_THROW_ON_ERROR
+          value: {{ .Values.connectMqttConverterThrowOnError | quote }}
+        {{ if .Values.connectMqttConnectionSslCaCert }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_SSL_CA_CERT
+          value: {{ .Values.connectMqttConnectionSslCaCert | quote }}
+        {{end}}   
+        {{ if .Values.connectMqttConnectionSslCert }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_SSL_CERT
+          value: {{ .Values.connectMqttConnectionSslCert | quote }}
+        {{end}}   
+        {{ if .Values.connectMqttConnectionSslKey }}
+        - name: CONNECTOR_CONNECT_MQTT_CONNECTION_SSL_KEY
+          value: {{ .Values.connectMqttConnectionSslKey | quote }}
+        {{end}}  
+        - name: CONNECTOR_CONNECT_MQTT_PASWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key: cassandra-password
-        
-        ##SSL
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
-          value: {{ .Values.connectCassandraSslEnabled }}
-        {{ if .Values.connectCassandraSslEnabled }} 
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
-          value: {{ .Values.connectCassandraTrustStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraTrustStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
-          value: {{ .Values.connectCassandraTrustStoreType }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
-          value: {{ .Values.connectCassandraSslClientCertAuth }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
-          value: {{ .Values.connectCassandraKeyStorePath }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectCassandraKeyStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
-          value: {{ .Values.connectCassandraKeyStoreType }}  
-        {{end}}
-
-        ##Error policies
-        - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
-          value: {{ .Values.connectCassandraErrorPolicy }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
-          value: {{ .Values.connectCassandraRetryInterval }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
-          value: {{ .Values.connectCassandraMaxRetries }}
+              key:  {{ .Values.connectMqttPasswordKey | quote }}
 
         ##Progress counter
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.connectProgressEnabled }} 
-
-        ##Performance  
-        - name: CONNECTOR_CONNECT_CASSANDRA_SINK_THREAD_POOL_SIZE
-          value: {{ .Values.connectCassandrasinkThreadPoolSize }} 
+          value: {{ .Values.connectProgressEnabled | quote}} 
