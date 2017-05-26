@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect HBase Sink
+name: kafka-connect-hbase-sink
+version: 0.2.6

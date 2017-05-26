@@ -1,0 +1,63 @@
+# Basic info
+replicaCount:
+secretsRef:
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-hazelcast
+  tag: 0.2.6
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: 
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+applicationId: 
+connectorClass: com.datamountaineer.streamreactor.connect.hazelcast.sink.HazelcastSinkConnector
+tasksMax:
+topics: 
+
+# Connection
+connectHazelcastSinkClusterMembers: "localhost"
+connectHazelcastSinkGroupName: 
+connectHazelcastSinkGroupPasswordKey:
+connectHazelcastParallelWrite: false
+connectHazelcastConnectionTimeout: 5000
+connectHazelcastConnectionRetries: 2
+connectHazelcastConnectionKeepAlive: true
+connectHazelcastConnectionTcpNoDelay: true
+connectHazelcastConnectionReuseAddress: true
+connectHazelcastConnectionLingerSeconds: 2
+connectHazelcastConnectionBufferSize: 32
+connectHazelcastSinkThreadpoolSize: 0
+
+#KCQL
+connectHazelcastSinkKcql:
+
+#Error policies
+connectHazelcastSinkErrorPolicy: "THROW"
+connectHazelcastSinkRetryInterval: "60000"
+connectHazeclastSinkMaxRetries: 20
+
+connectProgressEnabled: true
+
+# Monitoring
+monitoring:
+  pipeline:
+  enabled: true
+  port: 9102
+  path: "/metrics"

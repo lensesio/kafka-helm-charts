@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect JMS Sink
+name: kafka-connect-jms-sink
+version: 0.2.6

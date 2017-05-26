@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect JMS Source
+name: kafka-connect-jms-source
+version: 0.2.6

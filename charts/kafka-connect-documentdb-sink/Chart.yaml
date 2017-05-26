@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect Azure DocumentDB Sink
+name: kafka-connect-documentdb-sink
+version: 0.2.6
