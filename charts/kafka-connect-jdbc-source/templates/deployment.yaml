@@ -147,3 +147,11 @@ spec:
         - name: CONNECTOR_TABLE_TYPES
           value: {{ .Values.tableTypes | quote }}
         {{end}}
+        {{ if .Values.limitEnabled }}
+        - name: CONNECTOR_LIMIT_ENABLED
+          value: {{ .Values.limitEnabled | quote }}
+        {{end}}
+        {{ if .Values.limit }}
+        - name: CONNECTOR_LIMIT
+          value: {{ .Values.limit | quote }}
+        {{end}}

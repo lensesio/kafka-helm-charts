@@ -69,6 +69,8 @@ timestampDelayIntervalMs:
 #By default, the JDBC connector will only detect tables with type TABLE from the source Database.
 #This config allows a command separated list of table types to extract
 tableTypes:
+limitEnabled: false
+limit: 500000
 
 secretsRef: "__REQUIRED__"
 
