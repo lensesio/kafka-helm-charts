@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-rethink
   tag: 0.2.6
@@ -19,25 +19,25 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: 
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.rethink.source.RethinkSourceConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectMongoConnection: 
-connectMongoDatabase:
+connectMongoConnection: "__REQUIRED__"
+connectMongoDatabase: "__REQUIRED__"
 connectMongoBatchSize: 100
 
 #KCQL
-connectMongoSinkKcql:
+connectMongoSinkKcql: "__REQUIRED__"
 
 #Error policies
 connectMongoErrorPolicy: "THROW"
@@ -48,7 +48,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

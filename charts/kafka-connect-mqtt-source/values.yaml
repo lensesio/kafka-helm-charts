@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-mqtt
   tag: 0.2.6
@@ -26,31 +26,31 @@ restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.mqtt.source.MqttSourceConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
-connectMqttSourceKcql:
-connectMqttHosts:
-connectMqttServiceQuality:
-connectMqttUser:
-connectMqttPasswordKey: mqtt-password-key
-connectMqttClientId:
+connectMqttSourceKcql: "__REQUIRED__"
+connectMqttHosts: "__REQUIRED__"
+connectMqttServiceQuality: "__REQUIRED__"
+connectMqttUser: "__REQUIRED__"
+connectMqttPasswordKey: "__REQUIRED__"
+connectMqttClientId: "__REQUIRED__"
 connectMqttConnectionTimeout: 3000
 connectMqttConnectionClean: true
 connectMqttConnectionKeepAlive: 5000
 connectMqttConnectionSslCaCert:
 connectMqttConnectionSslCert:
 connectMqttConnectionSslKey:
-connectMqttSourceConverters:
+connectMqttSourceConverters: "__REQUIRED__"
 connectMqttConverterThrowOnError: false
 
 connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

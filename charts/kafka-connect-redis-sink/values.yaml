@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-redis
   tag: 0.2.6
@@ -19,23 +19,23 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: 
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.redis.sink.RedisSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectRedisConnectionHost: 
-connectRedisConnectionPort:
-connectRedisConnectionPasswordKey: redis-password-key
-connectRedisSinkKcql:
+connectRedisConnectionHost: "__REQUIRED__"
+connectRedisConnectionPort: "__REQUIRED__"
+connectRedisConnectionPasswordKey: "__REQUIRED__"
+connectRedisSinkKcql: "__REQUIRED__"
 
 #Error policies
 connectRedisErrorPolicy: "THROW"
@@ -46,7 +46,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

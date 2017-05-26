@@ -1,5 +1,5 @@
 # Basic info
-replicaCount: 3
+replicaCount: "__REQUIRED__"
 secretsRef: 
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
@@ -28,15 +28,15 @@ logLevel: INFO
 # Connector values
 applicationId:
 connectorClass: com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector
-tasksMax: 3
-topics: 
-connectCassandraSourceKcql: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
+connectCassandraSourceKcql: "__REQUIRED__"
 
 # Connection
-connectCassandraContactPoints: 
-connectCassandraPort: 
-connectCassandraKeySpace: 
-connectCassandraUsername: 
+connectCassandraContactPoints: "__REQUIRED__"
+connectCassandraPort: "__REQUIRED__"
+connectCassandraKeySpace: "__REQUIRED__"
+connectCassandraUsername: "__REQUIRED__"
 
 #SSL
 connectCassandraSslEnabled: false
@@ -56,7 +56,7 @@ connectCassandraRetryInterval: "60000"
 connectCassandraMaxRetries: 20
 
 # Source specific
-connectCassandraImportMode:
+connectCassandraImportMode: "__REQUIRED__"
 connectCassandraSourceTaskBatchSize: 100
 connectCassandraSourceFetchSize: 5000
 connectCassandraSourceTaskBufferSize: 10000
@@ -68,7 +68,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline: 
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

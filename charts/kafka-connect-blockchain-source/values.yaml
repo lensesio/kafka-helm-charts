@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-jms
   tag: 0.2.6
@@ -19,7 +19,7 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: 
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
@@ -28,19 +28,19 @@ logLevel: INFO
 # Connector values
 applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.blockchain.source.BlockchainSourceConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
 connectBlockchainSourceUrl: "wss://ws.blockchain.info/inv"
 connectBlockchainSourceSubscriptionAddresses:
-connectBlockchainSourceKafkaTopic:
+connectBlockchainSourceKafkaTopic: "__REQUIRED__"
 
 connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

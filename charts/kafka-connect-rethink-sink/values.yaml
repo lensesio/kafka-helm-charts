@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-rethink
   tag: 0.2.6
@@ -19,25 +19,25 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: 
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.rethink.sink.RethinkSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
 connectRethinkSinkHost: "localhost"
 connectRethinkSinkPort: 28015
-connectRethinkSinkDB: "connect_rethink_sink"
+connectRethinkSinkDB: "__REQUIRED__"
 
 #KCQL
-connectRethinkSinkKcql:
+connectRethinkSinkKcql: "__REQUIRED__"
 connectRethinkSinkBatchSize: 1000
 
 
@@ -50,7 +50,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

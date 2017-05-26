@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-azure-documentdb
   tag: 0.2.6
@@ -28,20 +28,20 @@ logLevel: INFO
 # Connector values
 applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.azure.documentdb.sink.DocumentDbSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectDocumentDBDatabaseName:
-connectDocumentDBEndpoint:
-connectDocumentDBMasterKey:
+connectDocumentDBDatabaseName: "__REQUIRED__"
+connectDocumentDBEndpoint: "__REQUIRED__"
+connectDocumentDBMasterKey: "__REQUIRED__"
 connectDocumentDBSinkBatchSize: 100
 connectDocumentDBSinkConsistencyLevel: "Session"
 connectDocumentDBSinkCreateDatabase: false
 connectDocumentDBProxy: false
 
 #routing
-connectDocumentDBSinkKCQL:
+connectDocumentDBSinkKCQL: "__REQUIRED__"
 
 
 #Error policies
@@ -53,7 +53,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

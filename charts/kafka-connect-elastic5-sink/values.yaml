@@ -1,6 +1,6 @@
 # Basic info
-replicaCount: 3
-secretsRef: ""
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-elastic5
   tag: 0.2.6
@@ -19,20 +19,20 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: ""
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.elastic.sink.ElasticSinkConnector
-tasksMax: 
-topics: 
-connectElasticSinkKcql: 
-connectElasticUrl: 
-connectElasticClusterName:
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
+connectElasticSinkKcql: "__REQUIRED__"
+connectElasticUrl: "__REQUIRED__"
+connectElasticClusterName: "__REQUIRED__"
 connectElasticUrlPrefix: "elasticsearch"
 connectElasticWriteTimeout: 300000
 connectElasticMaxRetries: 20
@@ -43,7 +43,7 @@ connectElasticXpackSettings:
 
 # Monitoring
 monitoring:
-  pipeline: ""
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

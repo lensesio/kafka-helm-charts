@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-coap
   tag: 0.2.6
@@ -28,14 +28,14 @@ logLevel: INFO
 # Connector values
 applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.coap.sink.CoAPSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectCoAPUri:
-connectCoAPBindPort:
-connectCoAPBindHost:
-connectCoAPTruststorePassKey:
+connectCoAPUri: "__REQUIRED__"
+connectCoAPBindPort: "__REQUIRED__"
+connectCoAPBindHost: "__REQUIRED__"
+connectCoAPTruststorePassKey: 
 connectCoAPTruststorePath:
 connectCoAPCerts:
 connectCoAPKeystorePassKey:
@@ -43,7 +43,7 @@ connectCoAPKeystorePath:
 connectCoAPCertChainKey:
 
 #KCQL
-connectCoAPKcql:
+connectCoAPKcql: "__REQUIRED__"
 
 #Error policies
 connectCoAPErrorPolicy: "THROW"
@@ -54,7 +54,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

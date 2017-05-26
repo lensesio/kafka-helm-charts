@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-influx
   tag: 0.2.6
@@ -19,28 +19,28 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: 
+clusterName: "__REQUIRED__"
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: 
+applicationId: "__REQUIRED__"
 connectorClass: com.datamountaineer.streamreactor.connect.influx.InfluxSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectInfluxConnectionUrl: 
-connectInfluxConnectionDatabase:
-connectInfluxConnectionUser:
-connectInfluxConnectionPasswordKey:
+connectInfluxConnectionUrl: "__REQUIRED__"
+connectInfluxConnectionDatabase: "__REQUIRED__"
+connectInfluxConnectionUser: "__REQUIRED__"
+connectInfluxConnectionPasswordKey: "__REQUIRED__"
 connectInfluxRetentionPolicy: "autogen"
 connectInfluxConsistencyLevel: "ALL"
 
 #KCQL
-connectInfluxSinkKcql:
+connectInfluxSinkKcql: "__REQUIRED__"
 
 #Error policies
 connectInfluxErrorPolicy: "THROW"
@@ -51,7 +51,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

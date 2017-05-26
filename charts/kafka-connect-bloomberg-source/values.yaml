@@ -2,7 +2,7 @@
 replicaCount: "__REQUIRED__"
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-kudu
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-bloomberg
   tag: 0.2.6
   pullPolicy: IfNotPresent
 
@@ -19,7 +19,7 @@ service:
   internalPort: 8083
 
 # Connect values
-clusterName: "__REQUIRED__"
+clusterName: 
 bootstrapServers: kafka:9092
 schemaRegistryURL: http://schema-registry:8081
 restPort: 8083
@@ -27,23 +27,20 @@ logLevel: INFO
 
 # Connector values
 applicationId: "__REQUIRED__"
-connectorClass: com.datamountaineer.streamreactor.connect.kudu.sink.KuduSinkConnector
+connectorClass: com.datamountaineer.streamreactor.connect.bloomberg.BloombergSourceConnector
 tasksMax: "__REQUIRED__"
 topics: "__REQUIRED__"
 
 # Connection
-connectKuduMaster: "localhost"
-connectKuduSinkKcql: "__REQUIRED__"
-
-#Error policies
-connectKuduSinkErrorPolicy: "THROW"
-connectKuduSinkRetryInterval: "60000"
-connectKuduSinkMaxRetries: 20
-# Batching insert
-connectKuduSinkBatchSize: 1000
-connectKuduSinkBucketSize: 10
-
-connectProgressEnabled: true
+connectBloombergServerHost: "__REQUIRED__"
+connectBloombergServerPort: "__REQUIRED__"
+connectBloombergServiceUri: "__REQUIRED__"
+connectBloombergAuthenticationMode: "__REQUIRED__"
+connectBloombergSubscriptions: "__REQUIRED__"
+connectBloombergKafkaTopic: "__REQUIRED__"
+connectBloombergBufferSize: "__REQUIRED__"
+connectBloombergPayloadSize: "__REQUIRED__"
+connectBloombergPayloadType: "__REQUIRED__"
 
 # Monitoring
 monitoring:

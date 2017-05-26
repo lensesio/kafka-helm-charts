@@ -1,0 +1,97 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+        hostPort: {{ .Values.restPort | quote }}
+        containerPort: {{ .Values.restPort | quote }}
+        pipeline: {{ .Values.monitoring.pipeline | quote }}
+      annotations:
+        prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
+        prometheus.io/port: {{ .Values.monitoring.port | quote }}
+        prometheus.io/path: {{ .Values.monitoring.path | quote }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.restPort }}
+        livenessProbe:
+          exec:
+            command:
+            - /etc/confluent/liveliness.sh
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        volumeMounts:
+        - mountPath: /etc/druid
+          name: etc-druid
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        env:
+        # JVM Heap Allowance
+        - name: KAFKA_HEAP_OPTS
+          value: -Xmx{{ .Values.javaHeap }}
+        - name: CONNECT_LOG4J_ROOT_LOGLEVEL
+          value: {{ .Values.logLevel | quote }}
+
+        - name:  CONNECT_GROUP_ID
+          value: {{ .Values.clusterName | quote }}
+        - name:  CONNECT_BOOTSTRAP_SERVERS
+          value: {{ .Values.bootstrapServers | quote }}
+        - name:  CONNECT_REST_PORT
+          value: {{ .Values.restPort | quote }}
+        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+          value: "connect_{{ .Values.clusterName }}_configs"
+        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+          value: "connect_{{ .Values.clusterName }}_offsets"
+        - name:  CONNECT_STATUS_STORAGE_TOPIC
+          value: "connect_{{ .Values.clusterName }}_statuses"
+        - name:  CONNECT_KEY_CONVERTER
+          value: "io.confluent.connect.avro.AvroConverter"
+        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+          value: {{ .Values.schemaRegistryURL | quote }}
+        - name:  CONNECT_VALUE_CONVERTER
+          value: "io.confluent.connect.avro.AvroConverter"
+        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+          value: {{ .Values.schemaRegistryURL | quote }}
+        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+          value: "org.apache.kafka.connect.json.JsonConverter"
+        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+          value: "org.apache.kafka.connect.json.JsonConverter"
+        - name: CONNECT_REST_ADVERTISED_HOST_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+
+        # Connector properties
+        - name: CONNECTOR_NAME
+          value: {{ .Values.applicationId | quote }}
+        - name: CONNECTOR_GROUP_ID
+          value: {{ .Values.applicationId | quote }}
+        - name: CONNECTOR_CONNECTOR_CLASS
+          value: {{ .Values.connectorClass | quote }}
+        - name: CONNECTOR_TASKS_MAX
+          value: {{ .Values.tasksMax | quote }}
+
+        ##Connection 
+        - name: CONNECTOR_CONNECT_DRUID_SINK_KCQL
+          value: {{ .Values.connectDruidSinkKcql | quote}} 
+        - name: CONNECTOR_CONNECT_DRUID_SINK_CONFIG_FILE
+          value: {{ .Values.connectDruidSinkConfigFile | quote}}
+        - name: CONNECTOR_CONNECT_DRUID_SINK_WRITE_TIMEOUT
+          value: {{ .Values.connnectDruidSinkWriteTimeout | quote}}  
+
+        ##Progress counter
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.connectProgressEnabled | quote}} 

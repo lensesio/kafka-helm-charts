@@ -2,7 +2,7 @@
 replicaCount: "__REQUIRED__"
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-kudu
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-druid
   tag: 0.2.6
   pullPolicy: IfNotPresent
 
@@ -26,23 +26,15 @@ restPort: 8083
 logLevel: INFO
 
 # Connector values
-applicationId: "__REQUIRED__"
-connectorClass: com.datamountaineer.streamreactor.connect.kudu.sink.KuduSinkConnector
+applicationId: 
+connectorClass: com.datamountaineer.streamreactor.connect.druid.DruidSinkConnector
 tasksMax: "__REQUIRED__"
 topics: "__REQUIRED__"
 
 # Connection
-connectKuduMaster: "localhost"
-connectKuduSinkKcql: "__REQUIRED__"
-
-#Error policies
-connectKuduSinkErrorPolicy: "THROW"
-connectKuduSinkRetryInterval: "60000"
-connectKuduSinkMaxRetries: 20
-# Batching insert
-connectKuduSinkBatchSize: 1000
-connectKuduSinkBucketSize: 10
-
+connectDruidSinkKcql: "__REQUIRED__"
+connectDruidSinkConfigFile: "__REQUIRED__"
+connnectDruidSinkWriteTimeout: 6000
 connectProgressEnabled: true
 
 # Monitoring

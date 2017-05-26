@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A chart containing the Kafka Connect Bloomberg Source
+name: kafka-connect-bloomberg-source
+version: 0.2.6

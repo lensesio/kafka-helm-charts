@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-hbase
   tag: 0.2.6
@@ -28,14 +28,14 @@ logLevel: INFO
 # Connector values
 applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.hbase.HbaseSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
- connectHBaseSinkColumnFamily: 
+connectHBaseSinkColumnFamily: "__REQUIRED__"
 
 #KCQL
-connectHBaseSinkKcql:
+connectHBaseSinkKcql: "__REQUIRED__"
 
 #Error policies
 connectHBaseSinkErrorPolicy: "THROW"
@@ -44,9 +44,20 @@ connectHBaseSinkMaxRetries: 20
 
 connectProgressEnabled: true
 
+###The dockers contain a script to download from cloudera manager/ambari the hbase-site.xml
+# Cloudera values
+cloudera:
+  clusterName: "__REQUIRED__"
+  managerURL: http://cloudera-manager:7180
+
+#Hortonworks
+hortonworks:
+  clusterName: "__REQUIRED__"
+  ambariUrl:  "__REQUIRED__"
+
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"

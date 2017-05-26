@@ -1,6 +1,6 @@
 # Basic info
-replicaCount:
-secretsRef:
+replicaCount: "__REQUIRED__"
+secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-voltdb
   tag: 0.2.6
@@ -28,17 +28,16 @@ logLevel: INFO
 # Connector values
 applicationId: 
 connectorClass: com.datamountaineer.streamreactor.connect.votldb.sink.VoltDbSinkConnector
-tasksMax:
-topics: 
+tasksMax: "__REQUIRED__"
+topics: "__REQUIRED__"
 
 # Connection
-connectVoltConnectionServers: 
-
-connectVoltConnectionUser:
-connectVoltConnectionPasswordKey:
+connectVoltConnectionServers: "__REQUIRED__"
+connectVoltConnectionUser: "__REQUIRED__"
+connectVoltConnectionPasswordKey: "__REQUIRED__"
 
 #KCQL
-connectVoltSinkKcql:
+connectVoltSinkKcql: "__REQUIRED__"
 
 #Error policies
 connectVoltErrorPolicy: "THROW"
@@ -49,7 +48,7 @@ connectProgressEnabled: true
 
 # Monitoring
 monitoring:
-  pipeline:
+  pipeline: "__REQUIRED__"
   enabled: true
   port: 9102
   path: "/metrics"
