@@ -27,7 +27,7 @@ logLevel: INFO
 
 # Connector values
 applicationId: 
-connectorClass: com.datamountaineer.streamreactor.connect.yahoo.source.SourceDbSinkConnector
+connectorClass: com.datamountaineer.streamreactor.connect.yahoo.source.YahooSourceConnector
 tasksMax:
 topics: 
 

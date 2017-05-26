@@ -93,7 +93,7 @@ spec:
               key:  {{ .Values.connectVoltConnectionPasswordKey }}
 
         #KCQL
-        - name: CONNECTOR_VOLTD_SINK_KCQL
+        - name: CONNECTOR_VOLT_SINK_KCQL
           value: {{ .Values.connectVoltSinkKcql | quote }}    
 
         ##Error policies
