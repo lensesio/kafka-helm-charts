@@ -94,8 +94,6 @@ spec:
           value: {{ .Values.schemaRegistryURL| quote }}  
 
         ## SHOULD BE REPLACED BY KCQL
-        - name: CONNECTOR_CONNECT_KUDU_SINK_BATCH_SIZE
-          value: {{ .Values.connectKuduSinkBatchSize | quote }}    
         - name: CONNECTOR_CONNECT_KUDU_SINK_BUCKET_SIZE
           value: {{ .Values.connectKuduSinkBucketSize | quote }}  
 

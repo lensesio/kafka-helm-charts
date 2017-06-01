@@ -36,10 +36,25 @@ connectRethinkSinkHost: "localhost"
 connectRethinkSinkPort: 28015
 connectRethinkSinkDB: "__REQUIRED__"
 
+connectRetinkUsername:
+connectRetinkPasswordKey:
+
+#can not be used with username/password
+connectRethinkAuthKey:
+connectRethinkCertFile:
+
+#SSL, overridded by cert file
+connectRethinkSslEnabled: false
+connectRethinkTrustStorePath: 
+connectRethinkTrustStorePasswordKey: "TrustStorePasswordKey"
+connectRethinkTrustStoreType: "JKS"
+connectRethinkSslClientCertAuth: false
+connectRethinkKeyStorePath: 
+connectRethinkKeyStorePasswordKey: "KeyStorePasswordKey" 
+connectRethinkKeyStoreType: "JKS"
+
 #KCQL
 connectRethinkSinkKcql: "__REQUIRED__"
-connectRethinkSinkBatchSize: 1000
-
 
 #Error policies
 connectRethinkSinkErrorPolicy: "THROW"
