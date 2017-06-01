@@ -30,7 +30,7 @@ logLevel: INFO
 tasksMax: "__REQUIRED__"
 applicationId: "__REQUIRED__"
 connectorClass: io.confluent.connect.jdbc.JdbcSinkConnector
-
+topics: "__REQUIRED__"
 #connection
 
 

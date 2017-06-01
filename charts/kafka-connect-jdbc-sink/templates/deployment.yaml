@@ -78,7 +78,9 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-        
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}
+
         - name: CONNECTOR_CONNECTION_URL
           value: {{ .Values.connectionUrl | quote }}
         - name: CONNECTOR_CONNECTION_USER
