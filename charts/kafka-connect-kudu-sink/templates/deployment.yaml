@@ -93,10 +93,6 @@ spec:
         - name: CONNECTOR_CONNECT_KUDU_SINK_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL| quote }}  
 
-        ## SHOULD BE REPLACED BY KCQL
-        - name: CONNECTOR_CONNECT_KUDU_SINK_BUCKET_SIZE
-          value: {{ .Values.connectKuduSinkBucketSize | quote }}  
-
         ##Error policies
         - name: CONNECTOR_CONNECT_KUDU_SINK_ERROR_POLICY
           value: {{ .Values.connectKuduSinkErrorPolicy | quote}}
