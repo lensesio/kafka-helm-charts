@@ -26,45 +26,42 @@ logLevel: INFO
 
 # Connector values
 
-#consumer group client id
+# consumer group client id
 tasksMax: "__REQUIRED__"
 applicationId: "__REQUIRED__"
 connectorClass: io.confluent.connect.jdbc.JdbcSinkConnector
 
-#connection
-
-
-#JDBC connection URL.
+# JDBC connection URL.
 connectionUrl: "__REQUIRED__"
-#JDBC connection user
+# JDBC connection user
 user: "__REQUIRED__"
-#password key to lookup
+# JDBC password key to lookup
 passwordKey: "__REQUIRED__"
 
 
-#the insertion mode to use. Supported modes are:
+# The insertion mode to use. Supported modes are:
 insertMode: insert
-#specifies how many records to attempt to batch together for insertion into the destination table, when possible.
+# Specifies how many records to attempt to batch together for insertion into the destination table, when possible.
 batchSize: 3000
 
-#a format string for the destination table name, which may contain ‘${topic}’ as a placeholder for the originating topic name.
+# A format string for the destination table name, which may contain ‘${topic}’ as a placeholder for the originating topic name.
 tableNameFormat:
-#the primary key mode
+# The primary key mode
 pkMode:
-#list of comma-separated primary key field names. The runtime interpretation of this config depends on the pkMode
+# List of comma-separated primary key field names. The runtime interpretation of this config depends on the pkMode
 pkFields:
-#list of comma-separated record value field names. 
-#If empty, all fields from the record value are utilized, otherwise used to filter to the desired fields.
+# List of comma-separated record value field names. 
+# If empty, all fields from the record value are utilized, otherwise used to filter to the desired fields.
 fieldsWhitelist:
 
-#whether to automatically create the destination table based on record schema if it is found to be missing by issuing 
+# Whether to automatically create the destination table based on record schema if it is found to be missing by issuing 
 autoCreate: false
-#Whether to automatically dd columns in the table schema when found to be missing relative to the record schema 
+# Whether to automatically dd columns in the table schema when found to be missing relative to the record schema 
 autoEvolve: false
 
-#the maximum number of times to retry on errors before failing the task.
+# The maximum number of times to retry on errors before failing the task.
 maxRetries: 10
-#the time in milliseconds to wait following an error before a retry attempt is made.
+# The time in milliseconds to wait following an error before a retry attempt is made.
 retryBackoffMs: 3000
 
 secretsRef: "__REQUIRED__"
