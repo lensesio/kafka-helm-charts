@@ -1,0 +1,77 @@
+# Basic info
+replicaCount: 3
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-confluent-base
+  tag: 0.2.5
+  pullPolicy: Always
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+javaHeap: 256M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Connector values
+
+#consumer group client id
+tasksMax: "__REQUIRED__"
+applicationId: "__REQUIRED__"
+connectorClass: io.confluent.connect.jdbc.JdbcSinkConnector
+
+#connection
+
+
+#JDBC connection URL.
+connectionUrl: "__REQUIRED__"
+#JDBC connection user
+user: "__REQUIRED__"
+#password key to lookup
+passwordKey: "__REQUIRED__"
+
+
+#the insertion mode to use. Supported modes are:
+insertMode: insert
+#specifies how many records to attempt to batch together for insertion into the destination table, when possible.
+batchSize: 3000
+
+#a format string for the destination table name, which may contain ‘${topic}’ as a placeholder for the originating topic name.
+tableNameFormat:
+#the primary key mode
+pkMode:
+#list of comma-separated primary key field names. The runtime interpretation of this config depends on the pkMode
+pkFields:
+#list of comma-separated record value field names. 
+#If empty, all fields from the record value are utilized, otherwise used to filter to the desired fields.
+fieldsWhitelist:
+
+#whether to automatically create the destination table based on record schema if it is found to be missing by issuing 
+autoCreate: false
+#Whether to automatically dd columns in the table schema when found to be missing relative to the record schema 
+autoEvolve: false
+
+#the maximum number of times to retry on errors before failing the task.
+maxRetries: 10
+#the time in milliseconds to wait following an error before a retry attempt is made.
+retryBackoffMs: 3000
+
+secretsRef: "__REQUIRED__"
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"
