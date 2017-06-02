@@ -1,6 +1,9 @@
 # Helm Charts for Kafka Connect and related components
 
 WIP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+STILL UNDER DEVELOPMENT!
+
 This repo contains Helm Charts for DataMountaineer Connectors.
 
 Add the repo:
