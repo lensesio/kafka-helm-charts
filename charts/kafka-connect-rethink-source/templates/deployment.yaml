@@ -93,6 +93,41 @@ spec:
         - name: CONNECTOR_CONNECT_RETHINK_SOURCE_DB
           value: {{ .Values.connectRethinkSourceDB | quote }}  
 
+        #credentials  
+        - name: CONNECTOR_CONNECT_RETHINK_USERNAME
+          value: {{ .Values.connectRethinkUsername | quote }}  
+        - name: CONNECTOR_CONNECT_RETHINK_PASWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectRethinkPasswordKey }}
+
+        ##SSL
+        - name: CONNECTOR_CONNECT_RETHINK_SSL_ENABLED
+          value: {{ .Values.connectRethinkSslEnabled }}
+        {{ if .Values.connectRethinkSslEnabled }} 
+        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_PATH
+          value: {{ .Values.connectRethinkTrustStorePath }}
+        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_PASWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectRethinkTrustStorePasswordKey }}
+        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_TYPE
+          value: {{ .Values.connectRethinkTrustStoreType }}
+        - name: CONNECTOR_CONNECT_RETHINK_SSL_CLIENT_CERT_AUTH
+          value: {{ .Values.connectRethinkSslClientCertAuth }}
+        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_PATH
+          value: {{ .Values.connectRethinkKeyStorePath }}
+        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_PASWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretsRef | quote }}
+              key:  {{ .Values.connectRethinkKeyStorePasswordKey }}
+        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_TYPE
+          value: {{ .Values.connectRethinkKeyStoreType }}  
+        {{end}}
+
         ##Progress counter
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.connectProgressEnabled | quote}} 

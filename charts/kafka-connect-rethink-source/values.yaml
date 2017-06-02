@@ -32,9 +32,27 @@ tasksMax: "__REQUIRED__"
 topics: "__REQUIRED__"
 
 # Connection
-connectRethinkSourceHost: "localhost"
-connectRethinkSourcePort: 28015
-connectRethinkSourceDB: "__REQUIRED__"
+connectRethinkHost: "localhost"
+connectRethinkPort: 28015
+connectRethinkDB: "__REQUIRED__"
+
+connectRetinkUsername:
+connectRetinkPasswordKey:
+
+#can not be used with username/password
+connectRethinkAuthKey:
+connectRethinkCertFile:
+
+#SSL, overridded by cert file
+connectRethinkSslEnabled: false
+connectRethinkTrustStorePath: 
+connectRethinkTrustStorePasswordKey: "TrustStorePasswordKey"
+connectRethinkTrustStoreType: "JKS"
+connectRethinkSslClientCertAuth: false
+connectRethinkKeyStorePath: 
+connectRethinkKeyStorePasswordKey: "KeyStorePasswordKey" 
+connectRethinkKeyStoreType: "JKS"
+
 
 #KCQL
 connectRethinkSourceKcql: "__REQUIRED__"

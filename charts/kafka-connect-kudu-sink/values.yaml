@@ -39,9 +39,6 @@ connectKuduSinkKcql: "__REQUIRED__"
 connectKuduSinkErrorPolicy: "THROW"
 connectKuduSinkRetryInterval: "60000"
 connectKuduSinkMaxRetries: 20
-# Batching insert
-connectKuduSinkBatchSize: 1000
-connectKuduSinkBucketSize: 10
 
 connectProgressEnabled: true
 

@@ -42,12 +42,10 @@ connectCassandraUsername: "__REQUIRED__"
 connectCassandraSslEnabled: false
 connectCassandraTrustStorePath: 
 connectCassandraTrustStorePasswordKey: "TrustStorePasswordKey"
-connectCassandraTrustStorePassword: 
 connectCassandraTrustStoreType: "JKS"
 connectCassandraSslClientCertAuth: false
 connectCassandraKeyStorePath: 
 connectCassandraKeyStorePasswordKey: "KeyStorePasswordKey"
-connectCassandraKeyStorePassword: 
 connectCassandraKeyStoreType: "JKS"
 
 #Error policies
