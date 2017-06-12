@@ -27,6 +27,9 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.restPort }}
+          name: connect-rest
+        - containerPort: {{ .Values.monitoring.port | quote }}
+          name: connect-jmx
         livenessProbe:
           exec:
             command:
@@ -80,6 +83,8 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}
 
         ##Connection 
         - name: CONNECTOR_COAP_URI

@@ -27,6 +27,9 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.restPort }}
+          name: connect-rest
+        - containerPort: {{ .Values.monitoring.port | quote }}
+          name: connect-jmx
         livenessProbe:
           exec:
             command:
