@@ -28,7 +28,7 @@ spec:
         ports:
         - containerPort: {{ .Values.restPort }}
           name: connect-rest
-        - containerPort: {{ .Values.monitoring.port | quote }}
+        - containerPort: {{ .Values.monitoring.port }}
           name: connect-jmx
         livenessProbe:
           exec:
