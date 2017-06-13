@@ -1,0 +1,8 @@
+#path based rules, e.g grafana and prometheus
+rules:
+  - path: /grafana
+    serviceName: grafana 
+    servicePort: 3000
+  - path: /prometheus
+    serviceName: prometheus
+    servicePort: 9090   
