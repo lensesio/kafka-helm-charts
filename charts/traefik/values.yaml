@@ -27,14 +27,14 @@ acme:
     accessMode: ReadWriteOnce
     size: 1Gi
 dashboard:
-  enabled: false
-  domain: traefik.example.com
+  enabled: true
+  domain:
   ingress:
-    # annotations:
-    #   key: value
-  auth:
-    # basic:
-    #   username: password
+    annotations: 
+      traefik.frontend.rule.type: pathprefixstrip
+  #auth:
+   # basic:
+    #  admin: passwordKey
 service:
   # annotations:
   #   key: value

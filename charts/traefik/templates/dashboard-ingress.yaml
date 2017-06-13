@@ -16,8 +16,12 @@ metadata:
   {{- end }}
 spec:
   rules:
+  {{- if .Values.dashboard.domain }}
   - host: {{ .Values.dashboard.domain }}
     http:
+  {{- else }}
+  - http:   
+  {{- end }}
       paths:
       - backend:
           serviceName: {{ template "fullname" . }}-dashboard
