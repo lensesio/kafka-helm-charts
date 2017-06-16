@@ -4,5 +4,5 @@ rules:
     serviceName: "__REQUIRED__" 
     servicePort: 0
 
-stripPrefix:
+stripPrefixEnabled: true
   
