@@ -2,6 +2,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
    name:  {{ template "fullname" . }}
+   {{ if .Values.stripPrefix }}
+   annotations:
+    traefik.frontend.rule.type: pathprefixstrip
+   {{ end }} 
 spec:
   rules:
   - http:
