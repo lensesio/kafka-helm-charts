@@ -9,7 +9,7 @@ cpuLimit: 100m
 memoryLimit: 30Mi
 secretsRef: "__REQUIRED__"
 ssl:
-  enabled: false
+  enabled: true
   enforced: false
   #base64 enecoded keys/certs to get from environment vars
   certDataKey: "__REQUIRED__"

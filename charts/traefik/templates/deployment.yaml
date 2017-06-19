@@ -73,7 +73,7 @@ spec:
       {{- if .Values.ssl.enabled }}
       - name: ssl
         secret:
-          secretName: {{ template "fullname" . }}-default-cert
+          secretName: {{ .Values.secretsRef | quote }}
       {{- end }}
       {{- if .Values.acme.enabled }}
       - name: acme
