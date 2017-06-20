@@ -31,3 +31,4 @@ registry:
   kafkastoreTopic: _schemas
   debug: false
   logLevel: INFO
+  port: 8081

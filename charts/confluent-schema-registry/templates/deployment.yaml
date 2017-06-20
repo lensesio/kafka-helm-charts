@@ -50,7 +50,9 @@ spec:
         - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
           value: {{ .Values.registry.kafkastoreTopic | quote }}  
         - name: SCHEMA_REGISTRY_DEBUG
-          value: {{ .Values.registry.debug | quote }}        
+          value: {{ .Values.registry.debug | quote }} 
+        - name: SCHEMA_REGISTRY_PORT
+          value: {{ .Values.registry.port | quote }}        
         - name: SCHEMA_REGISTRY_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
