@@ -15,7 +15,7 @@ ssl:
   certDataKey: "__REQUIRED__"
   certKeyKey: "__REQUIRED__"
 acme:
-  enabled: true
+  enabled: false
   email: "__REQUIRED__"
   staging: true
   # Save ACME certs to a persistent volume. WARNING: If you do not do this, you will re-request
