@@ -30,8 +30,8 @@ data:
       compress = {{ .Values.gzip.enabled }}
         [entryPoints.https.tls]
           [[entryPoints.https.tls.certificates]]
-          CertFile = /ssl/{{ .Values.ssl.certDataKey }} | qoute
-          KeyFile = /ssl/{{ .Values.ssl.certDataKey }}  | qoute
+          CertFile = "/ssl/{{ .Values.ssl.certDataKey }}"
+          KeyFile = "/ssl/{{ .Values.ssl.certDataKey }}" 
       {{- end }}
     [kubernetes]
     {{- if .Values.kubernetes}}

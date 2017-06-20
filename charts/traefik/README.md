@@ -1,5 +1,10 @@
 # Traefik
 
+##FORKED FROM THE OFFICAL TRAEFIK CHART
+
+The secrets for SSL have been removed from templates since the [Landscaper](https://github.com/Eneco/landscaper) with create them.
+Templates are updated accordingly to reference these secrets instead
+
 [Traefik](http://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy
 microservices with ease.
 
@@ -97,8 +102,8 @@ The following tables lists the configurable parameters of the Traefik chart and 
 | `memoryLimit`                   | Memory limit per Traefik pod                                         | `30Mi`                                    |
 | `ssl.enabled`                   | Whether to enable HTTPS                                              | `false`                                   |
 | `ssl.enforced`                  | Whether to redirect HTTP requests to HTTPS                           | `false`                                   |
-| `ssl.defaultCert`               | Base64 encoded default certficate                                    | A self-signed certificate                 |
-| `ssl.defaultKey`                | Base64 encoded private key for the certificate above                 | The private key for the certificate above |
+| `ssl.certDataKey`               | Base64 encoded default certficate, filled in by Landscaper           | A self-signed certificate                 |
+| `ssl.certKeyKey`                | Base64 encoded private key for the certificate above,filled in by Landscaper | The private key for the certificate above |
 | `acme.enabled`                  | Whether to use Let's Encrypt to obtain certificates                  | `false`                                   |
 | `acme.email`                    | Email address to be used in certificates obtained from Let's Encrypt | `admin@example.com`                       |
 | `acme.staging`                  | Whether to get certs from Let's Encrypt's staging environment        | `true`                                    |
