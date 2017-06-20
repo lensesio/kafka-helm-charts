@@ -31,7 +31,7 @@ data:
         [entryPoints.https.tls]
           [[entryPoints.https.tls.certificates]]
           CertFile = "/ssl/{{ .Values.ssl.certDataKey }}"
-          KeyFile = "/ssl/{{ .Values.ssl.certDataKey }}" 
+          KeyFile = "/ssl/{{ .Values.ssl.certKeyKey }}" 
       {{- end }}
     [kubernetes]
     {{- if .Values.kubernetes}}
