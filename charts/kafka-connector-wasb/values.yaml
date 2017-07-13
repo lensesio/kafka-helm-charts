@@ -1,0 +1,129 @@
+# Basic info
+replicaCount: 1
+image:
+  repository: registry.hub.docker.com/confluentinc/cp-kafka-connect
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 1024Mi
+  requests:
+    memory: 768Mi
+javaHeap: 768M
+
+# Service info
+service:
+  internalPort: 8083
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: http://schema-registry:8081
+restPort: 8083
+logLevel: INFO
+
+# Cloudera values
+cloudera:
+  clusterName: DATAMOUNTAINEER
+  managerURL: http://cloudera-manager:7180
+
+#Hortonworks
+hortonworks:
+  clusterName: DATAMOUNTAINEER
+  ambariUrl:  
+
+#MapR
+mapr:
+  clusterName: DATAMOUNTAINEER
+  maprUrl:
+
+# Connector values
+applicationId: "__REQUIRED__"
+topics: "__REQUIRED__"
+tasksMax: 3
+connectorClass: io.confluent.connect.hdfs.HdfsSinkConnector
+timezone: Europe/Amsterdam
+locale: nl_NL
+retryBackoffMs: 30000
+shutdownTimeoutMs: 3000
+sessionTimeoutMs: 30000
+requestTimeoutMs: 40000
+
+hdfs:
+  url: "__REQUIRED__"
+  topicsDir: /data/in
+  logsDir: /logs
+  confDir: /etc/yarn-conf
+  formatClass: io.confluent.connect.hdfs.parquet.ParquetFormat
+  filenameOffsetZeroPadWidth: 1
+
+hive:
+  integration: true
+  metastoreURIs: "__REQUIRED__"
+  confDir: /etc/hive-conf
+  schemaCompatibility: BACKWARD
+  database: default
+
+partitioner:
+  class: io.confluent.connect.hdfs.partitioner.DailyPartitioner
+  fieldName: "__REQUIRED__"
+
+  #
+  # File generation interval parameters
+  #
+  # These parameters dictate when files are written to HDFS.
+  # - flushSize: the maximum number of records per file.
+  # - rotateIntervalMs: sets the maximum time between file writes.
+  # - rotateScheduleIntervalMs: sets the scheduled file write time aligned with
+  #   00:00. Optional. Using this requires a timezone.
+  #
+  #   * The expiry of the above intervals only comes into effect when the HDFS
+  #     sink is polled by the framework. This only occurs when new records are
+  #     received or when the offsets are flushed.
+  #
+  # - offsetFlushIntervalMs: sets the interval at which the Kafka Connect
+  #   framework will flush offsets and call the HDFS sink when there are no
+  #   new messages in the topic. This can be used to tune the write lag of
+  #   data flows with periods of inactivity.
+  #
+  flushSize: "1000000"
+  rotateIntervalMs: 900000
+  rotateScheduleIntervalMs: ""
+  offsetFlushIntervalMs: 60000
+  retryBackoffMs: 5000
+  shutdownTimeoutMs: 3000
+  partitionDurationMs: -1
+
+  #This configuration is used to set the format of the data directories when partitioning with "
+  #``TimeBasedPartitioner``
+  pathFormat: 
+  filenameOffsetZeroPadWidth : 10
+
+
+wasb:
+  storageaccount:
+  storageaccountKey:
+##Schema group
+schema:
+  schemaCompatibility: "NONE"
+  schemaCacheSize : 1000
+
+## Internal Group
+#storageClass : "io.confluent.connect.hdfs.storage.HdfsStorage"
+
+## Security
+security:
+  kerberosTicketRenewPeriodMs:
+  hdfsNamenodePrincipal:
+  connectHdfsKeytab:
+  connectHdfsPrincipal:
+  hdfsAuthenticationKerberos: false
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"

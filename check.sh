@@ -3,14 +3,21 @@ NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 ARTIFACTORY_URL=https://datamountaineer.github.io/helm-charts/
 CHARTS=$(find charts -maxdepth 1 -mindepth 1 -type d)
+HELM_VERSION='v2.5.0'
 
 mkdir -p packages
-rm -r packages/*.tgz
+rm -rf packages/*.tgz
+
+echo "Verifying helm version"
+VERSION=$(helm version | grep -o '^Client.*SemVer:[^,]*' | grep -o 'v[0-9][.0-9]*')
+if [[ $VERSION != $HELM_VERSION ]]; then
+    echo "${RED}Expected helm version $HELM_VERSION, got $VERSION.${NC}"
+fi
 
 echo "Cleaning and preparing"
-find . -iname "*.tgz" -type f | grep -v 'packages/' | xargs rm
+find . -iname "*.tgz" -type f | grep -v 'docs/' | xargs rm
 
-echo "Liniting  and checking"
+echo "Linting and checking"
 scripts/lint.sh
 RET=$?
 
@@ -22,22 +29,23 @@ echo "Packaging charts..."
 cd packages && helm package ../charts/*
 
 cd ../
-echo "Liniting  and checking"
+echo "Checking version compatibility"
 scripts/test.sh
+RET=$? 
 
-echo "Merging index.yaml"
-curl "$ARTIFACTORY_URL/index.yaml" -o index.yaml --fail -sSL -m 5
-helm repo index packages --url=$ARTIFACTORY_URL --merge=index.yaml
+if [[ "${RET}" == 0 ]]; then 
+    echo "Merging index.yaml"
+    curl "$ARTIFACTORY_URL/index.yaml" -o index.yaml --fail -sSL -m 5
+    helm repo index packages --url=$ARTIFACTORY_URL --merge=index.yaml
 
-echo "Copying chart packages and index to docs"
-rm -f packages/*.compare
-cp packages/*.tgz docs/
-cp packages/index.yaml docs/
-rm -f docs/*.compare
-rm -f charts/*.compare
+    echo "Copying chart packages and index to docs"
+    rm -f packages/*.compare
+    cp packages/*.tgz docs/
+    cp packages/index.yaml docs/
 
-RET=*?
+    echo "${GREEN}Now commit and push charts and docs!${NC}"
+else
+    echo "${RED}Tests failed, charts not packaged!${NC}"
+fi
 
-echo "${GREEN}Now checkin and push charts and docs!${NC}"
-  
-
+rm -fr packages

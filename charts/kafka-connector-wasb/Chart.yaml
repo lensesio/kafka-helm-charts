@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Kafka-Connect for wasb
+name: kafka-connector-wasb
+version: 1.0.1

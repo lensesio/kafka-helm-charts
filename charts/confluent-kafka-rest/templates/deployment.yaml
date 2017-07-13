@@ -13,8 +13,8 @@ spec:
     metadata:
       labels:
         app: {{ template "fullname" . }}
-        hostPort: {{ .Values.registry.restPort | quote }}
-        containerPort: {{ .Values.registry.restPort | quote }}
+        hostPort: {{ .Values.rest.restPort | quote }}
+        containerPort: {{ .Values.rest.restPort | quote }}
         pipeline: {{ .Values.monitoring.pipeline | quote }}
       annotations:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
@@ -26,34 +26,28 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.registry.restPort }}
+        - containerPort: {{ .Values.rest.restPort }}
           name: connect-rest
         - containerPort: {{ .Values.monitoring.jmxPort }}
           name: connect-jmx
         livenessProbe:
           httpGet:
-            path: /subjects
-            port: {{ .Values.registry.restPort }}
+            path: /topics
+            port: {{ .Values.rest.restPort }}
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
-        - name: SCHEMA_REGISTRY_JMX_PORT
-          value: {{ .Values.monitoring.jmxPort | quote }}
-        - name: SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL
-          value: {{ .Values.logLevel | quote }}
-        - name: SCHEMA_REGISTRY_LISTENERS
-          value: {{ .Values.registry.listeners | quote }}
-        - name: SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL
-          value: {{ .Values.registry.kafkastoreConnectionUrl | quote }}
-        - name: SCHEMA_REGISTRY_KAFKASTORE_TOPIC
-          value: {{ .Values.registry.kafkastoreTopic | quote }}  
-        - name: SCHEMA_REGISTRY_DEBUG
-          value: {{ .Values.registry.debug | quote }} 
-        - name: SCHEMA_REGISTRY_PORT
-          value: {{ .Values.registry.restPort | quote }}        
-        - name: SCHEMA_REGISTRY_HOST_NAME
+        - name: KAFKA_REST_ZOOKEEPER_CONNECT 
+          value: {{ .Values.rest.zookeeperConnect | quote }}
+        - name: KAFKA_REST_SCHEMA_REGISTRY_URL
+          value: {{ .Values.rest.schemaRegistryUrl | quote }}
+        - name: KAFKA_REST_LISTENERS
+          value: {{ .Values.rest.listeners | quote }}
+        - name: KAFKA_REST_DEBUG
+          value: {{ .Values.rest.debug | quote }} 
+        - name: KAFKA_REST_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP

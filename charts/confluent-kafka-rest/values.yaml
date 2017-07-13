@@ -1,6 +1,6 @@
 # Basic info
 replicaCount: 3
-secretsRef: 
+secretsRef: "__REQUIRED__"
 image:
   repository: 
   tag: 
@@ -18,17 +18,13 @@ javaHeap: 256M
 monitoring:
   pipeline: "__REQUIRED__"
   enabled: true
-  jmxPort: 9102
+  port: 9102
   path: "/metrics"
 
 #Schema registry configuration
-registry:
-  #listener for rest api url
-  listeners: http://0.0.0.0:8081
-  #zookeeper connection string
-  kafkastoreConnectionUrl: zookeeper:2181
-  #the name of the backing topic
-  kafkastoreTopic: _schemas
+rest: 
+  zookeeperConnect: zookeeper:2181
+  schemaRegistryUrl: schema-registry:8081  
+  listeners: http://0.0.0.0:8082
   debug: false
-  logLevel: INFO
-  restPort: 8081
+  restPort: 8082

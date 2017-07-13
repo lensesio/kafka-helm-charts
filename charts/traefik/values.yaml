@@ -34,9 +34,12 @@ dashboard:
   ingress:
     annotations: 
       traefik.frontend.rule.type: pathprefixstrip
-  #auth:
-   # basic:
-    #  admin: passwordKey
+  auth:
+   basic:
+    admin: "__REQUIRED__"
+basic:
+  username: "__REQUIRED__"
+  password: "__REQUIRED__"
 service:
   # annotations:
   #   key: value
