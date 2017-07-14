@@ -1,0 +1,11 @@
+# Name of the storage class for reference by volumes and claims
+name: "__REQUIRED__"
+# Provisioner type, disk or fil
+provisioner: "__REQUIRED__"
+paramters:
+  # Azure SKU .e.g. 
+  skuName: "Standard_LRS"
+  location: "westeurope"
+  storageAccount: "__REQUIRED__"
+
+    
