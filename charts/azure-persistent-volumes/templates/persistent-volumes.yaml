@@ -1,0 +1,17 @@
+---
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: {{ .Values.name | quote }}
+spec:
+  storageClassName: {{ .Values.storageClassName | quote }}
+  capacity:
+    storage: {{ .Values.capacity | quote }}
+  accessModes: 
+    - {{ .Values.accessMode | quote }}
+  {{- if .Values.secretsRef }}
+  azureFile:
+    secretName: {{ .Values.secretsRef | quote }}
+    shareName: {{ .Values.azureFile.shareName | quote }}     
+    readOnly: {{ .Values.azureFile.readOnly  }}
+  {{- end}}  
