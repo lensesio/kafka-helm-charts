@@ -1,4 +1,7 @@
+# secretRef for the landscaper 
 secretsRef:
+# persistentVolumeClaim label for pvc to find and bind to
+persistentVolumeClaimLabel: "__REQUIRED__"
 name: "__REQUIRED__"
 # storageClass name of the storage class
 storageClassName: "__REQUIRED__"
