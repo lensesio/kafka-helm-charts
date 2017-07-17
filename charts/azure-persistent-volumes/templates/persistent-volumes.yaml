@@ -9,9 +9,11 @@ spec:
     storage: {{ .Values.capacity | quote }}
   accessModes: 
     - {{ .Values.accessMode | quote }}
-  {{- if .Values.secretsRef }}
   azureFile:
-    secretName: {{ .Values.secretsRef | quote }}
+    secretName:
+      valueFrom:
+        secretKeyRef:
+          name: {{ .Values.secretsRef | quote }}
+          key: {{ .Values.storageAccountKey }}
     shareName: {{ .Values.azureFile.shareName | quote }}     
     readOnly: {{ .Values.azureFile.readOnly  }}
-  {{- end}}  

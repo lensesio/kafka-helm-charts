@@ -1,5 +1,6 @@
 # secretsRef Landscaper secrets ref
 secretsRef:
+storageAccountKey: "__REQUIRED__"
 name: "__REQUIRED__"
 # storageClass name of the storage class
 storageClassName: "__REQUIRED__"
