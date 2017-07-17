@@ -10,6 +10,6 @@ spec:
   accessModes: 
     - {{ .Values.accessMode | quote }}
   azureFile:
-    secretName: {{ .Values.secretsRef | quote }}
+    secretName: {{ .Values.azureFileSecretName | quote }}
     shareName: {{ .Values.azureFile.shareName | quote }}     
     readOnly: {{ .Values.azureFile.readOnly  }}

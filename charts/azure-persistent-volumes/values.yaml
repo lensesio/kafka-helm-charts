@@ -1,6 +1,3 @@
-# secretsRef Landscaper secrets ref
-secretsRef:
-storageAccountKey: "__REQUIRED__"
 name: "__REQUIRED__"
 # storageClass name of the storage class
 storageClassName: "__REQUIRED__"
@@ -10,5 +7,6 @@ capacity: "__REQUIRED__"
 accessMode: "ReadWriteMany"
 # accesMode Conditional Azure file configuration if secretsRef is set. Secret name is the secrets reference provided by the landscaper
 azureFile:
+  secretName: "__REQUIRED__"
   shareName: "__REQUIRED__"
   readOnly: false
