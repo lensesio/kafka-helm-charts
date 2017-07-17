@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.name }}
 provisioner: {{ .Values.provisioner }}  
 parameters:
-  skuName: {{ .Values.skuName }}
-  location: {{ .Valueslocation }}
-  storageAccount: {{ .Values.storageAccount }}
+  skuName: {{ .Values.parameters.skuName }}
+  location: {{ .Values.parameters.location }}
+  storageAccount: {{ .Values.parameters.storageAccount }}
 
