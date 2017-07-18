@@ -250,7 +250,7 @@ serverConfigFile:
     ;http_port = 3000
     ;domain = 
     ;enforce_domain = false
-    ;root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana
+    ;root_url = %(protocol)s://%(domain)s:/grafana
     ;router_logging = false
     ;static_root_path = public
     ;enable_gzip = false
