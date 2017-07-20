@@ -4,7 +4,7 @@ metadata:
    name:  {{ template "fullname" . }}
    {{ if .Values.stripPrefixEnabled }}
    annotations:
-    traefik.frontend.rule.type: pathprefixstrip
+    traefik.frontend.rule.type: PathPrefixStrip
    {{ end }} 
 spec:
   rules:
