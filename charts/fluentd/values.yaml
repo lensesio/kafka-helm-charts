@@ -1,10 +1,12 @@
 # Basic info
-secretsRef: 
+secretsRef: "__REQUIRED__"
 image:
   repository: fluent/fluentd-kubernetes-daemonset:elasticsearch
   tag: stable
   pullPolicy: Always
 
+# elasticScheme http or http
+elasticScheme: http
 # elasticSearch host
 elasticSearchHost: elastic
 # elasticSearch port
