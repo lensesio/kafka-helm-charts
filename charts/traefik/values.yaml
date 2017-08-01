@@ -38,6 +38,7 @@ dashboard:
    basic:
     admin: "__REQUIRED__"
 basic:
+  enabled: false
   username: "__REQUIRED__"
   password: "__REQUIRED__"
 service:

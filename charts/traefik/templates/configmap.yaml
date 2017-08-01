@@ -27,8 +27,10 @@ data:
       {{- if .Values.ssl.enabled }}
       [entryPoints.https]
       address = ":443"
+      {{ if .Values.basic.enabled }}
       [entryPoints.https.auth.basic]
       users = ["{{ .Values.basic.username }}:{{ .Values.basic.password }}"]
+      {{ end }}
       compress = {{ .Values.gzip.enabled }}
         [entryPoints.https.tls]
           [[entryPoints.https.tls.certificates]]
