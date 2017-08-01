@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
-  name: fluentd
+  name: {{ template "fullname" . }}
   labels:
     k8s-app: fluentd-logging
     version: v1
@@ -19,8 +19,8 @@ spec:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
       containers:
-      - name: fluentd
-        image: fluent/fluentd-kubernetes-daemonset:elasticsearch
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: {{ .Values.elasticSearchHost | quote }}
@@ -52,7 +52,7 @@ spec:
       volumes:
       - name: varlog
         hostPath:
-          path: /var/log
+          path: /var/log/
       - name: varcontainers
         hostPath:
           path: /var/log/containers/
