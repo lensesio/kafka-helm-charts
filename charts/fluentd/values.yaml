@@ -5,6 +5,8 @@ image:
   tag: stable
   pullPolicy: Always
 
+namespace: de-datahub-d
+
 # elasticScheme http or http
 elasticScheme: http
 # elasticSearch host
