@@ -1,0 +1,26 @@
+# Basic info
+secretsRef: 
+image:
+  repository: fluent/fluentd-kubernetes-daemonset:elasticsearch
+  tag: stable
+  pullPolicy: Always
+
+# elasticSearch host
+elasticSearchHost: elastic
+# elasticSearch port
+elasticSearchPort: 9200  
+# elasticUsername
+fluentDUsername: fluentd
+# password keys
+fluentDPasswordKey: fluentDPasswordKey
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+
+
+
