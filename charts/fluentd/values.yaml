@@ -1,8 +1,8 @@
 # Basic info
 secretsRef: "__REQUIRED__"
 image:
-  repository: fluent/fluentd-kubernetes-daemonset:elasticsearch
-  tag: stable
+  repository: fluent/fluentd-kubernetes-daemonset
+  tag: elasticsearch
   pullPolicy: Always
 
 namespace: de-datahub-d
