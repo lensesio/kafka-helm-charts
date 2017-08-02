@@ -19,10 +19,10 @@ fluentDUsername: fluentd
 fluentDPasswordKey: 
 
 extraMounts:
-  enabled: true
-  mounts:
-  - name: varlogpods
-    path: /var/logs/pods
+  enabled: false
+  # mounts:
+  # - name: varlogpods
+  #   path: /var/logs/pods
 
 # Resource management
 resources:
