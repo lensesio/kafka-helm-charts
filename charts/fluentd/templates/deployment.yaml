@@ -4,8 +4,10 @@ kind: DaemonSet
 metadata:
   name: {{ template "fullname" . }}
   labels:
-    k8s-app: fluentd-logging
-    version: v1
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
     kubernetes.io/cluster-service: "true"
 spec:
   template:
