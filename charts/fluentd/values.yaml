@@ -16,7 +16,13 @@ elasticSearchPort: 9200
 # elasticUsername
 fluentDUsername: fluentd
 # password keys
-fluentDPasswordKey: fluentDPasswordKey
+fluentDPasswordKey: 
+
+extraMounts:
+  enabled: true
+  mounts:
+  - name: varlogpods
+    path: /var/logs/pods
 
 # Resource management
 resources:

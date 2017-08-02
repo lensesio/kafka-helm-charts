@@ -48,6 +48,14 @@ spec:
         - name: varcontainers
           mountPath: /var/log/containers/
           readOnly: true
+        {{- if .Values.extraMounts.enabled }}
+        {{- range .Values.extraMounts.mounts }}
+        - name: {{ .name }}
+          mountPath: {{ .path }}
+          readOnly: true
+        {{- end }}  
+        {{- end}}
+
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
@@ -56,3 +64,10 @@ spec:
       - name: varcontainers
         hostPath:
           path: /var/log/containers/
+      {{- if .Values.extraMounts.enabled }}
+      {{- range .Values.extraMounts.mounts }}
+      - name: {{ .name }}
+        hostPath: 
+          path: {{ .path }}
+      {{- end }}  
+      {{- end}} 
