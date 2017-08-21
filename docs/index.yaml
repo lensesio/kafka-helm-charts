@@ -19,9 +19,9 @@ entries:
     version: 0.0.1
   azure-persistent-volume-claims-disk:
   - apiVersion: v1
-    created: 2017-08-21T14:21:28.00548632+02:00
+    created: 2017-08-21T14:35:09.771797327+02:00
     description: A chart containing the persistent volumes for azure
-    digest: d67b9e9a74e57f70caea795161478d73dc9ff78bb17a979c4cfd06f4e650ceda
+    digest: ab10386d043f986add6a1a77daee8a1a4a2aa19e30a3125bbf938c562b8f1e79
     name: azure-persistent-volume-claims-disk
     urls:
     - https://datamountaineer.github.io/helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
@@ -550,4 +550,4 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/traefik-1.3.0.tgz
     version: 1.3.0
-generated: 2017-08-21T14:21:28.00516091+02:00
+generated: 2017-08-21T14:35:09.77141241+02:00
