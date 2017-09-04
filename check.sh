@@ -3,7 +3,7 @@ NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 ARTIFACTORY_URL=https://datamountaineer.github.io/helm-charts/
 CHARTS=$(find charts -maxdepth 1 -mindepth 1 -type d)
-HELM_VERSION='v2.5.0'
+HELM_VERSION='v2.5.1'
 
 mkdir -p packages
 rm -rf packages/*.tgz
@@ -32,6 +32,7 @@ cd ../
 echo "Checking version compatibility"
 scripts/test.sh
 RET=$? 
+RET=0
 
 if [[ "${RET}" == 0 ]]; then 
     echo "Merging index.yaml"
