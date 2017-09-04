@@ -1,4 +1,0 @@
-apiVersion: v1
-description: A chart containing the Kafka Connect InfluxDB Sink
-name: kafka-connect-influxdb-sink
-version: 0.2.6

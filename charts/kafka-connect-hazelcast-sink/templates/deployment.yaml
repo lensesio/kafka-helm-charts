@@ -21,15 +21,36 @@ spec:
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
     spec:
+      volumes:
+        # Use for SSL keystores and trust stores from host path or persistent volumes
+        {{- if .Values.ssl.enabled}}
+        - name: connect-ssl
+        {{- if .Values.ssl.persistentVolume.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.ssl.persistentVolume.existingClaim }}{{ .Values.ssl.persistentVolume.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
+        {{- else}}
+          hostPath:
+            path: {{ .Values.ssl.path }}
+        {{- end -}}
+        {{- end -}}
+        # Get TKS from secrets
+        {{- if .Values.tls.enabled }}
+        - name: connect-tls
+          secret:
+            secretName: {{ .Values.secretsRef | quote }}
+        {{- end }}
+        # Get avro schemas from config-map
+        {{- if .Values.avroSchemas }}
+        - name: connect-avro-schemas
+          configMap:
+            name: {{ template "fullname" . }}
+        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.restPort }}
-          name: connect-rest
-        - containerPort: {{ .Values.monitoring.port }}
-          name: connect-jmx
         livenessProbe:
           exec:
             command:
@@ -38,13 +59,25 @@ spec:
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+        volumeMounts:
+          {{- if .Values.ssl.enabled }}
+          - mountPath: /connector-ssl
+            name: connect-ssl
+          {{- end -}}
+          {{- if .Values.tls.enabled }}
+          - mountPath: /connector-tls
+            name: connect-tls
+          {{- end }}
+          {{- if .Values.avroSchemas }}
+          - mountPath: /connector-avro-schemas
+            name: connect-avro-schemas
+          {{- end }}
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
@@ -73,60 +106,43 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name:  CONNECT_PLUGINS_PATH
+          value: "/etc/datamountaineer/jars"
 
-        # Connector properties
-        - name: CONNECTOR_NAME
-          value: {{ .Values.applicationId | quote }}
-        - name: CONNECTOR_GROUP_ID
-          value: {{ .Values.applicationId | quote }}
-        - name: CONNECTOR_CONNECTOR_CLASS
-          value: {{ .Values.connectorClass | quote }}
-        - name: CONNECTOR_TASKS_MAX
-          value: {{ .Values.tasksMax | quote }}
-        - name: CONNECTOR_TOPICS
-          value: {{ .Values.topics | quote }}
-
-        ##Connection 
-        - name: CONNECTOR_HAZELCAST_SINK_CLUSTER_MEMBERS
-          value: {{ .Values.connectHazelcastSinkClusterMembers | quote }}
-        - name: CONNECTOR_HAZELCAST_SINK_GROUP_NAME
-          value: {{ .Values.connectHazelcastSinkGroupName | quote }}
-        - name: CONNECTOR_HAZELCAST_PARALLEL_WRITE
-          value: {{ .Values.connectHazelcastParallelWrite | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_TIMEOUT
-          value: {{ .Values.connectHazelcastConnectionTimeout | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_KEEP_ALIVE
-          value: {{ .Values.connectHazelcastConnectionKeepAlive | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_RETRIES
-          value: {{ .Values.connectHazelcastConnectionRetries | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_TCP_NO_DELAY
-          value: {{ .Values.connectHazelcastConnectionTcpNoDelay | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_REUSE_ADDRESS
-          value: {{ .Values.connectHazelcastConnectionReuseAddress | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_LINGER_SECONDS
-          value: {{ .Values.connectHazelcastConnectionLingerSeconds | quote }}
-        - name: CONNECTOR_HAZELCAST_CONNECTION_BUFFER_SIZE
-          value: {{ .Values.connectHazelcastConnectionBufferSize | quote }}
-        - name: CONNECTOR_HAZELCAST_SINK_THREADPOOL_SIZE
-          value: {{ .Values.connectHazelcastSinkThreadpoolSize | quote }}
-        - name: CONNECTOR_CONNECT_HAZELCAST_SINK_GROUP_PASSWORD
+        - name: CONNECT_HAZELCAST_LINGER_SECONDS
+          value: {{ .Values.lingerSeconds | quote }}
+        - name: CONNECT_HAZELCAST_CLUSTER_MEMBERS
+          value: {{ .Values.clusterMembers | quote }}
+        - name: CONNECT_HAZELCAST_KCQL
+          value: {{ .Values.kcql | quote }}
+        - name: CONNECT_HAZELCAST_MAX_RETRIES
+          value: {{ .Values.maxRetries | quote }}
+        - name: CONNECT_HAZELCAST_RETRY_INTERVAL
+          value: {{ .Values.retryInterval | quote }}
+        - name: CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.enabled | quote }}
+        - name: CONNECT_HAZELCAST_KEEP_ALIVE
+          value: {{ .Values.keepAlive | quote }}
+        - name: CONNECT_HAZELCAST_BUFFER_SIZE
+          value: {{ .Values.bufferSize | quote }}
+        - name: CONNECT_HAZELCAST_TIMEOUT
+          value: {{ .Values.timeout | quote }}
+        - name: CONNECT_HAZELCAST_TCP_NO_DELAY
+          value: {{ .Values.tcpNoDelay | quote }}
+        - name: CONNECT_HAZELCAST_RETRIES
+          value: {{ .Values.retries | quote }}
+        - name: CONNECT_HAZELCAST_THREADPOOL_SIZE
+          value: {{ .Values.threadpoolSize | quote }}
+        - name: CONNECT_HAZELCAST_PARALLEL_WRITE
+          value: {{ .Values.parallelWrite | quote }}
+        - name: CONNECT_HAZELCAST_GROUP_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectHazelcastSinkGroupPasswordKey }}
-
-        #KCQL
-        - name: CONNECTOR_HAZELCAST_SINK_KCQL
-          value: {{ .Values.connectHazelcastSinkKcql | quote }}    
-
-        ##Error policies
-        - name: CONNECTOR_CONNECT_HAZELCAST_SINK_ERROR_POLICY
-          value: {{ .Values.connectHazelcastSinkErrorPolicy | quote}}
-        - name: CONNECTOR_CONNECT_HAZELCAST_SINK_RETRY_INTERVAL
-          value: {{ .Values.connectHazelcastSinkRetryInterval | quote}}
-        - name: CONNECTOR_CONNECT_HAZELCAST_SINK_MAX_RETRIES
-          value: {{ .Values.connectHazelcastSinkMaxRetries | quote}}
-
-        ##Progress counter
-        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.connectProgressEnabled | quote}} 
+              key:  {{ .Values.groupPasswordKey }}
+        - name: CONNECT_HAZELCAST_ERROR_POLICY
+          value: {{ .Values.errorPolicy | quote }}
+        - name: CONNECT_HAZELCAST_GROUP_NAME
+          value: {{ .Values.groupName | quote }}
+        - name: CONNECT_HAZELCAST_REUSE_ADDRESS
+          value: {{ .Values.reuseAddress | quote }}

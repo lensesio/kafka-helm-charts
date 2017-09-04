@@ -1,4 +1,0 @@
-apiVersion: v1
-description: "Kafka-Connect for HDFS"
-name: kafka-connector-hdfs
-version: 0.3.2
