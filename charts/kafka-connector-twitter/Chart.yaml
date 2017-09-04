@@ -1,4 +1,0 @@
-apiVersion: v1
-description: "Kafka-Connect for Twitter"
-name: kafka-connector-twitter
-version: 0.3.2

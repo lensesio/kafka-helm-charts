@@ -13,3 +13,4 @@ We truncate at 24 chars because some Kubernetes name fields are limited to this 
 {{- define "fullname" -}}
 {{- printf "%s" .Release.Name -}}
 {{- end -}}
+

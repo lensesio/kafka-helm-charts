@@ -21,15 +21,36 @@ spec:
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
     spec:
+      volumes:
+        # Use for SSL keystores and trust stores from host path or persistent volumes
+        {{- if .Values.ssl.enabled}}
+        - name: connect-ssl
+        {{- if .Values.ssl.persistentVolume.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.ssl.persistentVolume.existingClaim }}{{ .Values.ssl.persistentVolume.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
+        {{- else}}
+          hostPath:
+            path: {{ .Values.ssl.path }}
+        {{- end -}}
+        {{- end -}}
+        # Get TKS from secrets
+        {{- if .Values.tls.enabled }}
+        - name: connect-tls
+          secret:
+            secretName: {{ .Values.secretsRef | quote }}
+        {{- end }}
+        # Get avro schemas from config-map
+        {{- if .Values.avroSchemas }}
+        - name: connect-avro-schemas
+          configMap:
+            name: {{ template "fullname" . }}
+        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.restPort }}
-          name: connect-rest
-        - containerPort: {{ .Values.monitoring.port }}
-          name: connect-jmx
         livenessProbe:
           exec:
             command:
@@ -38,13 +59,25 @@ spec:
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+        volumeMounts:
+          {{- if .Values.ssl.enabled }}
+          - mountPath: /connector-ssl
+            name: connect-ssl
+          {{- end -}}
+          {{- if .Values.tls.enabled }}
+          - mountPath: /connector-tls
+            name: connect-tls
+          {{- end }}
+          {{- if .Values.avroSchemas }}
+          - mountPath: /connector-avro-schemas
+            name: connect-avro-schemas
+          {{- end }}
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-
         - name:  CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
         - name:  CONNECT_BOOTSTRAP_SERVERS
@@ -73,64 +106,34 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name:  CONNECT_PLUGINS_PATH
+          value: "/etc/datamountaineer/jars"
 
-        # Connector properties
-        - name: CONNECTOR_NAME
-          value: {{ .Values.applicationId | quote }}
-        - name: CONNECTOR_GROUP_ID
-          value: {{ .Values.applicationId | quote }}
-        - name: CONNECTOR_CONNECTOR_CLASS
-          value: {{ .Values.connectorClass | quote }}
-        - name: CONNECTOR_TASKS_MAX
-          value: {{ .Values.tasksMax | quote }}
-
-        ##KCQL routing  
-        - name: CONNECTOR_CONNECT_RETHINK_SOURCE_KCQL
-          value: {{ .Values.connectRethinkSourceKcql | quote }}
-
-        ##Connection  
-        - name: CONNECTOR_CONNECT_RETHINK_SOURCE_HOST
-          value: {{ .Values.connectRethinkSourceHost | quote }}  
-        - name: CONNECTOR_CONNECT_RETHINK_SOURCE_PORT
-          value: {{ .Values.connectRethinkSourcePort | quote }}  
-        - name: CONNECTOR_CONNECT_RETHINK_SOURCE_DB
-          value: {{ .Values.connectRethinkSourceDB | quote }}  
-
-        #credentials  
-        - name: CONNECTOR_CONNECT_RETHINK_USERNAME
-          value: {{ .Values.connectRethinkUsername | quote }}  
-        - name: CONNECTOR_CONNECT_RETHINK_PASWORD
+        - name: CONNECT_RETHINK_PORT
+          value: {{ .Values.port | quote }}
+        - name: CONNECT_RETHINK_LINGER_MS
+          value: {{ .Values.lingerMs | quote }}
+        - name: CONNECT_RETHINK_RETHINK_USERNAME
+          value: {{ .Values.rethinkUsername | quote }}
+        - name: CONNECT_RETHINK_RETHINK_CERT_FILE
+          value: {{ .Values.rethinkCertFile | quote }}
+        - name: CONNECT_RETHINK_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectRethinkPasswordKey }}
-
-        ##SSL
-        - name: CONNECTOR_CONNECT_RETHINK_SSL_ENABLED
-          value: {{ .Values.connectRethinkSslEnabled }}
-        {{ if .Values.connectRethinkSslEnabled }} 
-        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_PATH
-          value: {{ .Values.connectRethinkTrustStorePath }}
-        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_PASWORD
+              key:  {{ .Values.passwordKey }}
+        - name: CONNECT_RETHINK_DB
+          value: {{ .Values.db | quote }}
+        - name: CONNECT_RETHINK_BATCH_SIZE
+          value: {{ .Values.batchSize | quote }}
+        - name: CONNECT_RETHINK_HOST
+          value: {{ .Values.host | quote }}
+        - name: CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.enabled | quote }}
+        - name: CONNECT_RETHINK_RETHINK_AUTH_KEY
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectRethinkTrustStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_RETHINK_TRUST_STORE_TYPE
-          value: {{ .Values.connectRethinkTrustStoreType }}
-        - name: CONNECTOR_CONNECT_RETHINK_SSL_CLIENT_CERT_AUTH
-          value: {{ .Values.connectRethinkSslClientCertAuth }}
-        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_PATH
-          value: {{ .Values.connectRethinkKeyStorePath }}
-        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_PASWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.connectRethinkKeyStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_RETHINK_KEY_STORE_TYPE
-          value: {{ .Values.connectRethinkKeyStoreType }}  
-        {{end}}
-
-        ##Progress counter
-        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.connectProgressEnabled | quote}} 
+              key:  {{ .Values.rethinkAuthKeyKey }}
+        - name: CONNECT_RETHINK_KCQL
+          value: {{ .Values.kcql | quote }}

@@ -1,4 +1,0 @@
-apiVersion: v1
-description: A chart containing the Kafka Connect Voltdb Sink
-name: kafka-connect-voltdb-sink
-version: 0.2.6
