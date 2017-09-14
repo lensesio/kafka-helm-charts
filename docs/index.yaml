@@ -19,7 +19,7 @@ entries:
     version: 0.0.1
   azure-persistent-volume-claims-disk:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.195297816+02:00
+    created: 2017-09-14T15:02:10.705129849+02:00
     description: A chart containing the persistent volumes for azure
     digest: ab10386d043f986add6a1a77daee8a1a4a2aa19e30a3125bbf938c562b8f1e79
     name: azure-persistent-volume-claims-disk
@@ -28,7 +28,7 @@ entries:
     version: 0.0.2
   azure-persistent-volume-claims-file:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.195448097+02:00
+    created: 2017-09-14T15:02:10.705273448+02:00
     description: A chart containing the persistent volumes for azure
     digest: a25036f9402c1e00356362e37fe9f2ad3155f93aa8cca27ce7a6996943d5f5fc
     name: azure-persistent-volume-claims-file
@@ -54,7 +54,7 @@ entries:
     version: 0.0.1
   azure-persistent-volumes-file:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.195649703+02:00
+    created: 2017-09-14T15:02:10.705402055+02:00
     description: A chart containing the persistent volume claims for azure
     digest: 36246e93bdb2009e1c83986a9612c5091f59acd125f78c439b0b21887829757b
     name: azure-persistent-volumes-file
@@ -63,7 +63,7 @@ entries:
     version: 0.0.2
   azure-storage-class:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.195867267+02:00
+    created: 2017-09-14T15:02:10.705533532+02:00
     description: A chart containing the storage class for azure
     digest: cf8b9e85028bf93239649c230886b632eeba62b7c1a5ece0fccf08417f1da024
     name: azure-storage-class
@@ -80,7 +80,7 @@ entries:
     version: 0.0.1
   confluent-kafka-rest:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.196045581+02:00
+    created: 2017-09-14T15:02:10.705694986+02:00
     description: A chart containing the Confluents Kafka Rest
     digest: 31b48217782ae17e7d3ac998025657e7394ea6773b4c5d5475bf30a4b0660d3c
     name: confluent-kafka-rest
@@ -89,7 +89,7 @@ entries:
     version: 0.1.0
   confluent-schema-registry:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.196213887+02:00
+    created: 2017-09-14T15:02:10.70588257+02:00
     description: A chart containing the Confluents Schema Registry
     digest: 2a95b484fa5c16cbb1df069b068ff5321e40f4199254284ff292f3c6eeaf044f
     name: confluent-schema-registry
@@ -98,7 +98,7 @@ entries:
     version: 0.1.0
   fluentd:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.196383797+02:00
+    created: 2017-09-14T15:02:10.706047447+02:00
     description: A chart fluentd elasticsearch
     digest: dfba14da8f7d45efdbd36c141a227cd0aedd2b0798c33589d4a02a9318eab270
     name: fluentd
@@ -106,7 +106,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/fluentd-0.0.1.tgz
     version: 0.0.1
   grafana:
-  - created: 2017-09-14T14:55:14.197062572+02:00
+  - created: 2017-09-14T15:02:10.706617338+02:00
     description: The leading tool for querying and visualizing time series and metrics.
     digest: 23d6232917f6510ccf3215d955957a906ec94bc79d4e4c3c38d2f0f16aaf8518
     engine: gotpl
@@ -138,7 +138,7 @@ entries:
     version: 0.3.0
   ingress:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.197207582+02:00
+    created: 2017-09-14T15:02:10.706774365+02:00
     description: A chart for Ingress Resources
     digest: 459545ddf1e3a99d8c88c8cecb3f83a392f2d557256c40f0ac4baa0b68b4328c
     name: ingress
@@ -162,6 +162,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-blockchain-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.707019625+02:00
+    description: A chart for kafka-connect-blockchain-source
+    digest: ffb15f97d1452ea2d78acabfdba1bb62b7caa85c19fb13ae31a39f0ad003465f
+    name: kafka-connect-blockchain-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-blockchain-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-bloomberg-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.197728576+02:00
@@ -179,6 +187,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-bloomberg-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.708254836+02:00
+    description: A chart for kafka-connect-bloomberg-source
+    digest: 465707247d9eca1fbafa380ca68bd8831b04e9eb17675c7b64960e23cdea6388
+    name: kafka-connect-bloomberg-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-bloomberg-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-cassandra:
   - apiVersion: v1
     created: 2017-05-23T23:47:12.511127328+02:00
@@ -205,6 +221,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-cassandra-sink-0.2.5.tgz
     version: 0.2.5
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.708678361+02:00
+    description: A chart for kafka-connect-cassandra-sink
+    digest: 001ab0e2408d1f55808fd968e50d28fae2d4082256a4724c1230e4338a3d88b5
+    name: kafka-connect-cassandra-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-cassandra-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-cassandra-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.198432651+02:00
@@ -222,6 +246,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-cassandra-source-0.2.5.tgz
     version: 0.2.5
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.708924588+02:00
+    description: A chart for kafka-connect-cassandra-source
+    digest: 67e40291e91775163040555e85aef25a6c2690ae6159b688e68dec69f1e81fa8
+    name: kafka-connect-cassandra-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-cassandra-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-coap-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.200369155+02:00
@@ -239,6 +271,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-coap-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.709177523+02:00
+    description: A chart for kafka-connect-coap-sink
+    digest: c2d6e0f9f6d0bdfe54a0901f2c732a8f31444b11fdc59507ac72611437407dc4
+    name: kafka-connect-coap-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-coap-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-coap-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.200815189+02:00
@@ -256,6 +296,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-coap-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.709436892+02:00
+    description: A chart for kafka-connect-coap-source
+    digest: fbf75bf198b434fb09105f9f44347807eca5888c1a8c21c7dcb016296cab1928
+    name: kafka-connect-coap-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-coap-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-documentdb-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.201114943+02:00
@@ -273,6 +321,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-documentdb-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.709662733+02:00
+    description: A chart for kafka-connect-documentdb-sink
+    digest: 1d3fddd1de78a0606a177528d4d97c8d59857cc0d57657b93b712ea220f17d4e
+    name: kafka-connect-documentdb-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-documentdb-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-druid-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.201314485+02:00
@@ -290,6 +346,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-druid-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.709893578+02:00
+    description: A chart for kafka-connect-druid-sink
+    digest: a82949e40b62e6874405e4ee81be5e72fbc3f2a71a5b647736a32a51c5a3b14a
+    name: kafka-connect-druid-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-druid-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-elastic:
   - apiVersion: v1
     created: 2017-05-25T21:47:14.158059492+02:00
@@ -324,6 +388,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-elastic-sink-0.2.5.tgz
     version: 0.2.5
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.710086545+02:00
+    description: A chart for kafka-connect-elastic-sink
+    digest: fb0655bd94e70e41b516cbd9de047cceca4f4e01d86ed61d2b3b4493071e5025
+    name: kafka-connect-elastic-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-elastic-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-elastic5:
   - apiVersion: v1
     created: 2017-05-25T21:47:14.158247074+02:00
@@ -351,6 +423,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-elastic5s-sink-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.710320812+02:00
+    description: A chart for kafka-connect-elastic5s-sink
+    digest: 6dee19ef4bfafa5201f80c05a2ca366fb24d44deaf33f1cadcaef2ef65e14860
+    name: kafka-connect-elastic5s-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-elastic5s-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-ftp-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.20200674+02:00
@@ -360,6 +440,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-ftp-source-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.710556695+02:00
+    description: A chart for kafka-connect-ftp-source
+    digest: 26b26cb037447f8829afda07a7fde1be8ba8730efabf810f1dd2c11ad29863db
+    name: kafka-connect-ftp-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-ftp-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-hazelcast-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.202243973+02:00
@@ -377,6 +465,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-hazelcast-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.71080123+02:00
+    description: A chart for kafka-connect-hazelcast-sink
+    digest: 0a3fa87466b621a67e1392558e713a0ab31ddbccada98d9075bde60f05b5fcdb
+    name: kafka-connect-hazelcast-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-hazelcast-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-hbase-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.202454338+02:00
@@ -394,6 +490,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-hbase-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.71101458+02:00
+    description: A chart for kafka-connect-hbase-sink
+    digest: 6bf3926941e9ff52fac0ac398ac4914f63f1423f37500ab092b2694f76f477f3
+    name: kafka-connect-hbase-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-hbase-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-influx-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.202682102+02:00
@@ -403,6 +507,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-influx-sink-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.711269413+02:00
+    description: A chart for kafka-connect-influx-sink
+    digest: 5718299267e3a2fc15ef13672302934f62415107d2cb922ce14bbe838752b351
+    name: kafka-connect-influx-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-influx-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-influxdb-sink:
   - apiVersion: v1
     created: 2017-08-02T11:54:22.768648983+02:00
@@ -471,6 +583,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-jms-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.711537051+02:00
+    description: A chart for kafka-connect-jms-sink
+    digest: 7c20a9957bc076462ec7d88e64c6d0212c1d17bca89f7f10a0ec9ee71f2127af
+    name: kafka-connect-jms-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-jms-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-jms-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.203172394+02:00
@@ -488,6 +608,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-jms-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.711816239+02:00
+    description: A chart for kafka-connect-jms-source
+    digest: a123505f3a43b93625203ab0f9347d4cf095248bdbd9f81eeca110c73dcdeb87
+    name: kafka-connect-jms-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-jms-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-kudu-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.203409371+02:00
@@ -505,6 +633,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-kudu-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.712041077+02:00
+    description: A chart for kafka-connect-kudu-sink
+    digest: da8bc21fccb6f1f13593cddc0224d3a54fe1c5f4617bfd630982ca49b3214300
+    name: kafka-connect-kudu-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-kudu-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-mongo-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.203702364+02:00
@@ -514,6 +650,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-mongo-sink-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.712273005+02:00
+    description: A chart for kafka-connect-mongo-sink
+    digest: b5a3fb8232eb464c7c53a25e012d7a86d8617c837fea2aed8df2dac3c4d2d2ee
+    name: kafka-connect-mongo-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-mongo-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-mongodb-sink:
   - apiVersion: v1
     created: 2017-08-02T11:54:22.769734803+02:00
@@ -532,6 +676,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-mqtt-sink-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.71258698+02:00
+    description: A chart for kafka-connect-mqtt-sink
+    digest: 362074281eee34dac3c3b6647ef8b5b00172b215f40e86da0b2359477c2f9f10
+    name: kafka-connect-mqtt-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-mqtt-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-mqtt-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.204366899+02:00
@@ -549,6 +701,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-mqtt-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.7128702+02:00
+    description: A chart for kafka-connect-mqtt-source
+    digest: 566c65469ea72abcfba6a9051893e6f0afa31e5fd152788be13891be7dbaeed3
+    name: kafka-connect-mqtt-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-mqtt-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-redis-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.204841718+02:00
@@ -566,6 +726,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-redis-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.713087567+02:00
+    description: A chart for kafka-connect-redis-sink
+    digest: 2cfa5a6511b258fe03011d9a9316973e6a68f8c291b5237857101b7ccd6c931b
+    name: kafka-connect-redis-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-redis-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-rethink-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.205154814+02:00
@@ -583,6 +751,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-rethink-sink-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.71341038+02:00
+    description: A chart for kafka-connect-rethink-sink
+    digest: adeebc779a453a1d600bcae9b04adc2b36dc3ac57098acde2b5aef85d9c96b18
+    name: kafka-connect-rethink-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-rethink-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-rethink-source:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.205399082+02:00
@@ -600,6 +776,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-rethink-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.713725662+02:00
+    description: A chart for kafka-connect-rethink-source
+    digest: ce39950ce6e9be9ec5ef955c6ae9c1e85165900921bffe6af421f401e6e7efa1
+    name: kafka-connect-rethink-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-rethink-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-volt-sink:
   - apiVersion: v1
     created: 2017-09-14T14:55:14.205643864+02:00
@@ -609,6 +793,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-volt-sink-0.3.0.tgz
     version: 0.3.0
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.713951915+02:00
+    description: A chart for kafka-connect-volt-sink
+    digest: 55a6b222b754391ac242ee3c4f4b509526bb73ddb3e3f463b450f0def9bfe227
+    name: kafka-connect-volt-sink
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-volt-sink-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connect-voltdb-sink:
   - apiVersion: v1
     created: 2017-08-02T11:54:22.770975025+02:00
@@ -635,6 +827,14 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/kafka-connect-yahoo-source-0.2.6.tgz
     version: 0.2.6
+  - apiVersion: v1
+    created: 2017-09-14T15:02:10.71424944+02:00
+    description: A chart for kafka-connect-yahoo-source
+    digest: 383a4c2ede6a603f39688afac34480ff78ca136747423a381753d21225c44409
+    name: kafka-connect-yahoo-source
+    urls:
+    - https://datamountaineer.github.io/helm-charts/kafka-connect-yahoo-source-0.3.0.1.tgz
+    version: 0.3.0.1
   kafka-connector-hdfs:
   - apiVersion: v1
     created: 2017-08-02T11:54:22.771638875+02:00
@@ -679,7 +879,7 @@ entries:
     - https://datamountaineer.github.io/helm-charts/kafka-connector-wasb-1.0.1.tgz
     version: 1.0.1
   prometheus:
-  - created: 2017-09-14T14:55:14.206727217+02:00
+  - created: 2017-09-14T15:02:10.715136786+02:00
     description: Fork from stable/prometheus:3.0.2, path only ingress added. Prometheus
       is a monitoring system and time series database.
     digest: 9cef76eec51e60a57918b79e9238a1e7b0a6145222ec2d23e25183ba0e4dd2c3
@@ -716,7 +916,7 @@ entries:
     version: 3.0.1
   secrets:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.206876086+02:00
+    created: 2017-09-14T15:02:10.715303706+02:00
     description: A chart for deploying secrets via the landscaper
     digest: d955fffbffee1f9d4deb121147324b508c62eafcc9effb4608908c758b4dd46f
     name: secrets
@@ -725,7 +925,7 @@ entries:
     version: 0.0.1
   services:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.207023167+02:00
+    created: 2017-09-14T15:02:10.715467269+02:00
     description: A chart containing the services and endpoints of an environment
     digest: 2520eae3f61aacedacb88b920a57ffadb9794606b429dbf0b4e6bd8f23fde381
     name: services
@@ -734,7 +934,7 @@ entries:
     version: 0.2.0
   services-external-name:
   - apiVersion: v1
-    created: 2017-09-14T14:55:14.207164478+02:00
+    created: 2017-09-14T15:02:10.715613095+02:00
     description: A chart containing the services and endpoints of an environment
     digest: 16a4ea4f5eb6a3c019ee668aa71aa7de05c5b22e2b5120303969f6ceb78baa80
     name: services-external-name
@@ -760,7 +960,7 @@ entries:
   traefik:
   - apiVersion: v1
     appVersion: 1.2.1
-    created: 2017-09-14T14:55:14.207648184+02:00
+    created: 2017-09-14T15:02:10.716109773+02:00
     description: A Traefik based Kubernetes ingress controller with Let's Encrypt
       support and Landscaper support
     digest: b1d2076ff8f71b96374609828939e5a701ab83062b8555fac0c583ca86110cda
@@ -774,4 +974,4 @@ entries:
     urls:
     - https://datamountaineer.github.io/helm-charts/traefik-1.3.0.tgz
     version: 1.3.0
-generated: 2017-09-14T14:55:14.194918487+02:00
+generated: 2017-09-14T15:02:10.704819931+02:00
