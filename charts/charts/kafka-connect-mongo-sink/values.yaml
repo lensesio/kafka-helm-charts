@@ -3,7 +3,7 @@ replicaCount: "__REQUIRED__"
 secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-mongo-sink
-  tag: 0.3.0
+  tag: 0.3.0.1
   pullPolicy: IfNotPresent
 
 # Resource management
