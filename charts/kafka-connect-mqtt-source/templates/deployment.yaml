@@ -78,67 +78,69 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_MQTT_USERNAME
+        - name: CONNECTOR_CONNECT_MQTT_USERNAME
           value: {{ .Values.username | quote }}
-        - name: CONNECT_MQTT_CLEAN
+        - name: CONNECTOR_CONNECT_MQTT_CLEAN
           value: {{ .Values.clean | quote }}
-        - name: CONNECT_MQTT_SSL_KEY
+        - name: CONNECTOR_CONNECT_MQTT_SSL_KEY
           value: {{ .Values.sslKey | quote }}
-        - name: CONNECT_MQTT_TIMEOUT
+        - name: CONNECTOR_CONNECT_MQTT_TIMEOUT
           value: {{ .Values.timeout | quote }}
-        - name: CONNECT_MQTT_CONVERTER_THROW_ON_ERROR
+        - name: CONNECTOR_CONNECT_MQTT_POLLING_TIMEOUT
+          value: {{ .Values.pollingTimeout | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_CONVERTER_THROW_ON_ERROR
           value: {{ .Values.converterThrowOnError | quote }}
-        - name: CONNECT_MQTT_SSL_CA_CERT
+        - name: CONNECTOR_CONNECT_MQTT_SSL_CA_CERT
           value: {{ .Values.sslCaCert | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_MQTT_HOSTS
+        - name: CONNECTOR_CONNECT_MQTT_HOSTS
           value: {{ .Values.hosts | quote }}
-        - name: CONNECT_MQTT_CLIENT_ID
+        - name: CONNECTOR_CONNECT_MQTT_CLIENT_ID
           value: {{ .Values.clientId | quote }}
-        - name: CONNECT_MQTT_SSL_CERT
+        - name: CONNECTOR_CONNECT_MQTT_SSL_CERT
           value: {{ .Values.sslCert | quote }}
-        - name: CONNECT_MQTT_SERVICE_QUALITY
+        - name: CONNECTOR_CONNECT_MQTT_SERVICE_QUALITY
           value: {{ .Values.serviceQuality | quote }}
-        - name: CONNECT_MQTT_KCQL
+        - name: CONNECTOR_CONNECT_MQTT_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECT_MQTT_KEEP_ALIVE
+        - name: CONNECTOR_CONNECT_MQTT_KEEP_ALIVE
           value: {{ .Values.keepAlive | quote }}
-        - name: CONNECT_MQTT_PASSWORD
+        - name: CONNECTOR_CONNECT_MQTT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.passwordKey }}
-        - name: CONNECT_CONVERTER_AVRO_SCHEMAS
+        - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
           value: {{ .Values.avroSchemas | quote }}

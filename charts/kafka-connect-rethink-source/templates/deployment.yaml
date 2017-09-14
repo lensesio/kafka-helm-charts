@@ -78,62 +78,62 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_RETHINK_PORT
+        - name: CONNECTOR_CONNECT_RETHINK_PORT
           value: {{ .Values.port | quote }}
-        - name: CONNECT_RETHINK_LINGER_MS
+        - name: CONNECTOR_CONNECT_RETHINK_LINGER_MS
           value: {{ .Values.lingerMs | quote }}
-        - name: CONNECT_RETHINK_RETHINK_USERNAME
+        - name: CONNECTOR_CONNECT_RETHINK_RETHINK_USERNAME
           value: {{ .Values.rethinkUsername | quote }}
-        - name: CONNECT_RETHINK_RETHINK_CERT_FILE
+        - name: CONNECTOR_CONNECT_RETHINK_RETHINK_CERT_FILE
           value: {{ .Values.rethinkCertFile | quote }}
-        - name: CONNECT_RETHINK_PASSWORD
+        - name: CONNECTOR_CONNECT_RETHINK_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.passwordKey }}
-        - name: CONNECT_RETHINK_DB
+        - name: CONNECTOR_CONNECT_RETHINK_DB
           value: {{ .Values.db | quote }}
-        - name: CONNECT_RETHINK_BATCH_SIZE
+        - name: CONNECTOR_CONNECT_RETHINK_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
-        - name: CONNECT_RETHINK_HOST
+        - name: CONNECTOR_CONNECT_RETHINK_HOST
           value: {{ .Values.host | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_RETHINK_RETHINK_AUTH_KEY
+        - name: CONNECTOR_CONNECT_RETHINK_RETHINK_AUTH_KEY
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.rethinkAuthKeyKey }}
-        - name: CONNECT_RETHINK_KCQL
+        - name: CONNECTOR_CONNECT_RETHINK_KCQL
           value: {{ .Values.kcql | quote }}

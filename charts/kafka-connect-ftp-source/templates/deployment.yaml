@@ -78,61 +78,63 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: FTP_MAX_POLL_RECORDS
-          value: {{ .Values.ftpMaxPollRecords | quote }}
-        - name: FTP_SOURCERECORDCONVERTER
-          value: {{ .Values.ftpSourcerecordconverter | quote }}
-        - name: FTP_ADDRESS
-          value: {{ .Values.ftpAddress | quote }}
-        - name: FTP_REFRESH
-          value: {{ .Values.ftpRefresh | quote }}
-        - name: FTP_PASSWORD
+        - name: CONNECTOR_CONNECT_FTP_ADDRESS
+          value: {{ .Values.address | quote }}
+        - name: CONNECTOR_CONNECT_FTP_FILE_MAXAGE
+          value: {{ .Values.fileMaxage | quote }}
+        - name: CONNECTOR_CONNECT_FTP_KEYSTYLE
+          value: {{ .Values.keystyle | quote }}
+        - name: CONNECTOR_CONNECT_FTP_MAX_POLL_RECORDS
+          value: {{ .Values.maxPollRecords | quote }}
+        - name: CONNECTOR_CONNECT_FTP_MONITOR_TAIL
+          value: {{ .Values.monitorTail | quote }}
+        - name: CONNECTOR_CONNECT_FTP_USER
+          value: {{ .Values.user | quote }}
+        - name: CONNECTOR_CONNECT_FTP_SOURCERECORDCONVERTER
+          value: {{ .Values.sourcerecordconverter | quote }}
+        - name: CONNECTOR_CONNECT_FTP_MAX_BACKOFF
+          value: {{ .Values.maxBackoff | quote }}
+        - name: CONNECTOR_CONNECT_FTP_PROTOCOL
+          value: {{ .Values.protocol | quote }}
+        - name: CONNECTOR_CONNECT_FTP_MONITOR_UPDATE
+          value: {{ .Values.monitorUpdate | quote }}
+        - name: CONNECTOR_CONNECT_FTP_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.ftpPasswordKey }}
-        - name: FTP_FILE_MAXAGE
-          value: {{ .Values.ftpFileMaxage | quote }}
-        - name: FTP_MONITOR_TAIL
-          value: {{ .Values.ftpMonitorTail | quote }}
-        - name: FTP_KEYSTYLE
-          value: {{ .Values.ftpKeystyle | quote }}
-        - name: FTP_MONITOR_UPDATE
-          value: {{ .Values.ftpMonitorUpdate | quote }}
-        - name: FTP_MAX_BACKOFF
-          value: {{ .Values.ftpMaxBackoff | quote }}
-        - name: FTP_USER
-          value: {{ .Values.ftpUser | quote }}
-        - name: FTP_FILECONVERTER
-          value: {{ .Values.ftpFileconverter | quote }}
+              key:  {{ .Values.passwordKey }}
+        - name: CONNECTOR_CONNECT_FTP_FILECONVERTER
+          value: {{ .Values.fileconverter | quote }}
+        - name: CONNECTOR_CONNECT_FTP_REFRESH
+          value: {{ .Values.refresh | quote }}

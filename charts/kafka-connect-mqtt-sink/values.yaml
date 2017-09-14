@@ -70,6 +70,9 @@ retryInterval: 60000
 # timeout Provides the time interval to establish the mqtt connection type: INT importance: LOW
 timeout: 3000
 
+# pollingTimeout Provides the timeout to poll incoming messages type: INT importance: LOW
+pollingTimeout: 1000
+
 # converterThrowOnError 
 #  If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!;
 #  true will throw the exception.Default is false.

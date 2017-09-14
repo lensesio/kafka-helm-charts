@@ -78,85 +78,85 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_CASSANDRA_KEY_STORE_PASSWORD
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.keyStorePasswordKey }}
-        - name: CONNECT_CASSANDRA_KEY_SPACE
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
           value: {{ .Values.keySpace | quote }}
-        - name: CONNECT_CASSANDRA_CONTACT_POINTS
+        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
           value: {{ .Values.contactPoints | quote }}
-        - name: CONNECT_CASSANDRA_SSL_ENABLED
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
           value: {{ .Values.sslEnabled | quote }}
-        - name: CONNECT_CASSANDRA_CONSISTENCY_LEVEL
+        - name: CONNECTOR_CONNECT_CASSANDRA_CONSISTENCY_LEVEL
           value: {{ .Values.consistencyLevel | quote }}
-        - name: CONNECT_CASSANDRA_TRUST_STORE_TYPE
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
           value: {{ .Values.trustStoreType | quote }}
-        - name: CONNECT_CASSANDRA_USERNAME
+        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
           value: {{ .Values.username | quote }}
-        - name: CONNECT_CASSANDRA_TRUST_STORE_PATH
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
           value: {{ .Values.trustStorePath | quote }}
-        - name: CONNECT_CASSANDRA_KEY_STORE_PATH
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
           value: {{ .Values.keyStorePath | quote }}
-        - name: CONNECT_CASSANDRA_PORT
+        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
           value: {{ .Values.port | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
           value: {{ .Values.sslClientCertAuth | quote }}
-        - name: CONNECT_CASSANDRA_PASSWORD
+        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.passwordKey }}
-        - name: CONNECT_CASSANDRA_KCQL
+        - name: CONNECTOR_CONNECT_CASSANDRA_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECT_CASSANDRA_MAX_RETRIES
+        - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
           value: {{ .Values.maxRetries | quote }}
-        - name: CONNECT_CASSANDRA_ERROR_POLICY
+        - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
-        - name: CONNECT_CASSANDRA_RETRY_INTERVAL
+        - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}
-        - name: CONNECT_CASSANDRA_KEY_STORE_TYPE
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
           value: {{ .Values.keyStoreType | quote }}
-        - name: CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.trustStorePasswordKey }}
-        - name: CONNECT_CASSANDRA_THREADPOOL_SIZE
+        - name: CONNECTOR_CONNECT_CASSANDRA_THREADPOOL_SIZE
           value: {{ .Values.threadpoolSize | quote }}
-        - name: CONNECT_CASSANDRA_FETCH_SIZE
+        - name: CONNECTOR_CONNECT_CASSANDRA_FETCH_SIZE
           value: {{ .Values.fetchSize | quote }}

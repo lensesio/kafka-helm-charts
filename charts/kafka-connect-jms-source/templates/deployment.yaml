@@ -78,71 +78,71 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_JMS_BATCH_SIZE
+        - name: CONNECTOR_CONNECT_JMS_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
-        - name: CONNECT_JMS_USERNAME
+        - name: CONNECTOR_CONNECT_JMS_USERNAME
           value: {{ .Values.username | quote }}
-        - name: CONNECT_JMS_DESTINATION_SELECTOR
+        - name: CONNECTOR_CONNECT_JMS_DESTINATION_SELECTOR
           value: {{ .Values.destinationSelector | quote }}
-        - name: CONNECT_JMS_KCQL
+        - name: CONNECTOR_CONNECT_JMS_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECT_JMS_CONVERTER_THROW_ON_ERROR
+        - name: CONNECTOR_CONNECT_JMS_CONVERTER_THROW_ON_ERROR
           value: {{ .Values.converterThrowOnError | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
+        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
           value: {{ .Values.initialContextExtraParams | quote }}
-        - name: CONNECT_JMS_MAX_RETRIES
+        - name: CONNECTOR_CONNECT_JMS_MAX_RETRIES
           value: {{ .Values.maxRetries | quote }}
-        - name: CONNECT_JMS_RETRY_INTERVAL
+        - name: CONNECTOR_CONNECT_JMS_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}
-        - name: CONNECT_JMS_PASSWORD
+        - name: CONNECTOR_CONNECT_JMS_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.passwordKey }}
-        - name: CONNECT_JMS_ERROR_POLICY
+        - name: CONNECTOR_CONNECT_JMS_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
-        - name: CONNECT_JMS_SUBSCRIPTION_NAME
+        - name: CONNECTOR_CONNECT_JMS_SUBSCRIPTION_NAME
           value: {{ .Values.subscriptionName | quote }}
-        - name: CONNECT_CONVERTER_AVRO_SCHEMAS
+        - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
           value: {{ .Values.avroSchemas | quote }}
-        - name: CONNECT_JMS_INITIAL_CONTEXT_FACTORY
+        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_FACTORY
           value: {{ .Values.initialContextFactory | quote }}
-        - name: CONNECT_JMS_URL
+        - name: CONNECTOR_CONNECT_JMS_URL
           value: {{ .Values.url | quote }}
-        - name: CONNECT_JMS_SOURCE_DEFAULT_CONVERTER
+        - name: CONNECTOR_CONNECT_JMS_SOURCE_DEFAULT_CONVERTER
           value: {{ .Values.sourceDefaultConverter | quote }}
-        - name: CONNECT_JMS_CONNECTION_FACTORY
+        - name: CONNECTOR_CONNECT_JMS_CONNECTION_FACTORY
           value: {{ .Values.connectionFactory | quote }}

@@ -78,48 +78,48 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_ELASTIC_CLUSTER_NAME
+        - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
           value: {{ .Values.clusterName | quote }}
-        - name: CONNECT_ELASTIC_WRITE_TIMEOUT
+        - name: CONNECTOR_CONNECT_ELASTIC_WRITE_TIMEOUT
           value: {{ .Values.writeTimeout | quote }}
-        - name: CONNECT_ELASTIC_ERROR_THROW
+        - name: CONNECTOR_CONNECT_ELASTIC_ERROR_THROW
           value: {{ .Values.errorThrow | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_ELASTIC_URI_PREFIX
+        - name: CONNECTOR_CONNECT_ELASTIC_URI_PREFIX
           value: {{ .Values.uriPrefix | quote }}
-        - name: CONNECT_ELASTIC_URI
+        - name: CONNECTOR_CONNECT_ELASTIC_URI
           value: {{ .Values.uri | quote }}
-        - name: CONNECT_ELASTIC_KCQL
+        - name: CONNECTOR_CONNECT_ELASTIC_KCQL
           value: {{ .Values.kcql | quote }}

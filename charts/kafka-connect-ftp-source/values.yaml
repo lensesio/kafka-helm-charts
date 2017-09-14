@@ -55,39 +55,42 @@ tls:
 
 
 
-# ftpMaxPollRecords Max number of records returned per poll type: INT importance: LOW
-ftpMaxPollRecords: 10000
+# address ftp address[:port] type: STRING importance: HIGH
+address: "__REQUIRED__"
 
-# ftpSourcerecordconverter TODO type: CLASS importance: HIGH
-ftpSourcerecordconverter: com.datamountaineer.streamreactor.connect.ftp.source.NopSourceRecordConverter
+# fileMaxage ignore files older than this; ISO8601 duration type: STRING importance: HIGH
+fileMaxage: "__REQUIRED__"
 
-# ftpAddress ftp address[:port] type: STRING importance: HIGH
-ftpAddress: "__REQUIRED__"
+# keystyle what the output key is set to: `string` => filename; `struct` => structure with filename and offset type: STRING importance: HIGH
+keystyle: "__REQUIRED__"
 
-# ftpRefresh how often the ftp server is polled; ISO8601 duration type: STRING importance: HIGH
-ftpRefresh: "__REQUIRED__"
+# maxPollRecords Max number of records returned per poll type: INT importance: LOW
+maxPollRecords: 10000
 
-# ftpPassword ftp password to login type: PASSWORD importance: HIGH
-ftpPassword: "__REQUIRED__"
+# monitorTail comma separated lists of path:destinationtopic; tail of file is tracked type: LIST importance: HIGH
+monitorTail: 
 
-# ftpFileMaxage ignore files older than this; ISO8601 duration type: STRING importance: HIGH
-ftpFileMaxage: "__REQUIRED__"
+# user ftp user name to login type: STRING importance: HIGH
+user: "__REQUIRED__"
 
-# ftpMonitorTail comma separated lists of path:destinationtopic; tail of file is tracked type: LIST importance: HIGH
-ftpMonitorTail: 
+# sourcerecordconverter TODO type: CLASS importance: HIGH
+sourcerecordconverter: com.datamountaineer.streamreactor.connect.ftp.source.NopSourceRecordConverter
 
-# ftpKeystyle what the output key is set to: `string` => filename; `struct` => structure with filename and offset type: STRING importance: HIGH
-ftpKeystyle: "__REQUIRED__"
+# maxBackoff on failure, exponentially backoff to at most this ISO8601 duration type: STRING importance: HIGH
+maxBackoff: PT30M
 
-# ftpMonitorUpdate comma separated lists of path:destinationtopic; whole file is tracked type: LIST importance: HIGH
-ftpMonitorUpdate: 
+# protocol FTPS or FTP protocol type: STRING importance: LOW
+protocol: ftp
 
-# ftpMaxBackoff on failure, exponentially backoff to at most this ISO8601 duration type: STRING importance: HIGH
-ftpMaxBackoff: PT30M
+# monitorUpdate comma separated lists of path:destinationtopic; whole file is tracked type: LIST importance: HIGH
+monitorUpdate: 
 
-# ftpUser ftp user name to login type: STRING importance: HIGH
-ftpUser: "__REQUIRED__"
+# password ftp password to login type: PASSWORD importance: HIGH
+password: "__REQUIRED__"
 
-# ftpFileconverter TODO type: CLASS importance: HIGH
-ftpFileconverter: com.datamountaineer.streamreactor.connect.ftp.source.SimpleFileConverter
+# fileconverter TODO type: CLASS importance: HIGH
+fileconverter: com.datamountaineer.streamreactor.connect.ftp.source.SimpleFileConverter
+
+# refresh how often the ftp server is polled; ISO8601 duration type: STRING importance: HIGH
+refresh: "__REQUIRED__"
 

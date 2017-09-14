@@ -78,71 +78,71 @@ spec:
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
           value: {{ .Values.logLevel | quote }}
-        - name:  CONNECT_GROUP_ID
+        - name: CONNECT_GROUP_ID
           value: {{ .Values.clusterName | quote }}
-        - name:  CONNECT_BOOTSTRAP_SERVERS
+        - name: CONNECT_BOOTSTRAP_SERVERS
           value: {{ .Values.bootstrapServers | quote }}
-        - name:  CONNECT_REST_PORT
+        - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
-        - name:  CONNECT_CONFIG_STORAGE_TOPIC
+        - name: CONNECT_CONFIG_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_configs"
-        - name:  CONNECT_OFFSET_STORAGE_TOPIC
+        - name: CONNECT_OFFSET_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_offsets"
-        - name:  CONNECT_STATUS_STORAGE_TOPIC
+        - name: CONNECT_STATUS_STORAGE_TOPIC
           value: "connect_{{ .Values.clusterName }}_statuses"
-        - name:  CONNECT_KEY_CONVERTER
+        - name: CONNECT_KEY_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_VALUE_CONVERTER
+        - name: CONNECT_VALUE_CONVERTER
           value: "io.confluent.connect.avro.AvroConverter"
-        - name:  CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
+        - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name:  CONNECT_INTERNAL_KEY_CONVERTER
+        - name: CONNECT_INTERNAL_KEY_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
-        - name:  CONNECT_INTERNAL_VALUE_CONVERTER
+        - name: CONNECT_INTERNAL_VALUE_CONVERTER
           value: "org.apache.kafka.connect.json.JsonConverter"
         - name: CONNECT_REST_ADVERTISED_HOST_NAME
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name:  CONNECT_PLUGINS_PATH
+        - name:  CONNECT_PLUGIN_PATH
           value: "/etc/datamountaineer/jars"
 
-        - name: CONNECT_HAZELCAST_LINGER_SECONDS
+        - name: CONNECTOR_CONNECT_HAZELCAST_LINGER_SECONDS
           value: {{ .Values.lingerSeconds | quote }}
-        - name: CONNECT_HAZELCAST_CLUSTER_MEMBERS
+        - name: CONNECTOR_CONNECT_HAZELCAST_CLUSTER_MEMBERS
           value: {{ .Values.clusterMembers | quote }}
-        - name: CONNECT_HAZELCAST_KCQL
+        - name: CONNECTOR_CONNECT_HAZELCAST_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECT_HAZELCAST_MAX_RETRIES
+        - name: CONNECTOR_CONNECT_HAZELCAST_MAX_RETRIES
           value: {{ .Values.maxRetries | quote }}
-        - name: CONNECT_HAZELCAST_RETRY_INTERVAL
+        - name: CONNECTOR_CONNECT_HAZELCAST_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}
-        - name: CONNECT_PROGRESS_ENABLED
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.enabled | quote }}
-        - name: CONNECT_HAZELCAST_KEEP_ALIVE
+        - name: CONNECTOR_CONNECT_HAZELCAST_KEEP_ALIVE
           value: {{ .Values.keepAlive | quote }}
-        - name: CONNECT_HAZELCAST_BUFFER_SIZE
+        - name: CONNECTOR_CONNECT_HAZELCAST_BUFFER_SIZE
           value: {{ .Values.bufferSize | quote }}
-        - name: CONNECT_HAZELCAST_TIMEOUT
+        - name: CONNECTOR_CONNECT_HAZELCAST_TIMEOUT
           value: {{ .Values.timeout | quote }}
-        - name: CONNECT_HAZELCAST_TCP_NO_DELAY
+        - name: CONNECTOR_CONNECT_HAZELCAST_TCP_NO_DELAY
           value: {{ .Values.tcpNoDelay | quote }}
-        - name: CONNECT_HAZELCAST_RETRIES
+        - name: CONNECTOR_CONNECT_HAZELCAST_RETRIES
           value: {{ .Values.retries | quote }}
-        - name: CONNECT_HAZELCAST_THREADPOOL_SIZE
+        - name: CONNECTOR_CONNECT_HAZELCAST_THREADPOOL_SIZE
           value: {{ .Values.threadpoolSize | quote }}
-        - name: CONNECT_HAZELCAST_PARALLEL_WRITE
+        - name: CONNECTOR_CONNECT_HAZELCAST_PARALLEL_WRITE
           value: {{ .Values.parallelWrite | quote }}
-        - name: CONNECT_HAZELCAST_GROUP_PASSWORD
+        - name: CONNECTOR_CONNECT_HAZELCAST_GROUP_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Values.secretsRef | quote }}
               key:  {{ .Values.groupPasswordKey }}
-        - name: CONNECT_HAZELCAST_ERROR_POLICY
+        - name: CONNECTOR_CONNECT_HAZELCAST_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
-        - name: CONNECT_HAZELCAST_GROUP_NAME
+        - name: CONNECTOR_CONNECT_HAZELCAST_GROUP_NAME
           value: {{ .Values.groupName | quote }}
-        - name: CONNECT_HAZELCAST_REUSE_ADDRESS
+        - name: CONNECTOR_CONNECT_HAZELCAST_REUSE_ADDRESS
           value: {{ .Values.reuseAddress | quote }}
