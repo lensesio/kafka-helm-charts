@@ -1,3 +1,379 @@
 apiVersion: v1
 entries:
-generated: 2017-09-14T16:06:28.073222889+02:00
+  azure-persistent-volume-claims-disk:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.425749+01:00
+    description: A chart containing the persistent volumes for azure
+    digest: ab10386d043f986add6a1a77daee8a1a4a2aa19e30a3125bbf938c562b8f1e79
+    name: azure-persistent-volume-claims-disk
+    urls:
+    - https://landoop.github.io/helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
+    version: 0.0.2
+  azure-persistent-volume-claims-file:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.426159+01:00
+    description: A chart containing the persistent volumes for azure
+    digest: a25036f9402c1e00356362e37fe9f2ad3155f93aa8cca27ce7a6996943d5f5fc
+    name: azure-persistent-volume-claims-file
+    urls:
+    - https://landoop.github.io/helm-charts/azure-persistent-volume-claims-file-0.0.2.tgz
+    version: 0.0.2
+  azure-persistent-volumes-file:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.426626+01:00
+    description: A chart containing the persistent volume claims for azure
+    digest: 36246e93bdb2009e1c83986a9612c5091f59acd125f78c439b0b21887829757b
+    name: azure-persistent-volumes-file
+    urls:
+    - https://landoop.github.io/helm-charts/azure-persistent-volumes-file-0.0.2.tgz
+    version: 0.0.2
+  azure-storage-class:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.427165+01:00
+    description: A chart containing the storage class for azure
+    digest: cf8b9e85028bf93239649c230886b632eeba62b7c1a5ece0fccf08417f1da024
+    name: azure-storage-class
+    urls:
+    - https://landoop.github.io/helm-charts/azure-storage-class-0.0.2.tgz
+    version: 0.0.2
+  confluent-kafka-rest:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.427603+01:00
+    description: A chart containing the Confluents Kafka Rest
+    digest: 31b48217782ae17e7d3ac998025657e7394ea6773b4c5d5475bf30a4b0660d3c
+    name: confluent-kafka-rest
+    urls:
+    - https://landoop.github.io/helm-charts/confluent-kafka-rest-0.1.0.tgz
+    version: 0.1.0
+  confluent-schema-registry:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.428111+01:00
+    description: A chart containing the Confluents Schema Registry
+    digest: 2a95b484fa5c16cbb1df069b068ff5321e40f4199254284ff292f3c6eeaf044f
+    name: confluent-schema-registry
+    urls:
+    - https://landoop.github.io/helm-charts/confluent-schema-registry-0.1.0.tgz
+    version: 0.1.0
+  fluentd:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.428616+01:00
+    description: A chart fluentd elasticsearch
+    digest: dfba14da8f7d45efdbd36c141a227cd0aedd2b0798c33589d4a02a9318eab270
+    name: fluentd
+    urls:
+    - https://landoop.github.io/helm-charts/fluentd-0.0.1.tgz
+    version: 0.0.1
+  grafana:
+  - created: 2017-12-04T15:04:58.429765+01:00
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 23d6232917f6510ccf3215d955957a906ec94bc79d4e4c3c38d2f0f16aaf8518
+    engine: gotpl
+    home: https://grafana.net
+    icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: Ming Hsieh
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    urls:
+    - https://landoop.github.io/helm-charts/grafana-0.4.1.tgz
+    version: 0.4.1
+  ingress:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.43027+01:00
+    description: A chart for Ingress Resources
+    digest: 459545ddf1e3a99d8c88c8cecb3f83a392f2d557256c40f0ac4baa0b68b4328c
+    name: ingress
+    urls:
+    - https://landoop.github.io/helm-charts/ingress-0.1.0.tgz
+    version: 0.1.0
+  kafka-connect-blockchain-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.430791+01:00
+    description: A chart for kafka-connect-blockchain-source
+    digest: 65132e29030390c54e8f03b036dccdd36dc4cddcf8dedd9f79ab32248068683e
+    name: kafka-connect-blockchain-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-blockchain-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-bloomberg-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.431284+01:00
+    description: A chart for kafka-connect-bloomberg-source
+    digest: fe570a4f99098ff95f50faa4a1cc523bfc7bbd40751d634d7602cdd535d42d86
+    name: kafka-connect-bloomberg-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-bloomberg-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-cassandra-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.431839+01:00
+    description: A chart for kafka-connect-cassandra-sink
+    digest: 034ae4bbfd6dbf469689a6f68d5e2a8a35367480277bb317b2f023174d797ae3
+    name: kafka-connect-cassandra-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-cassandra-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-cassandra-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.432378+01:00
+    description: A chart for kafka-connect-cassandra-source
+    digest: dd9d9b7dbf7daa1d30f4f864a1ea7d7b594027b85dcb65bd31a135e8631235e4
+    name: kafka-connect-cassandra-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-cassandra-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-coap-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.432924+01:00
+    description: A chart for kafka-connect-coap-sink
+    digest: 15c3305c357bb4d871b5f519b9305699dd99862f843217d2c2c344c399d42f31
+    name: kafka-connect-coap-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-coap-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-coap-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.433422+01:00
+    description: A chart for kafka-connect-coap-source
+    digest: 9aa998cfa0710d6e12c44c296fdb5d39b50850ab08d327051bdcb7c907828e7d
+    name: kafka-connect-coap-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-coap-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-documentdb-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.43396+01:00
+    description: A chart for kafka-connect-documentdb-sink
+    digest: aab70744649f53510dd9d8d3f2f4a6e7c9d1fc148edb69c86da758780419e71e
+    name: kafka-connect-documentdb-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-documentdb-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-druid-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.43444+01:00
+    description: A chart for kafka-connect-druid-sink
+    digest: b703ab86d2921896ee0f2eae74bd879d2fbe8e7800f9f0aa9c6e1b8676c3745a
+    name: kafka-connect-druid-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-druid-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-elastic-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.435046+01:00
+    description: A chart for kafka-connect-elastic-sink
+    digest: 495e29fd1650cfc36692bfae14b750fe2fb25726600abd94dbe569d52cd545c2
+    name: kafka-connect-elastic-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-elastic-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-elastic5s-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.43573+01:00
+    description: A chart for kafka-connect-elastic5s-sink
+    digest: dbeaa596b0e5170470e54a3d8832f668910316a083c105ca04c3ed955f54c27c
+    name: kafka-connect-elastic5s-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-elastic5s-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-ftp-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.436251+01:00
+    description: A chart for kafka-connect-ftp-source
+    digest: c5284976d28f1053a839ab987c666e3c4928deb1749427e37d5fbff305c5ddd6
+    name: kafka-connect-ftp-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-ftp-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-hazelcast-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.436951+01:00
+    description: A chart for kafka-connect-hazelcast-sink
+    digest: 2c42342c187f48953607fb23d5cb2fb2ef2e7e2536318c3f300abd5d21fbdb85
+    name: kafka-connect-hazelcast-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-hazelcast-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-hbase-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.438245+01:00
+    description: A chart for kafka-connect-hbase-sink
+    digest: b54d5634c5f254f47796c04147593fcb760df56c0e8ae973821e4b78ef81f3d1
+    name: kafka-connect-hbase-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-hbase-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-influx-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.438711+01:00
+    description: A chart for kafka-connect-influx-sink
+    digest: 16ae07486696ff8bce0cd400ffa2a41ad63793c4e419df3bb2c0d2b4e1f49af1
+    name: kafka-connect-influx-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-influx-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-jms-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.4392+01:00
+    description: A chart for kafka-connect-jms-sink
+    digest: 9cbf3d3d6b5e1af65c244992b24ba9004add5bc448bf8c8cd296bc47fbf192ac
+    name: kafka-connect-jms-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-jms-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-jms-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.439744+01:00
+    description: A chart for kafka-connect-jms-source
+    digest: 01bf9181357bd3bbf90e2257020a42f99297ae1a577651e7b8b3fb7744fb04d9
+    name: kafka-connect-jms-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-jms-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-kudu-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.440197+01:00
+    description: A chart for kafka-connect-kudu-sink
+    digest: 68b73a89c3361e30781ac9984afd88e097086eb941757eae8462ec2f5775274a
+    name: kafka-connect-kudu-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-kudu-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-mongo-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.44063+01:00
+    description: A chart for kafka-connect-mongo-sink
+    digest: 392c8082d3dce8a86dbc55883bc6808fe333af5cf8483df9d2c5d08bd931b8ec
+    name: kafka-connect-mongo-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-mongo-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-mqtt-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.441135+01:00
+    description: A chart for kafka-connect-mqtt-sink
+    digest: c62250c9b9c5d1bbdb7f9ac10114c297290179bdcb6ab3019c599afac4e1d48b
+    name: kafka-connect-mqtt-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-mqtt-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-mqtt-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.441655+01:00
+    description: A chart for kafka-connect-mqtt-source
+    digest: 7183463ea0f03d31d833694883160f33a0d614300a28604b0e27d006e0cd3840
+    name: kafka-connect-mqtt-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-mqtt-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-redis-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.44224+01:00
+    description: A chart for kafka-connect-redis-sink
+    digest: b95dbd9afdc38275047767a9a09528a1ec5dd549d6c182b0d5bcf2235699f7e6
+    name: kafka-connect-redis-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-redis-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-rethink-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.442723+01:00
+    description: A chart for kafka-connect-rethink-sink
+    digest: f5e97d1d34c6cf1b3b1c4eb5375bb8ac4b705ccb42b71e9d12ae3cad75fb3f81
+    name: kafka-connect-rethink-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-rethink-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-rethink-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.44323+01:00
+    description: A chart for kafka-connect-rethink-source
+    digest: 13d158388574396bee7cdaaf9ce50bc8bef84d545684828df18fe8b3cd2dc406
+    name: kafka-connect-rethink-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-rethink-source-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-volt-sink:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.443747+01:00
+    description: A chart for kafka-connect-volt-sink
+    digest: c65a54a079b602b173bcf1fe06851f4a9d460b749fcb0c597833f62a43046916
+    name: kafka-connect-volt-sink
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-volt-sink-0.3.1.tgz
+    version: 0.3.1
+  kafka-connect-yahoo-source:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.444294+01:00
+    description: A chart for kafka-connect-yahoo-source
+    digest: c0e631d08be4d72be68728c66a63723cc68804b3288d2f272f5da9a069d78aba
+    name: kafka-connect-yahoo-source
+    urls:
+    - https://landoop.github.io/helm-charts/kafka-connect-yahoo-source-0.3.1.tgz
+    version: 0.3.1
+  prometheus:
+  - created: 2017-12-04T15:04:58.445557+01:00
+    description: Fork from stable/prometheus:3.0.2, path only ingress added. Prometheus
+      is a monitoring system and time series database.
+    digest: 9cef76eec51e60a57918b79e9238a1e7b0a6145222ec2d23e25183ba0e4dd2c3
+    engine: gotpl
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    maintainers:
+    - email: mgoodness@gmail.com
+      name: Michael Goodness
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://github.com/prometheus/prometheus
+    - https://github.com/kubernetes/kube-state-metrics
+    urls:
+    - https://landoop.github.io/helm-charts/prometheus-3.0.3.tgz
+    version: 3.0.3
+  secrets:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.445976+01:00
+    description: A chart for deploying secrets via the landscaper
+    digest: d955fffbffee1f9d4deb121147324b508c62eafcc9effb4608908c758b4dd46f
+    name: secrets
+    urls:
+    - https://landoop.github.io/helm-charts/secrets-0.0.1.tgz
+    version: 0.0.1
+  services:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.446424+01:00
+    description: A chart containing the services and endpoints of an environment
+    digest: 2520eae3f61aacedacb88b920a57ffadb9794606b429dbf0b4e6bd8f23fde381
+    name: services
+    urls:
+    - https://landoop.github.io/helm-charts/services-0.2.0.tgz
+    version: 0.2.0
+  services-external-name:
+  - apiVersion: v1
+    created: 2017-12-04T15:04:58.446874+01:00
+    description: A chart containing the services and endpoints of an environment
+    digest: 16a4ea4f5eb6a3c019ee668aa71aa7de05c5b22e2b5120303969f6ceb78baa80
+    name: services-external-name
+    urls:
+    - https://landoop.github.io/helm-charts/services-external-name-0.2.0.tgz
+    version: 0.2.0
+  traefik:
+  - apiVersion: v1
+    appVersion: 1.2.1
+    created: 2017-12-04T15:04:58.447823+01:00
+    description: A Traefik based Kubernetes ingress controller with Let's Encrypt
+      support and Landscaper support
+    digest: b1d2076ff8f71b96374609828939e5a701ab83062b8555fac0c583ca86110cda
+    home: http://traefik.io/
+    keywords:
+    - traefik
+    - ingress
+    - acme
+    - letsencrypt
+    name: traefik
+    urls:
+    - https://landoop.github.io/helm-charts/traefik-1.3.0.tgz
+    version: 1.3.0
+generated: 2017-12-04T15:04:58.425132+01:00

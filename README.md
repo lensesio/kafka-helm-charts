@@ -1,11 +1,11 @@
 # Helm Charts for Kafka Connect and related components
 
-This repo contains Helm Charts for DataMountaineer Connectors.
+This repo contains Helm Charts for Landoop Connectors.
 
 Add the repo:
 
 ```bash
-helm repo add datamountaineer https://datamountaineer.github.io/helm-charts/
+helm repo add landoop https://landoop.github.io/helm-charts/
 helm repo update
 ```
 

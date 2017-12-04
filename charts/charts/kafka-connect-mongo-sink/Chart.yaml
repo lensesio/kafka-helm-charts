@@ -1,5 +1,0 @@
-apiVersion: v1
-description: A chart for kafka-connect-mongo-sink
-name: kafka-connect-mongo-sink
-version: 0.3.0.1
-

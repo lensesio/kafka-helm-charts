@@ -1,5 +1,0 @@
-apiVersion: v1
-description: A chart for kafka-connect-rethink-source
-name: kafka-connect-rethink-source
-version: 0.3.0.1
-
