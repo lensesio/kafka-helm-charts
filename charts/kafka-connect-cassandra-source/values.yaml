@@ -1,9 +1,9 @@
 # Basic info
-replicaCount: "__REQUIRED__"
+replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra-source
-  tag: 0.3.0.1
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
+  tag: 0.4.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -30,19 +30,33 @@ monitoring:
 
 # SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
 ssl:
-  enabled: false
+  enabled: true
   # Path to the directory on the hosts
   path: /ssl
 
   # If persistent volumes should be used for ssl keystore/truststore paths
   persistentVolumes:
-    enable: false
+    enabled: false
     existingClaim:
 
 # TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
 # contents for mount take from config map
 tls:
-  enabled: false
+  enabled: true
+
+# lenses 
+lensesUser: ""
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: "http://schema-registry:8081"
+restPort: 8083
+logLevel: INFO
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+valueConveter: "io.confluent.connect.avro.AvroConverter"
+
+javaHeap: "256M"
 
 ## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
 ## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
@@ -50,10 +64,13 @@ tls:
 #avroSchemaFiles:
 #  schema_file_name:  ""
 
+connectorClass: "com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector"
 
+# applicationId name of the connector
+applicationId: "__REQUIRED__"
 
-
-
+#maxTasks The number of tasks to spawn
+maxTasks: 1
 
 # keyStorePassword Password for the client Key Store type: PASSWORD importance: LOW
 keyStorePassword: 
@@ -137,3 +154,20 @@ assignedTables:
 # fetchSize The number of records the Cassandra driver will return at once. type: INT importance: MEDIUM
 fetchSize: 5000
 
+# deleteEnabled allow deletion of records in cassandra
+deleteEnabled: false
+
+# Cassandra CQL delete statement
+deleteStatement: ""
+
+# deleteStructFlds Fields in the key struct data type used in there delete statement. Comma-separated in the order they are found in $DELETE_ROW_STATEMENT.
+deleteStructFlds: ""
+
+# sliceDuration Duration to query for in target Cassandra table. Used to restrict query timestamp span"
+sliceDuration: 10000
+
+# sliceDelayMs The delay between the current time and the time range of the query. Used to insure all of the data in the time slice is available
+sliceDelayMs: 30000
+
+# initialOffset The initial timestamp to start querying in Cassandra from (yyyy-MM-dd HH:mm:ss.SSS'Z'). Default 1900-01-01 00:00:00.0000000Z
+initialOffset: "1900-01-01 00:00:00.0000000Z"

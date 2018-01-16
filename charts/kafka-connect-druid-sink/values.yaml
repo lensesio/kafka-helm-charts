@@ -1,9 +1,9 @@
 # Basic info
-replicaCount: "__REQUIRED__"
+replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-druid-sink
-  tag: 0.3.0.1
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-druid
+  tag: 0.4.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -30,19 +30,33 @@ monitoring:
 
 # SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
 ssl:
-  enabled: false
+  enabled: true
   # Path to the directory on the hosts
   path: /ssl
 
   # If persistent volumes should be used for ssl keystore/truststore paths
   persistentVolumes:
-    enable: false
+    enabled: false
     existingClaim:
 
 # TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
 # contents for mount take from config map
 tls:
-  enabled: false
+  enabled: true
+
+# lenses 
+lensesUser: ""
+
+# Connect values
+clusterName: "__REQUIRED__"
+bootstrapServers: kafka:9092
+schemaRegistryURL: "http://schema-registry:8081"
+restPort: 8083
+logLevel: INFO
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+valueConveter: "io.confluent.connect.avro.AvroConverter"
+
+javaHeap: "256M"
 
 ## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
 ## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
@@ -50,10 +64,13 @@ tls:
 #avroSchemaFiles:
 #  schema_file_name:  ""
 
+# applicationId name of the connector
+applicationId: "__REQUIRED__"
 
+connectorClass: "com.datamountaineer.streamreactor.connect.druid.DruidSinkConnector"
 
-
-
+#maxTasks The number of tasks to spawn
+maxTasks: 1
 
 # kcql The KCQL statement to specify field selection from topics and druid datasource targets. type: STRING importance: HIGH
 kcql: "__REQUIRED__"
@@ -67,5 +84,5 @@ configFile: "__REQUIRED__"
 writeTimeout: 6000
 
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
-enabled: false
+progressEnabled: true
 

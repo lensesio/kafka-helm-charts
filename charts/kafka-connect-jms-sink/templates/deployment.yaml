@@ -16,18 +16,23 @@ spec:
         hostPort: {{ .Values.restPort | quote }}
         containerPort: {{ .Values.restPort | quote }}
         pipeline: {{ .Values.monitoring.pipeline | quote }}
+        lenses: lenses-connector
+        lenses-user: {{ .Values.lensesUser}}
       annotations:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
+        configTopic: "{connect-{{ .Values.clusterName }}-configs"
+        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
+        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
       volumes:
         # Use for SSL keystores and trust stores from host path or persistent volumes
         {{- if .Values.ssl.enabled}}
         - name: connect-ssl
-        {{- if .Values.ssl.persistentVolume.enabled }}
+        {{- if .Values.ssl.persistentVolumes.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolume.existingClaim }}{{ .Values.ssl.persistentVolume.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
+            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
         {{- else}}
           hostPath:
             path: {{ .Values.ssl.path }}
@@ -54,7 +59,7 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/confluent/liveliness.sh
+            - /etc/landoop/liveliness.sh
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
@@ -85,17 +90,17 @@ spec:
         - name: CONNECT_REST_PORT
           value: {{ .Values.restPort | quote }}
         - name: CONNECT_CONFIG_STORAGE_TOPIC
-          value: "connect_{{ .Values.clusterName }}_configs"
+          value: "{connect-{{ .Values.clusterName }}-configs"
         - name: CONNECT_OFFSET_STORAGE_TOPIC
-          value: "connect_{{ .Values.clusterName }}_offsets"
+          value: "connect-{{ .Values.clusterName }}-offsets"
         - name: CONNECT_STATUS_STORAGE_TOPIC
-          value: "connect_{{ .Values.clusterName }}_statuses"
+          value: "{connect-{{ .Values.clusterName }}-statuses"
         - name: CONNECT_KEY_CONVERTER
-          value: "io.confluent.connect.avro.AvroConverter"
+          value: "{{ .Values.keyConverter }}"
+        - name: CONNECT_VALUE_CONVERTER
+          value: "{{ .Values.valueConverter }}"
         - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
-        - name: CONNECT_VALUE_CONVERTER
-          value: "io.confluent.connect.avro.AvroConverter"
         - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ .Values.schemaRegistryURL | quote }}
         - name: CONNECT_INTERNAL_KEY_CONVERTER
@@ -107,7 +112,18 @@ spec:
             fieldRef:
               fieldPath: status.podIP
         - name:  CONNECT_PLUGIN_PATH
-          value: "/etc/datamountaineer/jars"
+          value: "/etc/landoop/jars"
+
+  
+        # Connector properties
+        - name: CONNECTOR_NAME
+          value: {{ .Values.applicationId | quote }}
+        - name: CONNECTOR_GROUP_ID
+          value: {{ .Values.applicationId | quote }}
+        - name: CONNECTOR_CONNECTOR_CLASS
+          value: {{ .Values.connectorClass | quote }}
+        - name: CONNECTOR_TASKS_MAX
+          value: {{ .Values.tasksMax | quote }}
 
         - name: CONNECTOR_CONNECT_JMS_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
@@ -120,7 +136,7 @@ spec:
         - name: CONNECTOR_CONNECT_JMS_CONVERTER_THROW_ON_ERROR
           value: {{ .Values.converterThrowOnError | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.enabled | quote }}
+          value: {{ .Values.progressEnabled | quote }}
         - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
           value: {{ .Values.initialContextExtraParams | quote }}
         - name: CONNECTOR_CONNECT_JMS_MAX_RETRIES
