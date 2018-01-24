@@ -1,9 +1,10 @@
 # Basic info
 replicaCount: 1
+# secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-elastic5s
-  tag: 1.0.0
+  tag: 0.4.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -12,7 +13,9 @@ resources:
     memory: 512Mi
   requests:
     memory: 256Mi
-javaHeap: 256M
+
+#javaHeap option
+javaHeap: "256M"
 
 # Monitoring
 monitoring:
@@ -30,7 +33,7 @@ monitoring:
 
 # SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
 ssl:
-  enabled: true
+  enabled: false
   # Path to the directory on the hosts
   path: /ssl
 
@@ -42,21 +45,27 @@ ssl:
 # TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
 # contents for mount take from config map
 tls:
-  enabled: true
+  enabled: false
 
 # lenses 
 lensesUser: ""
 
 # Connect values
-clusterName: "__REQUIRED__"
-bootstrapServers: kafka:9092
-schemaRegistryURL: "http://schema-registry:8081"
-restPort: 8083
-logLevel: INFO
-keyConverter: "io.confluent.connect.avro.AvroConverter"
-valueConveter: "io.confluent.connect.avro.AvroConverter"
 
-javaHeap: "256M"
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "__REQUIRED__"
+# bootstrapServers A comma separated list of the kafka brokers
+bootstrapServers: kafka:9092
+# schemaRegistryURL A comman separated list of the Schema registry URL
+schemaRegistryURL: "http://schema-registry:8081"
+# restPort The rest port of Connect
+restPort: 8083
+# logLevel The log4j level
+logLevel: INFO
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+# valueConverter The key converter to/from Connects struct
+valueConveter: "io.confluent.connect.avro.AvroConverter"
 
 ## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
 ## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
@@ -64,6 +73,7 @@ javaHeap: "256M"
 #avroSchemaFiles:
 #  schema_file_name:  ""
 
+# connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.elastic5.ElasticSinkConnector"
 
 # applicationId name of the connector
@@ -101,8 +111,8 @@ urlPrefix: elasticsearch
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true
 
-# xpackSettings Enable xpack security add on by providing this setting type: PASSWORD importance: MEDIUM
-xpackSettings: "__REQUIRED__"
+# xpackSettingsKey XpackSettings key in the secret. Enable xpack security add on by providing this setting type: PASSWORD importance: MEDIUM
+xpackSettingsKey: "__REQUIRED__"
 
 # url Url including port for Elastic Search cluster node. type: STRING importance: HIGH
 url: localhost:9300

@@ -1,9 +1,10 @@
 # Basic info
 replicaCount: 1
+# secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
-  tag: 1.0.0
+  tag: 0.4.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -12,7 +13,9 @@ resources:
     memory: 512Mi
   requests:
     memory: 256Mi
-javaHeap: 256M
+
+#javaHeap option
+javaHeap: "256M"
 
 # Monitoring
 monitoring:
@@ -56,14 +59,13 @@ logLevel: INFO
 keyConverter: "io.confluent.connect.avro.AvroConverter"
 valueConveter: "io.confluent.connect.avro.AvroConverter"
 
-javaHeap: "256M"
-
 ## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
 ## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
 ## matching the value option avroSchema. Key is the file name, value is the avro schema contents
 #avroSchemaFiles:
 #  schema_file_name:  ""
 
+# connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.cassandra.sink.CassandraSinkConnector"
 
 # applicationId name of the connector
@@ -75,8 +77,8 @@ tasksMax: "__REQUIRED__"
 # topics to sink
 topics: "__REQUIRED__"
 
-# keyStorePassword Password for the client Key Store type: PASSWORD importance: LOW
-keyStorePassword: 
+# keyStorePasswordKey Password key for the client Key Store type in the secret
+keyStorePasswordKey: 
 
 # keySpace Keyspace to write to. type: STRING importance: HIGH
 keySpace: "__REQUIRED__"
@@ -114,8 +116,8 @@ progressEnabled: true
 # sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
 sslClientCertAuth: false
 
-# password Password for the username to connect to Cassandra with. type: PASSWORD importance: LOW
-password: "__REQUIRED__"
+# passwordKey Password key for cassandra
+passwordKey: "__REQUIRED__"
 
 # kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
 kcql: "__REQUIRED__"
@@ -139,8 +141,8 @@ retryInterval: 60000
 # keyStoreType Type of the Key Store, defauts to JKS type: STRING importance: MEDIUM
 keyStoreType: JKS
 
-# trustStorePassword Password for the client Trust Store. type: PASSWORD importance: LOW
-trustStorePassword: 
+# trustStorePasswordKey Password Key for the client Trust Store in the secret
+trustStorePasswordKey: 
 
 # threadpoolSize 
 # The sink inserts all the data concurrently. To fail fast in case of an error, the sink has its own thread pool.
