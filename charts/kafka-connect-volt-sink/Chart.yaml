@@ -1,5 +1,5 @@
 apiVersion: v1
 description: A chart for kafka-connect-volt-sink
 name: kafka-connect-volt-sink
-version: 0.4.0
+version: 1.0.0
 
