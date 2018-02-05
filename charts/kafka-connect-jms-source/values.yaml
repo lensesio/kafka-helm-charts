@@ -1,10 +1,9 @@
 # Basic info
 replicaCount: 1
-# secretsRef The secret holding any passwords
-secretsRef: "__REQUIRED__"
+
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-jms
-  tag: 1.0.0
+  tag: 0.4.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -24,29 +23,6 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
@@ -54,24 +30,24 @@ lensesUser: ""
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.jms.source.JMSSourceConnector"
@@ -82,58 +58,35 @@ applicationId: "__REQUIRED__"
 # maxTasks The number of tasks to spawn
 tasksMax: "__REQUIRED__"
 
-# topics to sink
-topics: "__REQUIRED__"
-
 # batchSize The number of records to poll for on the target JMS destination in each Connect poll. type: INT importance: MEDIUM
 batchSize: 100
-
-# username Provides the user for the JMS connection type: STRING importance: HIGH
-username: 
-
-# destinationSelector Selector to use for destination lookup. Either CDI or JNDI. type: STRING importance: MEDIUM
-destinationSelector: CDI
 
 # kcql connect.jms.kcql type: STRING importance: HIGH
 kcql: "__REQUIRED__"
 
-# converterThrowOnError If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!; true will throw the exception.Default is false. type: BOOLEAN importance: HIGH
-converterThrowOnError: false
+# username Provides the user for the JMS connection type: STRING importance: HIGH
+username: 
 
-# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
-progressEnabled: true
+# password stored in the secret. Provides the password for the JMS connection type: PASSWORD importance: HIGH
+password: "__REQUIRED__"
 
-# initialContextExtraParams List (comma separated) of extra properties as key/value pairs with a colon delimiter to supply to the initial context e.g. SOLACE_JMS_VPN:my_solace_vp type: LIST importance: MEDIUM
-initialContextExtraParams: 
+# url Provides the JMS broker url type: STRING importance: HIGH
+url: "__REQUIRED__"
 
-# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
-maxRetries: 20
-
-# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
-retryInterval: 60000
-
-# passwordKey The password key in the secret. Provides the password for the JMS connection type: PASSWORD importance: HIGH
-passwordKey: "__REQUIRED__"
-
-# errorPolicy Specifies the action to be taken if an error occurs while inserting the data.
-# There are two available options:
-# NOOP - the error is swallowed
-# THROW - the error is allowed to propagate.
-# RETRY - The exception causes the Connect framework to retry the message. The number of retries is based on
-# The error will be logged automatically type: STRING importance: HIGH
-errorPolicy: THROW
+# connectionFactory Provides the full class name for the ConnectionFactory implementation to use, e.gorg.apache.activemq.ActiveMQConnectionFactory type: STRING importance: HIGH
+connectionFactory: ConnectionFactory
 
 # subscriptionName subscription name to use when subscribing to a topic, specifying this makes a durable subscription for topics type: STRING importance: HIGH
 subscriptionName: 
 
-# avroSchemas If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. The format is $MQTT_TOPIC=$PATH_TO_AVRO_SCHEMA_FILE type: STRING importance: HIGH
-avroSchemas: 
+# initialContextExtraParams List (comma separated) of extra properties as key/value pairs with a colon delimiter to supply to the initial context e.g. SOLACE_JMS_VPN:my_solace_vp type: LIST importance: MEDIUM
+initialContextExtraParams: 
 
 # initialContextFactory Initial Context Factory, e.g: org.apache.activemq.jndi.ActiveMQInitialContextFactory type: STRING importance: HIGH
 initialContextFactory: "__REQUIRED__"
 
-# url Provides the JMS broker url type: STRING importance: HIGH
-url: "__REQUIRED__"
+# destinationSelector Selector to use for destination lookup. Either CDI or JNDI. type: STRING importance: MEDIUM
+destinationSelector: CDI
 
 # sourceDefaultConverter 
 # Contains a canonical class name for the default converter of a raw JMS message bytes to a SourceRecord.
@@ -141,6 +94,29 @@ url: "__REQUIRED__"
 # i.e. com.datamountaineer.streamreactor.connect.source.converters.AvroConverter type: STRING importance: HIGH
 sourceDefaultConverter: 
 
-# connectionFactory Provides the full class name for the ConnectionFactory implementation to use, e.gorg.apache.activemq.ActiveMQConnectionFactory type: STRING importance: HIGH
-connectionFactory: ConnectionFactory
+# converter.avro.schema If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. 
+# The format is $JMS_TOPIC=$AVRO_SCHEMA_FILE_NAME type: STRING importance: HIGH
+# The schemas will be mounted in /etc/landoop/schemas. The file name must match the keys in avroSchemaFiles
+
+#converterAvroSchemas:
+
+#avroSchemaFiles:
+  # schemaFileName1: |- 
+  #   "{
+  #     \"type\": \"record\",
+  #     \"name\": \"LongList\",
+  #     \"aliases\": [\"LinkedLongs\"],                      // old name for this
+  #     \"fields\" : [
+  #       {\"name\": \"value\", \"type\": \"long\"},             // each element has a long
+  #       {\"name\": \"next\", \"type\": [\"null\", \"LongList\"]} // optional next element
+  #     ]
+  #   }"
+
+# converterThrowOnError If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!; true will throw the exception.Default is false. type: BOOLEAN importance: HIGH
+converterThrowOnError: false
+
+# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
+progressEnabled: true
+
+
 

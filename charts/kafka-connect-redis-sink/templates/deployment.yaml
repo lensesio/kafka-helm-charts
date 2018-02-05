@@ -26,30 +26,6 @@ spec:
         statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
         offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
-          secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -59,24 +35,9 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/landoop/liveliness.sh
+            - /etc/landoop/bin/liveliness.sh
           initialDelaySeconds: 30
           timeoutSeconds: 5
-        resources:
-{{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -113,7 +74,6 @@ spec:
               fieldPath: status.podIP
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
-
   
         # Connector properties
         - name: CONNECTOR_NAME
@@ -124,22 +84,25 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-        - name: CONNECTOR_CONNECT_REDIS_RETRY_INTERVAL
-          value: {{ .Values.retryInterval | quote }}
+        - name: CONNECTOR_CONNECT_REDIS_HOST
+          value: {{ .Values.host | quote }}          
         - name: CONNECTOR_CONNECT_REDIS_PORT
           value: {{ .Values.port | quote }}
-        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.progressEnabled | quote }}
-        - name: CONNECTOR_CONNECT_REDIS_MAX_RETRIES
-          value: {{ .Values.maxRetries | quote }}
         - name: CONNECTOR_CONNECT_REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
+              name: {{ template "fullname" . }}
+              key:  "password"
         - name: CONNECTOR_CONNECT_REDIS_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECTOR_CONNECT_REDIS_HOST
-          value: {{ .Values.host | quote }}
+        - name: CONNECTOR_CONNECT_REDIS_MAX_RETRIES
+          value: {{ .Values.maxRetries | quote }}          
+        - name: CONNECTOR_CONNECT_REDIS_RETRY_INTERVAL
+          value: {{ .Values.retryInterval | quote }}
         - name: CONNECTOR_CONNECT_REDIS_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.progressEnabled | quote }}          
+
+        resources:
+{{ toYaml .Values.resources | indent 10 }}

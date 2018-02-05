@@ -26,30 +26,6 @@ spec:
         statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
         offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
-          secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -62,21 +38,6 @@ spec:
             - /etc/landoop/bin/liveliness.sh
           initialDelaySeconds: 30
           timeoutSeconds: 5
-        resources:
-{{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -114,7 +75,6 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
-  
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -124,29 +84,31 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-
+        - name: CONNECTOR_CONNECT_INFLUX_KCQL
+          value: {{ .Values.kcql | quote }}
         - name: CONNECTOR_CONNECT_INFLUX_DB
           value: {{ .Values.db | quote }}
-        - name: CONNECTOR_CONNECT_INFLUX_MAX_RETRIES
-          value: {{ .Values.maxRetries | quote }}
+        - name: CONNECTOR_CONNECT_INFLUX_URL
+          value: {{ .Values.url | quote }} 
+        - name: CONNECTOR_CONNECT_INFLUX_USERNAME
+          value: {{ .Values.username | quote }}                   
         - name: CONNECTOR_CONNECT_INFLUX_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
-        - name: CONNECTOR_CONNECT_INFLUX_URL
-          value: {{ .Values.url | quote }}
+              name: {{ template "fullname" . }}
+              key:  "password"
+        - name: CONNECTOR_CONNECT_INFLUX_RETENTION_POLICY
+          value: {{ .Values.retentionPolicy | quote }}
+        - name: CONNECTOR_CONNECT_INFLUX_CONSISTENCY_LEVEL
+          value: {{ .Values.consistencyLevel | quote }}          
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
+        - name: CONNECTOR_CONNECT_INFLUX_MAX_RETRIES
+          value: {{ .Values.maxRetries | quote }}          
         - name: CONNECTOR_CONNECT_INFLUX_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}
         - name: CONNECTOR_CONNECT_INFLUX_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
-        - name: CONNECTOR_CONNECT_INFLUX_CONSISTENCY_LEVEL
-          value: {{ .Values.consistencyLevel | quote }}
-        - name: CONNECTOR_CONNECT_INFLUX_USERNAME
-          value: {{ .Values.username | quote }}
-        - name: CONNECTOR_CONNECT_INFLUX_RETENTION_POLICY
-          value: {{ .Values.retentionPolicy | quote }}
-        - name: CONNECTOR_CONNECT_INFLUX_KCQL
-          value: {{ .Values.kcql | quote }}
+
+        resources:
+{{ toYaml .Values.resources | indent 10 }}

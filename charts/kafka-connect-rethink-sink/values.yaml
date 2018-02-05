@@ -1,10 +1,9 @@
 # Basic info
 replicaCount: 1
-# secretsRef The secret holding any passwords
-secretsRef: "__REQUIRED__"
+
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-rethink
-  tag: 1.0.0
+  tag: 0.4.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -24,29 +23,6 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
@@ -54,24 +30,24 @@ lensesUser: ""
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass class name of the connector
 connectorClass: "com.datamountaineer.streamreactor.connect.rethink.sink.ReThinkSinkConnector"
@@ -85,20 +61,8 @@ tasksMax: "__REQUIRED__"
 # topics to sink
 topics: "__REQUIRED__"
 
-# port Client port of rethink server to connect to. type: INT importance: MEDIUM
-port: 28015
-
-# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
-maxRetries: 20
-
-# rethinkUsername The user name to connect to rethink with. type: STRING importance: MEDIUM
-rethinkUsername: 
-
-# rethinkCertFile Certificate file to use for secure TLS connection to the rethinkdb servers. Cannot be used with username/password. type: STRING importance: MEDIUM
-rethinkCertFile: 
-
-# passwordKey The password for the user.The password key in the secert
-passwordKey: "__REQUIRED__"
+# kcql The KCQL expression for the connector. type: STRING importance: HIGH
+kcql: "__REQUIRED__"
 
 # db The reThink database to read from. type: STRING importance: HIGH
 db: connect_rethink_sink
@@ -106,17 +70,29 @@ db: connect_rethink_sink
 # host Rethink server host. type: STRING importance: HIGH
 host: localhost
 
-# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
-progressEnabled: true
+# port Client port of rethink server to connect to. type: INT importance: MEDIUM
+port: 28015
 
-# rethinkAuthKeyKey The password key in the secret for the authorization key to use in combination with the certificate file. 
-rethinkAuthKeyKey: "__REQUIRED__"
+# rethinkUsername The user name to connect to rethink with. type: STRING importance: MEDIUM
+rethinkUsername: 
+
+# password stored in a secret for the user.The password key in the secert
+password: "__REQUIRED__"
+
+# tlsEnabled enabled tls
+tlsEnabled: false
+
+# rethinkCertFile (base64 encoded) Certificate file (PEM format) data to use for secure TLS connection to the rethinkdb servers, mount from via secrets. Cannot be used with username/password. type: STRING importance: MEDIUM
+rethinkCertFileData: 
+
+# rethinkAuth password stored in the secret for the authorization key to use in combination with the certificate file. 
+rethinkAuth: ""
+
+# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
+maxRetries: 20
 
 # retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
 retryInterval: 60000
-
-# kcql The KCQL expression for the connector. type: STRING importance: HIGH
-kcql: "__REQUIRED__"
 
 # errorPolicy Specifies the action to be taken if an error occurs while inserting the data.
 # There are two available options: 
@@ -125,4 +101,7 @@ kcql: "__REQUIRED__"
 # RETRY - The exception causes the Connect framework to retry the message. The number of retries is based on 
 # The error will be logged automatically type: STRING importance: HIGH
 errorPolicy: THROW
+
+# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
+progressEnabled: true
 

@@ -26,30 +26,6 @@ spec:
         statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
         offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
-          secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -63,20 +39,7 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
-{{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
+{{ toYaml .Values.resources | indent 10 }}          
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -114,7 +77,6 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
-  
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -124,73 +86,85 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.keyStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
-          value: {{ .Values.keySpace | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
-          value: {{ .Values.contactPoints | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
-          value: {{ .Values.sslEnabled | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_CONSISTENCY_LEVEL
-          value: {{ .Values.consistencyLevel | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
-          value: {{ .Values.trustStoreType | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
-          value: {{ .Values.username | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
-          value: {{ .Values.trustStorePath | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
-          value: {{ .Values.keyStorePath | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
-          value: {{ .Values.port | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
-          value: {{ .Values.sslClientCertAuth | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_ALLOW_FILTERING
-          value: {{ .Values.importAllowFiltering | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_KCQL
           value: {{ .Values.kcql | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
-          value: {{ .Values.maxRetries | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TASK_BUFFER_SIZE
-          value: {{ .Values.taskBufferSize | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_POLL_INTERVAL
-          value: {{ .Values.importPollInterval | quote }}
+          value: {{ .Values.maxRetries | quote }}          
         - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
-          value: {{ .Values.keyStoreType | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.trustStorePasswordKey }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_ASSIGNED_TABLES
-          value: {{ .Values.assignedTables | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_FETCH_SIZE
-          value: {{ .Values.fetchSize | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE
-          value: {{ .Values.deleteEnabled | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_STATEMENT
-          value: {{ .Values.deleteStatement | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_STRUCT_FLDS
-          value: {{ .Values.deleteStructFlds | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_ALLOW_FILTERING
+          value: {{ .Values.importAllowFiltering | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_SLICE_DURATION
           value: {{ .Values.sliceDuration | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_SLICE_DELAY_MS
           value: {{ .Values.sliceDelayMs | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_INITIAL_OFFSET
           value: {{ .Values.initialOffset | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_TASK_BUFFER_SIZE
+          value: {{ .Values.taskBufferSize | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_POLL_INTERVAL
+          value: {{ .Values.importPollInterval | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE
+          value: {{ .Values.deleteEnabled | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_STATEMENT
+          value: {{ .Values.deleteStatement | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_STRUCT_FLDS
+          value: {{ .Values.deleteStructFlds | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
+          value: {{ .Values.sslEnabled | quote }} 
+        - name: CONNECTOR_CONNECT_CASSANDRA_BATCH_SIZE
+          value: {{ .Values.batchSize | quote }}                    
+
+        #cassandra
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
+          value: {{ .Values.keySpace | quote }} 
+        - name: CONNECTOR_CONNECT_CASSANDRA_CONTACT_POINTS
+          value: {{ .Values.contactPoints | quote }}                   
+        - name: CONNECTOR_CONNECT_CASSANDRA_USERNAME
+          value: {{ .Values.username | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key:  "password"
+        - name: CONNECTOR_CONNECT_CASSANDRA_CONSISTENCY_LEVEL
+          value: {{ .Values.consistencyLevel | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_PORT
+          value: {{ .Values.port | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_FETCH_SIZE
+          value: {{ .Values.fetchSize | quote }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
+          value: {{ .Values.sslEnabled | quote }}   
+
+{{- if .Values.sslEnabled }}
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_TYPE
+          value: {{ .Values.trustStoreType | quote }} 
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
+          value: "/etc/landoop/ssl/truststore.jks" 
+        - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key:  "trustStorePassword"           
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_TYPE
+          value: {{ .Values.keyStoreType | quote }}       
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
+          value: "/etc/landoop/ssl/keystore.jks"
+        - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key:  "keyStorePassword"
+        - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
+          value: {{ .Values.sslClientCertAuth | quote }}
+        volumeMounts:
+          - mountPath: "/etc/landoop/ssl"
+            name: ssl
+      volumes:
+        # Use for SSL keystores and trust stores from host path or persistent volumes
+        - name: ssl
+          hostPath:
+            path: {{ .Values.ssl.path | quote }}
+{{- end -}}

@@ -26,30 +26,6 @@ spec:
         statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
         offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
-          secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -63,20 +39,7 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
-{{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
+{{ toYaml .Values.resources | indent 10 }}          
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -114,7 +77,6 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
-  
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -124,30 +86,18 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-        
-        - name: CONNECTOR_CONNECT_COAP_PUBLIC_KEY_FILE
-          value: {{ .Values.publicKeyFile | quote }}
-        - name: CONNECTOR_CONNECT_COAP_PRIVATE_KEY_FILE
-          value: {{ .Values.privateKeyFile | quote }}
+        - name: CONNECTOR_CONNECT_SOURCE_LINGER_MS
+          value: {{ .Values.lingerMs | quote }}  
         - name: CONNECTOR_CONNECT_COAP_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
         - name: CONNECTOR_CONNECT_COAP_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECTOR_CONNECT_COAP_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
-        - name: CONNECTOR_CONNECT_COAP_TRUSTSTORE_PATH
-          value: {{ .Values.truststorePath | quote }}
+
+        #coap
         - name: CONNECTOR_CONNECT_COAP_PORT
           value: {{ .Values.port | quote }}
-        - name: CONNECTOR_CONNECT_SOURCE_LINGER_MS
-          value: {{ .Values.lingerMs | quote }}
-        - name: CONNECTOR_CONNECT_COAP_KEYSTORE_PATH
-          value: {{ .Values.keystorePath | quote }}
         - name: CONNECTOR_CONNECT_COAP_CERT_CHAIN_KEY
           value: {{ .Values.certChainKey | quote }}
         - name: CONNECTOR_CONNECT_COAP_CERTS
@@ -156,15 +106,42 @@ spec:
           value: {{ .Values.uri | quote }}
         - name: CONNECTOR_CONNECT_COAP_USERNAME
           value: {{ .Values.username | quote }}
+        - name: CONNECTOR_CONNECT_COAP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key:  "password"        
+
+        {{- if .Values.ssl.enabled }}  
+        - name: CONNECTOR_CONNECT_COAP_PUBLIC_KEY_FILE
+          value: "/etc/landoop/certs/public-key.pem "
+        - name: CONNECTOR_CONNECT_COAP_PRIVATE_KEY_FILE
+          value: "/etc/landoop/certs/private-key.pem"
+        - name: CONNECTOR_CONNECT_COAP_TRUSTSTORE_PATH
+          value: "/etc/landoop/ssl/truststore.jks"
+        - name: CONNECTOR_CONNECT_COAP_KEYSTORE_PATH
+          value: "/etc/landoop/ssl/keystore.jks"
         - name: CONNECTOR_CONNECT_COAP_KEYSTORE_PASS
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.keystorePassKey }}
-        - name: CONNECTOR_CONNECT_COAP_HOST
-          value: {{ .Values.host | quote }}
+              name: {{ template "fullname" . }}
+              key:  "keystorePass"   
         - name: CONNECTOR_CONNECT_COAP_TRUSTSTORE_PASS
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.truststorePassKey }}
+              name: {{ template "fullname" . }}
+              key:  "truststorePass"
+        volumeMounts:
+          - mountPath: "/etc/landoop/ssl"
+            name: ssl
+          - mountPath: "/etc/landoop/certs"
+            name: certs 
+      volumes:
+        # Use for SSL keystores and trust stores from host path
+        - name: ssl
+          hostPath:
+            path: {{ .Values.ssl.path | quote }}
+        - name: certs
+          configMap:
+            name: "{{ template "fullname" . }}-tls"
+        {{- end -}}

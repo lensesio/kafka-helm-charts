@@ -1,6 +1,6 @@
 # Basic info
 replicaCount: 1
-secretsRef: "__REQUIRED__"
+
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-cassandra
   tag: 1.0.0
@@ -13,8 +13,7 @@ resources:
   requests:
     memory: 256Mi
 
-#javaHeap option
-javaHeap: "256M"
+
 
 # Monitoring
 monitoring:
@@ -23,14 +22,8 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
+# For SSL, key and truststore binary files are need. You can either use persistent volumes
+# or distribute to files to each host and set the path in ssl.path
 ssl:
   enabled: false
   # Path to the directory on the hosts
@@ -41,36 +34,32 @@ ssl:
     enabled: false
     existingClaim:
 
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
-# Connect values
+#javaHeap option
+javaHeap: "256M"
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector"
@@ -78,53 +67,8 @@ connectorClass: "com.datamountaineer.streamreactor.connect.cassandra.source.Cass
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
 
-#maxTasks The number of tasks to spawn
+# maxTasks The number of tasks to spawn
 maxTasks: 1
-
-# keyStorePassword keyStorePassword key for the client Key Store type in the secret
-keyStorePasswordKey: 
-
-# keySpace Keyspace to write to. type: STRING importance: HIGH
-keySpace: "__REQUIRED__"
-
-# contactPoints Initial contact point host for Cassandra including port. type: STRING importance: HIGH
-contactPoints: localhost
-
-# sslEnabled Secure Cassandra driver connection via SSL. type: BOOLEAN importance: LOW
-sslEnabled: false
-
-# consistencyLevel 
-# Consistency refers to how up-to-date and synchronized a row of Cassandra data is on all of its replicas.
-# Cassandra offers tunable consistency. For any given read or write operation, the client application decides how consistent the requested data must be.
-#      type: STRING importance: MEDIUM
-consistencyLevel: 
-
-# trustStoreType Type of the Trust Store, defaults to JKS type: STRING importance: MEDIUM
-trustStoreType: JKS
-
-# username Username to connect to Cassandra with. type: STRING importance: HIGH
-username: 
-
-# trustStorePath Path to the client Trust Store. type: STRING importance: LOW
-trustStorePath: 
-
-# keyStorePath Path to the client Key Store. type: STRING importance: LOW
-keyStorePath: 
-
-# port Cassandra native port. type: INT importance: HIGH
-port: 9042
-
-# batchSize The number of records the source task should drain from the reader queue. type: INT importance: MEDIUM
-batchSize: 100
-
-# sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
-sslClientCertAuth: false
-
-# password Password key for the username to connect to Cassandra with in the secret
-passwordKey: "__REQUIRED__"
-
-# importAllowFiltering Enable ALLOW FILTERING in incremental selects. type: BOOLEAN importance: MEDIUM
-importAllowFiltering: true
 
 # kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
 kcql: "__REQUIRED__"
@@ -151,17 +95,20 @@ errorPolicy: THROW
 # retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
 retryInterval: 60000
 
-# keyStoreType Type of the Key Store, defauts to JKS type: STRING importance: MEDIUM
-keyStoreType: JKS
+# batchSize The number of records the source task should drain from the reader queue. type: INT importance: MEDIUM
+batchSize: 100
 
-# trustStorePasswordKey Password key for the truststore in the secret
-trustStorePasswordKey: 
+# importAllowFiltering Enable ALLOW FILTERING in incremental selects. type: BOOLEAN importance: MEDIUM
+importAllowFiltering: true
 
-# assignedTables The tables a task has been assigned. type: STRING importance: LOW
-assignedTables: 
+# sliceDuration Duration to query for in target Cassandra table. Used to restrict query timestamp span"
+sliceDuration: 10000
 
-# fetchSize The number of records the Cassandra driver will return at once. type: INT importance: MEDIUM
-fetchSize: 5000
+# sliceDelayMs The delay between the current time and the time range of the query. Used to insure all of the data in the time slice is available
+sliceDelayMs: 30000
+
+# initialOffset The initial timestamp to start querying in Cassandra from (yyyy-MM-dd HH:mm:ss.SSS'Z'). Default 1900-01-01 00:00:00.0000000Z
+initialOffset: "1900-01-01 00:00:00.0000000Z"
 
 # deleteEnabled allow deletion of records in cassandra
 deleteEnabled: false
@@ -172,11 +119,61 @@ deleteStatement: ""
 # deleteStructFlds Fields in the key struct data type used in there delete statement. Comma-separated in the order they are found in $DELETE_ROW_STATEMENT.
 deleteStructFlds: ""
 
-# sliceDuration Duration to query for in target Cassandra table. Used to restrict query timestamp span"
-sliceDuration: 10000
+cassandra:
 
-# sliceDelayMs The delay between the current time and the time range of the query. Used to insure all of the data in the time slice is available
-sliceDelayMs: 30000
+# keySpace Keyspace to write to. type: STRING importance: HIGH
+keySpace: "__REQUIRED__"
 
-# initialOffset The initial timestamp to start querying in Cassandra from (yyyy-MM-dd HH:mm:ss.SSS'Z'). Default 1900-01-01 00:00:00.0000000Z
-initialOffset: "1900-01-01 00:00:00.0000000Z"
+# contactPoints Initial contact point host for Cassandra including port. type: STRING importance: HIGH
+contactPoints: localhost
+
+# port Cassandra native port. type: INT importance: HIGH
+port: 9042
+
+# username Username to connect to Cassandra with. type: STRING importance: HIGH
+username: 
+
+# password Password key for the username to connect to Cassandra with in the secret
+password: "__REQUIRED__"
+
+# consistencyLevel 
+# Consistency refers to how up-to-date and synchronized a row of Cassandra data is on all of its replicas.
+# Cassandra offers tunable consistency. For any given read or write operation, the client application decides how consistent the requested data must be.
+#      type: STRING importance: MEDIUM
+consistencyLevel: 
+
+# fetchSize The number of records the Cassandra driver will return at once. type: INT importance: MEDIUM
+fetchSize: 5000
+
+
+# For SSL, key and truststore binary files are need. You can either use persistent volumes
+# or distribute to files to each host and set the path in ssl.path
+# They will be mounted into /etc/landoop/ssl. 
+# The files MUST be named truststore.jks and keystore.jks
+ssl:
+  # Path to the directory on the hosts
+  path: /ssl
+
+  # If persistent volumes should be used for ssl keystore/truststore paths
+  persistentVolumes:
+    enabled: false
+    existingClaim:
+
+# sslEnabled Secure Cassandra driver connection via SSL. type: BOOLEAN importance: LOW
+sslEnabled: false
+
+# keyStorePassword keyStorePassword key for the client Key Store type in the secret
+keyStorePassword: 
+
+# keyStoreType Type of the Key Store, defauts to JKS type: STRING importance: MEDIUM
+keyStoreType: JKS
+
+# trustStorePasswordKey Password key for the truststore in the secret
+trustStorePassword: 
+
+# trustStoreType Type of the Trust Store, defaults to JKS type: STRING importance: MEDIUM
+trustStoreType: JKS
+
+# sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
+sslClientCertAuth: false
+

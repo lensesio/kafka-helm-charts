@@ -4,7 +4,7 @@ replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-pulsar
-  tag: 1.0.0
+  tag: 0.4.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -24,29 +24,6 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
@@ -54,24 +31,24 @@ lensesUser: ""
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass class name of the connector
 connectorClass: "com.datamountaineer.streamreactor.connect.pulsar.sink.PulsarSinkConnector"
@@ -91,11 +68,23 @@ kcql: "__REQUIRED__"
 # hosts Contains the Pulsar connection end points
 hosts: "__REQUIRED__"
 
-# converterThrowOnError If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!; true will throw the exception.Default is false
-converterThrowOnError: false
+# sslEnabled enabled tls
+tlsEnabled: false
 
-# converterAvroSchemas If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. The format is $PULSAR_TOPIC=$PATH_TO_AVRO_SCHEMA_FILE
-converterAvroSchemas: ""
+# tlsCaCert provides the data (base64 encoded) for the CA certificate file (PEM format) to use with the Pulsar connection which is mounted via the secret
+tlsCaCert: 
+
+#tlsCert provides the data (base64 encoded) for the certificate file (PEM format) to use with the Pulsar connection which is mounted via the secret
+tlsCert:
+
+# tlsKey certificate private data (base64 encoded) (PEM format) which is mount via the secret
+tlsKey:
+
+# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
+retryInterval: 60000
+
+# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
+maxRetries: 20
 
 # pollingTimeout Provides the timeout to poll incoming messages
 pollingTimeout: 1000
@@ -107,12 +96,6 @@ pollingTimeout: 1000
 # RETRY - The exception causes the Connect framework to retry the message. The number of retries is based on
 # The error will be logged automatically type: STRING importance: HIGH
 errorPolicy: THROW
-
-# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
-retryInterval: 60000
-
-# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
-maxRetries: 20
 
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true

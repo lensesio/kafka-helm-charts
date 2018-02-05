@@ -1,8 +1,8 @@
-{{- if .Values.avroSchemas}}
+{{- if .Values.converterAvroSchemas}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "fullname" . }}
+  name: "{{ template "fullname" . }}-schemas"
   labels:
     app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -10,7 +10,7 @@ metadata:
     heritage: "{{ .Release.Service }}"
 data:
   {{- range $key, $value := .Values.avroSchemaFiles }}
-    {{ $key }} : |
-      {{ $value }}
+    {{ $key }} : |-
+      {{ $value | indent 6}}
   {{- end}}
 {{- end}}

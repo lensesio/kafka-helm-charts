@@ -1,10 +1,9 @@
 # Basic info
 replicaCount: 1
-# secretsRef The secret holding any passwords
-secretsRef: "__REQUIRED__"
+
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-ftp
-  tag: 1.0.0
+  tag: 0.4.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -14,9 +13,6 @@ resources:
   requests:
     memory: 256Mi
 
-#javaHeap option
-javaHeap: "256M"
-
 # Monitoring
 monitoring:
   pipeline: "__REQUIRED__"
@@ -24,54 +20,34 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
 # Connect values
 
+#javaHeap option
+javaHeap: "256M"
+
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.ftp.source.FtpSourceConnector"
@@ -82,38 +58,20 @@ applicationId: "__REQUIRED__"
 #maxTasks The number of tasks to spawn
 maxTasks: 1
 
-# address ftp address[:port] type: STRING importance: HIGH
-address: "__REQUIRED__"
-
-# fileMaxage ignore files older than this; ISO8601 duration type: STRING importance: HIGH
-fileMaxage: "__REQUIRED__"
-
 # keystyle what the output key is set to: `string` => filename; `struct` => structure with filename and offset type: STRING importance: HIGH
 keystyle: "__REQUIRED__"
 
 # maxPollRecords Max number of records returned per poll type: INT importance: LOW
 maxPollRecords: 10000
 
-# monitorTail comma separated lists of path:destinationtopic; tail of file is tracked type: LIST importance: HIGH
-monitorTail: 
-
-# user ftp user name to login type: STRING importance: HIGH
-user: "__REQUIRED__"
-
 # sourcerecordconverter TODO type: CLASS importance: HIGH
 sourcerecordconverter: com.datamountaineer.streamreactor.connect.ftp.source.NopSourceRecordConverter
 
+# monitorTail comma separated lists of path:destinationtopic; tail of file is tracked type: LIST importance: HIGH
+monitorTail: 
+
 # maxBackoff on failure, exponentially backoff to at most this ISO8601 duration type: STRING importance: HIGH
 maxBackoff: PT30M
-
-# protocol FTPS or FTP protocol type: STRING importance: LOW
-protocol: ftp
-
-# monitorUpdate comma separated lists of path:destinationtopic; whole file is tracked type: LIST importance: HIGH
-monitorUpdate: 
-
-# password ftp password key to login type in the secret
-passwordKey: "__REQUIRED__"
 
 # fileconverter TODO type: CLASS importance: HIGH
 fileconverter: com.datamountaineer.streamreactor.connect.ftp.source.SimpleFileConverter
@@ -121,3 +79,20 @@ fileconverter: com.datamountaineer.streamreactor.connect.ftp.source.SimpleFileCo
 # refresh how often the ftp server is polled; ISO8601 duration type: STRING importance: HIGH
 refresh: "__REQUIRED__"
 
+# fileMaxage ignore files older than this; ISO8601 duration type: STRING importance: HIGH
+fileMaxage: "__REQUIRED__"
+
+# monitorUpdate comma separated lists of path:destinationtopic; whole file is tracked type: LIST importance: HIGH
+monitorUpdate: 
+
+# address ftp address[:port] type: STRING importance: HIGH
+address: "__REQUIRED__"
+
+# user ftp user name to login type: STRING importance: HIGH
+user: "__REQUIRED__"
+
+# protocol FTPS or FTP protocol type: STRING importance: LOW
+protocol: ftp
+
+# password ftp password key to login type in the secret
+password: "__REQUIRED__"
