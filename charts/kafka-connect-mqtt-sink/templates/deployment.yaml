@@ -98,7 +98,7 @@ spec:
         - name: CONNECTOR_CONNECT_MQTT_HOSTS
           value: {{ .Values.hosts | quote }} 
         - name: CONNECTOR_CONNECT_MQTT_CLIENT_ID
-          value: {{ .Values.clientId | quote }}                       
+          value: {{ .Values.clientId | quote }}
         - name: CONNECTOR_CONNECT_MQTT_CLEAN
           value: {{ .Values.clean | quote }}
         - name: CONNECTOR_CONNECT_MQTT_TIMEOUT
@@ -112,7 +112,7 @@ spec:
         - name: CONNECTOR_CONNECT_MQTT_RETRY_INTERVAL
           value: {{ .Values.retryInterval | quote }}  
         - name: CONNECTOR_CONNECT_MQTT_MAX_RETRIES
-          value: {{ .Values.maxRetries | quote }}                  
+          value: {{ .Values.maxRetries | quote }}
         - name: CONNECTOR_CONNECT_MQTT_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
@@ -120,7 +120,7 @@ spec:
         - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
           value: {{ .Values.avroSchemas | quote }}
         - name: CONNECTOR_CONNECT_MQTT_CONVERTER_THROW_ON_ERROR
-          value: {{ .Values.converterThrowOnError | quote }}          
+          value: {{ .Values.converterThrowOnError | quote }}
 
         {{- if .Values.sslEnabled }}
         - name: CONNECTOR_CONNECT_MQTT_SSL_CA_CERT
