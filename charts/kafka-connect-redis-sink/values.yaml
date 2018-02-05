@@ -4,7 +4,7 @@ replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-redis-sink
-  tag: 0.4.1
+  tag: 1.0.1
   pullPolicy: IfNotPresent
 
 # Resource management
