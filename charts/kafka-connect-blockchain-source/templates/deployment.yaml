@@ -116,23 +116,6 @@ spec:
               name: {{ template "fullname" . }}-kafka-secrets
               key:  "client.keystore.password"
 
-        - name: CONNECTOR_CONSUMER_SECURITY_PROTOCOL
-          value: {{ .Values.kafka.secruityProtocol }}
-        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_LOCATION
-          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
-        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_LOCATION
-          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
-        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}-kafka-secrets
-              key:  "client.truststore.password"                  
-        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}-kafka-secrets
-              key:  "client.key.store.password"
-
         - name: CONNECTOR_PRODUCER_SECURITY_PROTOCOL
           value: {{ .Values.kafka.secruityProtocol }}
         - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_LOCATION
