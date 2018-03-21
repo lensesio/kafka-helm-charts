@@ -34,14 +34,27 @@ ssl:
     enabled: false
     existingClaim:
 
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
+    
 # Connect values
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
@@ -109,16 +122,16 @@ keepAlive: 5000
 clean: true
 
 # sslEnabled enabled tls
-sslEnabled: false
+tlsEnabled: false
 
-# sslCert is certificate file (server.crt) data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-sslCert: 
+# sslCert is certificate file (server.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+serverCrt: 
 
-# sslCaCert is the CA certificate (ca.crt) file data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-sslCaCert: 
+# sslCaCert is the CA certificate (ca.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+caCrt: 
 
-# sslKey Certificate private (server.key) key file data to be mounted in the secret. type: STRING importance: MEDIUM
-sslKey: 
+# sslKey Certificate private (server.key) base64 encoded data to be mounted in the secret. type: STRING importance: MEDIUM
+serverKey: 
 
 # converter.avro.schema If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. 
 # The format is $JMS_TOPIC=$AVRO_SCHEMA_FILE_NAME type: STRING importance: HIGH

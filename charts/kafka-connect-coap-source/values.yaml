@@ -23,6 +23,24 @@ monitoring:
 # lenses 
 lensesUser: ""
 
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism:  
+
 # Connect values
   # javaHeap options    
 javaHeap: 256M
@@ -99,24 +117,24 @@ privateKeyFileData:
 # This put in a config map and mounted as /etc/landoop/certs/private-key.pem 
 privateKeyFileData: 
 
-# For SSL, key and truststore binary files are need. You can either use persistent volumes
-# or distribute to files to each host and set the path in ssl.path
-# They will be mounted into /etc/landoop/ssl. 
-# The files MUST be named truststore.jks and keystore.jks
-ssl:
-  enabled: false
-  # Path to the directory on the kubernetes hosts
-  path: "/ssl"
+# sslEnabled enables ssl mounts
+sslEnabled: false
 
 # truststorePassKey The password  key of the trust store in the secret
-truststorePass:
+trustStorePass:
+
+# trustStoreFileData is the base64 contents of the truststore file
+trustStoreFileData:
 
 # keystorePassKey The password key of the key store in the secret
-keystorePass:
+keyStorePass:
+
+# keyStoreFileData is the base64 contents of the keystore file
+keyStoreFileData:
 
 # certChainKey The key to use to get the certificate chain. type: STRING importance: LOW
 certChainKey: client
 
-# certs The password of the trust store. type: LIST importance: LOW
+# certs
 certs: 
 

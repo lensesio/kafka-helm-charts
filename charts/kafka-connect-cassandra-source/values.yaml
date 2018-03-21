@@ -13,8 +13,6 @@ resources:
   requests:
     memory: 256Mi
 
-
-
 # Monitoring
 monitoring:
   pipeline: "__REQUIRED__"
@@ -22,20 +20,26 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# For SSL, key and truststore binary files are need. You can either use persistent volumes
-# or distribute to files to each host and set the path in ssl.path
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
 # lenses 
 lensesUser: ""
+
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
 
 #javaHeap option
 javaHeap: "256M"
@@ -145,34 +149,26 @@ consistencyLevel:
 # fetchSize The number of records the Cassandra driver will return at once. type: INT importance: MEDIUM
 fetchSize: 5000
 
-
-# For SSL, key and truststore binary files are need. You can either use persistent volumes
-# or distribute to files to each host and set the path in ssl.path
-# They will be mounted into /etc/landoop/ssl. 
-# The files MUST be named truststore.jks and keystore.jks
-ssl:
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
 # sslEnabled Secure Cassandra driver connection via SSL. type: BOOLEAN importance: LOW
 sslEnabled: false
 
-# keyStorePassword keyStorePassword key for the client Key Store type in the secret
-keyStorePassword: 
+# trustStoreType Type of the Trust Store, defaults to JKS type: STRING importance: MEDIUM
+trustStoreType: JKS
+
+# trustStoreFile The base64 encode contents of the truststore
+trustStoreFileData:
+
+# trustStorePassword Password Key for the client Trust Store in the secret
+trustStorePassword: 
 
 # keyStoreType Type of the Key Store, defauts to JKS type: STRING importance: MEDIUM
 keyStoreType: JKS
 
-# trustStorePasswordKey Password key for the truststore in the secret
-trustStorePassword: 
+# keyStorePassword Password key for the client Key Store type in the secret
+keyStorePassword: 
 
-# trustStoreType Type of the Trust Store, defaults to JKS type: STRING importance: MEDIUM
-trustStoreType: JKS
+# keyStoreFileData The base64 encode contents of the keystore
+keyStoreFileData:
 
 # sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
 sslClientCertAuth: false

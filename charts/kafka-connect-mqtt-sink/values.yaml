@@ -23,13 +23,26 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
+
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
 
 # Connect values
 
@@ -95,16 +108,16 @@ keepAlive: 5000
 serviceQuality: "__REQUIRED__"
 
 # sslEnabled enabled tls
-sslEnabled: false
+tlsEnabled: false
 
-# sslCert is certificate file (server.crt) base64 encoded data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-sslCert: 
+# serverCrt is certificate file (server.crt) base64 encoded data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+serverCrt: 
 
-# sslCaCert is the CA certificate (ca.crt) base64 encoded file data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-sslCaCert: 
+# caCert is the CA certificate (ca.crt) base64 encoded file data to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+caCert: 
 
-# sslKey Certificate private (server.key) key base64 encoded file data to be mounted in the secret. type: STRING importance: MEDIUM
-sslKey: 
+# serverKey Certificate private (server.key) key base64 encoded file data to be mounted in the secret. type: STRING importance: MEDIUM
+serverKey: 
 
 # timeout Provides the time interval to establish the mqtt connection type: INT importance: LOW
 timeout: 3000

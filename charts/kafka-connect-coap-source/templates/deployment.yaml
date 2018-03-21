@@ -22,10 +22,42 @@ spec:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
-        configTopic: "{connect-{{ .Values.clusterName }}-configs"
-        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
-        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
+      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.sslEnabled }} 
+      volumes:
+        {{- if .Values.sslEnabled }}
+        - name: connector-secrets
+          secret:
+            secretName: {{ template "fullname" . }}
+            defaultMode: 256
+            items:
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks 
+              - key: private-key.pem
+                path: private-key.pem
+              - key: public-key.pem
+                path: public-key.pem    
+        {{- end -}}        
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}        
+        - name: kafka-secrets
+          secret:
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              {{- end -}} 
+        {{- end -}} 
+      {{- end -}}            
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -39,7 +71,18 @@ spec:
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
-{{ toYaml .Values.resources | indent 10 }}          
+{{ toYaml .Values.resources | indent 10 }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.sslEnabled }} 
+        volumeMounts:
+          {{- if .Values.sslEnabled }}
+          - name: connector-secrets
+            mountPath: "/etc/landoop/connector-secrets" 
+          {{- end -}}  
+          {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}
+          - name: kafka-secrets
+            mountPath: "/etc/landoop/kafka-secrets" 
+          {{- end -}}  
+        {{- end }}          
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -77,6 +120,60 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
+        # add connect worker and connector ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECT_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECT_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECT_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECT_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: CONNECTOR_CONSUMER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.key.store.password"
+
+        - name: CONNECTOR_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"                                         
+        {{- end -}}            
+
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -110,38 +207,25 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ template "fullname" . }}
-              key:  "password"        
+              key:  "connect.coap.password"        
 
-        {{- if .Values.ssl.enabled }}  
+        {{- if .Values.sslEnabled }}  
         - name: CONNECTOR_CONNECT_COAP_PUBLIC_KEY_FILE
-          value: "/etc/landoop/certs/public-key.pem "
+          value: "/etc/landoop/connector-secrets/public-key.pem "
         - name: CONNECTOR_CONNECT_COAP_PRIVATE_KEY_FILE
-          value: "/etc/landoop/certs/private-key.pem"
+          value: "/etc/landoop/connector-secrets/private-key.pem"
         - name: CONNECTOR_CONNECT_COAP_TRUSTSTORE_PATH
-          value: "/etc/landoop/ssl/truststore.jks"
+          value: "/etc/landoop/connector-secrets/client.truststore.jks"
         - name: CONNECTOR_CONNECT_COAP_KEYSTORE_PATH
-          value: "/etc/landoop/ssl/keystore.jks"
+          value: "/etc/landoop/connector-secrets/client.keystore.jks"
         - name: CONNECTOR_CONNECT_COAP_KEYSTORE_PASS
           valueFrom:
             secretKeyRef:
               name: {{ template "fullname" . }}
-              key:  "keystorePass"   
+              key:  "connect.coap.keystore.pass"   
         - name: CONNECTOR_CONNECT_COAP_TRUSTSTORE_PASS
           valueFrom:
             secretKeyRef:
               name: {{ template "fullname" . }}
-              key:  "truststorePass"
-        volumeMounts:
-          - mountPath: "/etc/landoop/ssl"
-            name: ssl
-          - mountPath: "/etc/landoop/certs"
-            name: certs 
-      volumes:
-        # Use for SSL keystores and trust stores from host path
-        - name: ssl
-          hostPath:
-            path: {{ .Values.ssl.path | quote }}
-        - name: certs
-          configMap:
-            name: "{{ template "fullname" . }}-tls"
+              key:  "connect.coap.truststore.pass"
         {{- end -}}

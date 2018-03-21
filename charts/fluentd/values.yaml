@@ -5,18 +5,20 @@ image:
   tag: elasticsearch
   pullPolicy: Always
 
-namespace: de-datahub-d
-
-# elasticScheme http or http
+# elasticScheme http or https
 elasticScheme: http
+
 # elasticSearch host
 elasticSearchHost: elastic
+
 # elasticSearch port
 elasticSearchPort: 9200  
+
 # elasticUsername
 fluentDUsername: fluentd
+
 # password keys
-fluentDPasswordKey: 
+xpackSettings: 
 
 extraMounts:
   enabled: false

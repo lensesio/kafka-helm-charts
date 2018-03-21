@@ -22,10 +22,25 @@ spec:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
-        configTopic: "{connect-{{ .Values.clusterName }}-configs"
-        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
-        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
+      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+      volumes:                
+        - name: kafka-secrets
+          secret:
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              {{- end -}}
+      {{- end -}}            
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -38,6 +53,13 @@ spec:
             - /etc/landoop/bin/liveliness.sh
           initialDelaySeconds: 30
           timeoutSeconds: 5
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+        volumeMounts: 
+          - name: kafka-secrets
+            mountPath: "/etc/landoop/kafka-secrets"
+        {{- end }} 
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -75,6 +97,60 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
+        # add connect worker and connector ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECT_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECT_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECT_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECT_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: CONNECTOR_CONSUMER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.key.store.password"
+
+        - name: CONNECTOR_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"                                         
+        {{- end -}}  
+
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -101,7 +177,4 @@ spec:
         - name: CONNECTOR_CONNECT_KUDU_ERROR_POLICY
           value: {{ .Values.errorPolicy | quote }}          
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.progressEnabled | quote }}                  
-
-        resources:
-{{ toYaml .Values.resources | indent 10 }}
+          value: {{ .Values.progressEnabled | quote }}
