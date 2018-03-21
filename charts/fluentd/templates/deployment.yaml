@@ -37,8 +37,8 @@ spec:
           - name: FLUENT_ELASTICSEARCH_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ .Values.secretsRef | quote }}
-                key: {{ .Values.fluentDPasswordKey }}
+                name: {{ template "fullname" . }}
+                key: "xpack"
         resources:
           limits:
             memory: {{ .Values.resources.limits.memory | quote }}

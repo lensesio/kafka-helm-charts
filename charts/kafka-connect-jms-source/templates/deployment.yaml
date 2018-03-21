@@ -22,34 +22,28 @@ spec:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
-        configTopic: "{connect-{{ .Values.clusterName }}-configs"
-        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
-        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
-          secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
+      volumes: 
+        - name: schemas
           configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
+            name: "{{ template "fullname" . }}-schemas"  
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}                  
+        - name: kafka-secrets
+          secret:
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              {{- end -}}
+      {{- end }}            
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -64,19 +58,13 @@ spec:
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
+        volumeMounts: 
+          - mountPath: "/etc/landoop/schemas"
+            name: schemas
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+          - name: kafka-secrets
+            mountPath: "/etc/landoop/kafka-secrets"
+        {{- end }} 
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -114,6 +102,42 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
+        # add connect worker and connector ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECT_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECT_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECT_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECT_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: CONNECTOR_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"                                         
+        {{- end -}}            
   
         # Connector properties
         - name: CONNECTOR_NAME
@@ -124,41 +148,35 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-
-        - name: CONNECTOR_CONNECT_JMS_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }}
-        - name: CONNECTOR_CONNECT_JMS_USERNAME
-          value: {{ .Values.username | quote }}
-        - name: CONNECTOR_CONNECT_JMS_DESTINATION_SELECTOR
-          value: {{ .Values.destinationSelector | quote }}
         - name: CONNECTOR_CONNECT_JMS_KCQL
           value: {{ .Values.kcql | quote }}
-        - name: CONNECTOR_CONNECT_JMS_CONVERTER_THROW_ON_ERROR
-          value: {{ .Values.converterThrowOnError | quote }}
-        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
-          value: {{ .Values.progressEnabled | quote }}
-        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
-          value: {{ .Values.initialContextExtraParams | quote }}
-        - name: CONNECTOR_CONNECT_JMS_MAX_RETRIES
-          value: {{ .Values.maxRetries | quote }}
-        - name: CONNECTOR_CONNECT_JMS_RETRY_INTERVAL
-          value: {{ .Values.retryInterval | quote }}
+        - name: CONNECTOR_CONNECT_JMS_USERNAME
+          value: {{ .Values.username | quote }}
         - name: CONNECTOR_CONNECT_JMS_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
-        - name: CONNECTOR_CONNECT_JMS_ERROR_POLICY
-          value: {{ .Values.errorPolicy | quote }}
-        - name: CONNECTOR_CONNECT_JMS_SUBSCRIPTION_NAME
-          value: {{ .Values.subscriptionName | quote }}
-        - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
-          value: {{ .Values.avroSchemas | quote }}
-        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_FACTORY
-          value: {{ .Values.initialContextFactory | quote }}
+              name: {{ template "fullname" . }}
+              key:  "connect.jms.password"
+        - name: CONNECTOR_CONNECT_JMS_BATCH_SIZE
+          value: {{ .Values.batchSize | quote }}
         - name: CONNECTOR_CONNECT_JMS_URL
           value: {{ .Values.url | quote }}
-        - name: CONNECTOR_CONNECT_JMS_SOURCE_DEFAULT_CONVERTER
-          value: {{ .Values.sourceDefaultConverter | quote }}
+        - name: CONNECTOR_CONNECT_JMS_SUBSCRIPTION_NAME
+          value: {{ .Values.subscriptionName | quote }} 
+        - name: CONNECTOR_CONNECT_JMS_DESTINATION_SELECTOR
+          value: {{ .Values.destinationSelector | quote }}                   
         - name: CONNECTOR_CONNECT_JMS_CONNECTION_FACTORY
           value: {{ .Values.connectionFactory | quote }}
+        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_FACTORY
+          value: {{ .Values.initialContextFactory | quote }} 
+        - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
+          value: {{ .Values.initialContextExtraParams | quote }}                   
+        - name: CONNECTOR_CONNECT_JMS_SOURCE_DEFAULT_CONVERTER
+          value: {{ .Values.sourceDefaultConverter | quote }}  
+        - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
+          value: {{ .Values.converterAvroSchemas | quote }} 
+        - name: CONNECTOR_CONNECT_JMS_CONVERTER_THROW_ON_ERROR
+          value: {{ .Values.converterThrowOnError | quote }}          
+        - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
+          value: {{ .Values.progressEnabled | quote }}
+          

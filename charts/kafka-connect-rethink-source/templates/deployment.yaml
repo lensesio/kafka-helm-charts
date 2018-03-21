@@ -22,34 +22,36 @@ spec:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
-        configTopic: "{connect-{{ .Values.clusterName }}-configs"
-        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
-        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
+      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.tlsEnabled }} 
       volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
+        {{- if .Values.tlsEnabled }}
+        - name: connector-secrets
           secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
+            secretName: {{ template "fullname" . }}
+            defaultMode: 256
+            items:
+              - key: ca.crt
+                path: ca.crt
+        {{- end -}}        
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}        
+        - name: kafka-secrets
+          secret:
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              {{- end -}} 
+        {{- end -}} 
+      {{- end -}}            
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -59,26 +61,24 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/landoop/liveliness.sh
+            - /etc/landoop/bin/liveliness.sh
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.tlsEnabled }} 
         volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
+          {{- if .Values.tlsEnabled }}
+          - name: connector-secrets
+            mountPath: "/etc/landoop/connector-secrets" 
+          {{- end -}}  
+          {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}
+          - name: kafka-secrets
+            mountPath: "/etc/landoop/kafka-secrets" 
+          {{- end -}}  
+        {{- end }}  
         env:
-               # JVM Heap Allowance
+        # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
           value: -Xmx{{ .Values.javaHeap }}
         - name: CONNECT_LOG4J_ROOT_LOGLEVEL
@@ -114,6 +114,42 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
+        # add connect worker and connector ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECT_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECT_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECT_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECT_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: CONNECTOR_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_PRODUCER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"                                         
+        {{- end -}}  
   
         # Connector properties
         - name: CONNECTOR_NAME
@@ -124,32 +160,34 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-
+        - name: CONNECTOR_CONNECT_RETHINK_KCQL
+          value: {{ .Values.kcql | quote }}          
+        - name: CONNECTOR_CONNECT_RETHINK_HOST
+          value: {{ .Values.host | quote }}
         - name: CONNECTOR_CONNECT_RETHINK_PORT
           value: {{ .Values.port | quote }}
+        - name: CONNECTOR_CONNECT_RETHINK_DB
+          value: {{ .Values.db | quote }}          
         - name: CONNECTOR_CONNECT_RETHINK_LINGER_MS
           value: {{ .Values.lingerMs | quote }}
         - name: CONNECTOR_CONNECT_RETHINK_RETHINK_USERNAME
           value: {{ .Values.rethinkUsername | quote }}
-        - name: CONNECTOR_CONNECT_RETHINK_RETHINK_CERT_FILE
-          value: {{ .Values.rethinkCertFile | quote }}
         - name: CONNECTOR_CONNECT_RETHINK_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.passwordKey }}
-        - name: CONNECTOR_CONNECT_RETHINK_DB
-          value: {{ .Values.db | quote }}
+              name: {{ template "fullname" . }}
+              key:  "connect.rethink.password"        
         - name: CONNECTOR_CONNECT_RETHINK_BATCH_SIZE
           value: {{ .Values.batchSize | quote }}
-        - name: CONNECTOR_CONNECT_RETHINK_HOST
-          value: {{ .Values.host | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
+
+        {{- if .Values.tlsEnabled }}
+        - name: CONNECTOR_CONNECT_RETHINK_RETHINK_CERT_FILE
+          value: "/etc/landoop/connector-secrets/ca.crt"
         - name: CONNECTOR_CONNECT_RETHINK_RETHINK_AUTH_KEY
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.secretsRef | quote }}
-              key:  {{ .Values.rethinkAuthKeyKey }}
-        - name: CONNECTOR_CONNECT_RETHINK_KCQL
-          value: {{ .Values.kcql | quote }}
+              name: {{ template "fullname" . }}
+              key:  "connect.rethink.rethink.auth.key"
+        {{- end -}}

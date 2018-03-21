@@ -1,18 +1,12 @@
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 GREEN='\033[0;32m'
-ARTIFACTORY_URL=https://landoop.github.io/helm-charts/
+ARTIFACTORY_URL=https://landoop.github.io/kafka-helm-charts/
 CHARTS=$(find charts -maxdepth 1 -mindepth 1 -type d)
 HELM_VERSION='v2.5.1'
 
 mkdir -p packages
 rm -rf packages/*.tgz
-
-echo "Verifying helm version"
-VERSION=$(helm version | grep -o '^Client.*SemVer:[^,]*' | grep -o 'v[0-9][.0-9]*')
-if [[ $VERSION != $HELM_VERSION ]]; then
-    echo "${RED}Expected helm version $HELM_VERSION, got $VERSION.${NC}"
-fi
 
 echo "Cleaning and preparing"
 find . -iname "*.tgz" -type f | grep -v 'docs/' | xargs rm

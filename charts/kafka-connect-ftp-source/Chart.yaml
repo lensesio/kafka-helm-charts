@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A chart for kafka-connect-ftp-source
 name: kafka-connect-ftp-source
-version: 1.0.0
+version: 1.0.1

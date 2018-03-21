@@ -1,4 +1,0 @@
-apiVersion: v1
-description: A chart containing the Confluents Kafka Rest
-name: confluent-kafka-rest
-version: 0.1.0

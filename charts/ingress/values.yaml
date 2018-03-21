@@ -1,8 +1,0 @@
-#path based rules, e.g grafana and prometheus
-rules:
-  - path: /"__REQUIRED__"
-    serviceName: "__REQUIRED__" 
-    servicePort: 0
-
-stripPrefixEnabled: true
-  

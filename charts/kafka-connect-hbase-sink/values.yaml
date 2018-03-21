@@ -1,10 +1,9 @@
 # Basic info
 replicaCount: 1
-# secretsRef The secret holding any passwords
-secretsRef: "__REQUIRED__"
+
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-hbase
-  tag: 1.0.0
+  tag: 1.0.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -24,54 +23,49 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
-# SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
-ssl:
-  enabled: false
-  # Path to the directory on the hosts
-  path: /ssl
-
-  # If persistent volumes should be used for ssl keystore/truststore paths
-  persistentVolumes:
-    enabled: false
-    existingClaim:
-
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
+
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
 
 # Connect values
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass
 connectorClass: "com.datamountaineer.streamreactor.connect.hbase.HbaseSinkConnector"
@@ -85,6 +79,18 @@ tasksMax: "__REQUIRED__"
 # topics to sink
 topics: "__REQUIRED__"
 
+# kcql connect.hbase.kcql type: STRING importance: HIGH
+kcql: "__REQUIRED__"
+
+# columnFamily The hbase column family. type: STRING importance: HIGH
+columnFamily: "__REQUIRED__"
+
+# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
+retryInterval: 60000
+
+# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
+maxRetries: 20
+
 # errorPolicy Specifies the action to be taken if an error occurs while inserting the data.
 # There are two available options:
 # NOOP - the error is swallowed
@@ -93,18 +99,6 @@ topics: "__REQUIRED__"
 # The error will be logged automatically type: STRING importance: HIGH
 errorPolicy: THROW
 
-# kcql connect.hbase.kcql type: STRING importance: HIGH
-kcql: "__REQUIRED__"
-
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true
-
-# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
-retryInterval: 60000
-
-# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
-maxRetries: 20
-
-# columnFamily The hbase column family. type: STRING importance: HIGH
-columnFamily: "__REQUIRED__"
 

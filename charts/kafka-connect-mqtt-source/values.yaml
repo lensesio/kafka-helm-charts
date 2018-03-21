@@ -1,11 +1,9 @@
 # Basic info
 replicaCount: 1
 
-# secretsRef The secret holding any passwords
-secretsRef: "__REQUIRED__"
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-mqtt
-  tag: 1.0.0
+  tag: 1.0.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -25,13 +23,6 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# SSL/TLS options can be enabled, some connectors provide SSL support, others the newer TLS
-# Set the corresponding value type to true. For SSL persistent volumes or hostPaths will be
-# mounted under /connector-extra-config. Set the connectors ssl/tls option paths to be use this
-# TLS is done via Secrets, create a secret for containing the certificates (base64 encoded) and
-# create a secret for them, adding the name of the secret to the `secretsRef` other wise if using
-# Eneco's Landscaper it will do this for you.
-
 # SSL mount path on hosts, should be the base path of any ssl keystore/truststore paths
 ssl:
   enabled: false
@@ -43,36 +34,49 @@ ssl:
     enabled: false
     existingClaim:
 
-# TLS, for those connectors supporting TLS certificates rather than ssl key/truststores
-# contents for mount take from config map
-tls:
-  enabled: false
-
 # lenses 
 lensesUser: ""
 
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
+    
 # Connect values
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
+
 # bootstrapServers A comma separated list of the kafka brokers
 bootstrapServers: kafka:9092
+
 # schemaRegistryURL A comman separated list of the Schema registry URL
 schemaRegistryURL: "http://schema-registry:8081"
+
 # restPort The rest port of Connect
 restPort: 8083
+
 # logLevel The log4j level
 logLevel: INFO
+
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+
 # valueConverter The key converter to/from Connects struct
 valueConveter: "io.confluent.connect.avro.AvroConverter"
-
-## Avro schemas, for those connectors, MQTT and JMS source that support Avro converters we
-## need the schemas, so we'll mount as a ConfigMap. Set the key value pairs, filename and data
-## matching the value option avroSchema. Key is the file name, value is the avro schema contents
-#avroSchemaFiles:
-#  schema_file_name:  ""
 
 # connectorClass class name of the connector
 connectorClass: "com.datamountaineer.streamreactor.connect.mqtt.source.MqttSourceConnector"
@@ -83,47 +87,29 @@ applicationId: "__REQUIRED__"
 #maxTasks The number of tasks to spawn
 maxTasks: 1
 
+# kcql Contains the Kafka Connect Query Language describing the sourced MQTT source and the target Kafka topics type: STRING importance: HIGH
+kcql: "__REQUIRED__"
+
+# hosts Contains the MQTT connection end points. type: STRING importance: HIGH
+hosts: "__REQUIRED__"
+
 # username Contains the Mqtt connection user name type: STRING importance: HIGH
 username: 
 
-# clean connect.mqtt.clean type: BOOLEAN importance: LOW
-clean: true
+# password is the MQTT password stored in a secret
+password: "__REQUIRED__"
 
-# sslKey Certificate private [config] key file path. type: STRING importance: MEDIUM
-sslKey: 
+# clientId Contains the Mqtt session client id type: STRING importance: LOW
+clientId: 
+
+# serviceQuality Specifies the Mqtt quality of service type: INT importance: MEDIUM
+serviceQuality: "__REQUIRED__"
 
 # timeout Provides the time interval to establish the mqtt connection type: INT importance: LOW
 timeout: 3000
 
 # pollingTimeout Provides the timeout to poll incoming messages type: INT importance: LOW
 pollingTimeout: 1000
-
-# converterThrowOnError 
-#  If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!;
-#  true will throw the exception.Default is false.
-#      type: BOOLEAN importance: HIGH
-converterThrowOnError: false
-
-# sslCaCert Provides the path to the CA certificate file to use with the Mqtt connection type: STRING importance: MEDIUM
-sslCaCert: 
-
-# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
-progressEnabled: true
-
-# hosts Contains the MQTT connection end points. type: STRING importance: HIGH
-hosts: "__REQUIRED__"
-
-# clientId Contains the Mqtt session client id type: STRING importance: LOW
-clientId: 
-
-# sslCert Provides the path to the certificate file to use with the Mqtt connection type: STRING importance: MEDIUM
-sslCert: 
-
-# serviceQuality Specifies the Mqtt quality of service type: INT importance: MEDIUM
-serviceQuality: "__REQUIRED__"
-
-# kcql Contains the Kafka Connect Query Language describing the sourced MQTT source and the target Kafka topics type: STRING importance: HIGH
-kcql: "__REQUIRED__"
 
 # keepAlive 
 #  The keep alive functionality assures that the connection is still open and both broker and client are connected to
@@ -132,9 +118,43 @@ kcql: "__REQUIRED__"
 #      type: INT importance: LOW
 keepAlive: 5000
 
-# passwordKey The key from the secret to take as the password MQTT password
-passwordKey: "__REQUIRED__"
+# clean connect.mqtt.clean type: BOOLEAN importance: LOW
+clean: true
 
-# avroSchemas If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. The format is $MQTT_TOPIC=$PATH_TO_AVRO_SCHEMA_FILE type: STRING importance: HIGH
-avroSchemas: 
+# sslEnabled enabled tls
+tlsEnabled: false
 
+# sslCert is certificate file (server.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+serverCrt: 
+
+# sslCaCert is the CA certificate (ca.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
+caCrt: 
+
+# sslKey Certificate private (server.key) base64 encoded data to be mounted in the secret. type: STRING importance: MEDIUM
+serverKey: 
+
+# converter.avro.schema If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. 
+# The format is $JMS_TOPIC=$AVRO_SCHEMA_FILE_NAME type: STRING importance: HIGH
+# The schemas will be mounted in /etc/landoop/schemas. The file name must match the keys in avroSchemaFiles
+
+#converterAvroSchemas:
+
+#avroSchemaFiles:
+  # schemaFileName1: |- 
+  #   "{
+  #     \"type\": \"record\",
+  #     \"name\": \"LongList\",
+  #     \"aliases\": [\"LinkedLongs\"],                      // old name for this
+  #     \"fields\" : [
+  #       {\"name\": \"value\", \"type\": \"long\"},             // each element has a long
+  #       {\"name\": \"next\", \"type\": [\"null\", \"LongList\"]} // optional next element
+  #     ]
+  #   }"
+# converterThrowOnError 
+#  If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!;
+#  true will throw the exception.Default is false.
+#      type: BOOLEAN importance: HIGH
+converterThrowOnError: false
+
+# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
+progressEnabled: true

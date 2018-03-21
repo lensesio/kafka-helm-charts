@@ -1,5 +1,0 @@
-apiVersion: v1
-description: A chart for kafka-connect-elastic5s-sink
-name: kafka-connect-elastic5s-sink
-version: 1.0.0
-

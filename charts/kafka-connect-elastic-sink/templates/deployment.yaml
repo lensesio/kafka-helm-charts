@@ -22,34 +22,25 @@ spec:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
-        configTopic: "{connect-{{ .Values.clusterName }}-configs"
-        statusTopic: "{connect-{{ .Values.clusterName }}-statuses"
-        offsetTopic: "{connect-{{ .Values.clusterName }}-offsets"
     spec:
-      volumes:
-        # Use for SSL keystores and trust stores from host path or persistent volumes
-        {{- if .Values.ssl.enabled}}
-        - name: connect-ssl
-        {{- if .Values.ssl.persistentVolumes.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ if .Values.ssl.persistentVolumes.existingClaim }}{{ .Values.ssl.persistentVolumes.existingClaim }}{{- else }}{{ template "fullname" . }}{{- end }}
-        {{- else}}
-          hostPath:
-            path: {{ .Values.ssl.path }}
-        {{- end -}}
-        {{- end -}}
-        # Get TKS from secrets
-        {{- if .Values.tls.enabled }}
-        - name: connect-tls
+      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+      volumes:                
+        - name: kafka-secrets
           secret:
-            secretName: {{ .Values.secretsRef | quote }}
-        {{- end }}
-        # Get avro schemas from config-map
-        {{- if .Values.avroSchemas }}
-        - name: connect-avro-schemas
-          configMap:
-            name: {{ template "fullname" . }}
-        {{- end }}
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              {{- end -}}
+      {{- end -}}            
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -64,19 +55,11 @@ spec:
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
-        volumeMounts:
-          {{- if .Values.ssl.enabled }}
-          - mountPath: /connector-ssl
-            name: connect-ssl
-          {{- end -}}
-          {{- if .Values.tls.enabled }}
-          - mountPath: /connector-tls
-            name: connect-tls
-          {{- end }}
-          {{- if .Values.avroSchemas }}
-          - mountPath: /connector-avro-schemas
-            name: connect-avro-schemas
-          {{- end }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+        volumeMounts: 
+          - name: kafka-secrets
+            mountPath: "/etc/landoop/kafka-secrets"
+        {{- end }} 
         env:
         # JVM Heap Allowance
         - name: KAFKA_HEAP_OPTS
@@ -114,7 +97,44 @@ spec:
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
 
-  
+        # add connect worker and connector ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECT_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECT_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECT_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECT_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: CONNECTOR_CONSUMER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.truststore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_LOCATION
+          value: "/etc/landoop/kafka-secrets/client.keystore.jks"
+        - name: CONNECTOR_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.key.store.password"
+                                         
+        {{- end -}}  
+
         # Connector properties
         - name: CONNECTOR_NAME
           value: {{ .Values.applicationId | quote }}
@@ -124,18 +144,21 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.tasksMax | quote }}
-
-        - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
-          value: {{ .Values.clusterName | quote }}
-        - name: CONNECTOR_CONNECT_ELASTIC_WRITE_TIMEOUT
-          value: {{ .Values.writeTimeout | quote }}
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}           
+        - name: CONNECTOR_CONNECT_ELASTIC_KCQL
+          value: {{ .Values.kcql | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_ERROR_THROW
           value: {{ .Values.errorThrow | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
+
+        # elastic  
+        - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
+          value: {{ .Values.clusterName | quote }}
+        - name: CONNECTOR_CONNECT_ELASTIC_WRITE_TIMEOUT
+          value: {{ .Values.writeTimeout | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_URI_PREFIX
           value: {{ .Values.uriPrefix | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_URI
           value: {{ .Values.uri | quote }}
-        - name: CONNECTOR_CONNECT_ELASTIC_KCQL
-          value: {{ .Values.kcql | quote }}
