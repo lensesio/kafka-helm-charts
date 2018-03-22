@@ -40,6 +40,8 @@ kafka:
     keyStorePassword:
   sasl:
     enabled: false
+    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
+    keyTabData:    
     # jaasFileData is the base64 encoded contents of the kafka jaas file
     jaasFileData: 
     #GSSAP, SCRAM or PLAIN

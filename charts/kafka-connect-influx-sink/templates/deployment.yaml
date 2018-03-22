@@ -39,6 +39,8 @@ spec:
               {{- if .Values.kafka.sasl.enabled }}
               - key: jaas.conf
                 path: jass.conf
+              - key: keytab
+                path: keytab  
               {{- end -}}
       {{- end -}}            
       containers:
