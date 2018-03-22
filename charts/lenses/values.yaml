@@ -24,9 +24,6 @@ resources:
 # and rolebinding should be created for the service account
 rbacEnable: true
 
-# lensesOpts options Set any jvm options
-lensesJVMOpts:
-
 # restPort is the Lenses rest port
 restPort: 3030
 
@@ -77,41 +74,66 @@ ingress:
     crt: ""
     key: ""
 
+# kafka ssl
+# The key and truststores base64 encoded contents
+# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+kafka:
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
+    keyTabData:
+    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    jaasFileData: 
+    #GSSAP, SCRAM or PLAIN
+    mechanism: 
 
-# WARNING!!!
-# lenses.port=3030 must match restPort
-# lenses.root.path must match the ingress.path if behind a reverse proxy like traefik
-# lenses.service.account must match the serviceAccount
-# lenses.sql.execution.mode must be set to KUBERNETES
-# lenses.kubernetes.config.file must be empty so lenses and bootstrap from the cluster
+lenses:
+  # lensesOpts options Set any jvm options
+  lensesJVMOpts:
 
-# configFileData is the contents of the Lenses config file to create a configmap
-configFileData: |-
-  lenses.kubernetes.config.file=""
-  lenses.sql.execution.mode=KUBERNETES
-  lenses.port=3030
-  lenses.root.path="/lenses"
-  lenses.kubernetes.service.account=default
-  lenses.topics.processors=_kafka_lenses_processors
-  lenses.jmx.port=9101
-  lenses.jmx.schema.registry=""
-  lenses.schema.registry.urls=""
-  lenses.grafana=""
-  lenses.kafka.brokers=""
-  lenses.topics.profiles=_kafka_lenses_profiles
-  lenses.zookeeper.hosts=""
-  lenses.jmx.zookeepers=""
-  lenses.jmx.connect=[]
-  lenses.connect.clusters=[]
-  lenses.topics.metrics=_kafka_lenses_metrics
-  lenses.topics.audits=_kafka_lenses_audits
-  lenses.alert.manager.endpoints=""
-  lenses.alert.plugins.slack.channel=lenses-slack
-  lenses.kubernetes.incluster.name=landoop
+  # WARNING!!!
+  # FOR SASL/SSL set the paths for keystores/truststore, jaas files, keytabs to /mnt/secrets
+  
+  # lenses.port=3030 must match restPort
+  # lenses.root.path must match the ingress.path if behind a reverse proxy like traefik
+  # lenses.service.account must match the serviceAccount
+  # lenses.sql.execution.mode must be set to KUBERNETES
+  # lenses.kubernetes.config.file must be empty so lenses and bootstrap from the cluster
+
+  # configFileData is the contents of the Lenses config file to create a configmap
+  configFileData: |-
+    lenses.kubernetes.config.file=""
+    lenses.sql.execution.mode=KUBERNETES
+    lenses.port=3030
+    lenses.root.path="/lenses"
+    lenses.kubernetes.service.account=default
+    lenses.topics.processors=_kafka_lenses_processors
+    lenses.jmx.port=9101
+    lenses.jmx.schema.registry=""
+    lenses.schema.registry.urls=""
+    lenses.grafana=""
+    lenses.kafka.brokers=""
+    lenses.topics.profiles=_kafka_lenses_profiles
+    lenses.zookeeper.hosts=""
+    lenses.jmx.zookeepers=""
+    lenses.jmx.connect=[]
+    lenses.connect.clusters=[]
+    lenses.topics.metrics=_kafka_lenses_metrics
+    lenses.topics.audits=_kafka_lenses_audits
+    lenses.alert.manager.endpoints=""
+    lenses.alert.plugins.slack.channel=lenses-slack
+    lenses.kubernetes.incluster.name=landoop
 
 
-# securityFileData is the base64 encoded contents of the file containg Lenses secrets (usernames/passwords) mounted as secret LENSES_SECRUITY in /mnt/secrets
-securityFileData: 
+  # securityFileData is the base64 encoded contents of the file containg Lenses secrets (usernames/passwords) mounted as secret LENSES_SECRUITY in /mnt/secrets
+  securityFileData: 
 
-# licenseFileData is the base64 encoded contents of the Lenses license key mounted as license.json in /mnt/secrets
-licenseFileData: 
+  # licenseFileData is the base64 encoded contents of the Lenses license key mounted as license.json in /mnt/secrets
+  licenseFileData: 
