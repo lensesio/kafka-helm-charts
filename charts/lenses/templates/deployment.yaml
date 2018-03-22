@@ -35,6 +35,25 @@ spec:
         - name: lenses-settings
           configMap:
             name: {{ template "fullname" . }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}              
+        - name: kafka-secrets
+          secret:
+            secretName: {{ template "fullname" . }}-kafka-secrets
+            defaultMode: 256
+            items:
+              {{- if .Values.kafka.ssl.enabled }}
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks 
+                path: client.truststore.jks
+              {{- end -}}  
+              {{- if .Values.kafka.sasl.enabled }}
+              - key: jaas.conf
+                path: jass.conf
+              - key: keytab
+                path: keytab  
+              {{- end -}}
+        {{- end }}    
       serviceAccountName: {{ .Values.serviceAccount }}      
       containers:
       - name: {{ .Chart.Name }}
@@ -53,9 +72,13 @@ spec:
             mountPath: "/mnt/settings"
           - name: lenses-secrets
             mountPath: "/mnt/secrets"
-            readOnly: true  
+            readOnly: true 
+          {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+          - name: kafka-secrets
+            mountPath: "/mnt/secrets"
+          {{- end }}      
         env:
           - name: LENSES_HEAP_OPTS
-            value: {{ .Values.lensesJVMOpts | quote }} 
+            value: {{ .Values.lenses.lensesJVMOpts | quote }} 
         resources:
 {{ toYaml .Values.resources | indent 10 }}
