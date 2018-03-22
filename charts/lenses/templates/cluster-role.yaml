@@ -1,0 +1,46 @@
+{{- if .Values.rbacEnable }}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+rules:
+- apiGroups: [""]
+  resources:
+    - namespaces
+  verbs: 
+    - list
+    - watch
+    - get
+    - create
+- apiGroups: ["", "extensions"]
+  resources:
+    - pods
+    - deployments
+  verbs: 
+    - list
+    - watch
+    - get
+    - update
+    - create
+    - delete
+    - patch
+- apiGroups: [""]
+  resources:
+    - replicasets
+  verbs: 
+    - list
+    - watch
+    - get    
+- apiGroups: [""]
+  resources:
+    - events
+  verbs: 
+    - list
+    - watch
+    - get           
+{{- end }}

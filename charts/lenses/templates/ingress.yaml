@@ -1,0 +1,29 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name:  {{ template "fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: "lenses"
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  annotations:
+  {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: {{ .Values.ingress.path }}
+        backend:
+          serviceName: {{ template "fullname" . }}
+          servicePort: {{ .Values.restPort }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - secretName: "{{ template "fullname" . }}-ingress"
+{{- end -}}
+{{- end -}}        
