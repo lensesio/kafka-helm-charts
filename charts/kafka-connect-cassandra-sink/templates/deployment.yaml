@@ -161,8 +161,6 @@ spec:
         - name: CONNECT_SECURITY_PROTOCOL
           value: {{ .Values.kafka.secruityProtocol}}   
         - name: CONNECT_SASL_MECHANISM
-          value: {{ .Values.kafka.sasl.mechanism}} 
-        - name: CONNECTOR_PRODUCER_SASL_MECHANISM
           value: {{ .Values.kafka.sasl.mechanism}}   
         - name: CONNECTOR_CONSUMER_SASL_MECHANISM
           value: {{ .Values.kafka.sasl.mechanism}}    

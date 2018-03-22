@@ -115,6 +115,17 @@ spec:
               fieldPath: status.podIP
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
+        # add connect worker and connector sasl properties   
+        {{- if .Values.kafka.sasl.enabled }}
+        - name: KAFKA_OPTS
+          value: "-Djava.security.auth.login.config=/etc/landoop/kafka-secrets/jaas.conf"
+        - name: CONNECT_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}   
+        - name: CONNECT_SASL_MECHANISM
+          value: {{ .Values.kafka.sasl.mechanism}} 
+        - name: CONNECTOR_PRODUCER_SASL_MECHANISM
+          value: {{ .Values.kafka.sasl.mechanism}}   
+        {{- end -}}          
 
                 # add connect worker and connector ssl properties   
         {{- if .Values.kafka.ssl.enabled }}
