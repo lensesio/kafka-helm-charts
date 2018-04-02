@@ -79,6 +79,78 @@ spec:
           {{- end }}      
         env:
           - name: LENSES_HEAP_OPTS
-            value: {{ .Values.lenses.lensesJVMOpts | quote }} 
+            value: {{- if .Values.kafka.sasl.enabled }} "-Djava.security.auth.login.config=/etc/mnt/secrets/jaas.conf " {{- end -}}{{ .Values.lenses.lensesJVMOpts | quote }} 
+        
+        # add sasl properties   
+        {{- if .Values.kafka.sasl.enabled }}
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}} 
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}} 
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}                 
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SASL_MECHANISM
+          value: {{ .Values.kafka.sasl.mechanism}}    
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SASL_MECHANISM
+          value: {{ .Values.kafka.sasl.mechanism}}  
+        - name: LENSES_KAFKA_SETTINGS_KSTREAMS_SASL_MECHANISM
+          value: {{ .Values.kafka.sasl.mechanism}}      
+        {{- end -}}  
+
+        # ssl properties   
+        {{- if .Values.kafka.ssl.enabled }}
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/client.truststore.jks"
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/client.keystore.jks"
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/client.truststore.jks"
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/client.keystore.jks"
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+ 
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SECURITY_PROTOCOL
+          value: {{ .Values.kafka.secruityProtocol}}
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/client.truststore.jks"
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/client.keystore.jks"
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.truststore.password"                  
+        - name: LENSES_KAFKA_SETTINGS_KSTREAM_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-kafka-secrets
+              key:  "client.keystore.password"
+                                        
+        {{- end -}}
+
         resources:
 {{ toYaml .Values.resources | indent 10 }}
