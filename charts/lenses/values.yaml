@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: eu.gcr.io/k8-engine/lenses
-  tag: latest
+  repository: landoop/lenses
+  tag: 1.1.2
   pullPolicy: Always
 
 # Monitoring

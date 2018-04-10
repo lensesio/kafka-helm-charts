@@ -78,8 +78,8 @@ spec:
             mountPath: "/mnt/secrets"
           {{- end }}      
         env:
-          - name: LENSES_HEAP_OPTS
-            value: {{- if .Values.kafka.sasl.enabled }} "-Djava.security.auth.login.config=/etc/mnt/secrets/jaas.conf " {{- end -}}{{ .Values.lenses.lensesJVMOpts | quote }} 
+        - name: LENSES_HEAP_OPTS
+          value: {{- if .Values.kafka.sasl.enabled }} "-Djava.security.auth.login.config=/etc/mnt/secrets/jaas.conf " {{- end -}}{{ .Values.lenses.lensesJVMOpts | quote }} 
         
         # add sasl properties   
         {{- if .Values.kafka.sasl.enabled }}
