@@ -1,14 +1,18 @@
+### TO DEPLOY SQL RUNNERS IN THE CLUSTER
+### FROM LENSES YOU NEED TO PATCH THE SERVICE ACCOUNT 
+### LENSES WILL USE TO DEPLOY. see http://lenses.stream/install_setup/configuration/sql-config.html#kubernetes
+
 # Basic info
 replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: 1.1.2
-  pullPolicy: Always
+  tag: v2.0.0
+  pullPolicy: IfNotPresent
 
 # Monitoring
 monitoring:
-  pipeline: "__REQUIRED__"
+  pipeline: lenses
   enabled: true
   port: 9102
   path: "/metrics"
@@ -27,7 +31,7 @@ rbacEnable: true
 # restPort is the Lenses rest port
 restPort: 3030
 
-# serviceAccount is the Service account to be used by Lenses. This MUST match the service in configFileData
+# serviceAccount is the Service account to be used by Lenses to deploy apps
 serviceAccount: default
 
 #service 
@@ -51,89 +55,217 @@ service:
   ##
   # loadBalancerSourceRanges:
   #   - 0.0.0.0/0
-
+  
 ingress:
   ## If true, Ingress will be created
   ##
   enabled: true
   host: 
-  # path MUST match lenses.root.path
-  path: "/lenses"
+  path:
 
   # Ingress annotations
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
-  #   kubernetes.io/ingress.class: nginx
-  #   kubernetes.io/tls-acme: 'true'
+  #  kubernetes.io/ingress.class: nginx
+  #  kubernetes.io/tls-acme: 'true'
 
   # TLS if enabled load the tls.crt and tls.keys as a secrets and enable TLS on the ingress
-  # Must be the base64 encoded values of the certificate and
   tls:
     enabled: false 
-    crt: ""
-    key: ""
+    crt: |-
+    key: |-
 
-# kafka ssl
-# The key and truststores base64 encoded contents
-# and added to the kafka secret and mounted into /etc/landoop/kafka-security
-kafka:
-  securityProtocol:
-  ssl:
-    enabled: false
-    trustStoreFileData:
-    trustStorePassword:
-    keyStoreFileData:
-    keyStorePassword:
-  sasl:
-    enabled: false
-    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
-    keyTabData:
-    # jaasFileData is the base64 encoded contents of the kafka jaas file
-    jaasFileData: 
-    #GSSAP, SCRAM or PLAIN
-    mechanism: 
+
 
 lenses:
-  # lensesOpts options Set any jvm options
-  lensesJVMOpts:
+  jvm:
+    # heapOpts are any overrides for Lenses Heap JVM options
+    heapOpts: |-
+    # logBackOpts are any logging options
+    logBackOpts:
+    #performanceOpts are any jvm tuning options to add to the jvm
+    performanceOpts:
 
-  # WARNING!!!
-  # FOR SASL/SSL set the paths for keystores/truststore, jaas files, keytabs to /mnt/secrets
+  # broker details. 
+  ## Brokers should be behind a service, if so set one entry in the hosts
+  ## If your brokers are outside explicitly add them to the hosts. Note you only need one to bootstrap
+  ## but you should specify more than one for resilience
   
-  # lenses.port=3030 must match restPort
-  # lenses.root.path must match the ingress.path if behind a reverse proxy like traefik
-  # lenses.service.account must match the serviceAccount
-  # lenses.sql.execution.mode must be set to KUBERNETES
-  # lenses.kubernetes.config.file must be empty so lenses and bootstrap from the cluster
+  # kafka ssl
+  # The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded 
+  # openssl base64 < client.keystore.jks | tr -d '\n'
+  # The passwords will be base64enc by the secret include
+  # and added to the kafka secret and mounted into /mnt/secrets
+  kafka:
+    ssl:
+      enabled: false
+      trustStoreFileData: 
+      keyStoreFileData: 
+      trustStorePassword: 
+      keyStorePassword: 
+      keyPassword: 
+    sasl:
+      enabled: false
+      # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos mounted in /mnt/secrets
+      keyTabData: |-
+      
+      # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
+      jaasFileData: |-
+      
+      # mechanism is the sasl autentication mechnaism GSSAPI, SCRAM or PLAIN
+      mechanism: GSSAPI
+      # krb5Conf is the kerberos config data to be mounted into /ect
+      krb5Conf: |-
+    bootstrapServers: 
+      - name: kafka
+        port: 9092
+        sslPort: 9093
+        saslSslPort: 9094
+        saslPlainTextPort: 9095
 
-  # configFileData is the contents of the Lenses config file to create a configmap
-  configFileData: |-
-    lenses.kubernetes.config.file=""
-    lenses.sql.execution.mode=KUBERNETES
-    lenses.port=3030
-    lenses.root.path="/lenses"
-    lenses.kubernetes.service.account=default
-    lenses.topics.processors=_kafka_lenses_processors
-    lenses.jmx.port=9101
-    lenses.jmx.schema.registry=""
-    lenses.schema.registry.urls=""
-    lenses.grafana=""
-    lenses.kafka.brokers=""
-    lenses.topics.profiles=_kafka_lenses_profiles
-    lenses.zookeeper.hosts=""
-    lenses.jmx.zookeepers=""
-    lenses.jmx.connect=[]
-    lenses.connect.clusters=[]
-    lenses.topics.metrics=_kafka_lenses_metrics
-    lenses.topics.audits=_kafka_lenses_audits
-    lenses.alert.manager.endpoints=""
-    lenses.alert.plugins.slack.channel=lenses-slack
-    lenses.kubernetes.incluster.name=landoop
+  # zookeeper
+  ## Zookeepers should be behind a service, if so set one entry in the hosts
+  ## If your zookeepers are outside explicitly add them to the hosts. 
+  zookeepers:
+    - host: zookeeper
+      port: 2181
+      jmxPort: 9102
+  #  - host: zookeeper2
+  #    port: 2181
+  #    jmxPort: 9102      
+
+  # schemaRegistries
+  ## Schema registries should be behind a service, if so set one entry in the hosts
+  ## If your schema registries are outside explicitly add them to the hosts.
+  schemaRegistries:
+    enabled: true
+    hosts:
+      - host: schema-registry
+        protocol: http
+        port: 8081
+        jmxPort: 9102     
+  
+  connectClusters:
+    enabled: false
+    clusters:
+      - name: streamreactor
+        port: 8083
+        jmxPort: 9102
+        offsetsTopic: connect-offsets
+        statusTopic: connect-status
+        configTopic: connect-configs
+        hosts:
+          - connect-worker-1
+          - connect-worker-2
+          - connect-worker-3
+   
+  # alertmanager
+  alertManagers:
+    enabled: false
+    endpoints:
+      - host: alertmanager
+        protocol: http
+        port: 9094
+     
+    sourceName: Lenses™-k8
+    consumersLagThreshold: 50000
+
+  #grafana
+  grafanaUrl: 
+
+  # slack
+  slack:
+    enabled: false
+    iconUrl: https://www.landoop.com/images/landoop-dark.svg
+    webhookUrl: ""
+    username: Lenses
+    channel: lenses
+  
+  # topics
+  topics:
+      # suffix to add to lenses system topics, for example if you are running more than one Lenses on the same kafka cluster
+    suffix:
+
+  # sql
+  sql:
+    processorImage: eu.gcr.io/k8-engine/lenses-sql-processor
+    processorImageTag: v2.0.0
+
+  security:
+    # By default to BASIC security. Alternative is LDAP
+    mode: NONE
+
+    # user groups
+    groups:
+    #  - name: adminGroup
+    #    roles:
+    #      - admin
+    #      - write
+    #      - read
+    #  - name: writeGroup
+    #    roles:
+    #      - read
+    #      - write
+    #  - name: readGroup
+    #    roles:
+    #      - read        
+    # users
+    users:
+    #  - username: admin
+    #    password: admin
+    #    displayname: LensesAdmin
+    #    groups:
+    #      - adminGroup
+    #    topic:
+    #      blacklist:
+    #        - andrew
+    #      whitelist:
+    #        - position_reports.*
+
+    #  - username: write
+    #    password: write
+    #    displayname: Writer
+    #    groups:
+    #      - writeGroup  
+
+    #  - username: read
+    #    password: read
+    #    displayname: Reader
+    #    groups:
+    #      - readGroup               
+
+    # service accounts
+    #serviceAccounts:
+    #  - username: jenkins
+    #    token: jenkins
+    #    groups:
+    #      - adminGroup
+    
+     # ldap setting
+    ldap:
+      url: ""
+      base: ""
+      password: ""
+      user: ""
+      filter: ""
+
+      # ldap plugins
+      plugin:
+        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
+        memberofKey: ""
+        groupExtractRegex: ""
+        personNameKey: ""
 
 
-  # securityFileData is the base64 encoded contents of the file containg Lenses secrets (usernames/passwords) mounted as secret LENSES_SECRUITY in /mnt/secrets
-  securityFileData: 
-
-  # licenseFileData is the base64 encoded contents of the Lenses license key mounted as license.json in /mnt/secrets
-  licenseFileData: 
+  # license is the Lenses license
+  license: |-
+    
+  # licenseUrl is a url pointing to the Lenses license
+  licenseUrl:
+  
+  # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
+  ## keys must be uppcase and underscores for separators suit for use as environment variables
+  ## see http://lenses.stream/install_setup/configuration/lenses-config.html#option-reference
+  configOverrides:
+    #LENSES_PROPERTY : value

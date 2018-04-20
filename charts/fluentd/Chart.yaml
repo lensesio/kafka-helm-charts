@@ -1,4 +1,0 @@
-apiVersion: v1
-description: A chart fluentd elasticsearch
-name: fluentd
-version: 0.0.1

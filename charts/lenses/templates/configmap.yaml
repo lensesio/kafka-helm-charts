@@ -1,12 +1,14 @@
-apiVersion: v1
+{{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
+
 kind: ConfigMap
 metadata:
-  name: {{ template "fullname" . }}
+  name: "{{ include "fullname" . }}"
   labels:
-    app: {{ template "fullname" . }}
+    app: "{{ include "fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  lenses.conf: |-
-{{ .Values.lenses.configFileData | indent 4 }}
+  krb5.conf:
+{{ .Values.lenses.kafka.sasl.krb5Conf | indent 4 }} 
+{{- end -}}

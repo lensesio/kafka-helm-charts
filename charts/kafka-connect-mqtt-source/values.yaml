@@ -34,12 +34,11 @@ ssl:
     enabled: false
     existingClaim:
 
-# lenses 
-lensesUser: ""
+podManagementPolicy: OrderedReady
 
 # kafka ssl
-# The key and truststores base64 encoded contents
-# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+# The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
+# and added to the kafka secret and mounted into /mnt/connector-secrets
 kafka:
   securityProtocol:
   ssl:
@@ -49,24 +48,30 @@ kafka:
     keyStoreFileData:
     keyStorePassword:
   sasl:
-    enabled: false   
-    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
+    enabled: false
+    # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos
     keyTabData:    
-    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    # jaasFileData is the contents of the kafka jaas file
     jaasFileData: 
     #GSSAP, SCRAM or PLAIN
     mechanism: 
-    
-# Connect values
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+      sslPort: 9093
+      saslSslPort: 9094
+      saslPlainTextPort: 9095       
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: schema-registry
+      protocol: http
+      port: 8081
+      jmxPort: 9102    
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
-
-# bootstrapServers A comma separated list of the kafka brokers
-bootstrapServers: kafka:9092
-
-# schemaRegistryURL A comman separated list of the Schema registry URL
-schemaRegistryURL: "http://schema-registry:8081"
 
 # restPort The rest port of Connect
 restPort: 8083
@@ -85,9 +90,6 @@ connectorClass: "com.datamountaineer.streamreactor.connect.mqtt.source.MqttSourc
 
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
-
-#maxTasks The number of tasks to spawn
-maxTasks: 1
 
 # kcql Contains the Kafka Connect Query Language describing the sourced MQTT source and the target Kafka topics type: STRING importance: HIGH
 kcql: "__REQUIRED__"
@@ -127,36 +129,13 @@ clean: true
 tlsEnabled: false
 
 # sslCert is certificate file (server.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-serverCrt: 
+serverCrt: |-
 
 # sslCaCert is the CA certificate (ca.crt) data base64 encoded to use with the Mqtt connection in the secret type: STRING importance: MEDIUM
-caCrt: 
+caCrt: |-
 
 # sslKey Certificate private (server.key) base64 encoded data to be mounted in the secret. type: STRING importance: MEDIUM
-serverKey: 
-
-# converter.avro.schema If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. 
-# The format is $JMS_TOPIC=$AVRO_SCHEMA_FILE_NAME type: STRING importance: HIGH
-# The schemas will be mounted in /etc/landoop/schemas. The file name must match the keys in avroSchemaFiles
-
-#converterAvroSchemas:
-
-#avroSchemaFiles:
-  # schemaFileName1: |- 
-  #   "{
-  #     \"type\": \"record\",
-  #     \"name\": \"LongList\",
-  #     \"aliases\": [\"LinkedLongs\"],                      // old name for this
-  #     \"fields\" : [
-  #       {\"name\": \"value\", \"type\": \"long\"},             // each element has a long
-  #       {\"name\": \"next\", \"type\": [\"null\", \"LongList\"]} // optional next element
-  #     ]
-  #   }"
-# converterThrowOnError 
-#  If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!;
-#  true will throw the exception.Default is false.
-#      type: BOOLEAN importance: HIGH
-converterThrowOnError: false
+serverKey: |-
 
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true

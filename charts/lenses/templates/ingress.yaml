@@ -2,9 +2,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name:  {{ template "fullname" . }}
+  name:  {{ include "fullname" . }}
   labels:
-    app: {{ template "fullname" . }}
+    app: {{ include "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     component: "lenses"
     heritage: {{ .Release.Service }}
@@ -18,12 +18,12 @@ spec:
   - host: {{ .Values.ingress.host }}
     http:
       paths:
-      - path: {{ .Values.ingress.path }}
+      - path: {{if .Values.ingress.path }}{{ .Values.ingress.path }}{{else}}{{ include "fullname" . | quote }}{{end}}
         backend:
-          serviceName: {{ template "fullname" . }}
+          serviceName: {{ include "fullname" . | quote }}
           servicePort: {{ .Values.restPort }}
   {{- if .Values.ingress.tls.enabled }}
   tls:
-    - secretName: "{{ template "fullname" . }}-ingress"
-{{- end -}}
+    - secretName: {{ include "fullname" . | quote }}
+  {{- end -}}
 {{- end -}}        

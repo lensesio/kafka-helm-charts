@@ -4,7 +4,7 @@ NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 BLUE='\033[0m;31m'
 
-ARTIFACTORY_URL=https://landoop.github.io/helm-charts/
+ARTIFACTORY_URL=https://landoop.github.io/kafka-helm-charts/
 
 # We begin by testing if we can reach artifactory
 echo -e ""

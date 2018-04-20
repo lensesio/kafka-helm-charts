@@ -23,12 +23,11 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# lenses 
-lensesUser: ""
+podManagementPolicy: OrderedReady
 
 # kafka ssl
-# The key and truststores base64 encoded contents
-# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+# The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
+# and added to the kafka secret and mounted into /mnt/connector-secrets
 kafka:
   securityProtocol:
   ssl:
@@ -39,23 +38,29 @@ kafka:
     keyStorePassword:
   sasl:
     enabled: false
-    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
+    # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos
     keyTabData:    
-    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    # jaasFileData is the contents of the kafka jaas file
     jaasFileData: 
     #GSSAP, SCRAM or PLAIN
     mechanism: 
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+      sslPort: 9093
+      saslSslPort: 9094
+      saslPlainTextPort: 9095       
 
-# Connect values
-
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: schema-registry
+      protocol: http
+      port: 8081
+      jmxPort: 9102    
+ 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
-
-# bootstrapServers A comma separated list of the kafka brokers
-bootstrapServers: kafka:9092
-
-# schemaRegistryURL A comman separated list of the Schema registry URL
-schemaRegistryURL: "http://schema-registry:8081"
 
 # restPort The rest port of Connect
 restPort: 8083
@@ -74,9 +79,6 @@ connectorClass: "com.datamountaineer.streamreactor.connect.jms.source.JMSSourceC
 
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
-
-# maxTasks The number of tasks to spawn
-tasksMax: "__REQUIRED__"
 
 # batchSize The number of records to poll for on the target JMS destination in each Connect poll. type: INT importance: MEDIUM
 batchSize: 100
@@ -113,27 +115,6 @@ destinationSelector: CDI
 # Overrides to the default can be done by using connect.jms.source.converters still.
 # i.e. com.datamountaineer.streamreactor.connect.source.converters.AvroConverter type: STRING importance: HIGH
 sourceDefaultConverter: 
-
-# converter.avro.schema If the AvroConverter is used you need to provide an avro Schema to be able to read and translate the raw bytes to an avro record. 
-# The format is $JMS_TOPIC=$AVRO_SCHEMA_FILE_NAME type: STRING importance: HIGH
-# The schemas will be mounted in /etc/landoop/schemas. The file name must match the keys in avroSchemaFiles
-
-#converterAvroSchemas:
-
-#avroSchemaFiles:
-  # schemaFileName1: |- 
-  #   "{
-  #     \"type\": \"record\",
-  #     \"name\": \"LongList\",
-  #     \"aliases\": [\"LinkedLongs\"],                      // old name for this
-  #     \"fields\" : [
-  #       {\"name\": \"value\", \"type\": \"long\"},             // each element has a long
-  #       {\"name\": \"next\", \"type\": [\"null\", \"LongList\"]} // optional next element
-  #     ]
-  #   }"
-
-# converterThrowOnError If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!; true will throw the exception.Default is false. type: BOOLEAN importance: HIGH
-converterThrowOnError: false
 
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true

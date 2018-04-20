@@ -1,8 +1,16 @@
+
+{{- $name := .Chart.Name -}}
+{{- $version := .Chart.Version -}}
+{{- $releaseName := .Release.Name -}}
+{{- $releaseService := .Release.Service -}}
 {{- range .Values.services }}
-apiVersion: v1
 kind: Endpoints
 metadata:
   name: {{ .host }}
+  labels:
+    chart: "{{ $name }}-{{ $version}}"
+    release: "{{ $releaseName }}"
+    heritage: "{{ $releaseService }}"
 subsets:
 - addresses:
   {{- range .endpoints }}

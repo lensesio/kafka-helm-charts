@@ -20,12 +20,11 @@ monitoring:
   port: 9102
   path: "/metrics"
 
-# lenses 
-lensesUser: ""
+podManagementPolicy: OrderedReady
 
 # kafka ssl
-# The key and truststores base64 encoded contents
-# and added to the kafka secret and mounted into /etc/landoop/kafka-security
+# The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
+# and added to the kafka secret and mounted into /mnt/connector-secrets
 kafka:
   securityProtocol:
   ssl:
@@ -36,26 +35,32 @@ kafka:
     keyStorePassword:
   sasl:
     enabled: false
-    # keyTabData is the base64 enecode contents kerberos keytable is using kerberos
+    # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos
     keyTabData:    
-    # jaasFileData is the base64 encoded contents of the kafka jaas file
+    # jaasFileData is the contents of the kafka jaas file
     jaasFileData: 
     #GSSAP, SCRAM or PLAIN
     mechanism: 
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+      sslPort: 9093
+      saslSslPort: 9094
+      saslPlainTextPort: 9095       
 
-# Connect values
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: schema-registry
+      protocol: http
+      port: 8081
+      jmxPort: 9102    
 
 #javaHeap option
 javaHeap: "256M"
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
-
-# bootstrapServers A comma separated list of the kafka brokers
-bootstrapServers: kafka:9092
-
-# schemaRegistryURL A comman separated list of the Schema registry URL
-schemaRegistryURL: "http://schema-registry:8081"
 
 # restPort The rest port of Connect
 restPort: 8083
@@ -74,9 +79,6 @@ connectorClass: "com.datamountaineer.streamreactor.connect.ftp.source.FtpSourceC
 
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
-
-#maxTasks The number of tasks to spawn
-maxTasks: 1
 
 # keystyle what the output key is set to: `string` => filename; `struct` => structure with filename and offset type: STRING importance: HIGH
 keystyle: "__REQUIRED__"

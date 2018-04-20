@@ -1,10 +1,10 @@
 {{- if .Values.service.enabled }}
-apiVersion: v1
+
 kind: Service
 metadata:
-  name: {{ template "fullname" . }}
+  name: {{ include "fullname" . }}
   labels:
-    app: {{ template "fullname" . }}
+    app: {{ include "fullname" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     component: "lenses"
     heritage: {{ .Release.Service }}
@@ -14,15 +14,16 @@ metadata:
 {{ toYaml .Values.service.annotations | indent 4 }}
 {{- end }}
 spec:
+  type: "{{ .Values.service.type }}"
   ports:
   - name: lenses
-    port: {{ .Values.restPort }}
+    port: {{ .Values.restPort }}   
   - name: http-metrics
     port: {{ .Values.monitoring.port }}
   selector:
-    app: {{ template "fullname" . }}
+    app: {{ include "fullname" . }}
     component: "lenses"
-  type: "{{ .Values.service.type }}"
+
 {{- if contains "LoadBalancer" .Values.service.type }}
   {{- if .Values.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}

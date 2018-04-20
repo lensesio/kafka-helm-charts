@@ -1,5 +1,8 @@
+{{- $name := .Chart.Name -}}
+{{- $version := .Chart.Version -}}
+{{- $releaseName := .Release.Name -}}
+{{- $releaseService := .Release.Service -}}
 {{- range .Values.services }}
-apiVersion: v1
 kind: Service
 metadata:
   name: {{ .host }}
@@ -9,12 +12,10 @@ metadata:
     {{ $key }}: {{ $value | quote }}
   {{- end }}
   {{- end }}
-  {{- if .labels }}
   labels:
-  {{- range $key, $value := .labels }}
-    {{ $key }}: {{ $value }}
-  {{- end }}
-  {{- end }}
+    chart: "{{ $name }}-{{ $version}}"
+    release: "{{ $releaseName }}"
+    heritage: "{{ $releaseService }}"
 spec:
   sessionAffinity: ClientIP
   ports:
