@@ -17,11 +17,11 @@ the Connect cluster to start the connector.
 
 ## Lenses
 
-Documentation for the Lenses chart can be found [here](https://www.landoop.com/docs/2.0/install_setup/kubernetes/#helm-chart).
+Documentation for the Lenses chart can be found [here](https://lenses.stream/2.0/install_setup/kubernetes/#helm-chart).
 
 ## Lenses SQL runners
 
-Documentation for the Lenses SQL Runner chart can be found [here](https://www.landoop.com/docs/2.0/install_setup/configuration/sql-config.html#lsql-runner-with-helm).
+Documentation for the Lenses SQL Runner chart can be found [here](https://lenses.stream/2.0/install_setup/configuration/sql-config.html#lsql-runner-with-helm).
 
 ## SSL/SASL
 
