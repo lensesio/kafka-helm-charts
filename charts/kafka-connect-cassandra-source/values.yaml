@@ -105,9 +105,6 @@ errorPolicy: THROW
 # retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
 retryInterval: 60000
 
-# batchSize The number of records the source task should drain from the reader queue. type: INT importance: MEDIUM
-batchSize: 100
-
 # importAllowFiltering Enable ALLOW FILTERING in incremental selects. type: BOOLEAN importance: MEDIUM
 importAllowFiltering: true
 
@@ -179,3 +176,4 @@ keyStoreFileData:
 # sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
 sslClientCertAuth: false
 
+mappingCollectionToJson:
