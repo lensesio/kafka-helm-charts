@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-mongo-sink
 name: kafka-connect-mongo-sink
 version: 1.0.2
-appVersion: 1.0.0
+appVersion: 1.1.0
