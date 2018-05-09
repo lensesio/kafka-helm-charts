@@ -163,4 +163,4 @@ sslClientCertAuth: false
 # mappingCollectionToJson Mapping columns with type Map, List and Set like json
 mappingCollectionToJson: true
 
-
+mappingCollectionToJson:
