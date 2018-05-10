@@ -227,8 +227,6 @@ spec:
             secretKeyRef:
               name: {{ include "fullname" . }}
               key:  "connect.rethink.password"        
-        - name: CONNECTOR_CONNECT_RETHINK_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
 
