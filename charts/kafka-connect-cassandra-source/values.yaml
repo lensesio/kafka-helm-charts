@@ -175,5 +175,3 @@ keyStoreFileData:
 
 # sslClientCertAuth Enable client certification authentication by Cassandra. Requires KeyStore options to be set. type: BOOLEAN importance: LOW
 sslClientCertAuth: false
-
-mappingCollectionToJson:
