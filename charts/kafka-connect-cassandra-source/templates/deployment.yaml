@@ -283,5 +283,5 @@ spec:
         - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
           value: {{ .Values.sslClientCertAuth | quote }}
        {{- end }}
-       -name: CONNECTOR_CONNECT_MAPPING_COLLECTION_TO_JSON
-        value: {{.Values.mappingCollectionToJson | quote}}
+        - name: CONNECTOR_CONNECT_MAPPING_COLLECTION_TO_JSON
+          value: {{.Values.mappingCollectionToJson | quote}}

@@ -97,7 +97,7 @@ entries:
     name: kafka-connect-blockchain-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.285038+02:00
     description: A chart for kafka-connect-blockchain-source
@@ -139,7 +139,7 @@ entries:
     name: kafka-connect-bloomberg-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.285405+02:00
     description: A chart for kafka-connect-bloomberg-source
@@ -181,7 +181,7 @@ entries:
     name: kafka-connect-cassandra-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.285848+02:00
     description: A chart for kafka-connect-cassandra-sink
@@ -223,7 +223,7 @@ entries:
     name: kafka-connect-cassandra-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.286267+02:00
     description: A chart for kafka-connect-cassandra-source
@@ -265,7 +265,7 @@ entries:
     name: kafka-connect-coap-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.286611+02:00
     description: A chart for kafka-connect-coap-sink
@@ -307,7 +307,7 @@ entries:
     name: kafka-connect-coap-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.286961+02:00
     description: A chart for kafka-connect-coap-source
@@ -349,7 +349,7 @@ entries:
     name: kafka-connect-documentdb-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.287275+02:00
     description: A chart for kafka-connect-documentdb-sink
@@ -391,7 +391,7 @@ entries:
     name: kafka-connect-druid-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.287629+02:00
     description: A chart for kafka-connect-druid-sink
@@ -433,7 +433,7 @@ entries:
     name: kafka-connect-elastic-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.287965+02:00
     description: A chart for kafka-connect-elastic-sink
@@ -475,7 +475,7 @@ entries:
     name: kafka-connect-elastic5-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.288335+02:00
     description: A chart for kafka-connect-elastic5-sink
@@ -518,7 +518,7 @@ entries:
     name: kafka-connect-elastic6-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.288682+02:00
     description: A chart for kafka-connect-elastic6-sink
@@ -536,7 +536,7 @@ entries:
     name: kafka-connect-ftp-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.289404+02:00
     description: A chart for kafka-connect-ftp-source
@@ -578,7 +578,7 @@ entries:
     name: kafka-connect-hazelcast-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.290084+02:00
     description: A chart for kafka-connect-hazelcast-sink
@@ -620,7 +620,7 @@ entries:
     name: kafka-connect-hbase-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.290372+02:00
     description: A chart for kafka-connect-hbase-sink
@@ -662,7 +662,7 @@ entries:
     name: kafka-connect-influx-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.290696+02:00
     description: A chart for kafka-connect-influx-sink
@@ -704,7 +704,7 @@ entries:
     name: kafka-connect-jms-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.290981+02:00
     description: A chart for kafka-connect-jms-sink
@@ -746,7 +746,7 @@ entries:
     name: kafka-connect-jms-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.291323+02:00
     description: A chart for kafka-connect-jms-source
@@ -788,7 +788,7 @@ entries:
     name: kafka-connect-kudu-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.29159+02:00
     description: A chart for kafka-connect-kudu-sink
@@ -830,7 +830,7 @@ entries:
     name: kafka-connect-mongo-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.291893+02:00
     description: A chart for kafka-connect-mongo-sink
@@ -872,7 +872,7 @@ entries:
     name: kafka-connect-mqtt-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.292241+02:00
     description: A chart for kafka-connect-mqtt-sink
@@ -914,7 +914,7 @@ entries:
     name: kafka-connect-mqtt-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.292558+02:00
     description: A chart for kafka-connect-mqtt-source
@@ -956,7 +956,7 @@ entries:
     name: kafka-connect-pulsar-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.292819+02:00
     description: A chart for kafka-connect-pulsar-sink
@@ -990,7 +990,7 @@ entries:
     name: kafka-connect-pulsar-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.29316+02:00
     description: A chart for kafka-connect-pulsar-source
@@ -1024,7 +1024,7 @@ entries:
     name: kafka-connect-redis-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.293476+02:00
     description: A chart for kafka-connect-redis-sink
@@ -1066,7 +1066,7 @@ entries:
     name: kafka-connect-rethink-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.293784+02:00
     description: A chart for kafka-connect-rethink-sink
@@ -1108,7 +1108,7 @@ entries:
     name: kafka-connect-rethink-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.294112+02:00
     description: A chart for kafka-connect-rethink-source
@@ -1150,7 +1150,7 @@ entries:
     name: kafka-connect-volt-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-04-10T13:50:25.294423+02:00
     description: A chart for kafka-connect-volt-sink
@@ -1227,7 +1227,7 @@ entries:
     name: lenses
     urls:
     - https://landoop.github.io/kafka-helm-charts/lenses-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-03-22T16:24:52.190486+01:00
     description: A chart Lenses

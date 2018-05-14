@@ -965,7 +965,7 @@ entries:
     name: lenses
     urls:
     - https://landoop.github.io/kafka-helm-charts/lenses-1.0.2.tgz
-    version: 1.0.2
+    version: 1.1.0
   - apiVersion: v1
     created: 2018-03-22T16:24:52.190486+01:00
     description: A chart Lenses
