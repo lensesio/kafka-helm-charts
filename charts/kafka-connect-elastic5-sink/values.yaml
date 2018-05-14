@@ -135,5 +135,3 @@ errorPolicy: THROW
 
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true
-
-

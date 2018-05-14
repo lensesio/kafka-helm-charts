@@ -235,8 +235,6 @@ spec:
           value: {{ .Values.errorPolicy | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}  
-        - name: CONNECTOR_CONNECT_MONGO_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }} 
 
         {{- if .Values.sslEnabled }}
         - name: CONNECTOR_CONNECT_MONGO_TRUST_STORE_PATH

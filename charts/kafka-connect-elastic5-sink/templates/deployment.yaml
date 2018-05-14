@@ -226,3 +226,5 @@ spec:
               key:  "connect.elastic.xpack.settings"
         - name: CONNECTOR_CONNECT_ELASTIC_URL
           value: {{ .Values.url | quote }}
+        
+

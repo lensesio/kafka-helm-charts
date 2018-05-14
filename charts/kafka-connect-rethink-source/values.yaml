@@ -111,9 +111,6 @@ rethinkCertFileData: |-
 # rethinkAuth password stored in the secert. For authorization key to use in combination with the certificate file. type: PASSWORD importance: MEDIUM
 rethinkAuth: ""
 
-# batchSize The number of records to drain from the internal queue on each poll. type: INT importance: MEDIUM
-batchSize: 1000
-
 # enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
 progressEnabled: true
 

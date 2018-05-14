@@ -101,9 +101,6 @@ password: "__REQUIRED__"
 # authMechanism String type: STRING importance: MEDIUM
 authMechanism: "SCRAM-SHA-1"
 
-# batchSize The number of records the sink would push to mongo at once. type: INT importance: MEDIUM
-batchSize: 100
-
 # maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
 maxRetries: 20
 
