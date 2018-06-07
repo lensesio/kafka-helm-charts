@@ -239,8 +239,6 @@ spec:
           value: {{ .Values.deleteStructFlds | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
           value: {{ .Values.sslEnabled | quote }} 
-        - name: CONNECTOR_CONNECT_CASSANDRA_BATCH_SIZE
-          value: {{ .Values.batchSize | quote }}                    
 
         #cassandra
         - name: CONNECTOR_CONNECT_CASSANDRA_KEY_SPACE
@@ -285,3 +283,5 @@ spec:
         - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
           value: {{ .Values.sslClientCertAuth | quote }}
        {{- end }}
+        - name: CONNECTOR_CONNECT_MAPPING_COLLECTION_TO_JSON
+          value: {{.Values.mappingCollectionToJson | quote}}
