@@ -7,7 +7,7 @@ replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: v2.0.0
+  tag: v2.0.11
   pullPolicy: IfNotPresent
 
 # Monitoring
@@ -115,7 +115,7 @@ lenses:
       
       # mechanism is the sasl autentication mechnaism GSSAPI, SCRAM or PLAIN
       mechanism: GSSAPI
-      
+
       # krb5Conf is the kerberos config data to be mounted into /etc
       krb5Conf: |-
     bootstrapServers: 
