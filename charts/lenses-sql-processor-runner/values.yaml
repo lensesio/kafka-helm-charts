@@ -57,7 +57,7 @@ kafka:
     keyPassword: 
   sasl:
     enabled: false
-    # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos mounted in /mnt/secrets
+    # keyTabData is the contents kerberos keytab file is using kerberos mounted in /mnt/secrets
     keyTabData: |-
 
     # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
@@ -65,7 +65,7 @@ kafka:
       
     # mechanism is the sasl autentication mechnaism GSSAPI, SCRAM or PLAIN
     mechanism: "GSSAPI"
-    # krb5Conf is the kerberos config data to be mounted into /ect
+    # krb5Conf is the kerberos config data to be mounted into /etc
     krb5Conf: |-
 
   bootstrapServers: 

@@ -56,6 +56,11 @@ spec:
               - key: keytab
                 path: keytab  
               {{- end }} 
+        {{- if eq .Values.kafka.sasl.mechanism "GSSAPI" }}
+        - name: krb
+          configMap:
+            name: {{ include "fullname" . | quote }}
+        {{- end }}              
         {{- end }} 
       {{- end }}            
       containers:
@@ -81,6 +86,11 @@ spec:
           {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}
           - name: kafka-secrets
             mountPath: "/mnt/secrets" 
+          {{- if eq .Values.kafka.sasl.mechanism "GSSAPI" }}
+          - name: krb
+            mountPath: "/etc/krb5.conf"
+            subPath: "krb5.conf"
+          {{- end }}            
           {{- end }}  
         {{- end }}         
         env:

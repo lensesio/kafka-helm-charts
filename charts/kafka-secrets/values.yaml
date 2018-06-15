@@ -13,10 +13,10 @@ exports:
       keyPassword:
     sasl:
       enabled: false
-      # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos 
+      # keyTabData is the contents kerberos keytab file is using kerberos 
       keyTabData: |-
       # jaasFileData is the contents of the kafka jaas file
       jaasFileData: |-
-      #GSSAP, SCRAM or PLAIN
+      #GSSAPI, SCRAM or PLAIN
       mechanism: 
 

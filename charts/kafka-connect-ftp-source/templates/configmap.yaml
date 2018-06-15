@@ -1,0 +1,14 @@
+{{- if and .Values.kafka.sasl.enabled (eq .Values.kafka.sasl.mechanism "GSSAPI") }}
+
+kind: ConfigMap
+metadata:
+  name: "{{ include "fullname" . }}"
+  labels:
+    app: "{{ include "fullname" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  krb5.conf: |-
+{{ .Values.kafka.sasl.krb5Conf | indent 4 }} 
+{{- end -}}

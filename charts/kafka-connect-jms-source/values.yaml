@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: registry.hub.docker.com/datamountaineer/kafka-connect-jms
-  tag: 1.0.1
+  tag: 1.2.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -38,12 +38,17 @@ kafka:
     keyStorePassword:
   sasl:
     enabled: false
-    # keyTabData is the base64 enecoded contents kerberos keytab file is using kerberos
-    keyTabData:    
+    # keyTabData is the contents kerberos keytab file is using kerberos
+    keyTabData: |-
+           
     # jaasFileData is the contents of the kafka jaas file
-    jaasFileData: 
-    #GSSAP, SCRAM or PLAIN
-    mechanism: 
+    jaasFileData: |-
+          
+    #GSSAPI, SCRAM or PLAIN
+    mechanism: GSSAPI
+    # kerberos krb5 contents
+    krb5Conf: |-
+
   bootstrapServers: 
     - name: kafka
       port: 9092

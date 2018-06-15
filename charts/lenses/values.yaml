@@ -191,7 +191,7 @@ lenses:
   # sql
   sql:
     processorImage: eu.gcr.io/k8-engine/lenses-sql-processor
-    processorImageTag: v2.0.0
+    processorImageTag: 2.0.11
 
   security:
     # By default to BASIC security. Alternative is LDAP

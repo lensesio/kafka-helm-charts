@@ -44,6 +44,11 @@ spec:
               - key: keytab
                 path: keytab  
               {{- end }}
+        {{- if eq .Values.kafka.sasl.mechanism "GSSAPI" }}
+        - name: krb
+          configMap:
+            name: {{ include "fullname" . | quote }}
+        {{- end }}                     
       {{- end }}            
       containers:
       - name: {{ .Chart.Name }}
@@ -63,6 +68,11 @@ spec:
         volumeMounts: 
           - name: kafka-secrets
             mountPath: "/mnt/secrets"
+          {{- if eq .Values.kafka.sasl.mechanism "GSSAPI" }}
+          - name: krb
+            mountPath: "/etc/krb5.conf"
+            subPath: "krb5.conf"
+          {{- end }}            
         {{- end }} 
         env:
         # JVM Heap Allowance
