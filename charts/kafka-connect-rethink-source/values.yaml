@@ -78,7 +78,7 @@ logLevel: INFO
 keyConverter: "io.confluent.connect.avro.AvroConverter"
 
 # valueConverter The key converter to/from Connects struct
-valueConveter: "io.confluent.connect.avro.AvroConverter"
+valueConverter: "io.confluent.connect.avro.AvroConverter"
 
 # connectorClass class name of the connector
 connectorClass: "com.datamountaineer.streamreactor.connect.rethink.source.ReThinkSourceConnector"

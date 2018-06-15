@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   azure-persistent-volume-claims-disk:
-  - created: 2018-06-15T15:35:14.392957+02:00
+  - created: 2018-06-15T16:06:23.427482+02:00
     description: A chart containing the persistent volumes for azure
     digest: 6c0a3dad65eb53e0b11fdc26f303857c8bb1588d67449ebd67256eea9859b0ab
     name: azure-persistent-volume-claims-disk
@@ -9,7 +9,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volume-claims-file:
-  - created: 2018-06-15T15:35:14.393332+02:00
+  - created: 2018-06-15T16:06:23.42777+02:00
     description: A chart containing the persistent volumes for azure
     digest: c7886f3a9c2a14a89d009cc6b45a2fa4eb8f4546c8c9472b60db095025ac2666
     name: azure-persistent-volume-claims-file
@@ -17,7 +17,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-file-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volumes-file:
-  - created: 2018-06-15T15:35:14.393676+02:00
+  - created: 2018-06-15T16:06:23.428112+02:00
     description: A chart containing the persistent volume claims for azure
     digest: 9ad44924c18c5923b15d61e6a42cdcea9fc557a0ef4050ffd720788e602f0c13
     name: azure-persistent-volumes-file
@@ -25,7 +25,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volumes-file-0.0.2.tgz
     version: 0.0.2
   azure-storage-class:
-  - created: 2018-06-15T15:35:14.394096+02:00
+  - created: 2018-06-15T16:06:23.428417+02:00
     description: A chart containing the storage class for azure
     digest: bccc0a59731ada47fd19d0f9929523c6e793bf8eae729e3ab4306b41d3f0e842
     name: azure-storage-class
@@ -34,249 +34,249 @@ entries:
     version: 0.0.2
   kafka-connect-blockchain-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.39476+02:00
+    created: 2018-06-15T16:06:23.429036+02:00
     description: A chart for kafka-connect-blockchain-source
-    digest: fd3b3617f6d7d861584579684bef4a77294af3608735d6f4a6cf3d4845516742
+    digest: 9ab5e0b90e19d9ed120e724849caff5b73b1bf679aaae2ebe830b8de0dfceb9f
     name: kafka-connect-blockchain-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-bloomberg-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.395567+02:00
+    created: 2018-06-15T16:06:23.431186+02:00
     description: A chart for kafka-connect-bloomberg-source
-    digest: ffd138a78e3712867e95d7d441a18aad92a13a77b80425e0e677c14e7b2ea500
+    digest: 66145eda9c2fca00c07000e0cae7402772c13d9d5be3a16036f7dc88a5fa1853
     name: kafka-connect-bloomberg-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-cassandra-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.39634+02:00
+    created: 2018-06-15T16:06:23.432018+02:00
     description: A chart for kafka-connect-cassandra-sink
-    digest: 51d77fd2dea3913c916f9bb5b3a9f389ecb06de07807ee073d62e1260fda10a4
+    digest: 215468b1aa3175fdb0421c95a0f43f3ac8a3f2972c70249ff05a53d986dbf233
     name: kafka-connect-cassandra-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-cassandra-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.397129+02:00
+    created: 2018-06-15T16:06:23.432816+02:00
     description: A chart for kafka-connect-cassandra-source
-    digest: 1a2033de6c900f70e344f61fa3a428c9b270bf283db0f319dbe6ff9a75c03044
+    digest: c321d9bcf7bac4789303124531cfe8c0a6496249a8429dbecf87f04216d23a40
     name: kafka-connect-cassandra-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-coap-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.397853+02:00
+    created: 2018-06-15T16:06:23.434204+02:00
     description: A chart for kafka-connect-coap-sink
-    digest: 2b616ef97a902240d69b3d89f60b7b954ebcb81047e33b455757f373c1622fc8
+    digest: ec2e04b1b3a16fdd5686735dc72852313b1af45b3b0e43ffea30a9e7c4667d40
     name: kafka-connect-coap-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-coap-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.398583+02:00
+    created: 2018-06-15T16:06:23.435529+02:00
     description: A chart for kafka-connect-coap-source
-    digest: af26e2a2b080df936df75c04f486c24c37e9a8d1fa529af73ccc670590a88ab0
+    digest: 37a80520eb0999bd410bdeccab6353412a66249b1a6af3b0770a45cb33531f54
     name: kafka-connect-coap-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-documentdb-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.399315+02:00
+    created: 2018-06-15T16:06:23.436794+02:00
     description: A chart for kafka-connect-documentdb-sink
-    digest: bbb8bcda2c0edc37c34bb905957e2a13456f4c2b32c743c0c7c0da13d78c57ff
+    digest: 3c410b9f26ac3f251dfbec124807380400ab18e02db75b73bd8a2c3fd7650453
     name: kafka-connect-documentdb-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-druid-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.399949+02:00
+    created: 2018-06-15T16:06:23.437445+02:00
     description: A chart for kafka-connect-druid-sink
-    digest: 596b294347407e18cb863a244d772c76f76af005e42275c6837c93689d292abc
+    digest: d143c217a0adf66c5f7c251ff47486464bc3c0b87157e9ae0722baf70f14030c
     name: kafka-connect-druid-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-elastic-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.400581+02:00
+    created: 2018-06-15T16:06:23.438081+02:00
     description: A chart for kafka-connect-elastic-sink
-    digest: a75324c41ab6133f4a26bbb3b07a7c1ed19954e47c7db9c4648d66ce40ef702b
+    digest: 2da2c50a55e2be3abfba0e09acec63b4142ad734ef7f78e9a484877c37eba452
     name: kafka-connect-elastic-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-elastic5-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.401327+02:00
+    created: 2018-06-15T16:06:23.438837+02:00
     description: A chart for kafka-connect-elastic5-sink
-    digest: 64651f3fc5307596027bf4ab06eee8beacf4bd096bdb1ebbc13c66462403c181
+    digest: 0a1ee82d39ac1984cd37324783aff3c84f4f6dd7b1d1315410a5ac3352ac55f3
     name: kafka-connect-elastic5-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-elastic6-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.402043+02:00
+    created: 2018-06-15T16:06:23.440182+02:00
     description: A chart for kafka-connect-elastic6-sink
-    digest: 677dc48a83e8eca0fba9c6110ea7337b40e2d504b307c4d40ba9648c1116f625
+    digest: 5dc30231add8c17cc0a8f63c2d023135ed689b682733ceaa20e2ff4559a50e6d
     name: kafka-connect-elastic6-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-ftp-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.402807+02:00
+    created: 2018-06-15T16:06:23.440925+02:00
     description: A chart for kafka-connect-ftp-source
-    digest: 1b956f1c24d9a8f2c0d470b0843ceb32a3407b5675bc254aa7fb662f51c91fac
+    digest: e2a45aa997cb6f0cf10993d511b3281d6936be7fc025b8d24cc49804c5c5cb16
     name: kafka-connect-ftp-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-hazelcast-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.403556+02:00
+    created: 2018-06-15T16:06:23.442281+02:00
     description: A chart for kafka-connect-hazelcast-sink
-    digest: 6889ddb23fd162172f9c09de47160631e82a9d6acce1e95e1fb611e36ac2fc90
+    digest: ee9d1512bcf74ddede914dda135d2a731e966ab16d036abb963dae707c6c0b33
     name: kafka-connect-hazelcast-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-hbase-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.405462+02:00
+    created: 2018-06-15T16:06:23.445237+02:00
     description: A chart for kafka-connect-hbase-sink
-    digest: 7643374897380df9ec3a9b639c01da0acfe2485b388be4da58728fdbabafcd72
+    digest: cb790868b955025348fb816d7ee2ca3632f4478a68c1449d39a48cbd60d41cd0
     name: kafka-connect-hbase-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-influx-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.406235+02:00
+    created: 2018-06-15T16:06:23.446496+02:00
     description: A chart for kafka-connect-influx-sink
-    digest: ccafb301864f33ea625f399e6c91f5c98f41a929ba106a206e0688ed8aa8524d
+    digest: 02ac0dcd49eec474a7c4085dc41d675b1a5ab3babc39d6980918650af26cd412
     name: kafka-connect-influx-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-jms-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.406896+02:00
+    created: 2018-06-15T16:06:23.447285+02:00
     description: A chart for kafka-connect-jms-sink
-    digest: 8e2ea7bd5d299495d0812422a351845c0a8fc61b334f70b633fb99e6bfb97b60
+    digest: 69c988d05773a0f451213aef18a4f12ad9c50a8e3bf474df644a1d9d178cb752
     name: kafka-connect-jms-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-jms-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.407495+02:00
+    created: 2018-06-15T16:06:23.448134+02:00
     description: A chart for kafka-connect-jms-source
-    digest: da5411b01a4d8d4eaf352cbaf72b14be088a970c10b852c91f5159bf82e6a46a
+    digest: 924007deac726ca22b76b08e28d873bfab3699b9f30628a87e75862e9ea637f1
     name: kafka-connect-jms-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-kudu-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.408009+02:00
+    created: 2018-06-15T16:06:23.450015+02:00
     description: A chart for kafka-connect-kudu-sink
-    digest: 68402efa83a95529ee7cf699f8b99426d4742fd7a4afad66cec95a53c92fc98e
+    digest: 767cce4851984f312c1899a84202cca915a350f31a151b9a5a16bb3750c22443
     name: kafka-connect-kudu-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-mongo-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.408562+02:00
+    created: 2018-06-15T16:06:23.453561+02:00
     description: A chart for kafka-connect-mongo-sink
-    digest: d71e2ced8edc08341933ba081b663e4b86b8375b5d2a4202b3839b0ebf9638a0
+    digest: ed445554dba32ba26ba8b6b77a22037ebe44440ef5c9ef23b01bde6587decfb3
     name: kafka-connect-mongo-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-mqtt-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.409179+02:00
+    created: 2018-06-15T16:06:23.454921+02:00
     description: A chart for kafka-connect-mqtt-sink
-    digest: 201004bdd090fdf3a9bb5ac306ff0b0f3e38306344b46b395af26cc899a796d5
+    digest: f221ef951a7427353c17697835be6ab3e52453afe25d6bd58c7b462e5754c9d7
     name: kafka-connect-mqtt-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-mqtt-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.409724+02:00
+    created: 2018-06-15T16:06:23.456066+02:00
     description: A chart for kafka-connect-mqtt-source
-    digest: 5b27502afc52a347855e487ad880ac52962e207cd27ef4606f56e50c368b30ce
+    digest: f394c7857e79c00c6eca788e00a54c8e3bf9269f3443d065e00f68b41d88f141
     name: kafka-connect-mqtt-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-pulsar-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.410302+02:00
+    created: 2018-06-15T16:06:23.457237+02:00
     description: A chart for kafka-connect-pulsar-sink
-    digest: 4ddc34502d13a47e382d7974a19f144e02a369917c191f910c49e8ceab4b927e
+    digest: c6951a02ce3796ec2ee414d7fbaae0fb5d8d81b8df86f0d0afbb8cec90219a4d
     name: kafka-connect-pulsar-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-pulsar-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.410875+02:00
+    created: 2018-06-15T16:06:23.457926+02:00
     description: A chart for kafka-connect-pulsar-source
-    digest: bd395506660c5b27140fa9f5a2d8e0c11e2474a68609ad4322c1709054156177
+    digest: 72775a0765604972c5eaaf0400060c533a53f9fe85c02b26f331c2a554272f77
     name: kafka-connect-pulsar-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-redis-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.411507+02:00
+    created: 2018-06-15T16:06:23.45854+02:00
     description: A chart for kafka-connect-redis-sink
-    digest: 611d2417787546defa7a203877cf340d2f2aa718fa6d6a86a30e4f6cc62e9c37
+    digest: 116ad94fb4d4aed45465152f32e32a0a0f0f5e32f0dc66dd8c8b8d77969ed7fb
     name: kafka-connect-redis-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-rethink-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.412235+02:00
+    created: 2018-06-15T16:06:23.459171+02:00
     description: A chart for kafka-connect-rethink-sink
-    digest: 88f1ca3653de30e37df4218b0c6e32e17f314377dea79affe712cb1c55e11202
+    digest: 859eb3149420b8f636c412e1e8414e1d0d9529cbd4b806e610b8ec73e1f7e6c5
     name: kafka-connect-rethink-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.1.1.tgz
     version: 1.1.1
   kafka-connect-rethink-source:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.412868+02:00
+    created: 2018-06-15T16:06:23.459781+02:00
     description: A chart for kafka-connect-rethink-source
-    digest: 1a2701f732d5ce944d3053d64beef9ba895db119161d9b7420043bb3c60e0fd2
+    digest: 14b11dd2512192ed2559739cc988fdd0652a955631ec270e57b02d7fa9ac7f33
     name: kafka-connect-rethink-source
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.1.1.tgz
     version: 1.1.1
   kafka-connect-volt-sink:
   - appVersion: 1.1.0
-    created: 2018-06-15T15:35:14.413431+02:00
+    created: 2018-06-15T16:06:23.460372+02:00
     description: A chart for kafka-connect-volt-sink
-    digest: 4b1a3fdb3a9426c20b620f9ff435f3f3e697910c97b292b1e7d54849e12d0a02
+    digest: 49add9162967c12033ba6b46721964d162c41a77997d436a7b5a1b1c480160e1
     name: kafka-connect-volt-sink
     urls:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.1.1.tgz
     version: 1.1.1
   kafka-secrets:
-  - created: 2018-06-15T15:35:14.41368+02:00
+  - created: 2018-06-15T16:06:23.460642+02:00
     description: A chart for Kafka SSL and SASL. Base64 encode the key/truststores
     digest: 07c38396a4a17900d64d689f14f39acc82afb43093f991ad04f231ee1317e781
     name: kafka-secrets
@@ -285,7 +285,7 @@ entries:
     version: 0.0.2
   lenses:
   - appVersion: 2.0.11
-    created: 2018-06-15T15:35:14.414492+02:00
+    created: 2018-06-15T16:06:23.461689+02:00
     description: A chart Lenses
     digest: d3f0b3aca19305992187c2290bfecb0f0f500a975f508c522c65075b17e29df9
     icon: https://www.landoop.com/images/landoop-dark.svg
@@ -295,7 +295,7 @@ entries:
     version: 1.0.6
   lenses-sql-processor-runner:
   - appVersion: 2.0.0
-    created: 2018-06-15T15:35:14.415012+02:00
+    created: 2018-06-15T16:06:23.46225+02:00
     description: A chart for Landoops Lenses SQL processor runner
     digest: a29b1f1437a0324823879ab7247232d732c898c4051b81f3f3b984212146c509
     icon: https://www.landoop.com/images/landoop-dark.svg
@@ -304,7 +304,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-sql-processor-runner-1.1.1.tgz
     version: 1.1.1
   services:
-  - created: 2018-06-15T15:35:14.415306+02:00
+  - created: 2018-06-15T16:06:23.462568+02:00
     description: A chart containing the services and endpoints of an environment
     digest: b42dab8ef491c6efcaf6f52eafc84c91536cd09bd65020e9b0eb2624ad85e0a9
     name: services
@@ -312,11 +312,11 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/services-0.2.0.tgz
     version: 0.2.0
   services-external-name:
-  - created: 2018-06-15T15:35:14.41558+02:00
+  - created: 2018-06-15T16:06:23.462867+02:00
     description: A chart containing the services and endpoints of an environment
     digest: 7574d4ceedc5f3aa509ab6981bf64e8e5584ad599b4c102457f1a28c1712ae43
     name: services-external-name
     urls:
     - https://landoop.github.io/kafka-helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
-generated: 2018-06-15T15:35:14.391157+02:00
+generated: 2018-06-15T16:06:23.425868+02:00
