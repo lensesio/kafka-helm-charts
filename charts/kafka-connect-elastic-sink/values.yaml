@@ -77,7 +77,7 @@ logLevel: INFO
 keyConverter: "io.confluent.connect.avro.AvroConverter"
 
 # valueConverter The key converter to/from Connects struct
-valueConveter: "io.confluent.connect.avro.AvroConverter"
+valueConverter: "io.confluent.connect.avro.AvroConverter"
 
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
