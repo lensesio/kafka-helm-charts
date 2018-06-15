@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-bloomberg
+  repository: datamountaineer/kafka-connect-bloomberg
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-ftp
+  repository: datamountaineer/kafka-connect-ftp
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

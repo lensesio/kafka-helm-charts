@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-influx
+  repository: datamountaineer/kafka-connect-influx
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

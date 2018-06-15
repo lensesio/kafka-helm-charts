@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-documentdb
+  repository: datamountaineer/kafka-connect-documentdb
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

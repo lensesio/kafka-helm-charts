@@ -3,7 +3,7 @@ replicaCount: 1
 
 # image
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-coap
+  repository: datamountaineer/kafka-connect-coap
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

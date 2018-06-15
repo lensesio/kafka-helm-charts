@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-kudu
+  repository: datamountaineer/kafka-connect-kudu
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

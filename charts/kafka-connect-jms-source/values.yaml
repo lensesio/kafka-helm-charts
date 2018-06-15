@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-jms
+  repository: datamountaineer/kafka-connect-jms
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

@@ -3,7 +3,7 @@ replicaCount: 1
 
 # image connector image
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-blockchain
+  repository: datamountaineer/kafka-connect-blockchain
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

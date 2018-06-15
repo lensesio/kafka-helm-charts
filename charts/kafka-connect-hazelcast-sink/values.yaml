@@ -3,7 +3,7 @@ replicaCount: 1
 # secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-hazelcast
+  repository: datamountaineer/kafka-connect-hazelcast
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

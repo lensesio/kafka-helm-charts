@@ -3,7 +3,7 @@ replicaCount: 1
 # secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-pulsar
+  repository: datamountaineer/kafka-connect-pulsar
   tag: 1.2.0
   pullPolicy: IfNotPresent
 

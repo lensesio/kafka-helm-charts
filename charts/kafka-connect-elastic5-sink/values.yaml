@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-elastic5
+  repository: datamountaineer/kafka-connect-elastic5
   tag: 1.2.0
   pullPolicy: IfNotPresent
 
