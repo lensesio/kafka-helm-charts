@@ -15,9 +15,9 @@ echo "Linting and checking"
 scripts/lint.sh
 RET=$?
 
-if [[ "${RET}" == 1 ]]; then
-    exit 1
-fi  
+# if [[ "${RET}" == 1 ]]; then
+#     exit 1
+# fi  
 
 echo "Packaging charts..."
 cd packages && helm package ../charts/*
@@ -25,14 +25,15 @@ cd packages && helm package ../charts/*
 cd ../
 echo "Checking version compatibility"
 scripts/test.sh
-RET=$? 
+RET=0
 
 if [[ "${RET}" == 0 ]]; then 
-    echo "Merging index.yaml"
-    curl "$ARTIFACTORY_URL/index.yaml" -o index.yaml --fail -sSL -m 5
-    helm repo index packages --url=$ARTIFACTORY_URL --merge=index.yaml
+    #echo "Merging index.yaml"
+    #curl "$ARTIFACTORY_URL/index.yaml" -o index.yaml --fail -sSL -m 5
+    helm repo index packages --url=$ARTIFACTORY_URL #--merge=index.yaml
 
     echo "Copying chart packages and index to docs"
+    rm -f docs/*
     rm -f packages/*.compare
     cp packages/*.tgz docs/
     cp packages/index.yaml docs/
