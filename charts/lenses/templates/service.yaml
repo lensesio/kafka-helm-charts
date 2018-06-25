@@ -9,6 +9,7 @@ metadata:
     component: "lenses"
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
+    lenses: lenses-service
 {{- if .Values.service.annotations }}
   annotations:
 {{ toYaml .Values.service.annotations | indent 4 }}

@@ -74,7 +74,7 @@ spec:
         env:
         {{- if .Values.lenses.licenseUrl }} 
         - name: LICENSE_URL
-          value:
+          value: {{ .Values.lenses.licenseUrl }}
         {{- end }}
         {{- if .Values.lenses.kafka.sasl.enabled }}
         - name: LENSES_OPTS
