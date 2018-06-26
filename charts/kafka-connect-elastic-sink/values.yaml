@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: datamountaineer/kafka-connect-elastic
-  tag: 1.2.0
+  tag: 1.1.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -98,7 +98,7 @@ errorThrow: true
 progressEnabled: true
 
 # clusterName Name of the elastic search cluster, used in local mode for setting the connection type: STRING importance: HIGH
-clusterName: elasticsearch
+elasticClusterName: elasticsearch
 
 # writeTimeout The time to wait in millis. Default is 5 minutes. type: INT importance: MEDIUM
 writeTimeout: 300000

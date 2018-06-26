@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: datamountaineer/kafka-connect-hbase
-  tag: 1.2.0
+  tag: 1.1.0
   pullPolicy: IfNotPresent
 
 # Resource management

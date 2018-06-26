@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: datamountaineer/kafka-connect-elastic5
-  tag: 1.2.0
+  tag: 1.1.0
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -67,12 +67,6 @@ javaHeap: "256M"
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
 
-
-
-
-
-
-
 # restPort The rest port of Connect
 restPort: 8083
 
@@ -104,7 +98,7 @@ batchSize: 4000
 useHttp: tcp
 
 # clusterName Name of the elastic search cluster, used in local mode for setting the connection type: STRING importance: HIGH
-clusterName: elasticsearch
+elasticClusterName: elasticsearch
 
 # writeTimeout The time to wait in millis. Default is 5 minutes. type: INT importance: MEDIUM
 writeTimeout: 300000

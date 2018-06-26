@@ -222,7 +222,7 @@ spec:
 
         # elastic client settings
         - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
-          value: {{ .Values.clusterName | quote }}
+          value: {{ .Values.elasticClusterName | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_WRITE_TIMEOUT
           value: {{ .Values.writeTimeout | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_XPACK_PLUGINS

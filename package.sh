@@ -33,7 +33,8 @@ if [[ "${RET}" == 0 ]]; then
     helm repo index packages --url=$ARTIFACTORY_URL #--merge=index.yaml
 
     echo "Copying chart packages and index to docs"
-    rm -f docs/*
+    rm -f docs/*.tgz
+    rm -f docs/*.yaml
     rm -f packages/*.compare
     cp packages/*.tgz docs/
     cp packages/index.yaml docs/
