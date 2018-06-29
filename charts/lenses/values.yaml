@@ -131,6 +131,8 @@ lenses:
   ## Zookeepers should be behind a service, if so set one entry in the hosts
   ## If your zookeepers are outside explicitly add them to the hosts. 
   zookeepers:
+    chroot: 
+    hosts:
     - host: zookeeper
       port: 2181
       jmxPort: 9102
