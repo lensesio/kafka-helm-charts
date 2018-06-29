@@ -144,7 +144,7 @@ PLAINTEXT
 
 {{- define "zookeepers" -}}
 [
-  {{ range $index, $element := .Values.lenses.zookeepers }}
+  {{ range $index, $element := .Values.lenses.zookeepers.hosts }}
   {{- if not $index -}}{
     "url":"{{$element.host}}:{{$element.port}}" 
     ,"jmx":"{{$element.host}}:{{$element.jmxPort}}"
@@ -272,7 +272,7 @@ PLAINTEXT
   {{ range $index, $element := .Values.lenses.security.users}}
   {{- if not $index -}}
     {
-      "name": "{{$element.username}}", 
+      "username": "{{$element.username}}", 
       "displayname": "{{$element.displayname}}",
       "password": "{{$element.password}}",
       "groups":[
@@ -306,7 +306,7 @@ PLAINTEXT
       {{- end}}
   }
   {{- else}}  ,{
-      "name": "{{$element.username}}",
+      "username": "{{$element.username}}",
       "displayname": "{{$element.displayname}}",
       "password": "{{$element.password}}",
       "groups": [

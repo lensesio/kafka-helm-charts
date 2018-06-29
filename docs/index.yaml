@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   azure-persistent-volume-claims-disk:
-  - created: 2018-06-29T19:51:39.346788984+02:00
+  - created: 2018-06-29T22:48:30.960617816+02:00
     description: A chart containing the persistent volumes for azure
     digest: 6c0a3dad65eb53e0b11fdc26f303857c8bb1588d67449ebd67256eea9859b0ab
     name: azure-persistent-volume-claims-disk
@@ -9,7 +9,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volume-claims-file:
-  - created: 2018-06-29T19:51:39.346942487+02:00
+  - created: 2018-06-29T22:48:30.960768848+02:00
     description: A chart containing the persistent volumes for azure
     digest: c7886f3a9c2a14a89d009cc6b45a2fa4eb8f4546c8c9472b60db095025ac2666
     name: azure-persistent-volume-claims-file
@@ -17,7 +17,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-file-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volumes-file:
-  - created: 2018-06-29T19:51:39.347094141+02:00
+  - created: 2018-06-29T22:48:30.960921867+02:00
     description: A chart containing the persistent volume claims for azure
     digest: 9ad44924c18c5923b15d61e6a42cdcea9fc557a0ef4050ffd720788e602f0c13
     name: azure-persistent-volumes-file
@@ -25,7 +25,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volumes-file-0.0.2.tgz
     version: 0.0.2
   azure-storage-class:
-  - created: 2018-06-29T19:51:39.34725275+02:00
+  - created: 2018-06-29T22:48:30.961080775+02:00
     description: A chart containing the storage class for azure
     digest: bccc0a59731ada47fd19d0f9929523c6e793bf8eae729e3ab4306b41d3f0e842
     name: azure-storage-class
@@ -34,7 +34,7 @@ entries:
     version: 0.0.2
   kafka-connect-blockchain-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.347851698+02:00
+    created: 2018-06-29T22:48:30.961355683+02:00
     description: A chart for kafka-connect-blockchain-source
     digest: 38019062f8cd2a477697056f371cea0d4e531c8ac965daea7e9627c504b01d18
     name: kafka-connect-blockchain-source
@@ -43,7 +43,7 @@ entries:
     version: 1.1.3
   kafka-connect-bloomberg-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.348686811+02:00
+    created: 2018-06-29T22:48:30.961656486+02:00
     description: A chart for kafka-connect-bloomberg-source
     digest: e9956b6dd0a433c7d96074ba951acd76615d5a1e5c38274d628d35f557833fa6
     name: kafka-connect-bloomberg-source
@@ -52,7 +52,7 @@ entries:
     version: 1.1.3
   kafka-connect-cassandra-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.349540354+02:00
+    created: 2018-06-29T22:48:30.961980418+02:00
     description: A chart for kafka-connect-cassandra-sink
     digest: 7e332009daf8e5582c8a01fd03df663300987ecfe8bb766ddf6e406969036578
     name: kafka-connect-cassandra-sink
@@ -61,7 +61,7 @@ entries:
     version: 1.1.3
   kafka-connect-cassandra-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.350401632+02:00
+    created: 2018-06-29T22:48:30.962324023+02:00
     description: A chart for kafka-connect-cassandra-source
     digest: 70217542323303ba5b8a6e54b717280be308512df82da0589dd82964fa6cd9fc
     name: kafka-connect-cassandra-source
@@ -70,7 +70,7 @@ entries:
     version: 1.1.3
   kafka-connect-coap-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.351213538+02:00
+    created: 2018-06-29T22:48:30.962670166+02:00
     description: A chart for kafka-connect-coap-sink
     digest: eeec185b50b339c0109e0a6181564c1baecf396ee4148903b19c4d9c8cb54b46
     name: kafka-connect-coap-sink
@@ -79,7 +79,7 @@ entries:
     version: 1.1.3
   kafka-connect-coap-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.352004849+02:00
+    created: 2018-06-29T22:48:30.963002552+02:00
     description: A chart for kafka-connect-coap-source
     digest: 9f64aa49c84eef322702c6a3754d7ad6eca6de30660052cd83b1a1fb36ff6009
     name: kafka-connect-coap-source
@@ -88,7 +88,7 @@ entries:
     version: 1.1.3
   kafka-connect-documentdb-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.352777705+02:00
+    created: 2018-06-29T22:48:30.963423656+02:00
     description: A chart for kafka-connect-documentdb-sink
     digest: 096fef27d43c8b49ca5f5fd8928ee3842efe55229b75d3edd5cf61afb288ee31
     name: kafka-connect-documentdb-sink
@@ -97,7 +97,7 @@ entries:
     version: 1.1.3
   kafka-connect-druid-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.353312715+02:00
+    created: 2018-06-29T22:48:30.963810008+02:00
     description: A chart for kafka-connect-druid-sink
     digest: fe0a801533d1d2ff4152aaae1254862098d05020f71e4e019844415ac77467af
     name: kafka-connect-druid-sink
@@ -106,7 +106,7 @@ entries:
     version: 1.1.3
   kafka-connect-elastic-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.35389481+02:00
+    created: 2018-06-29T22:48:30.964232672+02:00
     description: A chart for kafka-connect-elastic-sink
     digest: 2afb8887ceba1e9b611ca4bebf7efff4da3867320965e9b4dfc90dd1a44794df
     name: kafka-connect-elastic-sink
@@ -115,7 +115,7 @@ entries:
     version: 1.1.3
   kafka-connect-elastic5-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.35471123+02:00
+    created: 2018-06-29T22:48:30.964680391+02:00
     description: A chart for kafka-connect-elastic5-sink
     digest: 8641f11a3ee78027f6eabb953b405148b8237cb15cf63e87e1cb836b53162824
     name: kafka-connect-elastic5-sink
@@ -124,7 +124,7 @@ entries:
     version: 1.1.3
   kafka-connect-elastic6-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.355587516+02:00
+    created: 2018-06-29T22:48:30.965189985+02:00
     description: A chart for kafka-connect-elastic6-sink
     digest: 24f7862e2098de53bb17e93153ed9b2610f64ef2eab1d130b905f8318a9b0be9
     name: kafka-connect-elastic6-sink
@@ -133,7 +133,7 @@ entries:
     version: 1.1.3
   kafka-connect-ftp-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.35727753+02:00
+    created: 2018-06-29T22:48:30.965598027+02:00
     description: A chart for kafka-connect-ftp-source
     digest: a31232b7b8de7db3e19ca2b92f623ed1a639c27788ddb47bba2f1b712dd713b7
     name: kafka-connect-ftp-source
@@ -142,7 +142,7 @@ entries:
     version: 1.1.3
   kafka-connect-hazelcast-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.357901064+02:00
+    created: 2018-06-29T22:48:30.966066514+02:00
     description: A chart for kafka-connect-hazelcast-sink
     digest: b042d9e0453cdd77ef14358382f919f55c1f80d7e7d2276240538e5d0e92d13e
     name: kafka-connect-hazelcast-sink
@@ -151,7 +151,7 @@ entries:
     version: 1.1.3
   kafka-connect-hbase-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.358232901+02:00
+    created: 2018-06-29T22:48:30.966550116+02:00
     description: A chart for kafka-connect-hbase-sink
     digest: 44feeeda6e2b545f138889e62254e7f7cdf07b256de85fa97a54fdaa07ad0a0e
     name: kafka-connect-hbase-sink
@@ -160,7 +160,7 @@ entries:
     version: 1.1.3
   kafka-connect-influx-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.358564071+02:00
+    created: 2018-06-29T22:48:30.96698939+02:00
     description: A chart for kafka-connect-influx-sink
     digest: 609ba7be856ac75590499579a63d76a2af86838990464ca8bd467d2067cebf01
     name: kafka-connect-influx-sink
@@ -169,7 +169,7 @@ entries:
     version: 1.1.3
   kafka-connect-jms-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.358881185+02:00
+    created: 2018-06-29T22:48:30.968434805+02:00
     description: A chart for kafka-connect-jms-sink
     digest: 796a4ae56dbe0bb839d7a4e517a07e2208546a94760056efa6f5fd286ee93bef
     name: kafka-connect-jms-sink
@@ -178,7 +178,7 @@ entries:
     version: 1.1.3
   kafka-connect-jms-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.359195774+02:00
+    created: 2018-06-29T22:48:30.968757878+02:00
     description: A chart for kafka-connect-jms-source
     digest: 453fa5d882214adc5ca93e5f9e0dc0a6d7e977868243e8ca3d49772bc89b2769
     name: kafka-connect-jms-source
@@ -187,7 +187,7 @@ entries:
     version: 1.1.3
   kafka-connect-kudu-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.359500134+02:00
+    created: 2018-06-29T22:48:30.969069604+02:00
     description: A chart for kafka-connect-kudu-sink
     digest: fcf2601de5f688e8f31d0a7f84fc54ed8c074e5444a5b67a56ffde33d2570f04
     name: kafka-connect-kudu-sink
@@ -196,7 +196,7 @@ entries:
     version: 1.1.3
   kafka-connect-mongo-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.359831297+02:00
+    created: 2018-06-29T22:48:30.969378912+02:00
     description: A chart for kafka-connect-mongo-sink
     digest: 10d276b65bb8c5ddd4b0624176ce8b66ca728365bfeee9ae4c19f10e387d50ca
     name: kafka-connect-mongo-sink
@@ -205,7 +205,7 @@ entries:
     version: 1.1.3
   kafka-connect-mqtt-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.360930304+02:00
+    created: 2018-06-29T22:48:30.969702021+02:00
     description: A chart for kafka-connect-mqtt-sink
     digest: c499e4789057b6df721cf9ee1b745dc5f84ac284e67c7c0441d6be6e08d8a383
     name: kafka-connect-mqtt-sink
@@ -214,7 +214,7 @@ entries:
     version: 1.1.3
   kafka-connect-mqtt-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.361450877+02:00
+    created: 2018-06-29T22:48:30.970026276+02:00
     description: A chart for kafka-connect-mqtt-source
     digest: df21b4be1a3a59cdd6dd22fe955bd527a27f1bf7cdcac5c59461dc75157637d1
     name: kafka-connect-mqtt-source
@@ -223,7 +223,7 @@ entries:
     version: 1.1.3
   kafka-connect-pulsar-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.361917979+02:00
+    created: 2018-06-29T22:48:30.970339253+02:00
     description: A chart for kafka-connect-pulsar-sink
     digest: 58d0b8be58d71c79ff8213572122af1ad0c445d51a70c7db49c2dc8e9582ff2c
     name: kafka-connect-pulsar-sink
@@ -232,7 +232,7 @@ entries:
     version: 1.1.3
   kafka-connect-pulsar-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.362388483+02:00
+    created: 2018-06-29T22:48:30.970652011+02:00
     description: A chart for kafka-connect-pulsar-source
     digest: 33cc9941b67348bd80dc43283b26cdf275044588d71dd33608a92b78621e664f
     name: kafka-connect-pulsar-source
@@ -241,7 +241,7 @@ entries:
     version: 1.1.3
   kafka-connect-redis-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.362909432+02:00
+    created: 2018-06-29T22:48:30.970971117+02:00
     description: A chart for kafka-connect-redis-sink
     digest: 8c49e2437485ceb6bd4170925d22a4fee147b753ef27a8ae071fa8ebd660dec0
     name: kafka-connect-redis-sink
@@ -250,7 +250,7 @@ entries:
     version: 1.1.3
   kafka-connect-rethink-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.36332468+02:00
+    created: 2018-06-29T22:48:30.97128768+02:00
     description: A chart for kafka-connect-rethink-sink
     digest: d5ff2b718faabf89897962136f93d1e75f078c3c7404d483e3042cd300ffc25f
     name: kafka-connect-rethink-sink
@@ -259,7 +259,7 @@ entries:
     version: 1.1.3
   kafka-connect-rethink-source:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.363715775+02:00
+    created: 2018-06-29T22:48:30.971604827+02:00
     description: A chart for kafka-connect-rethink-source
     digest: 45025fb63eee359bf32f20675f45128311d0429ac42e8e8cbd6db8fbdf168cdb
     name: kafka-connect-rethink-source
@@ -268,7 +268,7 @@ entries:
     version: 1.1.3
   kafka-connect-volt-sink:
   - appVersion: 1.1.0
-    created: 2018-06-29T19:51:39.364095956+02:00
+    created: 2018-06-29T22:48:30.971905449+02:00
     description: A chart for kafka-connect-volt-sink
     digest: c55e0df28f701cb61baf033dcdb35acbd1a515696fe6a6420c93efb1374750d9
     name: kafka-connect-volt-sink
@@ -276,7 +276,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.1.3.tgz
     version: 1.1.3
   kafka-secrets:
-  - created: 2018-06-29T19:51:39.364296698+02:00
+  - created: 2018-06-29T22:48:30.972060499+02:00
     description: A chart for Kafka SSL and SASL. Base64 encode the key/truststores
     digest: 07c38396a4a17900d64d689f14f39acc82afb43093f991ad04f231ee1317e781
     name: kafka-secrets
@@ -285,17 +285,17 @@ entries:
     version: 0.0.2
   lenses:
   - appVersion: 2.0.11
-    created: 2018-06-29T19:51:39.364854374+02:00
+    created: 2018-06-29T22:48:30.972510049+02:00
     description: A chart Lenses
-    digest: 1ac8e0ac1b37574d6e667b766bd478c12ba517616094d355c60643b3ddd5cf96
+    digest: 99a7dff4e157dc67860ebe405c0ebf95353c8b605e372070c30bdf8ab643bfa2
     icon: https://www.landoop.com/images/landoop-dark.svg
     name: lenses
     urls:
-    - https://landoop.github.io/kafka-helm-charts/lenses-1.0.7.tgz
-    version: 1.0.7
+    - https://landoop.github.io/kafka-helm-charts/lenses-1.0.8.tgz
+    version: 1.0.8
   lenses-sql-processor-runner:
   - appVersion: 2.0.0
-    created: 2018-06-29T19:51:39.36521447+02:00
+    created: 2018-06-29T22:48:30.97282439+02:00
     description: A chart for Landoops Lenses SQL processor runner
     digest: b56b905ec0a0fcff11ebb810ae8e37f54ae045ef93d0bb9a3052b6a2015aeb1a
     icon: https://www.landoop.com/images/landoop-dark.svg
@@ -304,7 +304,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-sql-processor-runner-1.1.3.tgz
     version: 1.1.3
   services:
-  - created: 2018-06-29T19:51:39.365424157+02:00
+  - created: 2018-06-29T22:48:30.972995432+02:00
     description: A chart containing the services and endpoints of an environment
     digest: b42dab8ef491c6efcaf6f52eafc84c91536cd09bd65020e9b0eb2624ad85e0a9
     name: services
@@ -312,11 +312,11 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/services-0.2.0.tgz
     version: 0.2.0
   services-external-name:
-  - created: 2018-06-29T19:51:39.365602173+02:00
+  - created: 2018-06-29T22:48:30.973156822+02:00
     description: A chart containing the services and endpoints of an environment
     digest: 7574d4ceedc5f3aa509ab6981bf64e8e5584ad599b4c102457f1a28c1712ae43
     name: services-external-name
     urls:
     - https://landoop.github.io/kafka-helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
-generated: 2018-06-29T19:51:39.346464873+02:00
+generated: 2018-06-29T22:48:30.960307896+02:00
