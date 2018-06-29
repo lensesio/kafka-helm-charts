@@ -30,6 +30,8 @@ podManagementPolicy: OrderedReady
 # The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
 # and added to the kafka secret and mounted into /mnt/connector-secrets
 kafka:
+  # replicationFactor for connect topics
+  replicationFactor: 3
   securityProtocol:
   ssl:
     enabled: false

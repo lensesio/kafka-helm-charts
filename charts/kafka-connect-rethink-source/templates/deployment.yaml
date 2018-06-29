@@ -122,6 +122,12 @@ spec:
               fieldPath: status.podIP
         - name:  CONNECT_PLUGIN_PATH
           value: "/etc/landoop/jars"
+        - name:  CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR
+          value: {{ .Values.kafka.replicationFactor | quote }}
+        - name:  CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR
+          value: {{ .Values.kafka.replicationFactor | quote }} 
+        - name:  CONNECT_STATUS_STORAGE_REPLICATION_FACTOR
+          value: {{ .Values.kafka.replicationFactor | quote }}  
 
         - name: CONNECT_PRODUCER_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
