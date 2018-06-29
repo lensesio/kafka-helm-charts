@@ -185,22 +185,23 @@ PLAINTEXT
 {{- range $index, $element := .Values.lenses.connectClusters.clusters -}}
   {{- $jmxPort := index $element "jmxPort" -}}
   {{- $port := index $element "port" -}}
+  {{- $protocol := index $element "protocol" -}}
   {{- if not $index}}
   {  
     "name": "{{- index $element "name"}}",
-    "statuses": "{{index $element "statusesTopic"}}",
-    "configs": "{{index $element "configsTopic"}}",
+    "statuses": "{{index $element "statusTopic"}}",
+    "configs": "{{index $element "configTopic"}}",
     "offsets": "{{index $element "offsetsTopic"}}",
     "urls":[ 
       {{ range $index, $element := index $element "hosts"}}
       {{- if not $index -}}
       {
-        "url":"{{$element}}:{{$port}}"
+        "url":"{{$protocol}}://{{$element}}:{{$port}}"
         ,"jmx":"{{$element}}:{{$jmxPort}}"
       }
       {{- else}}
       ,{
-        "url":"{{$element}}:{{$port}}" 
+        "url":"{{$protocol}}://{{$element}}:{{$port}}"
         ,"jmx":"{{$element}}:{{$jmxPort}}"
       }
       {{- end -}}
@@ -216,12 +217,12 @@ PLAINTEXT
       {{ range $index, $element := index $element "hosts"}}
       {{- if not $index -}}
       {
-        "url":"{{$element}}:{{$port}}", 
+        "url":"{{$element}}:{{$port}}",
         "jmx":"{{$element}}:{{$jmxPort}}"
       }
       {{- else}}
       ,{
-        "url":"{{$element}}:{{$port}}", 
+        "url":"{{$element}}:{{$port}}",
         "jmx":"{{$element}}:{{$jmxPort}}"
       }
       {{- end -}}

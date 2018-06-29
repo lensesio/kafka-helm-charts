@@ -148,7 +148,7 @@ spec:
           value: {{ .Values.lenses.grafanaUrl | quote }}      
         - name: LENSES_TOPICS_PROCESSORS
           value: {{ include "processorTopic" . | quote }}                          
-        - name: LENSES_TOPICS_ALERTS
+        - name: LENSES_TOPICS_ALERTS_STORAGE
           value: {{ include "alertTopic" . | quote }}
         - name: LENSES_TOPICS_AUDITS
           value: {{ include "auditTopic" . | quote }}
@@ -156,38 +156,31 @@ spec:
           value: {{ include "metricTopic" . | quote }}
         - name: LENSES_TOPICS_PROFILES
           value: {{ include "profileTopic" . | quote }}
-        - name: LENSES_TOPICS_ALERTS_STORAGE
+        - name: LENSES_TOPICS_ALERTS_SETTINGS
           value: {{ include "alertSettingTopic" . | quote }}
         - name: LENSES_TOPICS_CLUSTER
           value: {{ include "clusterTopic" . | quote }}  
         - name: LENSES_TOPICS_LSQL_STORAGE
-          value: {{ include "lsqlTopic" . | quote }}             
-
+          value: {{ include "lsqlTopic" . | quote }}
         # security
         - name: LENSES_SECURITY_MODE
           value: {{ .Values.lenses.security.mode }} 
 
-        {{- if .Values.lenses.security.groups }}    
         - name: LENSES_SECURITY_GROUPS
           value: |-
-{{ include "userGroups" . | indent 12 }} 
-        {{- end -}} 
+{{ include "userGroups" . | indent 12 }}
 
-        {{- if .Values.lenses.security.users }}                  
-        - name: LENSES_SECURITY_USERS  
+        - name: LENSES_SECURITY_USERS
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key: "users" 
-        {{- end -}}  
+              key: "users"
 
-        {{- if .Values.lenses.security.serviceAccount }}                  
         - name: LENSES_SECURITY_SERVICE_ACCOUNTS 
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key: "serviceAccounts" 
-        {{- end -}}                
+              key: "service.accounts"
         
         {{- if eq .Values.lenses.security.mode "LDAP" }}
         #ldap

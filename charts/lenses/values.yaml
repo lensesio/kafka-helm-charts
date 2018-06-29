@@ -67,16 +67,15 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
-  #  kubernetes.io/ingress.class: nginx
-  #  kubernetes.io/tls-acme: 'true'
+#    kubernetes.io/ingress.class: nginx
+#    kubernetes.io/tls-acme: 'true'
+#    nginx.ingress.kubernetes.io/rewrite-target: /
 
   # TLS if enabled load the tls.crt and tls.keys as a secrets and enable TLS on the ingress
   tls:
     enabled: false 
     crt: |-
     key: |-
-
-
 
 lenses:
   jvm:
@@ -95,13 +94,16 @@ lenses:
   # kafka ssl
   # The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded 
   # openssl base64 < client.keystore.jks | tr -d '\n'
-  # The passwords will be base64enc by the secret include
+  # The passwords will be base64enc by the secret
   # and added to the kafka secret and mounted into /mnt/secrets
   kafka:
     ssl:
       enabled: false
-      trustStoreFileData: 
-      keyStoreFileData: 
+      # base64 encoded truststore data
+      trustStoreFileData:
+      # base64 encoded keystore data
+      keyStoreFileData:
+      # password strings
       trustStorePassword: 
       keyStorePassword: 
       keyPassword: 
@@ -153,6 +155,7 @@ lenses:
       - name: streamreactor
         port: 8083
         jmxPort: 9102
+        protocol: http
         offsetsTopic: connect-offsets
         statusTopic: connect-status
         configTopic: connect-configs
@@ -191,26 +194,26 @@ lenses:
   # sql
   sql:
     processorImage: eu.gcr.io/k8-engine/lenses-sql-processor
-    processorImageTag: 2.0.11
+    processorImageTag: 2.0.12
 
   security:
     # By default to BASIC security. Alternative is LDAP
-    mode: NONE
+    mode: BASIC
 
     # user groups
     groups:
-    #  - name: adminGroup
-    #    roles:
-    #      - admin
-    #      - write
-    #      - read
-    #  - name: writeGroup
-    #    roles:
-    #      - read
-    #      - write
-    #  - name: readGroup
-    #    roles:
-    #      - read        
+      - name: adminGroup
+        roles:
+          - admin
+          - write
+          - read
+      - name: writeGroup
+        roles:
+          - read
+          - write
+      - name: readGroup
+        roles:
+          - read
     # users
     users:
     #  - username: admin
@@ -266,7 +269,7 @@ lenses:
   licenseUrl:
   
   # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
-  ## keys must be uppcase and underscores for separators suit for use as environment variables
+  ## keys must be uppercase and underscores for separators suit for use as environment variables
   ## see http://lenses.stream/install_setup/configuration/lenses-config.html#option-reference
   configOverrides:
     #LENSES_PROPERTY : value
