@@ -1,5 +1,5 @@
 apiVersion: apps/v1beta1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: {{ include "fullname" . }}
   labels:
@@ -10,8 +10,6 @@ metadata:
     lenses: lenses-processor
 spec:
   replicas: {{ .Values.replicaCount }}
-  serviceName: {{ template "fullname" . }}-headless
-  podManagementPolicy: {{ .Values.podManagementPolicy }}  
   template:
     metadata:
       labels:
