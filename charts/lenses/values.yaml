@@ -218,11 +218,11 @@ lenses:
           - read
     # users
     users:
-    #  - username: admin
-    #    password: admin
-    #    displayname: LensesAdmin
-    #    groups:
-    #      - adminGroup
+     - username: admin
+       password: admin
+       displayname: LensesAdmin
+       groups:
+         - adminGroup
     #    topic:
     #      blacklist:
     #        - andrew
@@ -271,7 +271,7 @@ lenses:
   licenseUrl:
   
   # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
-  ## keys must be uppercase and underscores for separators suit for use as environment variables
+  ## keys must be uppercase and underscores for separators suitable for use as environment variables
   ## see http://lenses.stream/install_setup/configuration/lenses-config.html#option-reference
   configOverrides:
     #LENSES_PROPERTY : value
