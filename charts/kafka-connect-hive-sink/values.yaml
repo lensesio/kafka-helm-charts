@@ -1,0 +1,122 @@
+# Basic info
+replicaCount: 1
+
+image:
+  repository: registry.hub.docker.com/datamountaineer/kafka-connect-hive
+  tag: 1.2.0
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+# javaHeap options    
+javaHeap: 256M
+
+# Monitoring
+monitoring:
+  pipeline: "__REQUIRED__"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+podManagementPolicy: OrderedReady
+
+# kafka ssl
+# The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
+# and added to the kafka secret and mounted into /mnt/connector-secrets
+kafka:
+  # replicationFactor for connect topics
+  replicationFactor: 3
+  securityProtocol:
+  ssl:
+    enabled: false
+    trustStoreFileData:
+    trustStorePassword:
+    keyStoreFileData:
+    keyStorePassword:
+  sasl:
+    enabled: false
+    # keyTabData is the contents kerberos keytab file is using kerberos
+    keyTabData: |-
+             
+    # jaasFileData is the contents of the kafka jaas file
+    jaasFileData: |-
+          
+    #GSSAPI, SCRAM or PLAIN
+    mechanism: GSSAPI
+    # kerberos krb5 contents
+    krb5Conf: |-
+
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+      sslPort: 9093
+      saslSslPort: 9094
+      saslPlainTextPort: 9095       
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: schema-registry
+      protocol: http
+      port: 8081
+      jmxPort: 9102    
+
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "__REQUIRED__"
+
+# restPort The rest port of Connect
+restPort: 8083
+
+# logLevel The log4j level
+logLevel: INFO
+
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+
+# valueConverter The key converter to/from Connects struct
+valueConveter: "io.confluent.connect.avro.AvroConverter"
+
+# connectorClass class name of the connector
+connectorClass: "com.datamountaineer.streamreactor.connect.hive.HiveSinkConnector"
+
+# applicationId name of the connector
+applicationId: "__REQUIRED__"
+
+# topics to sink
+topics: "__REQUIRED__"
+
+# kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
+kcql: "__REQUIRED__"
+
+#database The Hive database to write to
+database: default
+
+#metastoreUris The Hive metastore uris
+metastoreUris:
+
+#defaultFS The HDFS Filesystem default uri
+defaultFS:
+
+# retryInterval The time in milliseconds between retries. type: INT importance: MEDIUM
+retryInterval: 60000
+
+# maxRetries The maximum number of times to try the write again. type: INT importance: MEDIUM
+maxRetries: 20
+
+# errorPolicy Specifies the action to be taken if an error occurs while inserting the data.
+# There are two available options:
+# NOOP - the error is swallowed
+# THROW - the error is allowed to propagate.
+# RETRY - The exception causes the Connect framework to retry the message. The number of retries is based on
+# The error will be logged automatically type: STRING importance: HIGH
+errorPolicy: THROW
+
+# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
+progressEnabled: true
+
+

@@ -1,5 +1,3 @@
-{{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
-
 kind: ConfigMap
 metadata:
   name: "{{ include "fullname" . }}"
@@ -9,6 +7,11 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
+{{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
   krb5.conf:
-{{ .Values.lenses.kafka.sasl.krb5Conf | indent 4 }} 
+{{ .Values.lenses.kafka.sasl.krb5Conf | indent 4 }}
+{{- end }}
+{{- if eq .Values.lenses.security.mode "KERBEROS" }} 
+  lenses.keytab:
+{{ .Values.lenses.security.kerberos.keytabData | indent 4 }}  
 {{- end -}}

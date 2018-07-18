@@ -22,12 +22,17 @@ spec:
         prometheus.io/port: "9102"
         prometheus.io/path: "/metrics"
     spec:
-      volumes:  
-        {{- if or .Values.lenses.kafka.ssl.enabled .Values.lenses.kafka.sasl.enabled }}              
+      volumes:             
         - name: secrets
           secret:
             secretName: {{ include "fullname" . | quote }}
             items:
+              - key: security.conf
+                path: security.conf
+              {{- if eq .Values.lenses.security.mode "KERBEROS" }} 
+              - key: lenses.keytab
+                path: lenses.keytab
+              {{- end }} 
               {{- if .Values.lenses.kafka.ssl.enabled }}
               - key: client.keystore.jks
                 path: client.keystore.jks
@@ -40,7 +45,6 @@ spec:
               - key: keytab
                 path: keytab  
               {{- end }}
-        {{- end }}  
         {{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
         - name: krb
           configMap:
@@ -60,10 +64,8 @@ spec:
           initialDelaySeconds: 120
           periodSeconds: 3
         volumeMounts:
-          {{- if or .Values.lenses.kafka.ssl.enabled .Values.lenses.kafka.sasl.enabled }} 
           - name: secrets
             mountPath: "/mnt/secrets"
-          {{- end }} 
           {{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
           - name: krb
             mountPath: "/etc/krb5.conf"
@@ -151,68 +153,33 @@ spec:
           value: {{ .Values.lenses.slack.channel | quote }}
         {{- end }}  
         - name: LENSES_GRAFANA
-          value: {{ .Values.lenses.grafanaUrl | quote }}      
-        - name: LENSES_TOPICS_PROCESSORS
-          value: {{ include "processorTopic" . | quote }}                          
-        - name: LENSES_TOPICS_ALERTS_STORAGE
-          value: {{ include "alertTopic" . | quote }}
+          value: {{ .Values.lenses.grafanaUrl | quote }}  
+
+        # lenses topics      
         - name: LENSES_TOPICS_AUDITS
           value: {{ include "auditTopic" . | quote }}
         - name: LENSES_TOPICS_METRICS
-          value: {{ include "metricTopic" . | quote }}
+          value: {{ include "metricTopic" . | quote }}  
         - name: LENSES_TOPICS_PROFILES
-          value: {{ include "profileTopic" . | quote }}
-        - name: LENSES_TOPICS_ALERTS_SETTINGS
-          value: {{ include "alertSettingTopic" . | quote }}
+          value: {{ include "profileTopic" . | quote }} 
+        - name: LENSES_TOPICS_PROCESSORS
+          value: {{ include "processorTopic" . | quote }}           
         - name: LENSES_TOPICS_CLUSTER
-          value: {{ include "clusterTopic" . | quote }}  
+          value: {{ include "clusterTopic" . | quote }} 
+        - name: LENSES_TOPICS_ALERTS_STORAGE
+          value: {{ include "alertTopic" . | quote }}
+        - name: LENSES_TOPICS_ALERTS_SETTINGS
+          value: {{ include "alertSettingTopic" . | quote }} 
         - name: LENSES_TOPICS_LSQL_STORAGE
-          value: {{ include "lsqlTopic" . | quote }}
-        # security
-        - name: LENSES_SECURITY_MODE
-          value: {{ .Values.lenses.security.mode }} 
-
-        - name: LENSES_SECURITY_GROUPS
-          value: |-
-{{ include "userGroups" . | indent 12 }}
-
-        - name: LENSES_SECURITY_USERS
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key: "users"
-
-        - name: LENSES_SECURITY_SERVICE_ACCOUNTS 
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key: "service.accounts"
-        
-        {{- if eq .Values.lenses.security.mode "LDAP" }}
-        #ldap
-        - name: LENSES_SECURITY_LDAP_URL
-          value: {{ .Values.lenses.security.ldap.url }}
-        - name: LENSES_SECURITY_LDAP_BASE
-          value: {{ .Values.lenses.security.ldap.base }}
-        - name: LENSES_SECURITY_LDAP_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key:  "ldap.password"
-        - name: LENSES_SECURITY_LDAP_USER
-          value: {{ .Values.lenses.security.ldap.user }}
-        - name: LENSES_SECURITY_LDAP_FILTER
-          value: {{ .Values.lenses.security.ldap.filter }}
-        - name: LENSES_SECURITY_LDAP_PLUGIN_CLASS
-          value: {{ .Values.lenses.security.ldap.plugin.class }}
-        - name: LENSES_SECURITY_LDAP_PLUGIN_MEMBEROF_KEY
-          value: {{ .Values.lenses.security.ldap.plugin.memberofKey }}
-        - name: LENSES_SECURITY_LDAP_PLUGIN_GROUP_EXTRACT_REGEX
-          value: {{ .Values.lenses.security.ldap.plugin.groupExtractRegex }} 
-        - name: LENSES_SECURITY_LDAP_PLUGIN_PERSON_NAME_KEY
-          value: {{ .Values.lenses.security.ldap.plugin.personNameKey }}                           
-        {{- end }} 
-
+          value: {{ include "lsqlTopic" . | quote }} 
+        - name: LENSES_TOPICS_METADATA
+          value: {{ include "metadataTopic" . | quote }}                                                           
+        - name: LENSES_TOPICS_EXTERNAL_TOPOLOGY
+          value: {{ include "topologyTopic" . | quote }} 
+        - name: LENSES_TOPICS_EXTERNAL_METRICS
+          value: {{ include "externalMetricsTopic" . | quote }}            
+          
+        # ssl/sasl
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
         - name: LENSES_KAFKA_SETTINGS_PRODUCER_SECURITY_PROTOCOL
@@ -267,6 +234,7 @@ spec:
               key:  "client.key.password"                              
         {{- end }}
 
+        # extras configs
         {{- range $key, $value := .Values.configOverrides }}
         - name: {{ printf "%s" $key | replace "." "_" | upper | quote }}
           value: {{ $value | quote }}
