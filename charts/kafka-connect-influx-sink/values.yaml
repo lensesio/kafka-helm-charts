@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: datamountaineer/kafka-connect-influx
+  repository: datamountaineer/kafka-connect-influxdb
   tag: 1.1.0
   pullPolicy: IfNotPresent
 
