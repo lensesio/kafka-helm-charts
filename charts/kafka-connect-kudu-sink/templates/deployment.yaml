@@ -209,6 +209,8 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.replicaCount | quote }}
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}           
         - name: CONNECTOR_CONNECT_KUDU_KCQL
           value: {{ .Values.kcql | quote }}
         - name: CONNECTOR_CONNECT_KUDU_MASTER

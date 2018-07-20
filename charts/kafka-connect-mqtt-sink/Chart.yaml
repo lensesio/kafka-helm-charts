@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-mqtt-sink
 name: kafka-connect-mqtt-sink
-version: 1.1.3
+version: 1.1.4
 appversion: 1.1.0

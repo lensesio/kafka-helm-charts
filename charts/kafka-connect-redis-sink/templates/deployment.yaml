@@ -209,6 +209,8 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.replicaCount | quote }}
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}    
         - name: CONNECTOR_CONNECT_REDIS_HOST
           value: {{ .Values.host | quote }}          
         - name: CONNECTOR_CONNECT_REDIS_PORT
