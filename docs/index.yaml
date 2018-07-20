@@ -287,7 +287,7 @@ entries:
   - appVersion: 2.0.11
     created: 2018-07-20T13:55:32.961457753+02:00
     description: A chart Lenses
-    digest: d51587f7e08e561d0d1694be1524e8cc4862bc5471252053e7b8f0b502adf78d
+    digest: c03ab73855ecc9bbf542a8f5959cc5f67feb4a08042d0bc06bdd3382ba225c8a
     icon: https://www.landoop.com/images/landoop-dark.svg
     name: lenses
     urls:

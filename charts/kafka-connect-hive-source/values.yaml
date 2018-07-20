@@ -96,7 +96,7 @@ kcql: "__REQUIRED__"
 #database The Hive database to write to
 database: default
 
-#metastoreUris The Hive metastore uris
+#metastoreUris The Hive metastore uris. Optional, you can also use hive-site.xml
 metastoreUris:
 
 #pollSize Max number of records to read each time poll is called

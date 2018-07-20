@@ -207,6 +207,8 @@ spec:
           value: {{ .Values.applicationId | quote }}
         - name: CONNECTOR_CONNECTOR_CLASS
           value: {{ .Values.connectorClass | quote }}
+        - name: CONNECTOR_CONNECTOR_CLASS
+          value: {{ .Values.connectorClass | quote }}  
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.replicaCount | quote }}
         - name: CONNECTOR_TOPICS
