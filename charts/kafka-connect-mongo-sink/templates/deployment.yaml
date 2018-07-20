@@ -228,6 +228,8 @@ spec:
           value: {{ .Values.connectorClass | quote }}
         - name: CONNECTOR_TASKS_MAX
           value: {{ .Values.replicaCount | quote }}
+        - name: CONNECTOR_TOPICS
+          value: {{ .Values.topics | quote }}           
         - name: CONNECTOR_CONNECT_MONGO_MAX_RETRIES
           value: {{ .Values.maxRetries | quote }}
         - name: CONNECTOR_CONNECT_MONGO_AUTH_MECHANISM
