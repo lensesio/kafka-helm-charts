@@ -11,7 +11,3 @@ data:
   krb5.conf:
 {{ .Values.lenses.kafka.sasl.krb5Conf | indent 4 }}
 {{- end }}
-{{- if eq .Values.lenses.security.mode "KERBEROS" }} 
-  lenses.keytab:
-{{ .Values.lenses.security.kerberos.keytabData | indent 4 }}  
-{{- end -}}

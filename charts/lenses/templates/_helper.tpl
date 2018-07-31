@@ -326,7 +326,7 @@ PLAINTEXT
 
 {{- define "kerberos" -}}
 {{- if eq .Values.lenses.security.mode "KERBEROS" }}
-lenses.security.kerberos.servicePrincipal={{ .Values.lenses.security.kerberos.servicePrincipal | quote }}
+lenses.security.kerberos.service.principal={{ .Values.lenses.security.kerberos.servicePrincipal | quote }}
 lenses.security.kerberos.keytab=/mnt/secrets/lenses.keytab
 lenses.security.kerberos.debug={{ .Values.lenses.security.kerberos.debug | quote }}
 lenses.security.mappings=[

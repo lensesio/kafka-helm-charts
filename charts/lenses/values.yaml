@@ -200,7 +200,7 @@ lenses:
 
   # https://lenses.stream/install_setup/configuration/security.html
   security:
-    # By default to BASIC security. Alternative is LDAP
+    # By default to BASIC security. Options are NONE, BASIC, KERBEROS or LDAP
     mode: BASIC
 
     # user groups
@@ -262,7 +262,7 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.security.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
