@@ -7,7 +7,7 @@ replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: v2.0.11
+  tag: 2.1
   pullPolicy: IfNotPresent
 
 # Monitoring
@@ -152,12 +152,12 @@ lenses:
         jmxPort: 9102     
   
   connectClusters:
-    enabled: false
+    enabled: true
     clusters:
       - name: streamreactor
         port: 8083
         jmxPort: 9102
-        protocol: http
+        protocol: https
         offsetsTopic: connect-offsets
         statusTopic: connect-status
         configTopic: connect-configs
@@ -198,8 +198,9 @@ lenses:
     processorImage: eu.gcr.io/k8-engine/lenses-sql-processor
     processorImageTag: 2.0.12
 
+  # https://lenses.stream/install_setup/configuration/security.html
   security:
-    # By default to BASIC security. Alternative is LDAP
+    # By default to BASIC security. Options are NONE, BASIC, KERBEROS or LDAP
     mode: BASIC
 
     # user groups
@@ -218,37 +219,40 @@ lenses:
           - read
     # users
     users:
-     - username: admin
-       password: admin
-       displayname: LensesAdmin
-       groups:
-         - adminGroup
-    #    topic:
-    #      blacklist:
-    #        - andrew
-    #      whitelist:
-    #        - position_reports.*
-
-    #  - username: write
-    #    password: write
-    #    displayname: Writer
-    #    groups:
-    #      - writeGroup  
-
-    #  - username: read
-    #    password: read
-    #    displayname: Reader
-    #    groups:
-    #      - readGroup               
+      - username: write
+        password: write
+        displayname: Writer
+        groups:
+          - writeGroup 
+        #topic:
+        #  blacklist:
+        #    - private.*
+        #  whitelist:
+        #    - public.*
+      - username: admin
+        password: admin
+        displayname: LensesAdmin
+        groups:
+          - adminGroup
+      - username: read
+        password: read
+        displayname: Reader
+        groups:
+          - readGroup               
 
     # service accounts
-    #serviceAccounts:
-    #  - username: jenkins
-    #    token: jenkins
-    #    groups:
-    #      - adminGroup
-    
-     # ldap setting
+    # # https://lenses.stream/install_setup/configuration/security.html#service-accounts
+    serviceAccounts:
+      - username: jenkins
+        token: jenkins
+        groups:
+          - adminGroup
+      - username: travis
+        token: travis
+        groups:
+          - adminGroup  
+    # ldap setting
+    # https://lenses.stream/install_setup/configuration/security.html#ldap
     ldap:
       url: ""
       base: ""
@@ -258,12 +262,26 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.security.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
 
-
+    # https://lenses.stream/install_setup/configuration/security.html#kerberos
+    kerberos:
+      servicePrincipal: "HTTP/lenses.host"
+      # keyTabData is the contents kerberos keytab file is using kerberos mounted in /mnt/secrets/lenses.keytab
+      keytabData: ""
+      debug: false  
+      mappings:
+        - username: admin
+          groups:
+            - adminGroup
+        - username: dev
+          groups:
+            - reader
+            - writer    
+          
   # license is the Lenses license
   license: |-
     

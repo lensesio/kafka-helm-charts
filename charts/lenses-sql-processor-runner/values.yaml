@@ -4,8 +4,8 @@
 # Basic info
 replicaCount: 1
 image:
-  repository: eu.gcr.io/k8-engine/lenses-sql-processor
-  tag: v2.0.0
+  repository: eu.gcr.io/lenses-container-registry/lenses-sql-processor
+  tag: 2.1
   pullPolicy: IfNotPresent
 
 # Resource management
