@@ -195,8 +195,8 @@ lenses:
 
   # sql
   sql:
-    processorImage: eu.gcr.io/k8-engine/lenses-sql-processor
-    processorImageTag: 2.0.12
+    processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
+    processorImageTag: 2.1
 
   # https://lenses.stream/install_setup/configuration/security.html
   security:
