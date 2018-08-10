@@ -88,7 +88,7 @@ _kafka_lenses_lsql_storage
 
 {{- define "metadataTopic" -}}
 {{- if .Values.lenses.topics.suffix -}}
-_kafka_lenses_topics_metadata{{ .Values.lenses.topics.suffix }}
+_kafka_lenses_topics_metadata_{{ .Values.lenses.topics.suffix }}
 {{- else -}}
 _kafka_lenses_topics_metadata
 {{- end -}}
@@ -96,7 +96,7 @@ _kafka_lenses_topics_metadata
 
 {{- define "topologyTopic" -}}
 {{- if .Values.lenses.topics.suffix -}}
-__topology{{ .Values.lenses.topics.suffix }}
+__topology_{{ .Values.lenses.topics.suffix }}
 {{- else -}}
 __topology
 {{- end -}}
@@ -104,7 +104,7 @@ __topology
 
 {{- define "externalMetricsTopic" -}}
 {{- if .Values.lenses.topics.suffix -}}
-__topology__metrics{{ .Values.lenses.topics.suffix }}
+__topology__metrics_{{ .Values.lenses.topics.suffix }}
 {{- else -}}
 __topology__metrics
 {{- end -}}
