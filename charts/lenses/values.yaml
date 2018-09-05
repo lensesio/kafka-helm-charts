@@ -7,7 +7,7 @@ replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: 2.1
+  tag: 2.1.5
   pullPolicy: IfNotPresent
 
 # Monitoring
@@ -262,7 +262,7 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.security.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
