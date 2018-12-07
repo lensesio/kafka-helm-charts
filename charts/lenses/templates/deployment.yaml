@@ -8,6 +8,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
     component: "lenses"
+    lenses.io/app: "{{ include "fullname" . }}"
+    lenses.io/app.type: lenses
 spec:
   replicas: {{ .Values.replicaCount }}
   template:
@@ -29,27 +31,27 @@ spec:
             items:
               - key: security.conf
                 path: security.conf
-              {{- if eq .Values.lenses.security.mode "KERBEROS" }} 
               - key: lenses.keytab
-                path: lenses.keytab
-              {{- end }} 
-              {{- if .Values.lenses.kafka.ssl.enabled }}
+                path: lenses.keytab 
+              - key: keytab
+                path: keytab                               
               - key: client.keystore.jks
                 path: client.keystore.jks
               - key: client.truststore.jks 
                 path: client.truststore.jks
-              {{- end }}  
-              {{- if .Values.lenses.kafka.sasl.enabled }}
+              - key: processor.client.keystore.jks
+                path: processor.client.keystore.jks
+              - key: processor.client.truststore.jks
+                path: processor.client.truststore.jks
               - key: jaas.conf
                 path: jaas.conf
-              - key: keytab
-                path: keytab  
-              {{- end }}
-        {{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
+              - key: processor.jaas.conf
+                path: processor.jaas.conf
+              - key: processor.keytab
+                path: processor.keytab
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
-        {{- end }}  
       serviceAccountName: {{ .Values.serviceAccount }}      
       containers:
       - name: {{ .Chart.Name }}
@@ -66,11 +68,15 @@ spec:
         volumeMounts:
           - name: secrets
             mountPath: "/mnt/secrets"
-          {{- if and .Values.lenses.kafka.sasl.enabled (eq .Values.lenses.kafka.sasl.mechanism "GSSAPI") }}
+          - name: secrets
+            mountPath: "/etc/keytab"
+            subPath: "keytab"  
           - name: krb
             mountPath: "/etc/krb5.conf"
             subPath: "krb5.conf"
-          {{- end }}
+          - name: krb
+            mountPath: "/mnt/secrets/processor.krb5.conf"
+            subPath: "processor.krb5.conf"
         resources:
 {{ toYaml .Values.resources | indent 10 }}     
         env:
@@ -103,14 +109,14 @@ spec:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key: "license"   
-        - name: LENSES_KUBERNETES_IMAGE_NAME
+        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_NAME
           value: {{ .Values.lenses.sql.processorImage | quote }}
-        - name: LENSES_KUBERNETES_IMAGE_TAG
+        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_TAG
           value: {{ .Values.lenses.sql.processorImageTag | quote }}
         - name: LENSES_KUBERNETES_SERVICE_ACCOUNT
           value: {{ .Values.serviceAccount | quote }}
         - name: LENSES_SQL_EXECUTION_MODE
-          value: "KUBERNETES"        
+          value: "KUBERNETES"
         - name: LENSES_KUBERNETES_CONFIG_FILE
           value: '""'
         - name: LENSES_PORT
@@ -131,9 +137,14 @@ spec:
         - name: LENSES_SCHEMA_REGISTRY_URLS
           value: |-
 {{ include "registries" . | indent 12 }}
+
+        # from secrets as might contain basic auth credentials
         - name: LENSES_CONNECT_CLUSTERS
-          value: |-
-{{ include "connect" . | indent 12 }}         
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key: "connect.clusters"
+
         - name: LENSES_ALERT_MANAGER_ENDPOINTS
           value: {{ include "alertManagers" . | quote }}  
         - name: LENSES_ALERT_MANAGER_SOURCE
@@ -175,24 +186,35 @@ spec:
         - name: LENSES_TOPICS_METADATA
           value: {{ include "metadataTopic" . | quote }}                                                           
         - name: LENSES_TOPICS_EXTERNAL_TOPOLOGY
-          value: {{ include "topologyTopic" . | quote }} 
-        - name: LENSES_TOPICS_EXTERNAL_METRICS
-          value: {{ include "externalMetricsTopic" . | quote }}            
-          
+          value: {{ include "topologyTopic" . | quote }}    
+
+        # user secrets
+        - name: LENSES_SECRET_FILE
+          value: "/mnt/secrets/security.conf"
+
+        - name: LENSES_SCHEMA_REGISTRY_USERNAME
+          value: {{ .Values.lenses.schemaRegistries.username | quote }}
+
+        - name: LENSES_SCHEMA_REGISTRY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key: "schema.registry.password"
+
+        - name: LENSES_SCHEMA_REGISTRY_AUTH
+          value: {{ .Values.lenses.schemaRegistries.authType | quote }}
+
         # ssl/sasl
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
         - name: LENSES_KAFKA_SETTINGS_PRODUCER_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}  
 
-        {{- if .Values.lenses.kafka.sasl.enabled }}
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SASL_MECHANISM
           value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}    
         - name: LENSES_KAFKA_SETTINGS_PRODUCER_SASL_MECHANISM
-          value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}    
-        {{- end }}  
-   
-        {{- if .Values.lenses.kafka.ssl.enabled }}
+          value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}
+
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_LOCATION
           value: "/mnt/secrets/client.truststore.jks"
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEYSTORE_LOCATION
@@ -231,8 +253,45 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key:  "client.key.password"                              
-        {{- end }}
+              key:  "client.key.password"
+
+        #processors
+        - name: LENSES_KUBERNETES_PROCESSOR_HEAP
+          value: {{ .Values.lenses.sql.heap | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_MEM_LIMIT
+          value: {{ .Values.lenses.sql.memLimit | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_MEM_REQUEST
+          value: {{ .Values.lenses.sql.memRequest | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SECURITY_PROTOCOL
+          value: {{ include "securityProtocol" . | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SASL_MECHANISM
+          value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_JAAS_CONFIG_FILE
+          value: "/mnt/secrets/processor.jaas.config"
+        - name: LENSES_KUBERNETES_PROCESSOR_KEYTAB_FILE
+          value: "/mnt/secrets/processor.keytab"
+        - name: LENSES_KUBERNETES_PROCESSOR_KRB5_FILE
+          value: "/mnt/secrets/processor.krb5.conf"
+
+        - name: LENSES_KUBERNETES_PROCESSOR_SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/processor.client.truststore.jks"
+        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/processor.client.keystore.jks"
+        - name: LENSES_KUBERNETES_PROCESSOR_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "processor.client.truststore.password"
+        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+             name: {{ include "fullname" . | quote }}
+             key:  "processor.client.keystore.password"
+        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "processor.client.key.password"
 
         # extras configs
         {{- range $key, $value := .Values.configOverrides }}

@@ -110,6 +110,14 @@ __topology__metrics
 {{- end -}}
 {{- end -}}
 
+{{- define "connectorsTopic" -}}
+{{- if .Values.lenses.topics.suffix -}}
+_kafka_lenses_connectors_{{ .Values.lenses.topics.suffix }}
+{{- else -}}
+_kafka_lenses_processors
+{{- end -}}
+{{- end -}}
+
 {{- define "securityProtocol" -}}
 {{- if and .Values.lenses.kafka.sasl.enabled .Values.lenses.kafka.ssl.enabled -}}
 SASL_SSL
@@ -203,6 +211,9 @@ PLAINTEXT
     "statuses": "{{index $element "statusTopic"}}",
     "configs": "{{index $element "configTopic"}}",
     "offsets": "{{index $element "offsetsTopic"}}",
+    {{ if index $element "authType" }}"authType": "{{index $element "authType"}}",{{- end -}}
+    {{ if index $element "username" }}"username": "{{index $element "username"}}",{{- end -}}
+    {{ if index $element "password" }}"password": "{{index $element "password"}}",{{- end -}}
     "urls":[ 
       {{ range $index, $element := index $element "hosts" -}}
         {{- if not $index -}}

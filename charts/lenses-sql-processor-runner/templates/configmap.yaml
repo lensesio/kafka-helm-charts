@@ -8,6 +8,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+    lenses.io/app: {{ include "fullname" . }}
+    lenses.io/app.type: lenses-configmap
+    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}    
 data:
   krb5.conf: |-
 {{ .Values.kafka.sasl.krb5Conf | indent 4 }} 

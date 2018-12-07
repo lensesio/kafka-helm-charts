@@ -5,7 +5,7 @@
 replicaCount: 1
 image:
   repository: eu.gcr.io/lenses-container-registry/lenses-sql-processor
-  tag: 2.1
+  tag: 2.2
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -29,8 +29,11 @@ podManagementPolicy: OrderedReady
 serviceAccount: default 
 
 # javaOpts is any JVM options to pass to the runner
-javaOpts: -Xms256m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true
+javaOpts: -Xms256m -Xmx512m
 # -Dsun.security.krb5.debug=true
+
+# registryProvider
+registryProvider: default
 
 # Lenses SQL to run
 sql: |-
@@ -46,6 +49,8 @@ sql: |-
 # The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
 # and added to the kafka secret and mounted into /mnt/secrets
 # Password are not base64 encode
+
+# Users can extend the chart to add extra sasl and ssl props required. They will be loaded by the runner. Its looks for env vars beginning with ssl or sasl
 
 kafka:
   ssl:
