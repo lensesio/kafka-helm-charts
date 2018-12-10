@@ -45,11 +45,3 @@ Ingress enabled.
 
 Visit the UI at https://{{ .Values.ingress.host }}{{ .Values.ingress.path }}:{{ .Values.restPort }}/
 {{- end}}
-
-{{- if .Values.lenses.security.users }}
-User credentials:
-  {{ .Values.lenses.security.users }}
-
-{{ else }}
-The default admin username/password is admin/admin
-{{- end }}

@@ -7,7 +7,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: {{ .Release.Name | quote }}
     heritage: {{ .Release.Service | quote }}
-    lenses: lenses-service
+    lenses.io/app: {{ include "fullname" . }}
+    lenses.io/app.type: lenses-service
+    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
 spec:

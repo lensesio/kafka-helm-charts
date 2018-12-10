@@ -7,7 +7,7 @@ replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: 2.1.5
+  tag: 2.2.0
   pullPolicy: IfNotPresent
 
 # Monitoring
@@ -92,7 +92,7 @@ lenses:
   ## but you should specify more than one for resilience
   
   # kafka ssl
-  # The key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded 
+  # The keytab, key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
   # openssl base64 < client.keystore.jks | tr -d '\n'
   # The passwords will be base64enc by the secret
   # and added to the kafka secret and mounted into /mnt/secrets
@@ -100,22 +100,25 @@ lenses:
     ssl:
       enabled: false
       # base64 encoded truststore data
-      trustStoreFileData:
+      trustStoreFileData: |-
+
       # base64 encoded keystore data
-      keyStoreFileData:
+      keyStoreFileData: |-
+
       # password strings
       trustStorePassword: 
       keyStorePassword: 
       keyPassword: 
     sasl:
       enabled: false
-      # keyTabData is the contents kerberos keytab file is using kerberos mounted in /mnt/secrets
+      # keyTabData is the base64 contents kerberos keytab file is using kerberos mounted in /mnt/secrets
+      # openssl base64 < keytab | tr -d '\n'  
       keyTabData: |-
       
       # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
       jaasFileData: |-
       
-      # mechanism is the sasl autentication mechnaism GSSAPI, SCRAM or PLAIN
+      # mechanism is the sasl authentication mechanism GSSAPI, SCRAM or PLAIN
       mechanism: GSSAPI
 
       # krb5Conf is the kerberos config data to be mounted into /etc
@@ -131,20 +134,23 @@ lenses:
   ## Zookeepers should be behind a service, if so set one entry in the hosts
   ## If your zookeepers are outside explicitly add them to the hosts. 
   zookeepers:
-    chroot: 
+    chroot:
     hosts:
-    - host: zookeeper
-      port: 2181
-      jmxPort: 9102
-  #  - host: zookeeper2
-  #    port: 2181
-  #    jmxPort: 9102      
+      - host: zookeeper
+        port: 2181
+        jmxPort: 9102
+  #   - host: zookeeper2
+  #     port: 2181
+  #     jmxPort: 9102
 
   # schemaRegistries
   ## Schema registries should be behind a service, if so set one entry in the hosts
   ## If your schema registries are outside explicitly add them to the hosts.
   schemaRegistries:
     enabled: true
+    authType:
+    username:
+    password:
     hosts:
       - host: schema-registry
         protocol: http
@@ -157,10 +163,13 @@ lenses:
       - name: streamreactor
         port: 8083
         jmxPort: 9102
-        protocol: https
+        protocol: http
         offsetsTopic: connect-offsets
         statusTopic: connect-status
         configTopic: connect-configs
+        authType:
+        username:
+        password:
         hosts:
           - connect-worker-1
           - connect-worker-2
@@ -196,12 +205,45 @@ lenses:
   # sql
   sql:
     processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
-    processorImageTag: 2.1
+    processorImageTag: 2.2
+    heap: 1024M
+    memLimit: 1152M
+    memRequest: 128M
+    # If Lenses is ssl or sasl Lenses will create a secret from the contents below and it will be mounted into the runners
+    # This data is mounted into /mnt/secrets/processors for Lenses to read
+    # trustStoreFileData and keyStoreFileData is the base64 encoded contents of the jks files
+    # openssl base64 < client.keystore.jks | tr -d '\n'
+    ssl:
+      trustStoreFileData: |-
 
-  # https://lenses.stream/install_setup/configuration/security.html
+      keyStoreFileData: |-
+      
+      trustStorePassword:
+      keyStorePassword:
+      keyPassword:
+
+    sasl:
+      # keyTabData is the base64 contents kerberos keytab file is using kerberos mounted in /mnt/secrets/processors
+      # openssl base64 < keytab | tr -d '\n'
+      keyTabData: |-
+
+      # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets/processors
+      jaasFileData: |-
+
+      # mechanism is the sasl authentication mechanism GSSAPI, SCRAM or PLAIN
+      mechanism: GSSAPI
+
+      # krb5Conf is the kerberos config data to be mounted into /mnt/secrets/processors
+      krb5Conf: |-
+
   security:
-    # By default to BASIC security. Options are NONE, BASIC, KERBEROS or LDAP
+    # By default to BASIC security. Alternative is LDAP
     mode: BASIC
+    kerberos:
+      principal:
+      keytabData: |-
+
+      debug: false
 
     # user groups
     groups:
@@ -217,42 +259,38 @@ lenses:
       - name: readGroup
         roles:
           - read
-    # users
     users:
-      - username: write
-        password: write
-        displayname: Writer
-        groups:
-          - writeGroup 
-        #topic:
-        #  blacklist:
-        #    - private.*
-        #  whitelist:
-        #    - public.*
-      - username: admin
-        password: admin
-        displayname: LensesAdmin
-        groups:
-          - adminGroup
-      - username: read
-        password: read
-        displayname: Reader
-        groups:
-          - readGroup               
+     - username: admin
+       password: admin
+       displayname: LensesAdmin
+       groups:
+         - adminGroup
+      #  topic:
+      #    blacklist:
+      #      - secrets_*
+      #    whitelist:
+      #      - position_reports.*
+
+    #  - username: write
+    #    password: write
+    #    displayname: Writer
+    #    groups:
+    #      - writeGroup  
+
+    #  - username: read
+    #    password: read
+    #    displayname: Reader
+    #    groups:
+    #      - readGroup               
 
     # service accounts
-    # # https://lenses.stream/install_setup/configuration/security.html#service-accounts
-    serviceAccounts:
-      - username: jenkins
-        token: jenkins
-        groups:
-          - adminGroup
-      - username: travis
-        token: travis
-        groups:
-          - adminGroup  
-    # ldap setting
-    # https://lenses.stream/install_setup/configuration/security.html#ldap
+    #serviceAccounts:
+    #  - username: jenkins
+    #    token: jenkins
+    #    groups:
+    #      - adminGroup
+    
+     # ldap setting
     ldap:
       url: ""
       base: ""
@@ -262,26 +300,12 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
 
-    # https://lenses.stream/install_setup/configuration/security.html#kerberos
-    kerberos:
-      servicePrincipal: "HTTP/lenses.host"
-      # keyTabData is the contents kerberos keytab file is using kerberos mounted in /mnt/secrets/lenses.keytab
-      keytabData: ""
-      debug: false  
-      mappings:
-        - username: admin
-          groups:
-            - adminGroup
-        - username: dev
-          groups:
-            - reader
-            - writer    
-          
+
   # license is the Lenses license
   license: |-
     
@@ -289,7 +313,7 @@ lenses:
   licenseUrl:
   
   # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
-  ## keys must be uppercase and underscores for separators suitable for use as environment variables
+  ## keys must be uppercase and underscores for separators suit for use as environment variables
   ## see http://lenses.stream/install_setup/configuration/lenses-config.html#option-reference
   configOverrides:
     #LENSES_PROPERTY : value
