@@ -206,6 +206,7 @@ lenses:
   sql:
     processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
     processorImageTag: 2.2
+    mode: IN_PROCESS
     heap: 1024M
     memLimit: 1152M
     memRequest: 128M

@@ -116,7 +116,7 @@ spec:
         - name: LENSES_KUBERNETES_SERVICE_ACCOUNT
           value: {{ .Values.serviceAccount | quote }}
         - name: LENSES_SQL_EXECUTION_MODE
-          value: "KUBERNETES"
+          value: {{ .Values.lenses.sql.mode | quote }}
         - name: LENSES_KUBERNETES_CONFIG_FILE
           value: '""'
         - name: LENSES_PORT
