@@ -1,6 +1,7 @@
 {{- if .Values.service.enabled }}
 
 kind: Service
+apiVersion: v1
 metadata:
   name: {{ include "fullname" . }}
   labels:
