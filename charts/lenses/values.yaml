@@ -301,7 +301,7 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
