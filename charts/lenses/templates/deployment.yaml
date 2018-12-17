@@ -75,7 +75,7 @@ spec:
             mountPath: "/etc/krb5.conf"
             subPath: "krb5.conf"
           - name: krb
-            mountPath: "/mnt/secrets/processor.krb5.conf"
+            mountPath: "/etc/processor.krb5.conf"
             subPath: "processor.krb5.conf"
         resources:
 {{ toYaml .Values.resources | indent 10 }}     
@@ -271,7 +271,7 @@ spec:
         - name: LENSES_KUBERNETES_PROCESSOR_KEYTAB_FILE
           value: "/mnt/secrets/processor.keytab"
         - name: LENSES_KUBERNETES_PROCESSOR_KRB5_FILE
-          value: "/mnt/secrets/processor.krb5.conf"
+          value: "/etc/processor.krb5.conf"
 
         - name: LENSES_KUBERNETES_PROCESSOR_SSL_TRUSTSTORE_LOCATION
           value: "/mnt/secrets/processor.client.truststore.jks"

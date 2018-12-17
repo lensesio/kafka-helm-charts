@@ -206,7 +206,7 @@ lenses:
   sql:
     processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
     processorImageTag: 2.2
-    mode: IN_PROCESS
+    mode: IN_PROC
     heap: 1024M
     memLimit: 1152M
     memRequest: 128M
@@ -301,7 +301,7 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.kafka.lenses.security.LdapMemberOfUserGroupPlugin"
+        class: "com.landoop.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
