@@ -101,7 +101,7 @@ lenses:
       enabled: false
       # base64 encoded truststore data
       trustStoreFileData: |-
-
+  
       # base64 encoded keystore data
       keyStoreFileData: |-
 
