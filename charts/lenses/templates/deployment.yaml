@@ -132,7 +132,7 @@ spec:
         {{- if .Values.lenses.zookeepers.chroot }}
         - name: LENSES_ZOOKEEPER_CHROOT
           value: {{ .Values.lenses.zookeepers.chroot | quote }}
-        {{- end }}
+        {{- end -}}
 
         - name: LENSES_SCHEMA_REGISTRY_URLS
           value: |-
@@ -162,7 +162,7 @@ spec:
           value: {{ .Values.lenses.slack.username | quote }}
         - name: LENSES_ALERT_SLACK_CHANNEL
           value: {{ .Values.lenses.slack.channel | quote }}
-        {{- end -}}  
+        {{- end }}  
         - name: LENSES_GRAFANA
           value: {{ .Values.lenses.grafanaUrl | quote }}  
 
@@ -222,7 +222,7 @@ spec:
         - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/client.keystore.jks"          
         {{- end -}}
-        {{- if and .Values.lenses.kafka.ssl.trustStorePassword .Values.lenses.kafka.ssl.enabled}}
+        {{- if and .Values.lenses.kafka.ssl.trustStorePassword .Values.lenses.kafka.ssl.enabled }}
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
