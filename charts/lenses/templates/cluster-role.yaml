@@ -8,6 +8,8 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+    lenses.io/app: {{ include "fullname" . }}
+    lenses.io/app.type: lenses-cluster-role
 rules:
 - apiGroups: [""]
   resources:
@@ -17,10 +19,13 @@ rules:
     - watch
     - get
     - create
-- apiGroups: ["", "extensions"]
+- apiGroups: ["", "extensions", "apps"]
   resources:
     - pods
     - deployments
+    - ingresses
+    - secrets
+    - statefulsets
   verbs: 
     - list
     - watch

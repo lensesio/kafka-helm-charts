@@ -7,7 +7,9 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-    lenses: lenses-connector
+    lenses.io/app: {{ include "fullname" . }}    
+    lenses.io/app.type: lenses-connector
+    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}    
 spec:
   replicas: {{ .Values.replicaCount }}
   serviceName: {{ template "fullname" . }}-headless
@@ -18,8 +20,9 @@ spec:
         app: {{ include "fullname" . }}
         hostPort: {{ .Values.restPort | quote }}
         containerPort: {{ .Values.restPort | quote }}
-        pipeline: {{ .Values.monitoring.pipeline | quote }}
-        lenses: lenses-connector
+        lenses.io/app: {{ include "fullname" . }}
+        lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
+        lenses.io/app.type: lenses-connector
       annotations:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}

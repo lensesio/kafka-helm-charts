@@ -7,7 +7,9 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    lenses: lenses-processor
+    lenses.io/app: {{ include "fullname" . }}
+    lenses.io/app.type: lenses-processor
+    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
 spec:
   replicas: {{ .Values.replicaCount }}
   template:
@@ -16,37 +18,30 @@ spec:
         app: {{ include "fullname" . }}
         hostPort: {{ .Values.port | quote }}
         containerPort: {{ .Values.port | quote }}
-        pipeline: {{ .Values.monitoring.pipeline | quote }}
-        lenses: lenses-processor
+        lenses.io/app: {{ include "fullname" . }}
+        lenses.io/app.type: lenses-processor
+        lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
       annotations:
         prometheus.io/scrape: {{ .Values.monitoring.enabled | quote }}
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
     spec:   
-      volumes:    
-        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}   
+      volumes:     
         - name: kafka-secrets
           secret:
-            secretName: {{ include "fullname" . }}
+            secretName: {{ include "fullname" . }}-kafka-secrets
             items:
-              {{- if .Values.kafka.ssl.enabled }}
               - key: client.keystore.jks
                 path: client.keystore.jks
               - key: client.truststore.jks 
                 path: client.truststore.jks
-              {{- end -}}  
-              {{- if .Values.kafka.sasl.enabled }}
               - key: jaas.conf
                 path: jaas.conf
               - key: keytab
                 path: keytab  
-              {{- end -}}
-        {{- end }}      
-        {{- if and .Values.kafka.sasl.enabled (eq .Values.kafka.sasl.mechanism "GSSAPI") }}
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
-        {{- end }}                
       serviceAccountName: {{ .Values.serviceAccount }}  
       containers:
       - name: {{ .Chart.Name }}
@@ -65,17 +60,13 @@ spec:
             - /etc/landoop/liveliness
           initialDelaySeconds: 10
           periodSeconds: 5
-          timeoutSeconds: 5      
-        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}   
+          timeoutSeconds: 5        
         volumeMounts:
           - name: kafka-secrets
             mountPath: "/mnt/secrets"
-        {{- end }}
-        {{- if and .Values.kafka.sasl.enabled (eq .Values.kafka.sasl.mechanism "GSSAPI") }}
           - name: krb
             mountPath: "/etc/krb5.conf"
             subPath: "krb5.conf"
-        {{- end }}   
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         env:
@@ -97,13 +88,38 @@ spec:
         - name: SQL_METRIC_FREQUENCY
           value: {{ .Values.metricsFrequency | quote }}
         - name: SQL_PORT
-          value: {{ .Values.port | quote }}
-        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}  
-        - name: SQL_EXTRAS
+          value: {{ .Values.port | quote }}  
+        - name: SQL_REGISTRY_PROVIDER
+          value: {{ .Values.registryProvider | quote }} 
+        - name: SECURITY_PROTOCOL
+          value: {{ include "securityProtocol" . | quote }}             
+        - name: SASL_MECHANISM
+          value: {{ default "GSSAPI" .Values.kafka.sasl.mechanism | quote }} 
+        - name: SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/client.truststore.jks" 
+        - name: SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/client.truststore.jks" 
+        - name: SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "fullname" . }}
-              key:  "extras"
-        {{- end }}      
+              name: "{{ include "fullname" . }}-kafka-secrets"
+              key:  "client.truststore.password"           
+        - name: SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ include "fullname" . }}-kafka-secrets"
+              key:  "client.keystore.password"
+        - name: SSL_KEY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "{{ include "fullname" . }}-kafka-secrets"
+              key:  "client.key.password" 
+       
+        {{- if .Values.kafka.sasl.enabled -}}
         - name: JAVA_OPTS
-          value: {{ .Values.javaOpts }}
+          value: "-Djava.security.auth.login.config=/mnt/secrets/jaas.conf {{ .Values.javaOpts }}"   
+        {{ else }}
+        - name: JAVA_OPTS
+          value: {{ .Values.javaOpts | quote }}  
+        {{- end -}}                                           
+        
