@@ -236,7 +236,7 @@ spec:
         - name: CONNECTOR_CONNECT_CASSANDRA_KCQL
           value: {{ .Values.kcql | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_MAPPING_COLLECTION_TO_JSON
-          value: {{ .Values.mappingCollectionToJson }}  
+          value: {{ .Values.mappingCollectionToJson | quote }}  
         - name: CONNECTOR_CONNECT_CASSANDRA_MAX_RETRIES
           value: {{ .Values.maxRetries | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_ERROR_POLICY
