@@ -132,7 +132,7 @@ spec:
         {{- if .Values.lenses.zookeepers.chroot }}
         - name: LENSES_ZOOKEEPER_CHROOT
           value: {{ .Values.lenses.zookeepers.chroot | quote }}
-        {{- end -}}
+        {{- end }}
 
         - name: LENSES_SCHEMA_REGISTRY_URLS
           value: |-
