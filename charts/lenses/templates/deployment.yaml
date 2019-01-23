@@ -191,15 +191,21 @@ spec:
         # user secrets
         - name: LENSES_SECRET_FILE
           value: "/mnt/secrets/security.conf"
+        {{- if .Values.lenses.schemaRegistries.username }}
         - name: LENSES_SCHEMA_REGISTRY_USERNAME
           value: {{ .Values.lenses.schemaRegistries.username | quote }}
+        {{- end }}
+        {{- if .Values.lenses.schemaRegistries.authType }}
         - name: LENSES_SCHEMA_REGISTRY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key: "schema.registry.password"
+        {{- end }}
+        {{- if .Values.lenses.schemaRegistries.authType }}
         - name: LENSES_SCHEMA_REGISTRY_AUTH
           value: {{ .Values.lenses.schemaRegistries.authType | quote }}
+        {{- end }}
 
         # ssl/sasl
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
