@@ -163,8 +163,10 @@ spec:
         - name: LENSES_ALERT_SLACK_CHANNEL
           value: {{ .Values.lenses.slack.channel | quote }}
         {{- end }}  
+        {{- if .Values.lenses.grafanaUrl }}
         - name: LENSES_GRAFANA
           value: {{ .Values.lenses.grafanaUrl | quote }}  
+        {{- end }}
 
         # lenses topics      
         - name: LENSES_TOPICS_AUDITS
