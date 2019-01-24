@@ -3,8 +3,8 @@ replicaCount: 1
 # secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
-  repository: datamountaineer/kafka-connect-hazelcast
-  tag: 1.2.0
+  repository: streamreactor/hazelcast
+  tag: 1.2.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -63,6 +63,10 @@ schemaRegistries:
       protocol: http
       port: 8081
       jmxPort: 9102    
+
+        
+# secretsProvider is either env (k8), vault (hashicorp) or azure (keyvault)
+secretsProvider: env
 
 #javaHeap option
 javaHeap: "256M"

@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: datamountaineer/kafka-connect-elastic6
-  tag: 1.2.0
+  repository: streamreactor/elastic6
+  tag: 1.2.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -62,6 +62,10 @@ schemaRegistries:
       protocol: http
       port: 8081
       jmxPort: 9102    
+
+        
+# secretsProvider is either env (k8), vault (hashicorp) or azure (keyvault)
+secretsProvider: env
 
 #javaHeap option
 javaHeap: "256M"

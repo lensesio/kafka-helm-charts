@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-hive-source
 name: kafka-connect-hive-source
-version: 1.4.0
-appversion: 1.2.0
+version: 1.5.0
+appversion: 1.2.1
