@@ -1,0 +1,81 @@
+# Basic info
+replicaCount: 1
+
+image:
+  repository: streamreactor/mongodb
+  tag: 1.2.1.7
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+# Monitoring
+monitoring:
+  pipeline: "test-mongo"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+podManagementPolicy: OrderedReady
+
+kafka:
+  replicationFactor: 1
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+  image:
+    repository: landoop/fast-data-dev
+    tag: 2.0.0
+    pullPolicy: IfNotPresent
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: kafka
+      protocol: http
+      port: 8081
+      jmxPort: 9582 
+
+secretsProvider: env
+
+# javaHeap options    
+javaHeap: 256M
+
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "mongo-test"
+
+# restPort The rest port of Connect
+restPort: "8083"
+
+# logLevel The log4j level
+logLevel: INFO
+
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+
+# valueConverter The key converter to/from Connects struct
+valueConverter: "io.confluent.connect.avro.AvroConverter"
+
+# connectorClass
+connectorClass: "com.datamountaineer.streamreactor.connect.mongodb.sink.MongoSinkConnector"
+
+# applicationId name of the connector
+applicationId: "com.datamountaineer.streamreactor.connect.mongodb.sink.MongoSinkConnector"
+
+# topics to sink
+topics: "mongo-sink"
+
+# kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
+kcql: "INSERT INTO orders SELECT * FROM mongo-sink"
+
+# connection The mongodb connection in the format mongodb://[username:password@]host1[:port1][,host2[:port2],..[,hostN[:portN]]][/[database][?options]]. type: STRING importance: HIGH
+connection: "mongodb://mongo:27017"
+
+username: ""
+
+# db The mongodb target database. type: STRING importance: HIGH
+db: "landoop"

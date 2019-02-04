@@ -236,8 +236,10 @@ spec:
           value: {{ .Values.elasticClusterName | quote }}
         - name: CONNECTOR_CONNECT_ELASTIC_WRITE_TIMEOUT
           value: {{ .Values.writeTimeout | quote }}
+        {{- if .Values.xpackPlugins }}
         - name: CONNECTOR_CONNECT_ELASTIC_XPACK_PLUGINS
           value: {{ .Values.xpackPlugins | quote }}
+        {{- end }}
         - name: CONNECTOR_CONNECT_ELASTIC_URL_PREFIX
           value: {{ .Values.urlPrefix | quote }}
         - name: SECRET_CONNECT_ELASTIC_XPACK_SETTINGS

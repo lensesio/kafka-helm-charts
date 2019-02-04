@@ -1,0 +1,73 @@
+- name: coyote
+  title: kafka-connect-redis-sink
+
+- name: Run PODs
+  entries:
+    - name: Deploy redis and Fast Data Dev
+      command: kubectl apply -f ci/deployment.yaml
+    - name: Wait for Connect to get up
+      command: >
+        bash -c '
+          for ((i=0;i<30;i++)); do
+            sleep 5;
+            POD=`kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-redis -o jsonpath='{.items[0].metadata.name}'`
+            kubectl exec $POD -c kafka -- curl "http://localhost:8083/connectors" && break;
+          done'
+      nolog: true
+
+- name: coyote
+  vars:
+    POD_NAME: kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-redis -o jsonpath='{.items[0].metadata.name}'
+
+- name: Prepare topic
+  entries:   
+    - name: Create Sink Topic
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c kafka -- kafka-topics --zookeeper $ADV_HOST:2181 --topic redis-sink --partitions 1 --replication-factor 1 --create'
+      timeout: 5s
+
+- name: Deploy Helm redis Sink Distributed Connector
+  entries:   
+    - name: Run helm chart
+      command: > 
+        helm install -f ci/values.yaml .
+    - command: sleep 80
+      nolog: true
+
+- name: Test Redis Sink Connector
+  entries:
+    - name: Write Entries into Topic
+      command: >-
+        bash -c './ci/producer.sh'
+      stdin: |
+        {"firstName": "%UNIQUE_NAME1%", "lastName": "%UNIQUE_NAME2%", "age":30, "salary": 4830}
+        {"firstName": "%UNIQUE_NAME3%", "lastName": "%UNIQUE_NAME4%", "age":30, "salary": 3048}
+      timeout: 25s
+    - command: sleep 60
+      nolog: true
+    - name: Verify first entry 
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c redis -- redis-cli -a redis get "%UNIQUE_NAME2%"'
+      stdout_has: [ '%UNIQUE_NAME1%', '%UNIQUE_NAME2%', '4830' ]
+    - name: Verify second entry 
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c redis -- redis-cli -a redis get "%UNIQUE_NAME4%"'
+      stdout_has: [ '%UNIQUE_NAME3%', '%UNIQUE_NAME4%', '3048' ]
+
+- name: Cleanup K8
+  entries:   
+    - name: Delete Deployments
+      command: >
+        kubectl delete deployments --all
+    - name: Delete Stateful Apps
+      command: >
+        kubectl delete statefulsets.apps --all
+    - name: Delete Service
+      command: >
+        kubectl delete services --all

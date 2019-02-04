@@ -1,0 +1,85 @@
+# Basic info
+replicaCount: 1
+
+image:
+  repository: streamreactor/elastic5
+  tag: 1.2.1.7
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+# Monitoring
+monitoring:
+  pipeline: "test-elastic"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+podManagementPolicy: OrderedReady
+
+kafka:
+  replicationFactor: 1
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: kafka
+      protocol: http
+      port: 8081
+      jmxPort: 9582 
+
+secretsProvider: env
+
+# javaHeap options    
+javaHeap: 256M
+
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "elastic-test"
+
+# restPort The rest port of Connect
+restPort: "8083"
+
+# logLevel The log4j level
+logLevel: INFO
+
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+
+# valueConverter The key converter to/from Connects struct
+valueConverter: "io.confluent.connect.avro.AvroConverter"
+
+# connectorClass
+connectorClass: "com.datamountaineer.streamreactor.connect.elastic5.ElasticSinkConnector"
+
+# applicationId name of the connector
+applicationId: "com.datamountaineer.streamreactor.connect.elastic5.ElasticSinkConnector"
+
+# xpack configuration
+xpackSettings: |-
+ "xpack.security.user=elastic:changeme"
+
+# topics to sink
+topics: "elastic-sink"
+
+# kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
+kcql: "INSERT INTO sink-index SELECT id, random_field FROM elastic-sink"
+
+# errorThrow Throws the exception on write. Default is 'true' type: BOOLEAN importance: MEDIUM
+errorThrow: true
+
+# clusterName Name of the elastic search cluster, used in local mode for setting the connection type: STRING importance: HIGH
+elasticClusterName: elasticsearch
+
+# uriPrefix URL connection string prefix type: STRING importance: LOW
+urlPrefix: elasticsearch
+
+# uri Url including port for Elastic Search cluster node. type: STRING importance: HIGH
+url: elastic5:9300

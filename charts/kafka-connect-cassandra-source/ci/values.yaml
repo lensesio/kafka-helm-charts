@@ -1,0 +1,95 @@
+# Basic info
+replicaCount: 1
+
+image:
+  repository: streamreactor/cassandra
+  tag: 1.2.1.7
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+# Monitoring
+monitoring:
+  pipeline: "test-cassandra"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+podManagementPolicy: OrderedReady
+
+kafka:
+  replicationFactor: 1
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: kafka
+      protocol: http
+      port: 8081
+      jmxPort: 9582 
+
+secretsProvider: env
+
+consistencyLevel: ""
+
+# javaHeap options    
+javaHeap: 256M
+
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "cassandra-test"
+
+# restPort The rest port of Connect
+restPort: "8083"
+
+# logLevel The log4j level
+logLevel: INFO
+
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+
+# valueConverter The key converter to/from Connects struct
+valueConverter: "io.confluent.connect.avro.AvroConverter"
+
+# connectorClass
+connectorClass: "com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector"
+
+# applicationId name of the connector
+applicationId: "com.datamountaineer.streamreactor.connect.cassandra.source.CassandraSourceConnector"
+
+# topics to source
+topics: "cassandra-source"
+
+# kcql KCQL expression describing field selection and routes. type: STRING importance: HIGH
+kcql: "INSERT INTO cassandra-source SELECT * FROM orders PK created"
+
+# initialOffset The initial timestamp to start querying in Cassandra from (yyyy-MM-dd HH:mm:ss.SSS'Z'). Default 1900-01-01 00:00:00.0000000Z
+initialOffset: "2019-02-18 00:00:00.0000000Z"
+
+# keySpace Keyspace to write to
+keySpace: "test"
+
+# contact points
+contactPoints: "cassandra"
+
+# username Username to connect to Cassandra with. type: STRING importance: HIGH
+username: "cassandra"
+
+# password Password key for cassandra
+password: "cassandra"
+
+# taskBufferSize The size of the queue as read writes to. type: INT importance: MEDIUM
+taskBufferSize: 10000
+
+# importPollInterval The polling interval between queries against tables for bulk mode. type: LONG importance: MEDIUM
+importPollInterval: 1000
+
+# mappingCollectionToJson Mapping columns with type Map, List and Set like json
+mappingCollectionToJson: false

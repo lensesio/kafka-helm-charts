@@ -252,11 +252,11 @@ spec:
           value: {{ .Values.taskBufferSize | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_IMPORT_POLL_INTERVAL
           value: {{ .Values.importPollInterval | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE
+        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE_ENABLED
           value: {{ .Values.deleteEnabled | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_STATEMENT
+        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE_STATEMENT
           value: {{ .Values.deleteStatement | quote }}
-        - name: CONNECTOR_CONNECT_CASSANDRA_STRUCT_FLDS
+        - name: CONNECTOR_CONNECT_CASSANDRA_DELETE_STRUCT_FLDS
           value: {{ .Values.deleteStructFlds | quote }}
         - name: CONNECTOR_CONNECT_CASSANDRA_SSL_ENABLED
           value: {{ .Values.sslEnabled | quote }} 
@@ -304,5 +304,5 @@ spec:
         - name: CONNECTOR_CONNECT_CASSANDRA_SSL_CLIENT_CERT_AUTH
           value: {{ .Values.sslClientCertAuth | quote }}
        {{- end }}
-        - name: CONNECTOR_CONNECT_MAPPING_COLLECTION_TO_JSON
+        - name: CONNECTOR_CONNECT_CASSANDRA_MAPPING_COLLECTION_TO_JSON
           value: {{.Values.mappingCollectionToJson | quote}}

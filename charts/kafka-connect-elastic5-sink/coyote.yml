@@ -1,0 +1,72 @@
+- name: coyote
+  title: kafka-connect-elastic-sink
+
+- name: Run PODs
+  entries:
+    - name: Deploy Elastic5 and Fast Data Dev
+      command: kubectl apply -f ci/deployment.yaml
+    - name: Wait for Connect to get up
+      command: >
+        bash -c '
+          for ((i=0;i<30;i++)); do
+            sleep 5;
+            POD=`kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-elastic -o jsonpath='{.items[0].metadata.name}'`
+            kubectl exec $POD -c kafka -- curl "http://localhost:8083/connectors" && break;
+          done'
+      nolog: true
+
+- name: coyote
+  vars:
+    POD_NAME: kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-elastic -o jsonpath='{.items[0].metadata.name}'
+
+- name: Prepare topic
+  entries:   
+    - name: Create Sink Topic
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c kafka -- kafka-topics --zookeeper $ADV_HOST:2181 --topic elastic-sink --partitions 1 --replication-factor 1 --create'
+      timeout: 5s
+
+- name: Deploy Helm Elastic5 Sink Distributed Connector
+  entries:   
+    - name: Run helm chart
+      command: > 
+        helm install -f ci/values.yaml .
+    - command: sleep 100
+      nolog: true
+
+- name: Test Elastic Sink Connector
+  entries:
+    - name: Write Entries into Topic
+      command: >-
+        bash -c './ci/producer.sh'
+      stdin: |
+        {"id": 999, "random_field": "foo"}
+        {"id": 888, "random_field": "bar"}
+    - command: sleep 60
+      nolog: true
+    - name: Verify first entry 
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c elastic5 -- curl -XGET -u elastic:changeme "http://localhost:9200/sink-index/_search?q=id:999"'
+      stdout_has: [ 'random_field', 'foo' ]
+    - name: Verify second entry 
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c elastic5 -- curl -XGET -u elastic:changeme "http://localhost:9200/sink-index/_search?q=id:888"'
+      stdout_has: [ 'random_field', 'bar' ]
+
+- name: Cleanup K8
+  entries:   
+    - name: Delete Deployments
+      command: >
+        kubectl delete deployments --all
+    - name: Delete Stateful Apps
+      command: >
+        kubectl delete statefulsets.apps --all
+    - name: Delete Service
+      command: >
+        kubectl delete services --all

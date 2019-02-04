@@ -1,0 +1,35 @@
+language: go
+dist: xenial
+go:
+- go1.10
+
+sudo: required
+install: true
+
+# This moves Kubernetes specific config files.
+env:
+- CHANGE_MINIKUBE_NONE_USER=true
+
+before_script:
+- sudo apt-get install socat
+- go get -u github.com/landoop/coyote
+- sudo mount --make-rshared /
+- curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+- curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+- sudo minikube start --vm-driver=none --bootstrapper=kubeadm --kubernetes-version=v1.12.0 --memory 4096
+- minikube update-context
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1; done
+- curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+- chmod 700 get_helm.sh
+- sudo ./get_helm.sh
+
+script:
+- kubectl cluster-info
+# Verify kube-addon-manager.
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to be available"; kubectl get pods --all-namespaces; done
+# Wait for kube-dns to be ready.
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
+# Run tests
+- helm init
+- JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lname=tiller -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for tiller to be available"; kubectl get pods --all-namespaces; done
+- ./scripts/ci-test.sh

@@ -1,0 +1,92 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kafka
+spec:
+  selector:
+    app: test-kafka-connect-redis
+  ports:
+  - name: broker
+    protocol: TCP
+    port: 9092
+  - name: connect
+    protocol: TCP
+    port: 8083
+  - name: zk
+    protocol: TCP
+    port: 2181
+  - name: zk-jmx
+    protocol: TCP
+    port: 9585
+  - name: schema
+    protocol: TCP
+    port: 8081
+  - name: schema-jmx
+    protocol: TCP
+    port: 9582
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+spec:
+  selector:
+    app: test-kafka-connect-redis
+  ports:
+  - name: redis
+    protocol: TCP
+    port: 6379
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: test-kafka-connect-redis
+  labels:
+    app: test-kafka-connect-redis
+spec:
+  selector:
+    matchLabels:
+      app: test-kafka-connect-redis
+  replicas: 1
+  template:
+    metadata:
+      name: test-deployment
+      labels:
+        app: test-kafka-connect-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        args: ["--requirepass", "redis"]
+        ports:
+          - containerPort: 6379
+      - name: kafka
+        image: landoop/fast-data-dev
+        env:
+          - name: ADV_HOST
+            valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          - name: FORWARDLOGS
+            value: "0"
+          - name: SAMPLEDATA
+            value: "0"
+          - name: RUNTESTS
+            value: "0"
+          - name: CONNECTORS
+            value: "redis"
+          - name: CONNECTOR_GROUP_ID
+            value: "redis-test"
+        ports:
+          - name: broker
+            containerPort: 9092
+          - name: connect
+            containerPort: 8083
+          - name: zk
+            containerPort: 2181
+          - name: zk-jmx
+            containerPort: 9585
+          - name: schema
+            containerPort: 8081
+          - name: schema-jmx
+            containerPort: 9582

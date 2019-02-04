@@ -1,0 +1,68 @@
+# Basic info
+replicaCount: 1
+
+image:
+  repository: streamreactor/blockchain
+  tag: 1.2.1.7
+  pullPolicy: IfNotPresent
+
+# Resource management
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    memory: 256Mi
+
+# Monitoring
+monitoring:
+  pipeline: "test-blockchain"
+  enabled: true
+  port: 9102
+  path: "/metrics"
+
+podManagementPolicy: OrderedReady
+
+kafka:
+  replicationFactor: 1
+  bootstrapServers: 
+    - name: kafka
+      port: 9092
+  image:
+    repository: landoop/fast-data-dev
+    tag: 2.0.0
+    pullPolicy: IfNotPresent
+
+schemaRegistries:
+  enabled: true
+  hosts:
+    - host: kafka
+      protocol: http
+      port: 8081
+      jmxPort: 9582
+
+# clusterName The connect cluster name. This is the consumer group id for the backing topics
+clusterName: "blockchain-test"
+
+# restPort The rest port of Connect
+restPort: 8083
+
+# logLevel The log4j level
+logLevel: INFO
+
+# keyConverter The key converter to/from Connects struct
+keyConverter: "io.confluent.connect.avro.AvroConverter"
+
+# valueConverter The key converter to/from Connects struct
+valueConverter: "io.confluent.connect.avro.AvroConverter"
+
+# connectorClass the connector class to use
+connectorClass: "com.datamountaineer.streamreactor.connect.blockchain.source.BlockchainSourceConnector"
+
+# applicationId name of the connector
+applicationId: "com.datamountaineer.streamreactor.connect.blockchain.source.BlockchainSourceConnector"
+
+# sourceKafkaTopic Specifies the kafka topic to sent the records to. type: STRING importance: HIGH
+sourceKafkaTopic: "blockchain"
+
+# enabled Enables the output for how many records have been processed type: BOOLEAN importance: MEDIUM
+progressEnabled: true

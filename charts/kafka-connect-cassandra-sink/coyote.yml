@@ -1,0 +1,88 @@
+- name: coyote
+  title: kafka-connect-cassandra-sink
+
+- name: Build Cassandra
+  entries:
+    - name: Build an image
+      command: >-
+        docker build -t lenses/cassandra -f ci/cassandra/Dockerfile .
+
+- name: Run PODs
+  entries:
+    - name: Deploy Cassandra and Fast Data Dev
+      command: kubectl apply -f ci/deployment.yaml
+    - name: Wait for Connect to get up
+      command: >
+        bash -c '
+          for ((i=0;i<30;i++)); do
+            sleep 5;
+            POD=`kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-cassandra -o jsonpath='{.items[0].metadata.name}'`
+            kubectl exec $POD -c kafka -- curl "http://localhost:8083/connectors" && break;
+          done'
+      nolog: true
+
+- name: coyote
+  vars:
+    POD_NAME: kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-cassandra -o jsonpath='{.items[0].metadata.name}'
+
+- name: Prepare cassandra
+  entries:   
+    - name: Create Sink Topic
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c kafka -- kafka-topics --zookeeper $ADV_HOST:2181 --topic cassandra-sink --partitions 1 --replication-factor 1 --create'
+    - name: Create Keyspace in Cassandra
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c cassandra -- cqlsh --username cassandra --password cassandra'
+      stdin: |
+        CREATE KEYSPACE test WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};
+        use test;
+        create table orders (id int, created varchar, product varchar, qty int, price float, PRIMARY KEY (id, created)) WITH CLUSTERING ORDER BY (created asc);
+      timeout: 30s
+
+- name: Deploy Helm Cassandra Sink Distributed Connector
+  entries:   
+    - name: Run helm chart
+      command: > 
+        helm install -f ci/values.yaml .
+    - command: sleep 100
+      nolog: true
+
+- name: Test Cassandra Sink Connector
+  entries:
+    - name: Write Entries into Topic
+      command: >-
+        bash -c './ci/producer.sh'
+      stdin: |
+        {"id": 1, "created": "2016-05-06 13:53:00", "product": "OP-DAX-P-20150201-95.7", "price": 94.2}
+        {"id": 2, "created": "2016-05-06 13:54:00", "product": "OP-DAX-C-20150201-100", "price": 99.5}
+        {"id": 3, "created": "2016-05-06 13:55:00", "product": "FU-DATAMOUNTAINEER-20150201-100", "price": 10000}
+        {"id": 4, "created": "2016-05-06 13:56:00", "product": "FU-KOSPI-C-20150201-100", "price": 150}
+      timeout: 25s
+    - command: sleep 60
+      nolog: true
+    - name: Verify entries
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c cassandra -- cqlsh --username cassandra --password cassandra'
+      stdout_has: [ 'OP-DAX-P-20150201-95.7', 'OP-DAX-C-20150201-100', 'FU-DATAMOUNTAINEER-20150201-100', 'FU-KOSPI-C-20150201-100' ]
+      stdin: |
+        use test;
+        SELECT * FROM orders;
+      timeout: 30s
+
+- name: Cleanup K8
+  entries:   
+    - name: Delete Deployments
+      command: >
+        kubectl delete deployments --all
+    - name: Delete Stateful Apps
+      command: >
+        kubectl delete statefulsets.apps --all
+    - name: Delete Service
+      command: >
+        kubectl delete services --all

@@ -1,0 +1,79 @@
+- name: coyote
+  title: kafka-connect-cassandra-source
+
+- name: Build Cassandra
+  entries:
+    - name: Build an image
+      command: >-
+        docker build -t lenses/cassandra -f ci/cassandra/Dockerfile .
+
+- name: Run PODs
+  entries:
+    - name: Deploy Cassandra and Fast Data Dev
+      command: kubectl apply -f ci/deployment.yaml
+    - name: Wait for Connect to get up
+      command: >
+        bash -c '
+          for ((i=0;i<30;i++)); do
+            sleep 5;
+            POD=`kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-cassandra -o jsonpath='{.items[0].metadata.name}'`
+            kubectl exec $POD -c kafka -- curl "http://localhost:8083/connectors" && break;
+          done'
+      nolog: true
+
+- name: coyote
+  vars:
+    POD_NAME: kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-cassandra -o jsonpath='{.items[0].metadata.name}'
+
+- name: Prepare cassandra
+  entries:   
+    - name: Create Source Topic
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c kafka -- kafka-topics --zookeeper $ADV_HOST:2181 --topic cassandra-source --partitions 1 --replication-factor 1 --create'
+    - name: Create Keyspace in Cassandra
+      command: >
+        bash -c '
+          POD=`%POD_NAME%`
+          kubectl exec -i $POD -c cassandra -- cqlsh -u cassandra -p cassandra'
+      stdin: |
+        CREATE KEYSPACE test WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};
+        use test;
+        create table orders (id int, created timeuuid, product varchar, qty int, price float, PRIMARY KEY (id, created)) WITH CLUSTERING ORDER BY (created asc);
+
+        INSERT INTO orders (id, created, product, qty, price) VALUES (1, now(), 'OP-DAX-P-20150201-95.7', 100, 94.2);
+        INSERT INTO orders (id, created, product, qty, price) VALUES (2, now(), 'OP-DAX-C-20150201-100', 100, 99.5);
+        INSERT INTO orders (id, created, product, qty, price) VALUES (3, now(), 'FU-KOSPI-C-20150201-100', 200, 150);
+
+        SELECT * FROM orders;
+
+- name: Deploy Helm Cassandra Source Distributed Connector
+  entries:   
+    - name: Run helm chart
+      command: > 
+        helm install -f ci/values.yaml .
+    - command: sleep 120
+      nolog: true
+
+- name: Test Cassandra Source Connector
+  entries:
+    - name: Read Entries from Topic
+      command: >-
+        bash -c '
+          POD=`%POD_NAME%`
+          timeout 20 kubectl exec -i $POD -c kafka -- kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic cassandra-source --from-beginning'
+      ignore_exit_code: true
+      stdout_has: [ 'OP-DAX-P-20150201-95.7', 'OP-DAX-C-20150201-100', 'FU-KOSPI-C-20150201-100' ]
+
+- name: Cleanup K8
+  entries:
+    - name: Delete Deployments
+      command: >
+        kubectl delete deployments --all
+    - name: Delete Stateful Apps
+      command: >
+        kubectl delete statefulsets.apps --all
+    - name: Delete Service
+      command: >
+        kubectl delete services --all
