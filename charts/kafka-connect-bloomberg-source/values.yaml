@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: datamountaineer/kafka-connect-bloomberg
-  tag: 1.2.0
+  repository: streamreactor/bloomberg
+  tag: 1.2.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -61,7 +61,10 @@ schemaRegistries:
     - host: schema-registry
       protocol: http
       port: 8081
-      jmxPort: 9102    
+      jmxPort: 9102  
+        
+# secretsProvider is either env (k8), vault (hashicorp) or azure (keyvault)
+secretsProvider: env
 
 # javaHeap options    
 javaHeap: 256M

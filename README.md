@@ -15,18 +15,19 @@ helm repo update
 environment variable starting with ``CONNECTOR`` is used to make the Connector properties file, which is posted into
 the Connect cluster to start the connector.
 
-|Stream Reactor  | Chart  | 
-|----------------|--------|
-| 1.2.0          | 1.4    |
+| Stream Reactor | Chart |
+|----------------|-------|
+| 1.2.1          | 1.5   |
+| 1.2.0          | 1.4   |
 
 
 ## Lenses
 
-Documentation for the Lenses chart can be found [here](https://lenses.stream/2.0/install_setup/kubernetes/#helm-chart).
+Documentation for the Lenses chart can be found [here](https://lenses.stream/2.2/install_setup/kubernetes/#helm-chart).
 
 ## Lenses SQL runners
 
-Documentation for the Lenses SQL Runner chart can be found [here](https://lenses.stream/2.0/install_setup/configuration/sql-config.html#lsql-runner-with-helm).
+Documentation for the Lenses SQL Runner chart can be found [here](https://lenses.stream/2.2/install_setup/configuration/sql-config.html#lsql-runner-with-helm).
 
 ## SSL/SASL
 

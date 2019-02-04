@@ -2,8 +2,8 @@
 replicaCount: 1
 
 image:
-  repository: datamountaineer/kafka-connect-influxdb
-  tag: 1.2.0
+  repository: streamreactor/influxdb
+  tag: 1.2.1
   pullPolicy: IfNotPresent
 
 # Resource management
@@ -65,6 +65,9 @@ schemaRegistries:
       protocol: http
       port: 8081
       jmxPort: 9102    
+
+# secretsProvider is either env (k8), vault (hashicorp) or azure (keyvault)
+secretsProvider: env
 
 # clusterName The connect cluster name. This is the consumer group id for the backing topics
 clusterName: "__REQUIRED__"
