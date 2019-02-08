@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-bloomberg-source
 name: kafka-connect-bloomberg-source
-version: 1.5
+version: 1.6
 appversion: 1.2.1

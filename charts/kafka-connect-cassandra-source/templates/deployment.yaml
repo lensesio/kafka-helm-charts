@@ -75,7 +75,7 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/landoop/bin/liveliness.sh
+            - /etc/lenses/bin/liveliness
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
@@ -170,22 +170,22 @@ spec:
           value: "/mnt/secrets/client.keystore.jks"
         - name: CONNECT_CONSUMER_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/client.keystore.jks"
-        - name: CONNECT_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+        - name: WORKER_CONNECT_SECRET_PRODUCER_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.truststore.password"
-        - name: CONNECT_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+        - name: WORKER_CONNECT_SECRET_CONSUMER_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.truststore.password"                                  
-        - name: CONNECT_PRODUCER_SSL_KEYSTORE_PASSWORD
+        - name: WORKER_CONNECT_SECRET_PRODUCER_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.keystore.password"
-        - name: CONNECT_CONSUMER_SSL_KEYSTORE_PASSWORD
+        - name: WORKER_CONNECT_SECRET_CONSUMER_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
@@ -199,22 +199,22 @@ spec:
           value: "/mnt/secrets/client.keystore.jks"
         - name: CONNECTOR_CONSUMER_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/client.keystore.jks"
-        - name: SECRET_CONNECTOR_PRODUCER_SSL_TRUSTSTORE_PASSWORD
+        - name: SECRET_PRODUCER_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.truststore.password"
-        - name: SECRET_CONNECTOR_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+        - name: SECRET_CONSUMER_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.truststore.password"                                  
-        - name: SECRET_CONNECTOR_PRODUCER_SSL_KEYSTORE_PASSWORD
+        - name: SECRET_PRODUCER_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
               key:  "client.keystore.password"
-        - name: SECRET_CONNECTOR_CONSUMER_SSL_KEYSTORE_PASSWORD
+        - name: SECRET_CONSUMER_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: "{{ include "fullname" . }}-kafka-secrets"
@@ -287,7 +287,7 @@ spec:
           value: {{ .Values.trustStoreType | quote }} 
         - name: CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PATH
           value: "/mnt/connector-secrets/client.truststore.jks" 
-        - name: SECRET_CONNECTOR_CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
+        - name: SECRET_CONNECT_CASSANDRA_TRUST_STORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . }}
@@ -296,7 +296,7 @@ spec:
           value: {{ .Values.keyStoreType | quote }}       
         - name: CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PATH
           value: "/mnt/connector-secrets/client.keystore.jks"
-        - name: SECRET_CONNECTOR_CONNECT_CASSANDRA_KEY_STORE_PASSWORD
+        - name: SECRET_CONNECT_CASSANDRA_KEY_STORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . }}
