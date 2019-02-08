@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: registry.hub.docker.com/datamountaineer/kafka-connect-hive
+  repository: streamreactor/kafka-connect-hive
   tag: 1.2.1
   pullPolicy: IfNotPresent
 

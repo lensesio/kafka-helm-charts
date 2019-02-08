@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: streamreactor/cassandra
-  tag: 1.0.0
+  tag: 1.2.1
   pullPolicy: IfNotPresent
 
 # Resource management

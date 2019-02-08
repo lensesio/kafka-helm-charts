@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-ftp-source
 name: kafka-connect-ftp-source
-version: 1.5
+version: 1.6
 appversion: 1.2.1
