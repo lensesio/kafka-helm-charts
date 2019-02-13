@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-hive-sink
 name: kafka-connect-hive-sink
-version: 1.6.1
+version: 1.7.1
 appversion: 1.2.1

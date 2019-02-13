@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-pulsar-source
 name: kafka-connect-pulsar-source
-version: 1.6
+version: 1.7
 appversion: 1.2.1
