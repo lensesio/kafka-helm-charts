@@ -20,7 +20,8 @@ spec:
   type: "{{ .Values.service.type }}"
   ports:
   - name: lenses
-    port: {{ .Values.restPort }}   
+    port: {{ .Values.servicePort }}   
+    target: {{ .Values.restPort }}   
   - name: http-metrics
     port: {{ .Values.monitoring.port }}
   selector:
