@@ -30,6 +30,7 @@ rbacEnable: true
 
 # restPort is the Lenses rest port
 restPort: 3030
+servicePort: 80
 
 # serviceAccount is the Service account to be used by Lenses to deploy apps
 serviceAccount: default
