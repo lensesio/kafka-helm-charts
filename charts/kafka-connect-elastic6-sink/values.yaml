@@ -86,7 +86,7 @@ keyConverter: "io.confluent.connect.avro.AvroConverter"
 valueConverter: "io.confluent.connect.avro.AvroConverter"
 
 # connectorClass
-connectorClass: "com.datamountaineer.streamreactor.connect.elastic5.ElasticSinkConnector"
+connectorClass: "com.datamountaineer.streamreactor.connect.elastic6.ElasticSinkConnector"
 
 # applicationId name of the connector
 applicationId: "__REQUIRED__"
