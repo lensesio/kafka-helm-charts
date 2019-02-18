@@ -192,6 +192,10 @@ spec:
           value: {{ include "metadataTopic" . | quote }}                                                           
         - name: LENSES_TOPICS_EXTERNAL_TOPOLOGY
           value: {{ include "topologyTopic" . | quote }}    
+        {{- if .Values.lenses.kafka.jmxPort }}
+        - name: LENSES_JMX_BROKER_PORT
+          value: {{ .Values.lenses.kafka.jmxPort | quote }}
+        {{- end }}
 
         # user secrets
         - name: LENSES_SECRET_FILE
