@@ -166,6 +166,17 @@ PLAINTEXT
   {{end}}
 {{- end -}}
 
+{{- define "jmxBrokers" -}}
+[
+  {{ range $index, $element := .Values.lenses.kafka.jmxBrokers }}
+  {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}}
+  {{- else}},
+  {"id":{{$element.id}}, "port":{{$element.port}}}
+  {{- end}}
+{{- end}}
+]  
+{{- end -}}
+
 {{- define "alertManagers" -}}
 {{ range $index, $element := .Values.lenses.alertManagers.endpoints }}
   {{- if $index -}},{{$element.protocol}}://{{$element.host}}:{{$element.port}}
