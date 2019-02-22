@@ -125,6 +125,9 @@ spec:
           value: "9101"
         - name: LENSES_KAFKA_BROKERS
           value: {{ include "bootstrapBrokers" . | quote }}
+        - name: LENSES_JMX_BROKERS
+          values: |-
+{{ include "jmxBrokers" . | indent 12 }}
         - name: LENSES_ZOOKEEPER_HOSTS
           value: |-
 {{ include "zookeepers" . | indent 12 }}
