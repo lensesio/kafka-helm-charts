@@ -75,7 +75,7 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/lenses/bin/liveliness
+            - /opt/lenses/bin/liveliness
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
