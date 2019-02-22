@@ -51,8 +51,10 @@ spec:
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
-        {{- end }}              
-      {{- end }}            
+        {{- end }}
+      {{- end }}       
+        - name: schemas
+          emptyDir: {}       
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -62,13 +64,13 @@ spec:
         livenessProbe:
           exec:
             command:
-            - /etc/lenses/bin/liveliness
+            - /opt/lenses/bin/liveliness
           initialDelaySeconds: 30
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts: 
-          - mountPath: "/etc/landoop/schemas"
+          - mountPath: "/opt/lenses/schemas"
             name: schemas
         {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
           - name: kafka-secrets
