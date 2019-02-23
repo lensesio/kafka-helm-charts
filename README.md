@@ -23,11 +23,11 @@ the Connect cluster to start the connector.
 
 ## Lenses
 
-Documentation for the Lenses chart can be found [here](https://lenses.stream/2.2/install_setup/kubernetes/#helm-chart).
+Documentation for the Lenses chart can be found [here](https://docs.lenses.io/install_setup/deployment-options/kubernetes-deployment.html).
 
 ## Lenses SQL runners
 
-Documentation for the Lenses SQL Runner chart can be found [here](https://lenses.stream/2.2/install_setup/configuration/sql-config.html#lsql-runner-with-helm).
+Documentation for the Lenses SQL Runner chart can be found [here](https://docs.lenses.io/install_setup/advanced-config/sql-config.html).
 
 ## SSL/SASL
 
