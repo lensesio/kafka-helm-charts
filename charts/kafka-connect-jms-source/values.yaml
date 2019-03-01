@@ -114,6 +114,12 @@ subscriptionName:
 # initialContextExtraParams List (comma separated) of extra properties as key/value pairs with a colon delimiter to supply to the initial context e.g. SOLACE_JMS_VPN:my_solace_vp type: LIST importance: MEDIUM
 initialContextExtraParams: 
 
+# converterThrowOnError 
+#  If set to false the conversion exception will be swallowed and everything carries on BUT the message is lost!!;
+#  true will throw the exception.Default is false.
+#      type: BOOLEAN importance: HIGH
+converterThrowOnError: false
+
 # initialContextFactory Initial Context Factory, e.g: org.apache.activemq.jndi.ActiveMQInitialContextFactory type: STRING importance: HIGH
 initialContextFactory: "__REQUIRED__"
 
