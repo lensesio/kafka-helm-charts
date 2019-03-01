@@ -251,8 +251,10 @@ spec:
           value: {{ .Values.connectionFactory | quote }}
         - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_FACTORY
           value: {{ .Values.initialContextFactory | quote }} 
+        {{- if .Values.initialContextExtraParams }}
         - name: CONNECTOR_CONNECT_JMS_INITIAL_CONTEXT_EXTRA_PARAMS
-          value: {{ .Values.initialContextExtraParams | quote }}                   
+          value: {{ .Values.initialContextExtraParams | quote }}     
+        {{- end }}              
         - name: CONNECTOR_CONNECT_JMS_SOURCE_DEFAULT_CONVERTER
           value: {{ .Values.sourceDefaultConverter | quote }}  
         - name: CONNECTOR_CONNECT_CONVERTER_AVRO_SCHEMAS
