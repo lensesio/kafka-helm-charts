@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Landoop/kafka-helm-charts.svg?branch=master)](https://travis-ci.com/Landoop/kafka-helm-charts)
+
 # Helm Charts for Lenses, Lenses SQL Runners and Apache Kafka Connect and other components
 
 This repo contains Helm Charts Apache Kafka components

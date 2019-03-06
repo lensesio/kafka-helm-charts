@@ -4,6 +4,8 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 
+git clone -b gh-pages https://github.com/landoop/kafka-helm-charts.git build
+
 echo -e "==> ${GREEN}Linting charts..${NC}."
 for chart in `ls -1 charts`; do
   echo -e "==> ${GREEN}Linting chart: $chart ${NC}"
