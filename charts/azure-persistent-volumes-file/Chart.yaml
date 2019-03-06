@@ -1,4 +1,0 @@
-
-description: A chart containing the persistent volume claims for azure
-name: azure-persistent-volumes-file
-version: 0.0.2

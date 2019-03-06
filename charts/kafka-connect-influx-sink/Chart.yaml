@@ -1,5 +1,0 @@
-
-description: A chart for kafka-connect-influx-sink
-name: kafka-connect-influx-sink
-version: 1.7
-appversion: 1.2.1

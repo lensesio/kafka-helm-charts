@@ -1,8 +1,0 @@
-services:
-- host: __REQUIRED__
-  endpoints:
-  - 0.0.0.0
-  ports:
-  - name: __REQUIRED__
-    port: 0
-

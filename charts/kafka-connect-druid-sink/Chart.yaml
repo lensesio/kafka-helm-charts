@@ -1,5 +1,0 @@
-
-description: A chart for kafka-connect-druid-sink
-name: kafka-connect-druid-sink
-version: 1.7
-appversion: 1.2.1
