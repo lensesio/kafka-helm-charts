@@ -49,6 +49,8 @@ spec:
                 path: processor.jaas.conf
               - key: processor.keytab
                 path: processor.keytab
+              - key: registry.keytab
+                path: registry.keytab
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
@@ -71,6 +73,9 @@ spec:
           - name: secrets
             mountPath: "/etc/keytab"
             subPath: "keytab"  
+          - name: secrets
+            mountPath: "/etc/registry.keytab"
+            subPath: "registry.keytab"  
           - name: krb
             mountPath: "/etc/krb5.conf"
             subPath: "krb5.conf"
@@ -86,7 +91,7 @@ spec:
         {{- end }}
         {{- if .Values.lenses.kafka.sasl.enabled }}
         - name: LENSES_OPTS
-          value: "-Djava.security.auth.login.config=/mnt/secrets/jaas.conf"
+          value: "-Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/mnt/secrets/jaas.conf"
         {{- end }}
         {{- if.Values.lenses.jvm.heapOpts}}
         - name: LENSES_HEAP_OPTS
@@ -108,26 +113,23 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key: "license"   
-        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_NAME
-          value: {{ .Values.lenses.sql.processorImage | quote }}
-        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_TAG
-          value: {{ .Values.lenses.sql.processorImageTag | quote }}
-        - name: LENSES_KUBERNETES_SERVICE_ACCOUNT
-          value: {{ .Values.serviceAccount | quote }}
-        - name: LENSES_SQL_EXECUTION_MODE
-          value: {{ .Values.lenses.sql.mode | quote }}
-        - name: LENSES_KUBERNETES_CONFIG_FILE
-          value: '""'
+              key: "license" 
         - name: LENSES_PORT
           value: {{ .Values.restPort | quote }}
         - name: LENSES_JMX_PORT
           value: "9101"
         - name: LENSES_KAFKA_BROKERS
           value: {{ include "bootstrapBrokers" . | quote }}
+        {{- if.Values.lenses.kafka.metrics}}
+        - name: LENSES_KAFKA_METRICS
+          value: |-
+{{ include "kafkaMetrics" . | indent 12 }}
+        {{- end }}
+        {{- if.Values.lenses.jmxBrokers}}
         - name: LENSES_JMX_BROKERS
           values: |-
 {{ include "jmxBrokers" . | indent 12 }}
+        {{- end }}
         - name: LENSES_ZOOKEEPER_HOSTS
           value: |-
 {{ include "zookeepers" . | indent 12 }}
@@ -137,10 +139,22 @@ spec:
           value: {{ .Values.lenses.zookeepers.chroot | quote }}
         {{- end }}
 
+        # Schema Registries
         - name: LENSES_SCHEMA_REGISTRY_URLS
           value: |-
 {{ include "registries" . | indent 12 }}
-
+        - name: LENSES_SCHEMA_REGISTRY_MODE
+          value: {{ default "" .Values.lenses.schemaRegistries.mode | quote }}
+        {{- if .Values.lenses.schemaRegistries.security.kerberos.enabled }}
+        - name: LENSES_SCHEMA_REGISTRY_KERBEROS
+          value: {{ default "false" .Values.lenses.schemaRegistries.security.kerberos.enabled | quote }}
+        - name: LENSES_SCHEMA_REGISTRY_KEYTAB
+          value: "/etc/registry.keytab"
+        - name: LENSES_SCHEMA_REGISTRY_PRINCIPAL
+          value: {{ .Values.lenses.schemaRegistries.security.kerberos.principal | quote }}
+        - name: LENSES_SCHEMA_REGISTRY_SERVICE_NAME
+          value: {{ .Values.lenses.schemaRegistries.security.kerberos.serviceName | quote }}
+        {{- end }}
         # from secrets as might contain basic auth credentials
         - name: LENSES_CONNECT_CLUSTERS
           valueFrom:
@@ -160,7 +174,7 @@ spec:
         - name: LENSES_ALERT_SLACK_WEBHOOK_URL
           value: {{ .Values.lenses.slack.webhookUrl | quote }}
         - name: LENSES_ALERT_SLACK_ICON_URL
-          value: "https://www.landoop.com/images/landoop-dark.svg"
+          value: "https://www.lenses.io/images/logos/icon_ellipse2red.png"
         - name: LENSES_ALERT_SLACK_USERNAME
           value: {{ .Values.lenses.slack.username | quote }}
         - name: LENSES_ALERT_SLACK_CHANNEL
@@ -196,25 +210,31 @@ spec:
         - name: LENSES_JMX_BROKER_PORT
           value: {{ .Values.lenses.kafka.jmxPort | quote }}
         {{- end }}
+          
+        # Kubernetes Processors
+        - name: LENSES_SQL_EXECUTION_MODE
+          value: {{ .Values.lenses.sql.mode | quote }}
 
         # user secrets
         - name: LENSES_SECRET_FILE
           value: "/mnt/secrets/security.conf"
-        {{- if .Values.lenses.schemaRegistries.username }}
+        - name: LENSES_SCHEMA_REGISTRY_AUTH
+          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
         - name: LENSES_SCHEMA_REGISTRY_USERNAME
-          value: {{ .Values.lenses.schemaRegistries.username | quote }}
-        {{- end }}
-        {{- if .Values.lenses.schemaRegistries.authType }}
+          value: {{ default "" .Values.lenses.schemaRegistries.security.username | quote }}
         - name: LENSES_SCHEMA_REGISTRY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key: "schema.registry.password"
-        {{- end }}
-        {{- if .Values.lenses.schemaRegistries.authType }}
-        - name: LENSES_SCHEMA_REGISTRY_AUTH
-          value: {{ .Values.lenses.schemaRegistries.authType | quote }}
-        {{- end }}
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_BASIC_AUTH_CREDENTIALS_SOURCE
+          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
+        - name: LENSES_KAFKA_SETTINGS_PRODUCER_BASIC_AUTH_USER_INFO
+          value: {{ include "kafkaSchemaBasicAuth" . | quote }}
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_BASIC_AUTH_CREDENTIALS_SOURCE
+          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
+        - name: LENSES_KAFKA_SETTINGS_CONSUMER_BASIC_AUTH_USER_INFO
+          value: {{ include "kafkaSchemaBasicAuth" . | quote }}
 
         # ssl/sasl
         - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
@@ -274,7 +294,16 @@ spec:
               key:  "client.key.password"                  
         {{- end }} 
 
-        # processors
+        # Kubernetes processors
+        {{- if eq .Values.lenses.sql.mode "KUBERNETES"}}
+        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_NAME
+          value: {{ .Values.lenses.sql.processorImage | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_TAG
+          value: {{ .Values.lenses.sql.processorImageTag | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_IMAGE_TAG
+          value: {{ .Values.lenses.sql.processorImageTag | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SCHEMA_REGISTRY_KEYTAB
+          value: "/etc/registry.keytab"
         - name: LENSES_KUBERNETES_PROCESSOR_HEAP
           value: {{ .Values.lenses.sql.heap | quote }}
         - name: LENSES_KUBERNETES_PROCESSOR_MEM_LIMIT
@@ -285,42 +314,49 @@ spec:
           value: {{ include "securityProtocol" . | quote }}
         - name: LENSES_KUBERNETES_PROCESSOR_SASL_MECHANISM
           value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}
-        - name: LENSES_KUBERNETES_PROCESSOR_JAAS_CONFIG_FILE
-          value: "/mnt/secrets/processor.jaas.config"
-        - name: LENSES_KUBERNETES_PROCESSOR_KEYTAB_FILE
-          value: "/mnt/secrets/processor.keytab"
-        - name: LENSES_KUBERNETES_PROCESSOR_KRB5_FILE
+        - name: LENSES_KUBERNETES_PROCESSOR_JAAS
+          value: "/mnt/secrets/processor.jaas.conf"
+        - name: LENSES_KUBERNETES_PROCESSOR_KRB5
           value: "/etc/processor.krb5.conf"
+        - name: LENSES_KUBERNETES_PROCESSOR_SETTINGS_BASIC_AUTH_CREDENTIALS_SOURCE
+          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SETTINGS_BASIC_AUTH_USER_INFO
+          value: {{ include "kafkaSchemaBasicAuth" . | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SCHEMA_REGISTRY_SETTINGS_BASIC_AUTH_CREDENTIALS_SOURCE
+          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_SCHEMA_REGISTRY_SETTINGS_BASIC_AUTH_AUTH_USER_INFO
+          value: {{ include "kafkaSchemaBasicAuth" . | quote }}
 
         {{- if and .Values.lenses.sql.ssl.trustStoreFileData .Values.lenses.kafka.ssl.enabled }}   
-        - name: LENSES_KUBERNETES_PROCESSOR_SSL_TRUSTSTORE_LOCATION
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_TRUSTSTORE_LOCATION
           value: "/mnt/secrets/processor.client.truststore.jks"
         {{- end }}  
         {{- if and .Values.lenses.sql.ssl.keyStoreFileData .Values.lenses.kafka.ssl.enabled }}         
-        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEYSTORE_LOCATION
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/processor.client.keystore.jks"
         {{- end -}} 
         {{- if and .Values.lenses.sql.ssl.trustStorePassword .Values.lenses.kafka.ssl.enabled }} 
-        - name: LENSES_KUBERNETES_PROCESSOR_SSL_TRUSTSTORE_PASSWORD
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key:  "processor.client.truststore.password"
         {{- end -}}  
         {{- if and .Values.lenses.sql.ssl.keyStorePassword .Values.lenses.kafka.ssl.enabled }}            
-        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEYSTORE_PASSWORD
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
              name: {{ include "fullname" . | quote }}
              key:  "processor.client.keystore.password"
         {{- end -}} 
         {{- if and .Values.lenses.sql.ssl.keyPassword .Values.lenses.kafka.ssl.enabled }}                    
-        - name: LENSES_KUBERNETES_PROCESSOR_SSL_KEY_PASSWORD
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_KEY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key:  "processor.client.key.password"
-        {{- end }}              
+        {{- end }}
+        {{- end }}
 
         # extras configs
         {{- range $key, $value := .Values.configOverrides }}
