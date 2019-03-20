@@ -6,7 +6,6 @@ go:
 sudo: required
 install: true
 
-# This moves Kubernetes specific config files.
 env:
 - CHANGE_MINIKUBE_NONE_USER=true
 
@@ -24,12 +23,26 @@ before_script:
 - sudo ./get_helm.sh
 
 script:
+# Linting Helms  
+- ./scripts/lint.sh
+# Testing Helms
 - kubectl cluster-info
-# Verify kube-addon-manager.
 - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lcomponent=kube-addon-manager -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-addon-manager to be available"; kubectl get pods --all-namespaces; done
-# Wait for kube-dns to be ready.
 - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
-# Run tests
 - helm init
 - JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}'; until kubectl -n kube-system get pods -lname=tiller -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for tiller to be available"; kubectl get pods --all-namespaces; done
 - ./scripts/ci-test.sh
+  
+deploy:
+  - provider: script
+    script: ./package.sh
+    on:
+      branch: master
+  - provider: pages
+    local-dir: build
+    skip-cleanup: true
+    keep-history: true
+    github-token: $GITHUB_TOKEN
+    committer-from-gh: true
+    on:
+      branch: master
