@@ -166,6 +166,35 @@ PLAINTEXT
   {{end}}
 {{- end -}}
 
+{{- define "kafkaMetrics" -}}
+{
+  "type": {{- default "JMX" .Values.lenses.kafka.metrics.type | quote}},
+  "ssl": {{- default false .Values.lenses.kafka.metrics.ssl}},
+  {{- if .Values.lenses.kafka.metrics.username}}
+  "username": {{- .Values.lenses.kafka.metrics.username | quote}},
+  {{- end }}
+  {{- if .Values.lenses.kafka.metrics.password}}
+  "password": {{- .Values.lenses.kafka.metrics.password | quote}},
+  {{- end }}
+  "port": [
+    {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
+    {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
+    {{- else}},
+    {"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
+    {{- end}}
+  {{- end}}
+  ]
+}
+{{- end -}}
+
+{{- define "kafkaSchemaBasicAuth" -}}
+  {{- if .Values.lenses.schemaRegistries.security.enabled -}}
+    {{- if eq .Values.lenses.schemaRegistries.security.authType "USER_INFO" -}}
+    {{- .Values.lenses.schemaRegistries.security.username}}:{{.Values.lenses.schemaRegistries.security.password}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- define "jmxBrokers" -}}
 [
   {{ range $index, $element := .Values.lenses.kafka.jmxBrokers }}
@@ -188,9 +217,31 @@ PLAINTEXT
 {{- define "zookeepers" -}}
 [
   {{ range $index, $element := .Values.lenses.zookeepers.hosts }}
-  {{- if not $index -}}{"url":"{{$element.host}}:{{$element.port}}", "jmx":"{{$element.host}}:{{$element.jmxPort}}"}
+  {{- if not $index -}}{"url":"{{$element.host}}:{{$element.port}}"
+  {{- if $element.metrics -}}, metrics: {
+    "url":"{{$element.host}}:{{$element.metrics.port}}", 
+    "type": "{{$element.metrics.type}}",
+    "ssl": {{default false $element.metrics.ssl}},
+    {{- if $element.metrics.username -}}
+    "username": {{$element.metrics.username | quote}},
+    {{- end }}
+    {{- if $element.metrics.password -}}
+    "password": {{$element.metrics.password | quote}},
+    {{- end }}
+  }{{- end}}}
   {{- else}},
-  {"url":"{{$element.host}}:{{$element.port}}", "jmx":"{{$element.host}}:{{$element.jmxPort}}"}
+  {"url":"{{$element.host}}:{{$element.port}}"
+  {{- if $element.metrics -}}, "metrics": {
+    "url":"{{$element.host}}:{{$element.metrics.port}}", 
+    "type": "{{default "JMX" $element.metrics.type}}",
+    "ssl": {{default false $element.ssl}},
+    {{- if $element.metrics.username -}}
+    "username": {{$element.metrics.username | quote}},
+    {{- end }}
+    {{- if $element.metrics.password -}}
+    "password": {{$element.metrics.password | quote}}
+    {{- end }}
+  }{{- end}}}
   {{- end}}
 {{- end}}
 ]  
@@ -200,9 +251,31 @@ PLAINTEXT
 {{- if .Values.lenses.schemaRegistries.enabled -}}
 [
   {{ range $index, $element := .Values.lenses.schemaRegistries.hosts }}
-  {{- if not $index -}}{"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}", "jmx":"{{$element.host}}:{{$element.jmxPort}}"}
+  {{- if not $index -}}{"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}{{$element.path}}"
+  {{- if $element.metrics -}}, "metrics": {
+    "url":"{{$element.host}}:{{$element.metrics.port}}", 
+    "type": "{{$element.metrics.type}}",
+    "ssl": {{default false $element.metrics.ssl}}
+    {{- if $element.metrics.username -}},
+    "username": {{$element.metrics.username | quote}},
+    {{- end }}
+    {{- if $element.metrics.password -}}
+    "password": {{$element.metrics.password | quote}}
+    {{- end }}
+  }{{- end}}}
   {{- else}},
-  {"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}", "jmx":"{{$element.host}}:{{$element.jmxPort}}"}
+  {"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}"
+  {{- if $element.metrics -}}, "metrics": {
+    "url":"{{$element.host}}:{{$element.metrics.port}}", 
+    "type": "{{default "JMX" $element.metrics.type}}",
+    "ssl": {{default false $element.ssl}}
+    {{- if $element.metrics.username -}},
+    "username": {{$element.metrics.username | quote}},
+    {{- end }}
+    {{- if $element.metrics.password -}}
+    "password": {{$element.metrics.password | quote}}
+    {{- end }}
+  }{{- end}}}
   {{- end}}
 {{- end}}
 ]  
@@ -214,9 +287,49 @@ PLAINTEXT
 {{- if .Values.lenses.connectClusters.enabled -}}
 [
 {{- range $index, $element := .Values.lenses.connectClusters.clusters -}}
-  {{- $jmxPort := index $element "jmxPort" -}}
   {{- $port := index $element "port" -}}
   {{- $protocol := index $element "protocol" -}}
+  {{- if not $index -}}{
+    "name": "{{- index $element "name"}}",
+    "statuses": "{{index $element "statusTopic"}}",
+    "configs": "{{index $element "configTopic"}}",
+    "offsets": "{{index $element "offsetsTopic"}}",
+    {{ if index $element "authType" }}"auth": "{{index $element "authType"}}",{{- end -}}
+    {{ if index $element "username" }}"username": "{{index $element "username"}}",{{- end -}}
+    {{ if index $element "password" }}"password": "{{index $element "password"}}",{{- end -}}
+    "urls":[
+      {{ range $index, $element := index $element "hosts" -}}
+        {{- if not $index -}}
+        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, "metrics": {
+          "url":"{{$element.host}}:{{$element.metrics.port}}",
+          "type": "{{default "JMX" $element.metrics.type}}",
+          "ssl": {{default false $element.metrics.ssl}},
+          {{- if $element.metrics.username -}}
+          "username": {{$element.metrics.username | quote}},
+          {{- end }}
+          {{- if $element.metrics.password -}}
+          "password": {{$element.metrics.password | quote}}
+          {{- end }}
+        }{{- end}}}
+        {{- else -}},
+        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, "metrics": {
+          "url":"{{$element.host}}:{{$element.metrics.port}}",
+          "type": "{{default "JMX" $element.metrics.type}}",
+          "ssl": {{default false $element.metrics.ssl}},
+          {{- if $element.metrics.username -}}
+          "username": {{$element.metrics.username | quote}},
+          {{- end }}
+          {{- if $element.metrics.password -}}
+          "password": {{$element.metrics.password | quote}}
+          {{- end }}
+        }{{- end}}}
+        {{- end -}}
+      {{- end}}
+    ]
+  }
+  {{- else}},
   {  
     "name": "{{- index $element "name"}}",
     "statuses": "{{index $element "statusTopic"}}",
@@ -228,13 +341,36 @@ PLAINTEXT
     "urls":[ 
       {{ range $index, $element := index $element "hosts" -}}
         {{- if not $index -}}
-        {"url":"{{$protocol}}://{{$element}}:{{$port}}","jmx":"{{$element}}:{{$jmxPort}}"}
+        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, "metrics": {
+          "url":"{{$element.host}}:{{$element.metrics.port}}", 
+          "type": "{{default "JMX" $element.metrics.type}}",
+          "ssl": {{default false $element.metrics.ssl}},
+          {{- if $element.metrics.username -}}
+          "username": {{$element.metrics.username | quote}},
+          {{- end }}
+          {{- if $element.metrics.password -}}
+          "password": {{$element.metrics.password | quote}}
+          {{- end }}
+        }{{- end}}}
         {{- else -}},
-      {"url":"{{$protocol}}://{{$element}}:{{$port}}","jmx":"{{$element}}:{{$jmxPort}}"}
+        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, "metrics": {
+          "url":"{{$element.host}}:{{$element.metrics.port}}", 
+          "type": "{{default "JMX" $element.metrics.type}}",
+          "ssl": {{default false $element.metrics.ssl}},
+          {{- if $element.metrics.username -}}
+          "username": {{$element.metrics.username | quote}},
+          {{- end }}
+          {{- if $element.metrics.password -}}
+          "password": {{$element.metrics.password | quote}}
+          {{- end }}
+        }{{- end}}}
         {{- end -}}
       {{- end}}
     ]
   }
+  {{- end}}
 {{- end}}
 ]
 {{- end -}}
