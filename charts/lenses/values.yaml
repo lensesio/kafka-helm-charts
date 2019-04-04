@@ -1,13 +1,13 @@
 ### TO DEPLOY SQL RUNNERS IN THE CLUSTER
 ### FROM LENSES YOU NEED TO PATCH THE SERVICE ACCOUNT 
-### LENSES WILL USE TO DEPLOY. see http://lenses.stream/install_setup/configuration/sql-config.html#kubernetes
+### LENSES WILL USE TO DEPLOY. see https://docs.lenses.io/install_setup/deployment-options/kubernetes-deployment.html
 
 # Basic info
 replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: 2.2.9
+  tag: 2.3
   pullPolicy: IfNotPresent
 
 # Monitoring
@@ -124,6 +124,13 @@ lenses:
 
       # krb5Conf is the kerberos config data to be mounted into /etc
       krb5Conf: |-
+    # JMX/JOLOKIA Metrics
+    # metrics:
+    #   type: "JMX"
+    #   port: 9102
+    #   username:
+    #   password:
+    #   ssl:
     bootstrapServers: 
       - name: kafka
         port: 9092
@@ -139,24 +146,49 @@ lenses:
     hosts:
       - host: zookeeper
         port: 2181
-        jmxPort: 9102
-  #   - host: zookeeper2
-  #     port: 2181
-  #     jmxPort: 9102
+        # JMX/JOLOKIA Metrics
+        # metrics:
+        #   type: "JMX"
+        #   port: 9102
+        #   username:
+        #   password:
+        #   ssl:
 
   # schemaRegistries
   ## Schema registries should be behind a service, if so set one entry in the hosts
   ## If your schema registries are outside explicitly add them to the hosts.
   schemaRegistries:
     enabled: true
-    authType:
-    username:
-    password:
+    mode:
     hosts:
       - host: schema-registry
         protocol: http
         port: 8081
-        jmxPort: 9102     
+        # If your schema registry accepts request in a path eg. <url>:<port>/api/v1
+        path:
+        # JMX/JOLOKIA Metrics
+        # metrics:
+        #   type: "JMX"
+        #   port: 9102
+        #   username:
+        #   password:
+        #   ssl:
+    security:
+      enabled: false
+      authType:
+      username:
+      password:
+      kerberos: 
+        enabled: false
+        # the kerberos principal <name>@<KDC-REALM>
+        principal:
+        # the service name HTTP@<service-url>
+        serviceName:
+        # keyTabData is the base64 contents kerberos keytab file is using kerberos mounted in /mnt/secrets
+        # openssl base64 < keytab | tr -d '\n'  
+        keytabData: |-
+        # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
+        jaasFileData: |-
   
   connectClusters:
     enabled: true
@@ -172,41 +204,21 @@ lenses:
         username:
         password:
         hosts:
-          - connect-worker-1
-          - connect-worker-2
-          - connect-worker-3
-   
-  # alertmanager
-  alertManagers:
-    enabled: false
-    endpoints:
-      - host: alertmanager
-        protocol: http
-        port: 9094
-     
-    sourceName: Lenses™-k8
-    consumersLagThreshold: 50000
-
-  #grafana
-  grafanaUrl: 
-
-  # slack
-  slack:
-    enabled: false
-    iconUrl: https://www.landoop.com/images/landoop-dark.svg
-    webhookUrl: ""
-    username: Lenses
-    channel: lenses
-  
-  # topics
-  topics:
-      # suffix to add to lenses system topics, for example if you are running more than one Lenses on the same kafka cluster
-    suffix:
+          - host: connect-worker-1
+            # JMX/JOLOKIA Metrics
+            # metrics:
+            #   type: "JMX"
+            #   port: 9102
+            #   username:
+            #   password:
+            #   ssl:
+          - host: connect-worker-2
+          - host: connect-worker-3
 
   # sql
   sql:
     processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
-    processorImageTag: 2.2
+    processorImageTag: 2.3
     mode: IN_PROC
     heap: 1024M
     memLimit: 1152M
@@ -237,6 +249,33 @@ lenses:
 
       # krb5Conf is the kerberos config data to be mounted into /mnt/secrets/processors
       krb5Conf: |-
+
+  # alertmanager
+  alertManagers:
+    enabled: false
+    endpoints:
+      - host: alertmanager
+        protocol: http
+        port: 9094
+
+    sourceName: Lenses™-k8
+    consumersLagThreshold: 50000
+
+  #grafana
+  grafanaUrl:
+
+  # slack
+  slack:
+    enabled: false
+    iconUrl: https://www.lenses.io/images/logos/icon_ellipse2red.png
+    webhookUrl: ""
+    username: Lenses
+    channel: lenses
+
+  # topics
+  topics:
+      # suffix to add to lenses system topics, for example if you are running more than one Lenses on the same kafka cluster
+    suffix:
 
   security:
     # By default to BASIC security. Alternative is LDAP
@@ -316,6 +355,6 @@ lenses:
   
   # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
   ## keys must be uppercase and underscores for separators suit for use as environment variables
-  ## see http://lenses.stream/install_setup/configuration/lenses-config.html#option-reference
+  ## see https://docs.lenses.io/install_setup/configuration/lenses-config.html#option-reference
   configOverrides:
     #LENSES_PROPERTY : value
