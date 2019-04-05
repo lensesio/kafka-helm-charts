@@ -1,6 +1,7 @@
 ### TO DEPLOY SQL RUNNERS IN THE CLUSTER
-### FROM LENSES YOU NEED TO PATCH THE SERVICE ACCOUNT 
-### LENSES WILL USE TO DEPLOY. see https://docs.lenses.io/install_setup/deployment-options/kubernetes-deployment.html
+### FROM LENSES YOU NEED TO PATCH THE SERVICE ACCOUNT
+### LENSES WILL USE TO DEPLOY. SEE:
+### https://docs.lenses.io/install_setup/deployment-options/kubernetes-deployment.html
 
 # Basic info
 replicaCount: 1
@@ -24,7 +25,7 @@ resources:
   requests:
     memory: 4Gi
 
-# rbacEnable indicates if a the cluster has rbac enabled and a cluster role 
+# rbacEnable indicates if a the cluster has rbac enabled and a cluster role
 # and rolebinding should be created for the service account
 rbacEnable: true
 
@@ -35,7 +36,7 @@ servicePort: 80
 # serviceAccount is the Service account to be used by Lenses to deploy apps
 serviceAccount: default
 
-#service 
+#service
 service:
   enabled: true
   type: ClusterIP
@@ -56,12 +57,12 @@ service:
   ##
   # loadBalancerSourceRanges:
   #   - 0.0.0.0/0
-  
+
 ingress:
   ## If true, Ingress will be created
   ##
   enabled: true
-  host: 
+  host:
   path:
 
   # Ingress annotations
@@ -74,7 +75,7 @@ ingress:
 
   # TLS if enabled load the tls.crt and tls.keys as a secrets and enable TLS on the ingress
   tls:
-    enabled: false 
+    enabled: false
     crt: |-
     key: |-
 
@@ -87,11 +88,11 @@ lenses:
     #performanceOpts are any jvm tuning options to add to the jvm
     performanceOpts:
 
-  # broker details. 
+  # broker details
   ## Brokers should be behind a service, if so set one entry in the hosts
   ## If your brokers are outside explicitly add them to the hosts. Note you only need one to bootstrap
   ## but you should specify more than one for resilience
-  
+
   # kafka ssl
   # The keytab, key and truststores file data are the base64 encoded contents of the files. YOU MUST PROVIDE THE DATA BASE64 encoded
   # openssl base64 < client.keystore.jks | tr -d '\n'
@@ -102,23 +103,23 @@ lenses:
       enabled: false
       # base64 encoded truststore data
       trustStoreFileData: |-
-  
+
       # base64 encoded keystore data
       keyStoreFileData: |-
 
       # password strings
-      trustStorePassword: 
-      keyStorePassword: 
-      keyPassword: 
+      trustStorePassword:
+      keyStorePassword:
+      keyPassword:
     sasl:
       enabled: false
       # keyTabData is the base64 contents kerberos keytab file is using kerberos mounted in /mnt/secrets
-      # openssl base64 < keytab | tr -d '\n'  
+      # openssl base64 < keytab | tr -d '\n'
       keyTabData: |-
-      
+
       # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
       jaasFileData: |-
-      
+
       # mechanism is the sasl authentication mechanism GSSAPI, SCRAM or PLAIN
       mechanism: GSSAPI
 
@@ -131,7 +132,7 @@ lenses:
     #   username:
     #   password:
     #   ssl:
-    bootstrapServers: 
+    bootstrapServers:
       - name: kafka
         port: 9092
         sslPort: 9093
@@ -178,18 +179,18 @@ lenses:
       authType:
       username:
       password:
-      kerberos: 
+      kerberos:
         enabled: false
         # the kerberos principal <name>@<KDC-REALM>
         principal:
         # the service name HTTP@<service-url>
         serviceName:
         # keyTabData is the base64 contents kerberos keytab file is using kerberos mounted in /mnt/secrets
-        # openssl base64 < keytab | tr -d '\n'  
+        # openssl base64 < keytab | tr -d '\n'
         keytabData: |-
         # jaasFileData is the contents of the kafka jaas file mounted in /mnt/secrets
         jaasFileData: |-
-  
+
   connectClusters:
     enabled: true
     clusters:
@@ -217,8 +218,8 @@ lenses:
 
   # sql
   sql:
-    processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
-    processorImageTag: 2.3
+#    processorImage: eu.gcr.io/lenses-container-registry/lenses-sql-processor
+#    processorImageTag: 2.3
     mode: IN_PROC
     heap: 1024M
     memLimit: 1152M
@@ -231,7 +232,7 @@ lenses:
       trustStoreFileData: |-
 
       keyStoreFileData: |-
-      
+
       trustStorePassword:
       keyStorePassword:
       keyPassword:
@@ -316,13 +317,13 @@ lenses:
     #    password: write
     #    displayname: Writer
     #    groups:
-    #      - writeGroup  
+    #      - writeGroup
 
     #  - username: read
     #    password: read
     #    displayname: Reader
     #    groups:
-    #      - readGroup               
+    #      - readGroup
 
     # service accounts
     #serviceAccounts:
@@ -330,7 +331,7 @@ lenses:
     #    token: jenkins
     #    groups:
     #      - adminGroup
-    
+
      # ldap setting
     ldap:
       url: ""
@@ -349,11 +350,11 @@ lenses:
 
   # license is the Lenses license
   license: |-
-    
+
   # licenseUrl is a url pointing to the Lenses license
   licenseUrl:
-  
-  # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings. 
+
+  # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings
   ## keys must be uppercase and underscores for separators suit for use as environment variables
   ## see https://docs.lenses.io/install_setup/configuration/lenses-config.html#option-reference
   configOverrides:
