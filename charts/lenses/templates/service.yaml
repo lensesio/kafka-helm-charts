@@ -21,7 +21,7 @@ spec:
   ports:
   - name: lenses
     port: {{ .Values.servicePort }}   
-    target: {{ .Values.restPort }}   
+    targetPort: {{ .Values.restPort }}
   - name: http-metrics
     port: {{ .Values.monitoring.port }}
   selector:
