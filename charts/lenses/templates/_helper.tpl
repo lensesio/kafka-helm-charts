@@ -381,6 +381,7 @@ PLAINTEXT
 [
   {{ range $index, $element := .Values.lenses.security.groups}}
   {{- if not $index -}}
+  {{- $topic := index $element "topic" -}}
     {"name": "{{$element.name}}", "roles":[
       {{- range $index, $element := index $element "roles" -}}
         {{- if not $index -}} "{{$element}}"
@@ -388,7 +389,20 @@ PLAINTEXT
         {{- end -}}
       {{- end -}}
       ]}
+      {{- if $topic }}, "topic": {"whitelist":[
+          {{- range $index, $element := index $topic "whitelist" -}}
+            {{- if not $index -}} "{{$element}}"
+            {{- else -}}, "{{$element}}"
+            {{- end -}}
+          {{- end -}}], "blacklist":[
+          {{- range $index, $element := index $topic "blacklist" -}}
+            {{- if not $index -}} "{{$element}}"
+            {{- else -}}, "{{$element}}"
+            {{- end -}}
+          {{- end -}}]}
+      {{- end -}}
   {{- else -}},
+  {{- $topic := index $element "topic" -}}
   {"name": "{{$element.name}}", "roles":[
       {{- range $index, $element := index $element "roles" -}}
         {{- if not $index -}} "{{$element}}"
@@ -396,6 +410,18 @@ PLAINTEXT
         {{- end -}}
       {{- end -}}
       ]}
+      {{- if $topic }}, "topic": {"whitelist":[
+          {{- range $index, $element := index $topic "whitelist" -}}
+            {{- if not $index -}} "{{$element}}"
+            {{- else -}}, "{{$element}}"
+            {{- end -}}
+          {{- end -}}], "blacklist":[
+          {{- range $index, $element := index $topic "blacklist" -}}
+            {{- if not $index -}} "{{$element}}"
+            {{- else -}}, "{{$element}}"
+            {{- end -}}
+          {{- end -}}]}
+      {{- end -}}
   {{- end -}}
   {{- end }}
 ]
@@ -415,18 +441,6 @@ PLAINTEXT
         {{- else -}}, "{{$element}}"
         {{- end -}}
       {{- end -}}]
-      {{- if $topic }}, "topic": {"whitelist":[
-          {{- range $index, $element := index $topic "whitelist" -}}
-            {{- if not $index -}} "{{$element}}"
-            {{- else -}}, "{{$element}}"
-            {{- end -}}
-          {{- end -}}], "blacklist":[
-          {{- range $index, $element := index $topic "blacklist" -}}
-            {{- if not $index -}} "{{$element}}"
-            {{- else -}}, "{{$element}}"
-            {{- end -}}
-          {{- end -}}]}
-      {{- end -}}
     }
   {{- else -}},
   {{- $topic := index $element "topic" }}
@@ -436,18 +450,6 @@ PLAINTEXT
         {{- else -}}, "{{$element}}"
         {{- end -}}
       {{- end -}}]
-      {{- if $topic }}, "topic": {"whitelist":[
-          {{- range $index, $element := index $topic "whitelist" -}}
-            {{- if not $index -}} "{{$element}}"
-            {{- else -}}, "{{$element}}"
-            {{- end -}}
-          {{- end -}}], "blacklist":[
-          {{- range $index, $element := index $topic "blacklist" -}}
-            {{- if not $index -}} "{{$element}}"
-            {{- else -}}, "{{$element}}"
-            {{- end -}}
-          {{- end -}}]}
-      {{- end -}}
       }
   {{- end -}}
   {{- end }}
@@ -529,6 +531,7 @@ lenses.security.service.accounts={{ include "serviceAccounts" . }}
 lenses.security.ldap.url={{ .Values.lenses.security.ldap.url }}
 lenses.security.ldap.base={{ .Values.lenses.security.ldap.base }}
 lenses.security.ldap.user={{ .Values.lenses.security.ldap.user }}
+lenses.security.ldap.password={{ .Values.lenses.security.ldap.password }}
 lenses.security.ldap.filter={{ .Values.lenses.security.ldap.filter }}
 lenses.security.ldap.plugin.class={{ .Values.lenses.security.ldap.plugin.class }}
 lenses.security.ldap.plugin.memberof.key={{ .Values.lenses.security.ldap.plugin.memberofKey }}
