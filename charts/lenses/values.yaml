@@ -68,7 +68,6 @@ ingress:
   # Ingress annotations
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.rule.type: PathPrefixStrip
 #    kubernetes.io/ingress.class: nginx
 #    kubernetes.io/tls-acme: 'true'
 #    nginx.ingress.kubernetes.io/rewrite-target: /
@@ -301,17 +300,18 @@ lenses:
       - name: readGroup
         roles:
           - read
+        # topic:
+        #   blacklist:
+        #     - secrets_*
+        #   whitelist:
+        #     - position_reports.*
+
     users:
      - username: admin
        password: admin
        displayname: LensesAdmin
        groups:
          - adminGroup
-      #  topic:
-      #    blacklist:
-      #      - secrets_*
-      #    whitelist:
-      #      - position_reports.*
 
     #  - username: write
     #    password: write
