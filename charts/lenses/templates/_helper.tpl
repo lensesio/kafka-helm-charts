@@ -388,7 +388,7 @@ PLAINTEXT
         {{- else -}}, "{{$element}}"
         {{- end -}}
       {{- end -}}
-      ]}
+      ]
       {{- if $topic }}, "topic": {"whitelist":[
           {{- range $index, $element := index $topic "whitelist" -}}
             {{- if not $index -}} "{{$element}}"
@@ -400,7 +400,7 @@ PLAINTEXT
             {{- else -}}, "{{$element}}"
             {{- end -}}
           {{- end -}}]}
-      {{- end -}}
+      {{- end -}}}
   {{- else -}},
   {{- $topic := index $element "topic" -}}
   {"name": "{{$element.name}}", "roles":[
@@ -409,7 +409,7 @@ PLAINTEXT
         {{- else -}}, "{{$element}}"
         {{- end -}}
       {{- end -}}
-      ]}
+      ]
       {{- if $topic }}, "topic": {"whitelist":[
           {{- range $index, $element := index $topic "whitelist" -}}
             {{- if not $index -}} "{{$element}}"
@@ -421,7 +421,7 @@ PLAINTEXT
             {{- else -}}, "{{$element}}"
             {{- end -}}
           {{- end -}}]}
-      {{- end -}}
+      {{- end -}}}
   {{- end -}}
   {{- end }}
 ]
