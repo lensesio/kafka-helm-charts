@@ -36,6 +36,25 @@ servicePort: 80
 # serviceAccount is the Service account to be used by Lenses to deploy apps
 serviceAccount: default
 
+# If you use Data Policies module enable a Persistent Volume to keep your data policies rule.
+persistence:
+  enabled: false
+  accessModes:
+    - ReadWriteOnce
+  size: 5Gi
+  reclaimPolicy: Retain
+  # set to true to use you own Persistent volume claim
+  existingClaim: false
+
+  ## Policies data Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
+
 #service
 service:
   enabled: true

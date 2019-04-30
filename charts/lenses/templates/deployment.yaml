@@ -54,6 +54,11 @@ spec:
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
+        {{- if .Values.persistence.enabled }}
+        - name: storage
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-claim" (include "fullname" .)) }}
+        {{- end }}
       serviceAccountName: {{ .Values.serviceAccount }}      
       containers:
       - name: {{ .Chart.Name }}
@@ -82,6 +87,10 @@ spec:
           - name: krb
             mountPath: "/etc/processor.krb5.conf"
             subPath: "processor.krb5.conf"
+          {{- if .Values.persistence.enabled }}
+          - name: storage
+            mountPath: "/data/storage"
+          {{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}     
         env:
