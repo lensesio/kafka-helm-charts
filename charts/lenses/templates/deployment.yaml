@@ -69,7 +69,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 3030
+            port: {{ .Values.restPort }}
           initialDelaySeconds: 120
           periodSeconds: 3
         volumeMounts:
