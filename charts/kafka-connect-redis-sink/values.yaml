@@ -3,7 +3,7 @@ replicaCount: 1
 # secretsRef The secret holding any passwords
 secretsRef: "__REQUIRED__"
 image:
-  repository: streamreactor/redis-sink
+  repository: streamreactor/redis
   tag: 1.2.1.7
   pullPolicy: IfNotPresent
 
