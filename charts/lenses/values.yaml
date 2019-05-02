@@ -42,7 +42,6 @@ persistence:
   accessModes:
     - ReadWriteOnce
   size: 5Gi
-  reclaimPolicy: Retain
   # set to true to use you own Persistent volume claim
   existingClaim: false
 
