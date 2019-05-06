@@ -20,7 +20,7 @@ spec:
   - host: {{ .Values.ingress.host }}
     http:
       paths:
-      - path: {{if .Values.ingress.path }}{{ .Values.ingress.path }}{{else}}{{ include "fullname" . | quote }}{{end}}
+      - path: {{if .Values.ingress.path }}{{ .Values.ingress.path }}{{else}}"/"{{end}}
         backend:
           serviceName: {{ include "fullname" . | quote }}
           servicePort: {{ .Values.restPort }}

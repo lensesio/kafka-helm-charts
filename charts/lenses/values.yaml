@@ -81,7 +81,6 @@ ingress:
   ##
   enabled: true
   host:
-  path:
 
   # Ingress annotations
   annotations:
