@@ -8,7 +8,6 @@ replicaCount: 1
 
 image:
   repository: landoop/lenses
-  tag: 2.3
   pullPolicy: IfNotPresent
 
 # Monitoring
