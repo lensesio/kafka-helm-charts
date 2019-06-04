@@ -3,3 +3,4 @@ packages
 .idea
 landoop
 *.compare
+.history/
