@@ -176,6 +176,9 @@ PLAINTEXT
   {{- if .Values.lenses.kafka.metrics.password}}
   "password": {{- .Values.lenses.kafka.metrics.password | quote}},
   {{- end }}
+  {{- if .Values.lenses.kafka.metrics.port}}
+  "default.port": {{- .Values.lenses.kafka.metrics.port | quote}},
+  {{- else}}
   "port": [
     {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
     {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
@@ -184,6 +187,7 @@ PLAINTEXT
     {{- end}}
   {{- end}}
   ]
+  {{- end}}
 }
 {{- end -}}
 
