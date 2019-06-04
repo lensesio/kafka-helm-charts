@@ -168,18 +168,18 @@ PLAINTEXT
 
 {{- define "kafkaMetrics" -}}
 {
-  "type": {{- default "JMX" .Values.lenses.kafka.metrics.type | quote}},
-  "ssl": {{- default false .Values.lenses.kafka.metrics.ssl}},
+  type: {{- default "JMX" .Values.lenses.kafka.metrics.type }},
+  ssl: {{- default false .Values.lenses.kafka.metrics.ssl}},
   {{- if .Values.lenses.kafka.metrics.username}}
-  "username": {{- .Values.lenses.kafka.metrics.username | quote}},
+  username: {{- .Values.lenses.kafka.metrics.username }},
   {{- end }}
   {{- if .Values.lenses.kafka.metrics.password}}
-  "password": {{- .Values.lenses.kafka.metrics.password | quote}},
+  password: {{- .Values.lenses.kafka.metrics.password }},
   {{- end }}
   {{- if .Values.lenses.kafka.metrics.port}}
-  "default.port": {{- .Values.lenses.kafka.metrics.port | quote}},
+  default.port: {{- .Values.lenses.kafka.metrics.port }},
   {{- else}}
-  "port": [
+  port: [
     {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
     {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
     {{- else}},
