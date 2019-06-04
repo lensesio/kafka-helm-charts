@@ -181,9 +181,9 @@ PLAINTEXT
   {{- else}}
   port: [
     {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
-    {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
+    {{- if not $index -}}{id: {{$element.id}}, port: {{$element.port}}, host: "{{$element.host}}"}
     {{- else}},
-    {"id":{{$element.id}}, "port":{{$element.port}}, "host":{{$element.host}}}
+    {id: {{$element.id}}, port: {{$element.port}}, host: "{{$element.host}}"}
     {{- end}}
   {{- end}}
   ]
@@ -202,9 +202,9 @@ PLAINTEXT
 {{- define "jmxBrokers" -}}
 [
   {{ range $index, $element := .Values.lenses.kafka.jmxBrokers }}
-  {{- if not $index -}}{"id":{{$element.id}}, "port":{{$element.port}}}
+  {{- if not $index -}}{id: {{$element.id}}, port: {{$element.port}}}
   {{- else}},
-  {"id":{{$element.id}}, "port":{{$element.port}}}
+  {id: {{$element.id}}, port: {{$element.port}}}
   {{- end}}
 {{- end}}
 ]  
@@ -221,29 +221,29 @@ PLAINTEXT
 {{- define "zookeepers" -}}
 [
   {{ range $index, $element := .Values.lenses.zookeepers.hosts }}
-  {{- if not $index -}}{"url":"{{$element.host}}:{{$element.port}}"
+  {{- if not $index -}}{url: "{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    "url":"{{$element.host}}:{{$element.metrics.port}}", 
-    "type": "{{$element.metrics.type}}",
-    "ssl": {{default false $element.metrics.ssl}},
+    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    type: "{{$element.metrics.type}}",
+    ssl: {{default false $element.metrics.ssl}},
     {{- if $element.metrics.username -}}
-    "username": {{$element.metrics.username | quote}},
+    user: {{$element.metrics.username | quote}},
     {{- end }}
     {{- if $element.metrics.password -}}
-    "password": {{$element.metrics.password | quote}},
+    password: {{$element.metrics.password | quote}},
     {{- end }}
   }{{- end}}}
   {{- else}},
-  {"url":"{{$element.host}}:{{$element.port}}"
-  {{- if $element.metrics -}}, "metrics": {
-    "url":"{{$element.host}}:{{$element.metrics.port}}", 
-    "type": "{{default "JMX" $element.metrics.type}}",
-    "ssl": {{default false $element.ssl}},
+  {url: "{{$element.host}}:{{$element.port}}"
+  {{- if $element.metrics -}}, metrics: {
+    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    type: "{{default "JMX" $element.metrics.type}}",
+    ssl: {{default false $element.ssl}},
     {{- if $element.metrics.username -}}
-    "username": {{$element.metrics.username | quote}},
+    user: {{$element.metrics.username | quote}},
     {{- end }}
     {{- if $element.metrics.password -}}
-    "password": {{$element.metrics.password | quote}}
+    password: {{$element.metrics.password | quote}}
     {{- end }}
   }{{- end}}}
   {{- end}}
@@ -255,29 +255,29 @@ PLAINTEXT
 {{- if .Values.lenses.schemaRegistries.enabled -}}
 [
   {{ range $index, $element := .Values.lenses.schemaRegistries.hosts }}
-  {{- if not $index -}}{"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}{{$element.path}}"
-  {{- if $element.metrics -}}, "metrics": {
-    "url":"{{$element.host}}:{{$element.metrics.port}}", 
-    "type": "{{$element.metrics.type}}",
-    "ssl": {{default false $element.metrics.ssl}}
+  {{- if not $index -}}{url: "{{$element.protocol}}://{{$element.host}}:{{$element.port}}{{$element.path}}"
+  {{- if $element.metrics -}}, metrics: {
+    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    type: "{{$element.metrics.type}}",
+    ssl: {{default false $element.metrics.ssl}}
     {{- if $element.metrics.username -}},
-    "username": {{$element.metrics.username | quote}},
+    user: {{$element.metrics.username | quote}},
     {{- end }}
     {{- if $element.metrics.password -}}
-    "password": {{$element.metrics.password | quote}}
+    password: {{$element.metrics.password | quote}}
     {{- end }}
   }{{- end}}}
   {{- else}},
-  {"url":"{{$element.protocol}}://{{$element.host}}:{{$element.port}}"
-  {{- if $element.metrics -}}, "metrics": {
-    "url":"{{$element.host}}:{{$element.metrics.port}}", 
-    "type": "{{default "JMX" $element.metrics.type}}",
-    "ssl": {{default false $element.ssl}}
+  {url: "{{$element.protocol}}://{{$element.host}}:{{$element.port}}"
+  {{- if $element.metrics -}}, metrics: {
+    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    type: "{{default "JMX" $element.metrics.type}}",
+    ssl: {{default false $element.ssl}}
     {{- if $element.metrics.username -}},
-    "username": {{$element.metrics.username | quote}},
+    user: {{$element.metrics.username | quote}},
     {{- end }}
     {{- if $element.metrics.password -}}
-    "password": {{$element.metrics.password | quote}}
+    password: {{$element.metrics.password | quote}}
     {{- end }}
   }{{- end}}}
   {{- end}}
@@ -294,39 +294,39 @@ PLAINTEXT
   {{- $port := index $element "port" -}}
   {{- $protocol := index $element "protocol" -}}
   {{- if not $index -}}{
-    "name": "{{- index $element "name"}}",
-    "statuses": "{{index $element "statusTopic"}}",
-    "configs": "{{index $element "configTopic"}}",
-    "offsets": "{{index $element "offsetsTopic"}}",
-    {{ if index $element "authType" }}"auth": "{{index $element "authType"}}",{{- end -}}
-    {{ if index $element "username" }}"username": "{{index $element "username"}}",{{- end -}}
-    {{ if index $element "password" }}"password": "{{index $element "password"}}",{{- end -}}
-    "urls":[
+    name: "{{- index $element "name"}}",
+    statuses: "{{index $element "statusTopic"}}",
+    configs: "{{index $element "configTopic"}}",
+    offsets: "{{index $element "offsetsTopic"}}",
+    {{ if index $element "authType" }}auth: "{{index $element "authType"}}",{{- end -}}
+    {{ if index $element "username" }}username: "{{index $element "username"}}",{{- end -}}
+    {{ if index $element "password" }}password: "{{index $element "password"}}",{{- end -}}
+    urls: [
       {{ range $index, $element := index $element "hosts" -}}
         {{- if not $index -}}
-        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
-        {{- if $element.metrics -}}, "metrics": {
-          "url":"{{$element.host}}:{{$element.metrics.port}}",
-          "type": "{{default "JMX" $element.metrics.type}}",
-          "ssl": {{default false $element.metrics.ssl}},
+        {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, metrics: {
+          url: "{{$element.host}}:{{$element.metrics.port}}",
+          type: "{{default "JMX" $element.metrics.type}}",
+          ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
-          "username": {{$element.metrics.username | quote}},
+          user: {{$element.metrics.username | quote}},
           {{- end }}
           {{- if $element.metrics.password -}}
-          "password": {{$element.metrics.password | quote}}
+          password: {{$element.metrics.password | quote}}
           {{- end }}
         }{{- end}}}
         {{- else -}},
-        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
-        {{- if $element.metrics -}}, "metrics": {
-          "url":"{{$element.host}}:{{$element.metrics.port}}",
-          "type": "{{default "JMX" $element.metrics.type}}",
-          "ssl": {{default false $element.metrics.ssl}},
+        {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, metrics: {
+          url: "{{$element.host}}:{{$element.metrics.port}}",
+          type: "{{default "JMX" $element.metrics.type}}",
+          ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
-          "username": {{$element.metrics.username | quote}},
+          user: {{$element.metrics.username | quote}},
           {{- end }}
           {{- if $element.metrics.password -}}
-          "password": {{$element.metrics.password | quote}}
+          password: {{$element.metrics.password | quote}}
           {{- end }}
         }{{- end}}}
         {{- end -}}
@@ -335,39 +335,39 @@ PLAINTEXT
   }
   {{- else}},
   {  
-    "name": "{{- index $element "name"}}",
-    "statuses": "{{index $element "statusTopic"}}",
-    "configs": "{{index $element "configTopic"}}",
-    "offsets": "{{index $element "offsetsTopic"}}",
-    {{ if index $element "authType" }}"authType": "{{index $element "authType"}}",{{- end -}}
-    {{ if index $element "username" }}"username": "{{index $element "username"}}",{{- end -}}
-    {{ if index $element "password" }}"password": "{{index $element "password"}}",{{- end -}}
-    "urls":[ 
+    name: "{{- index $element "name"}}",
+    statuses: "{{index $element "statusTopic"}}",
+    configs: "{{index $element "configTopic"}}",
+    offsets: "{{index $element "offsetsTopic"}}",
+    {{ if index $element "authType" }}authType: "{{index $element "authType"}}",{{- end -}}
+    {{ if index $element "username" }}username: "{{index $element "username"}}",{{- end -}}
+    {{ if index $element "password" }}password: "{{index $element "password"}}",{{- end -}}
+    urls:[ 
       {{ range $index, $element := index $element "hosts" -}}
         {{- if not $index -}}
-        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
-        {{- if $element.metrics -}}, "metrics": {
-          "url":"{{$element.host}}:{{$element.metrics.port}}", 
-          "type": "{{default "JMX" $element.metrics.type}}",
-          "ssl": {{default false $element.metrics.ssl}},
+        {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, metrics: {
+          url: "{{$element.host}}:{{$element.metrics.port}}", 
+          type: "{{default "JMX" $element.metrics.type}}",
+          ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
-          "username": {{$element.metrics.username | quote}},
+          user: {{$element.metrics.username | quote}},
           {{- end }}
           {{- if $element.metrics.password -}}
-          "password": {{$element.metrics.password | quote}}
+          password: {{$element.metrics.password | quote}}
           {{- end }}
         }{{- end}}}
         {{- else -}},
-        {"url":"{{$protocol}}://{{$element.host}}:{{$port}}"
-        {{- if $element.metrics -}}, "metrics": {
-          "url":"{{$element.host}}:{{$element.metrics.port}}", 
-          "type": "{{default "JMX" $element.metrics.type}}",
-          "ssl": {{default false $element.metrics.ssl}},
+        {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
+        {{- if $element.metrics -}}, metrics: {
+          url: "{{$element.host}}:{{$element.metrics.port}}", 
+          type: "{{default "JMX" $element.metrics.type}}",
+          ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
-          "username": {{$element.metrics.username | quote}},
+          user: {{$element.metrics.username | quote}},
           {{- end }}
           {{- if $element.metrics.password -}}
-          "password": {{$element.metrics.password | quote}}
+          password: {{$element.metrics.password | quote}}
           {{- end }}
         }{{- end}}}
         {{- end -}}
