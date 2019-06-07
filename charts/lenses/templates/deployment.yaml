@@ -165,7 +165,7 @@ spec:
           value: {{ .Values.lenses.schemaRegistries.security.kerberos.serviceName | quote }}
         {{- end }}
         # from secrets as might contain basic auth credentials
-        - name: LENSES_CONNECT_CLUSTERS
+        - name: LENSES_KAFKA_CONNECT_CLUSTERS
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
