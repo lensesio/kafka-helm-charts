@@ -372,3 +372,10 @@ spec:
         - name: {{ printf "%s" $key | replace "." "_" | upper | quote }}
           value: {{ $value | quote }}
         {{- end -}}
+
+        # telemetry metadata
+        - name: LT_PACKAGE
+          value: "helm"
+
+        - name: LT_PACKAGE_VERSION
+          value: "{{ .Chart.Version }}"
