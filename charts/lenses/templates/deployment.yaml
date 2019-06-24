@@ -373,7 +373,6 @@ spec:
           value: {{ $value | quote }}
         {{- end -}}
 
-        # telemetry metadata
         - name: LT_PACKAGE
           value: "helm"
 
