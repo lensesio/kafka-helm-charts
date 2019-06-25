@@ -193,7 +193,7 @@ PLAINTEXT
 
 {{- define "kafkaSchemaBasicAuth" -}}
   {{- if .Values.lenses.schemaRegistries.security.enabled -}}
-    {{- if eq .Values.lenses.schemaRegistries.security.authType "USER_INFO" -}}
+    {{- if (.Values.lenses.schemaRegistries.security.authType)  and eq .Values.lenses.schemaRegistries.security.authType "USER_INFO" -}}
     {{- .Values.lenses.schemaRegistries.security.username}}:{{.Values.lenses.schemaRegistries.security.password}}
     {{- end -}}
   {{- end -}}
