@@ -371,7 +371,7 @@ spec:
         {{- range $key, $value := .Values.configOverrides }}
         - name: {{ printf "%s" $key | replace "." "_" | upper | quote }}
           value: {{ $value | quote }}
-        {{- end -}}
+        {{- end }}
 
         - name: LT_PACKAGE
           value: "helm"
