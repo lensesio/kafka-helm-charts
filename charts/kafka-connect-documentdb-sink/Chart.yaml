@@ -1,5 +1,5 @@
 
 description: A chart for kafka-connect-documentdb-sink
 name: kafka-connect-documentdb-sink
-version: 1.7
-appversion: 1.2.1
+version: 1.8
+appversion: 1.2.2
