@@ -28,17 +28,29 @@ spec:
         prometheus.io/port: {{ .Values.monitoring.port | quote }}
         prometheus.io/path: {{ .Values.monitoring.path | quote }}
     spec:
-      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+      {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.sslEnabled }}
       volumes:                
-        - name: kafka-secrets
+        {{- if .Values.sslEnabled }}
+        - name: connector-secrets
           secret:
             secretName: {{ include "fullname" . }}
+            defaultMode: 256
+            items:
+              - key: client.keystore.jks
+                path: client.keystore.jks
+              - key: client.truststore.jks
+                path: client.truststore.jks
+        {{- end }}
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled}}
+        - name: kafka-secrets
+          secret:
+            secretName: {{ include "fullname" . }}-kafka-secrets
             defaultMode: 256
             items:
               {{- if .Values.kafka.ssl.enabled }}
               - key: client.keystore.jks
                 path: client.keystore.jks
-              - key: client.truststore.jks 
+              - key: client.truststore.jks
                 path: client.truststore.jks
               {{- end }}  
               {{- if .Values.kafka.sasl.enabled }}
@@ -51,8 +63,9 @@ spec:
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
-        {{- end }}                     
-      {{- end }}            
+        {{- end }}
+        {{- end }}
+      {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -67,15 +80,21 @@ spec:
           timeoutSeconds: 5
         resources:
 {{ toYaml .Values.resources | indent 10 }}
-        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }} 
+        {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled .Values.sslEnabled}}
         volumeMounts: 
+          {{- if .Values.sslEnabled }}
+          - name: connector-secrets
+            mountPath: "/mnt/connector-secrets"
+          {{- end }}
+          {{- if or .Values.kafka.ssl.enabled .Values.kafka.sasl.enabled }}
           - name: kafka-secrets
             mountPath: "/mnt/secrets"
           {{- if eq .Values.kafka.sasl.mechanism "GSSAPI" }}
           - name: krb
             mountPath: "/etc/krb5.conf"
             subPath: "krb5.conf"
-          {{- end }}            
+          {{- end }}
+          {{- end }}
         {{- end }} 
         env:
         # JVM Heap Allowance
@@ -234,3 +253,25 @@ spec:
           value: {{ .Values.errorPolicy | quote }}
         - name: CONNECTOR_CONNECT_PROGRESS_ENABLED
           value: {{ .Values.progressEnabled | quote }}
+        - name: CONNECTOR_CONNECT_REDIS_SSL_ENABLED
+          value: {{ .Values.sslEnabled  | quote }}
+        {{- if .Values.sslEnabled }}
+        - name: SSL_TRUSTSTORE_TYPE_CONFIG
+          value: {{ .Values.trustStoreType}}
+        - name: SSL_TRUSTSTORE_LOCATION_CONFIG
+          value: "/mnt/connector-secrets/client.truststore.jks"
+        - name: SSL_TRUSTSTORE_PASSWORD_CONFIG
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . }}
+              key:  "connect.redis.truststore.pass"
+        - name: SSL_KEYSTORE_TYPE_CONFIG
+          value: {{ .Values.keyStoreType}}
+        - name: SSL_KEYSTORE_LOCATION_CONFIG
+          value: "/mnt/connector-secrets/client.keystore.jks"
+        - name: SSL_KEYSTORE_PASSWORD_CONFIG
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . }}
+              key:  "connect.redis.keystore.pass"
+        {{- end }}
