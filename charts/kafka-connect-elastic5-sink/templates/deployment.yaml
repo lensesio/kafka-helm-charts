@@ -231,6 +231,14 @@ spec:
         - name: CONNECTOR_CONNECT_ELASTIC_USE_HTTP
           value: {{ .Values.useHttp | quote }} 
 
+        # extra connector properties
+        {{- if .Values.transforms }}
+        {{- range $key, $value := .Values.transforms }}
+        - name: CONNECTOR_{{ $key | upper }}
+          value: {{  $value | quote }}
+        {{- end }}
+        {{- end }}
+
         # elastic client settings
         - name: CONNECTOR_CONNECT_ELASTIC_CLUSTER_NAME
           value: {{ .Values.elasticClusterName | quote }}
