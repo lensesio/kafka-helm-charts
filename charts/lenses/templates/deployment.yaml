@@ -368,7 +368,7 @@ spec:
         {{- end }}
 
         # extras configs
-        {{- range $key, $value := .Values.configOverrides }}
+        {{- range $key, $value := .Values.lenses.configOverrides }}
         - name: {{ printf "%s" $key | replace "." "_" | upper | quote }}
           value: {{ $value | quote }}
         {{- end }}

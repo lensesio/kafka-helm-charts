@@ -373,5 +373,5 @@ lenses:
   # extra configurations that will be append to the lenses.conf file mounted in /mnt/settings
   ## keys must be uppercase and underscores for separators suit for use as environment variables
   ## see https://docs.lenses.io/install_setup/configuration/lenses-config.html#option-reference
-  configOverrides:
+  configOverrides: {}
     #LENSES_PROPERTY : value
