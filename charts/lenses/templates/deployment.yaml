@@ -135,9 +135,11 @@ spec:
           values: |-
 {{ include "jmxBrokers" . | indent 12 }}
         {{- end }}
+        {{- if .Values.lenses.zookeepers.enabled }}
         - name: LENSES_ZOOKEEPER_HOSTS
           value: |-
 {{ include "zookeepers" . | indent 12 }}
+        {{- end }}
 
         {{- if .Values.lenses.zookeepers.chroot }}
         - name: LENSES_ZOOKEEPER_CHROOT
@@ -167,24 +169,13 @@ spec:
               name: {{ include "fullname" . | quote }}
               key: "connect.clusters"
 
-        - name: LENSES_ALERT_MANAGER_ENDPOINTS
-          value: {{ include "alertManagers" . | quote }}  
-        - name: LENSES_ALERT_MANAGER_SOURCE
-          value: "{{ .Values.lenses.alertManagers.sourceName }}-{{ include "fullname" .}}-{{ .Release.Namespace }}"
         - name: LENSES_ALERT_CONSUMERS_LAG_THRESHOLD
-          value: {{ .Values.lenses.alertManagers.consumersLagThreshold | quote }}
-        - name: LENSES_ALERT_SLACK_ENABLED
-          value: {{ .Values.lenses.slack.enabled | quote }}
-        {{- if .Values.lenses.slack.enabled }}                            
-        - name: LENSES_ALERT_SLACK_WEBHOOK_URL
-          value: {{ .Values.lenses.slack.webhookUrl | quote }}
-        - name: LENSES_ALERT_SLACK_ICON_URL
-          value: "https://www.lenses.io/images/logos/icon_ellipse2red.png"
-        - name: LENSES_ALERT_SLACK_USERNAME
-          value: {{ .Values.lenses.slack.username | quote }}
-        - name: LENSES_ALERT_SLACK_CHANNEL
-          value: {{ .Values.lenses.slack.channel | quote }}
-        {{- end }}  
+          value: {{ .Values.lenses.alerts.consumersLagThreshold | quote }}
+        {{- if .Values.lenses.alerts.enabled }}
+        - name: LENSES_ALERT_PLUGINS
+          value: |-
+{{ include "alertPlugins" . | indent 12 }}
+        {{- end }}
         {{- if .Values.lenses.grafanaUrl }}
         - name: LENSES_GRAFANA
           value: {{ .Values.lenses.grafanaUrl | quote }}  
