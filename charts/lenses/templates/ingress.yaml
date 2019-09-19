@@ -23,7 +23,7 @@ spec:
       - path: {{if .Values.ingress.path }}{{ .Values.ingress.path }}{{else}}"/"{{end}}
         backend:
           serviceName: {{ include "fullname" . | quote }}
-          servicePort: {{ .Values.restPort }}
+          servicePort: {{ .Values.servicePort }}
   {{- if .Values.ingress.tls.enabled }}
   tls:
     - hosts:
