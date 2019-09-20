@@ -113,10 +113,6 @@ spec:
         {{- if.Values.lenses.jvm.performanceOpts}}
         - name: LENSES_PERFORMANCE_OPTS
           value: {{ .Values.lenses.jvm.performanceOpts | quote }}
-        {{- end }} 
-        {{- if .Values.ingress.enabled }}
-        - name: LENSES_ROOT_PATH
-          value: {{ include "ingressPath" . | quote }}
         {{- end }}
         - name: LICENSE
           valueFrom:

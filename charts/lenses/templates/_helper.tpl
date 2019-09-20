@@ -14,14 +14,6 @@ We truncate at 24 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s" .Release.Name -}}
 {{- end -}}
 
-{{- define "ingressPath" -}}
-{{- if .Values.ingress.path -}}
-{{- .Values.ingress.path -}}
-{{- else -}}
-{{- include "fullname" . -}}
-{{- end -}}
-{{- end -}}
-
 {{- define "metricTopic" -}}
 {{- if .Values.lenses.topics.suffix -}}
 _kafka_lenses_metrics_{{ .Values.lenses.topics.suffix }}
