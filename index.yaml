@@ -695,25 +695,6 @@ entries:
     urls:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.2.14.tgz
     version: 2.2.14
-  lenses-sql-processor-runner:
-  - appVersion: 2.3.1
-    created: "2019-08-11T09:22:11.960537742Z"
-    description: A chart for Landoops Lenses SQL processor runner
-    digest: 102b89574db2546c9c4e9f6f42401ccaeb9cff4001357fc44e9b617390bcc06e
-    icon: https://www.landoop.com/images/landoop-dark.svg
-    name: lenses-sql-processor-runner
-    urls:
-    - https://landoop.github.io/kafka-helm-charts/lenses-sql-processor-runner-2.3.0.tgz
-    version: 2.3.0
-  - appVersion: 2.2.0
-    created: "2019-08-11T09:22:11.960205356Z"
-    description: A chart for Landoops Lenses SQL processor runner
-    digest: 5fda35102d4b07d6ce110267a29ed8e5c611fef0fcec51cf3e3164791ac8bab0
-    icon: https://www.landoop.com/images/landoop-dark.svg
-    name: lenses-sql-processor-runner
-    urls:
-    - https://landoop.github.io/kafka-helm-charts/lenses-sql-processor-runner-2.2.0.tgz
-    version: 2.2.0
   services:
   - created: "2019-08-11T09:22:11.96069849Z"
     description: A chart containing the services and endpoints of an environment
