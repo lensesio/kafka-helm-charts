@@ -91,9 +91,11 @@ logLevel: INFO
 
 # keyConverter The key converter to/from Connects struct
 keyConverter: "io.confluent.connect.avro.AvroConverter"
+keyConverterSchemasEnable: true
 
 # valueConverter The key converter to/from Connects struct
 valueConverter: "io.confluent.connect.avro.AvroConverter"
+valueConverterSchemasEnable: true
 
 # connectorClass class name of the connector
 connectorClass: "com.datamountaineer.streamreactor.connect.mqtt.source.MqttSourceConnector"

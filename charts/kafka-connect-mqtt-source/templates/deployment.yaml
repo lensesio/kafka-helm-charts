@@ -118,8 +118,12 @@ spec:
           value: "connect-{{ .Values.clusterName }}-statuses"
         - name: CONNECT_KEY_CONVERTER
           value: "{{ .Values.keyConverter }}"
+        - name: CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE
+          value: "{{ .Values.keyConverterSchemasEnable }}"
         - name: CONNECT_VALUE_CONVERTER
           value: "{{ .Values.valueConverter }}"
+        - name: CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE
+          value: "{{ .Values.valueConverterSchemasEnable }}"
         - name: CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL
           value: {{ include "registries" . | quote }}
         - name: CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL
