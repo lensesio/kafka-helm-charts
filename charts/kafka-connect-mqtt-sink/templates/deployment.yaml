@@ -258,6 +258,8 @@ spec:
           value: {{ .Values.pollingTimeout | quote }}
         - name: CONNECTOR_CONNECT_MQTT_SERVICE_QUALITY
           value: {{ .Values.serviceQuality | quote }}
+        - name: CONNECTOR_CONNECT_MQTT_RETAINED_MESSAGES
+          value: {{ .Values.retainedMessages | quote }}
         - name: CONNECTOR_CONNECT_MQTT_KEEP_ALIVE
           value: {{ .Values.keepAlive | quote }}
         - name: CONNECTOR_CONNECT_MQTT_RETRY_INTERVAL
