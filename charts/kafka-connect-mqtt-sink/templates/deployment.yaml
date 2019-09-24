@@ -245,7 +245,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . }}
-              key:  "password"
+              key:  "connect.mqtt.password"
         - name: CONNECTOR_CONNECT_MQTT_HOSTS
           value: {{ .Values.hosts | quote }} 
         - name: CONNECTOR_CONNECT_MQTT_CLIENT_ID
