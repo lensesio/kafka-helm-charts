@@ -3,9 +3,9 @@ kind: StatefulSet
 metadata:
   name: {{ include "fullname" . }}
   labels:
-    app: {{ include "fullname" . }}
+    app: {{ include "fullname" . | quote }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
+    release: {{ .Release.Name | quote }}
     heritage: "{{ .Release.Service }}"
     lenses.io/app: {{ include "fullname" . }}    
     lenses.io/app.type: lenses-connector
@@ -17,7 +17,8 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ include "fullname" . }}
+        app: {{ include "fullname" . | quote }}
+        release: {{ .Release.Name | quote }}
         hostPort: {{ .Values.restPort | quote }}
         containerPort: {{ .Values.restPort | quote }}
         lenses.io/app: {{ include "fullname" . }}
