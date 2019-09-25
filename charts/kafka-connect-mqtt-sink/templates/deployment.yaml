@@ -4,9 +4,9 @@ metadata:
   name: {{ include "fullname" . }}
   labels:
     app: {{ include "fullname" . | quote }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: {{ .Release.Name | quote }}
-    heritage: "{{ .Release.Service }}"
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
     lenses.io/app: {{ include "fullname" . }}    
     lenses.io/app.type: lenses-connector
     lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}    

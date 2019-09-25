@@ -4,12 +4,12 @@ metadata:
   name: {{ include "fullname" . }}
   labels:
     app: {{ include "fullname" . | quote }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name | quote }}"
-    heritage: "{{ .Release.Service }}"
-    lenses.io/app: {{ include "fullname" . }}    
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service }}
+    lenses.io/app: {{ include "fullname" . }}
     lenses.io/app.type: lenses-connector
-    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}   
+    lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
 spec:
   replicas: {{ .Values.replicaCount }}
   serviceName: {{ template "fullname" . }}-headless
