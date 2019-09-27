@@ -326,7 +326,7 @@ lenses:
 
       # ldap plugins
       plugin:
-        class: "com.landoop.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
+        class: "io.lenses.security.ldap.LdapMemberOfUserGroupPlugin"
         memberofKey: ""
         groupExtractRegex: ""
         personNameKey: ""
