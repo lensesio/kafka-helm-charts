@@ -78,7 +78,7 @@ service:
 ingress:
   ## If true, Ingress will be created
   ##
-  enabled: true
+  enabled: false
   host:
 
   # Ingress annotations
@@ -158,6 +158,7 @@ lenses:
   ## Zookeepers should be behind a service, if so set one entry in the hosts
   ## If your zookeepers are outside explicitly add them to the hosts. 
   zookeepers:
+    enabled: false
     chroot:
     hosts:
       - host: zookeeper
@@ -266,27 +267,33 @@ lenses:
       # krb5Conf is the kerberos config data to be mounted into /mnt/secrets/processors
       krb5Conf: |-
 
-  # alertmanager
-  alertManagers:
-    enabled: false
-    endpoints:
-      - host: alertmanager
-        protocol: http
-        port: 9094
-
-    sourceName: Lenses™-k8
+  # alerts
+  alerts:
+    enabled: true
     consumersLagThreshold: 50000
+
+    # The alert plugins to integrate with Lenses
+    plugins:
+      # Example
+      # - class: "io.lenses.alerts.plugin.slack.SlackAlertsPlugin"
+      #   config: |
+      #     {
+      #       webhook-url="https://your-slack-webhook-url
+      #       username=Lenses™
+      #       channel=lenses-slack-test
+      #     }
+      # - class: "io.lenses.alerts.plugin.am.AlertManagerPlugin"
+      #   config: |
+      #     {
+      #       endpoints="http://your-alert-manager-url"
+      #       source=PROD
+      #       generator-url="http://lenses_prod:port1"
+      #     }
+
+
 
   #grafana
   grafanaUrl:
-
-  # slack
-  slack:
-    enabled: false
-    iconUrl: https://www.lenses.io/images/logos/icon_ellipse2red.png
-    webhookUrl: ""
-    username: Lenses
-    channel: lenses
 
   # topics
   topics:
@@ -294,62 +301,23 @@ lenses:
     suffix:
 
   security:
-    # By default to BASIC security. Alternative is LDAP
-    mode: BASIC
+    # Change Default Lenses user credentials.
+    # Username: admin / Password:admin
+    defaultUser:
+    # Example
+    #  username: admin
+    #  password: admin
+
     kerberos:
+      enabled: false
       principal:
       keytabData: |-
 
       debug: false
 
-    # user groups
-    groups:
-      - name: adminGroup
-        roles:
-          - admin
-          - write
-          - read
-      - name: writeGroup
-        roles:
-          - read
-          - write
-      - name: readGroup
-        roles:
-          - read
-        # topic:
-        #   blacklist:
-        #     - secrets_*
-        #   whitelist:
-        #     - position_reports.*
-
-    users:
-     - username: admin
-       password: admin
-       displayname: LensesAdmin
-       groups:
-         - adminGroup
-
-    #  - username: write
-    #    password: write
-    #    displayname: Writer
-    #    groups:
-    #      - writeGroup
-
-    #  - username: read
-    #    password: read
-    #    displayname: Reader
-    #    groups:
-    #      - readGroup
-
-    # service accounts
-    #serviceAccounts:
-    #  - username: jenkins
-    #    token: jenkins
-    #    groups:
-    #      - adminGroup
-
      # ldap setting
     ldap:
+      enabled: false
       url: ""
       base: ""
       password: ""
