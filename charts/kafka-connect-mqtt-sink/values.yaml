@@ -121,6 +121,9 @@ keepAlive: 5000
 # serviceQuality Specifies the Mqtt quality of service type: INT importance: MEDIUM
 serviceQuality: "__REQUIRED__"
 
+# retainedMessages Specifies that the broker should store last retained message type: BOOLEAN importance: MEDIUM
+retainedMessages: false
+
 # sslEnabled enabled tls
 tlsEnabled: false
 
