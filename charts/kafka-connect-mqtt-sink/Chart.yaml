@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-mqtt-sink
 name: kafka-connect-mqtt-sink
 version: 1.8
-appversion: 1.2.2
+appversion: 1.2.3

@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-redis-sink
 name: kafka-connect-redis-sink
 version: 1.8.1
-appversion: 1.2.2
+appversion: 1.2.3

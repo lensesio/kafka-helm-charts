@@ -4,7 +4,7 @@ replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
   repository: streamreactor/pulsar
-  tag: 1.2.2
+  tag: 1.2.3
   pullPolicy: IfNotPresent
 
 # Resource management

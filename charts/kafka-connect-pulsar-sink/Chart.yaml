@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-pulsar-sink
 name: kafka-connect-pulsar-sink
 version: 1.8
-appversion: 1.2.2
+appversion: 1.2.3

@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-hazelcast-sink
 name: kafka-connect-hazelcast-sink
 version: 1.8
-appversion: 1.2.2
+appversion: 1.2.3

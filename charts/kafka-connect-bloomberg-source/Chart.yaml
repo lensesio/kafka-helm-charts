@@ -2,4 +2,4 @@
 description: A chart for kafka-connect-bloomberg-source
 name: kafka-connect-bloomberg-source
 version: 1.8
-appversion: 1.2.2
+appversion: 1.2.3
