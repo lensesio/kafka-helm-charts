@@ -3,10 +3,10 @@ set -o errexit
 set -o pipefail
 
 GREEN='\033[0;32m'
-ARTIFACTORY_URL=https://landoop.github.io/kafka-helm-charts/
+ARTIFACTORY_URL=https://lensesio.github.io/kafka-helm-charts/
 
 # Fetch packages
-git clone -b gh-pages https://github.com/landoop/kafka-helm-charts.git build
+git clone -b gh-pages https://github.com/lensesio/kafka-helm-charts.git build
 
 echo "Packaging charts..."
 # Iterate over all charts are package them
