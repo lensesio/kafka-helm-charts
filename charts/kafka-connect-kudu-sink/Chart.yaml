@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for kafka-connect-kudu-sink
 name: kafka-connect-kudu-sink
 version: 1.8

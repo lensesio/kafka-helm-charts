@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for kafka-connect-elastic6-sink
 name: kafka-connect-elastic6-sink
 version: 1.8

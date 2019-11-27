@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart containing the services and endpoints of an environment
 name: services-external-name
 version: 0.2.0
