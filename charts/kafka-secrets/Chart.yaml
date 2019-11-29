@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for Kafka SSL and SASL. Base64 encode the key/truststores
 name: kafka-secrets
 version: 0.0.2

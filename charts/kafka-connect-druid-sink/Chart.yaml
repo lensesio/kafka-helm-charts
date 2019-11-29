@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for kafka-connect-druid-sink
 name: kafka-connect-druid-sink
 version: 1.8

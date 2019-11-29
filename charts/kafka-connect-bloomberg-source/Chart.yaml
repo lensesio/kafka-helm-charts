@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for kafka-connect-bloomberg-source
 name: kafka-connect-bloomberg-source
 version: 1.8

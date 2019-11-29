@@ -1,4 +1,4 @@
-
+apiVersion: "v1"
 description: A chart for kafka-connect-cassandra-source
 name: kafka-connect-cassandra-source
 version: 1.8
