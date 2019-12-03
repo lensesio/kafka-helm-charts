@@ -1,48 +1,53 @@
 apiVersion: v1
 entries:
   azure-persistent-volume-claims-disk:
-  - created: "2019-10-11T13:38:14.648876033Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.122349567Z"
     description: A chart containing the persistent volumes for azure
-    digest: b0e4d956770a3df3c64f211aeab29dd4976810ad88999cfe325e3b33641a41c1
+    digest: 2f9a8e46251282eaf18d5fd622d6b7410b6649b3b3bba16384c14c66dd42ea42
     name: azure-persistent-volume-claims-disk
     urls:
     - https://lensesio.github.io/kafka-helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volume-claims-file:
-  - created: "2019-10-11T13:38:14.649227911Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.12270179Z"
     description: A chart containing the persistent volumes for azure
-    digest: be4bc184612533a8660cd67d092227f750f12c89a0cd86e9763cf50d5be1bd3e
+    digest: b6b034885c33b1b2120013c3c6ac00f9c8ad49bc3217b7856e0cf6eabff18ab3
     name: azure-persistent-volume-claims-file
     urls:
     - https://lensesio.github.io/kafka-helm-charts/azure-persistent-volume-claims-file-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volumes-file:
-  - created: "2019-10-11T13:38:14.649524444Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.123038739Z"
     description: A chart containing the persistent volume claims for azure
-    digest: f22f4df1d541a8c55951bf3969f2cb64f2244b9c44b3bd0e08d239b3f86b073e
+    digest: 7244b1202c2c0c26d1e0a5725b2d8005814cd18d375fb55167a7cedad1efd317
     name: azure-persistent-volumes-file
     urls:
     - https://lensesio.github.io/kafka-helm-charts/azure-persistent-volumes-file-0.0.2.tgz
     version: 0.0.2
   azure-storage-class:
-  - created: "2019-10-11T13:38:14.64984672Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.123368536Z"
     description: A chart containing the storage class for azure
-    digest: 24d8c0f58f0baa1a1d864ca26748d591a3d02e0b99256679a37438d9d99d1836
+    digest: a1c5bc4c34d0c226453553b35940b072e6eb0bbccb8bafcd905604f2e74306ca
     name: azure-storage-class
     urls:
     - https://lensesio.github.io/kafka-helm-charts/azure-storage-class-0.0.2.tgz
     version: 0.0.2
   kafka-connect-blockchain-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.651041746Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.124734056Z"
     description: A chart for kafka-connect-blockchain-source
-    digest: 4f360fc3345c5d21ff04513ab65b091e0935459440553e7d05040ad6eb3572d0
+    digest: 98539696d8cec8ceaa785517b8cbf97f1654255e2a81112ad8205c8cd5e6dd9d
     name: kafka-connect-blockchain-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.650420759Z"
+    created: "2019-12-03T17:57:22.124044258Z"
     description: A chart for kafka-connect-blockchain-source
     digest: f83d8f92f86ef94900d7a6667a8206a805919a761e5f91d3b78b55615ecc732d
     name: kafka-connect-blockchain-source
@@ -50,16 +55,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.7.tgz
     version: "1.7"
   kafka-connect-bloomberg-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.652643084Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.126179005Z"
     description: A chart for kafka-connect-bloomberg-source
-    digest: 8ad42c6dccf5cf84d435ffc945752c5dca013cc99b4b554c603aae1ff206527b
+    digest: 2f80945492986c884bbd94926012ea083e8e5be09bb397655271304480d3d972
     name: kafka-connect-bloomberg-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.651693467Z"
+    created: "2019-12-03T17:57:22.125670139Z"
     description: A chart for kafka-connect-bloomberg-source
     digest: 53fdb53b22ea9161a6ac2b413f451aacd69c964b68888780c77b4195b409f432
     name: kafka-connect-bloomberg-source
@@ -67,16 +73,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.7.tgz
     version: "1.7"
   kafka-connect-cassandra-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.653388542Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.127013357Z"
     description: A chart for kafka-connect-cassandra-sink
-    digest: 1c2a759112578133938bc7e3068b11f506f8cff20caf04cb871b6be7fa9c702e
+    digest: abceb26f79a7a9395aca6ad266f57d5d0155986c05ca0e218e6f8e17fee5e95b
     name: kafka-connect-cassandra-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.653025669Z"
+    created: "2019-12-03T17:57:22.126571878Z"
     description: A chart for kafka-connect-cassandra-sink
     digest: ac95d7439adfcf7a32f48084c9936dab8a21b91639d555be8a0867c9a645106c
     name: kafka-connect-cassandra-sink
@@ -84,16 +91,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.7.1.tgz
     version: 1.7.1
   kafka-connect-cassandra-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.654151862Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.128013182Z"
     description: A chart for kafka-connect-cassandra-source
-    digest: 09b62641c38a58e60c9f695d834f18357c4436379b9725436f5585fe0d5affc5
+    digest: 01894f8f92fbf234d13e33f71a9546660e429687420f2cbac4dca6c2deb0f764
     name: kafka-connect-cassandra-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.6537627Z"
+    created: "2019-12-03T17:57:22.12758201Z"
     description: A chart for kafka-connect-cassandra-source
     digest: 026cfd73cc1aedeac1370d3e2b3636ff563649795025dc00079cbd2281767724
     name: kafka-connect-cassandra-source
@@ -101,16 +109,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.7.tgz
     version: "1.7"
   kafka-connect-coap-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.654964654Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.128811814Z"
     description: A chart for kafka-connect-coap-sink
-    digest: 8fbc63f87ecb697b66e2ba403ab80657a32324ff6cd8260f94e477f448cc9069
+    digest: 5c4cb253cd89127511d87876e079c1f09125ce93588d7cb7dab8f962c16102d5
     name: kafka-connect-coap-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.654592413Z"
+    created: "2019-12-03T17:57:22.128380675Z"
     description: A chart for kafka-connect-coap-sink
     digest: 68a11078e28600ce4b423383067d97666f5134f0435a3636bb1d3b17e43a9489
     name: kafka-connect-coap-sink
@@ -118,16 +127,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.7.tgz
     version: "1.7"
   kafka-connect-coap-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.655959168Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.129564373Z"
     description: A chart for kafka-connect-coap-source
-    digest: 4d5564f95e808e80695c8efe1a4f3a18b9823fedd539b0727aa63895aef81c13
+    digest: 5b58f216f3c5a96781927d4316e9ad41dbc6ff7bf1279f221d6d0d22db48011b
     name: kafka-connect-coap-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-coap-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.65548849Z"
+    created: "2019-12-03T17:57:22.129204431Z"
     description: A chart for kafka-connect-coap-source
     digest: 9eae1519690e001f75eaff02904e7bc4fa86dc1289f6597260a89933f77bbea3
     name: kafka-connect-coap-source
@@ -135,16 +145,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-coap-source-1.7.tgz
     version: "1.7"
   kafka-connect-documentdb-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.65669442Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.130346872Z"
     description: A chart for kafka-connect-documentdb-sink
-    digest: 91267fd695f67d6b772036b352e9e7d18ec968749f4259a05ee7b75d3d778b64
+    digest: 3dacacf1b79075ac39211d005dec67e7c4cd375183780e0f555b3fc8b4bbe320
     name: kafka-connect-documentdb-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.656340276Z"
+    created: "2019-12-03T17:57:22.129925979Z"
     description: A chart for kafka-connect-documentdb-sink
     digest: 4dfe8be515d31fd655b48ee808e66250862ed90eedad495e38c3357221fd3565
     name: kafka-connect-documentdb-sink
@@ -152,16 +163,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.7.tgz
     version: "1.7"
   kafka-connect-druid-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.65733288Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.131095451Z"
     description: A chart for kafka-connect-druid-sink
-    digest: bed5d451374a678501a9be37614a28affa59f6fcbd7ce7b1209aaf64ead38bb3
+    digest: 317b828a0c498c5d499ad625fad403ccc0df81ff4fab80d6459fe522c97b2c46
     name: kafka-connect-druid-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.657012027Z"
+    created: "2019-12-03T17:57:22.130693658Z"
     description: A chart for kafka-connect-druid-sink
     digest: a41b6ff352779774085a654e0a64dc44da5cdc8e1d7744e68f8a8b2c8d1f8b62
     name: kafka-connect-druid-sink
@@ -169,16 +181,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.7.tgz
     version: "1.7"
   kafka-connect-elastic-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.658153817Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.131829618Z"
     description: A chart for kafka-connect-elastic-sink
-    digest: 064f125dbb3ff9beb1919ceb5c57b753ad63454fa66b3d9b3d4e07bab83d82b8
+    digest: 5f70c9dfc70b8a461748b3601435f4c9cff3fdbe7037e3eb53038a6e1fadd9ba
     name: kafka-connect-elastic-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.657680452Z"
+    created: "2019-12-03T17:57:22.131472532Z"
     description: A chart for kafka-connect-elastic-sink
     digest: c17c4365c558f9c003291f612c24454169aafcf0d5e2f22b3305128f3fa96127
     name: kafka-connect-elastic-sink
@@ -186,16 +199,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.7.tgz
     version: "1.7"
   kafka-connect-elastic5-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.659690972Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.132788325Z"
     description: A chart for kafka-connect-elastic5-sink
-    digest: 874970aec4cfcec95fa76d0c7ab764810d70d98c86d4ee0ae16a525434ac96d5
+    digest: 881a8f448e5425effab9837426465c48597623268957f1ce24ccae8e9e441a9b
     name: kafka-connect-elastic5-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.658568084Z"
+    created: "2019-12-03T17:57:22.132277416Z"
     description: A chart for kafka-connect-elastic5-sink
     digest: 1753ee9bd8501a0d9638b39792ac7d4aa495428cfab0fc811b7e71375eac783e
     name: kafka-connect-elastic5-sink
@@ -203,16 +217,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.7.tgz
     version: "1.7"
   kafka-connect-elastic6-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.661079991Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.13360362Z"
     description: A chart for kafka-connect-elastic6-sink
-    digest: 70183385b9371b1945111c14ee65a63946b58164c41d27194c3a3744fb38840d
+    digest: ee4dd0af8e716a889e2aa744cbef390f992a01f6553725e6060c3db76106c4bb
     name: kafka-connect-elastic6-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.660438207Z"
+    created: "2019-12-03T17:57:22.133204758Z"
     description: A chart for kafka-connect-elastic6-sink
     digest: 372ffee31cdc19ebe7917798f2d3022b577e9d07c9209a4f7605334e0c333d2c
     name: kafka-connect-elastic6-sink
@@ -220,16 +235,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.7.tgz
     version: "1.7"
   kafka-connect-ftp-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.662381097Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.134393879Z"
     description: A chart for kafka-connect-ftp-source
-    digest: e997f43d4e88c875e8c9b1c083cdd4a38077b4d9ca4f69307372e2457496f411
+    digest: e8111a2fa70256347767030f15dc96054a7e01b436577143a59ffa435f9e28f4
     name: kafka-connect-ftp-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.661745179Z"
+    created: "2019-12-03T17:57:22.133988604Z"
     description: A chart for kafka-connect-ftp-source
     digest: 65a7e7d0e93e3bb6811cfa6c5ae9a809b02c3d153cd4a5574a0080aa097f6bfe
     name: kafka-connect-ftp-source
@@ -237,16 +253,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.7.tgz
     version: "1.7"
   kafka-connect-hazelcast-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.663883479Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.136194101Z"
     description: A chart for kafka-connect-hazelcast-sink
-    digest: 17c94a1437d7c33cf4ba5f3f27e4816c3765fffe9ddac759d621d607ac339116
+    digest: e1c44af42ae894b20c62fc924d5c95d14b1341f8a8caeebce7ee2f4dfe30c1ec
     name: kafka-connect-hazelcast-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.663196139Z"
+    created: "2019-12-03T17:57:22.135369498Z"
     description: A chart for kafka-connect-hazelcast-sink
     digest: b68bb36a501b62dcc143b79beaf1105ff0be5be0be57f0c77aa219c81ed067fe
     name: kafka-connect-hazelcast-sink
@@ -254,16 +271,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.7.tgz
     version: "1.7"
   kafka-connect-hbase-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.664524598Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.137625401Z"
     description: A chart for kafka-connect-hbase-sink
-    digest: 1e6cedd034eb543004491a31a582e32e3cc54c9df89499551a11cdbaf7126d71
+    digest: 91b477aa4ea18a6f80c91316c64caa4ad03636d6f3df66b4c70948f310094a2a
     name: kafka-connect-hbase-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.664197073Z"
+    created: "2019-12-03T17:57:22.136893431Z"
     description: A chart for kafka-connect-hbase-sink
     digest: 3c1503d6301662d0296f5885073061643bfe12db5741cf707b113763e5e7e509
     name: kafka-connect-hbase-sink
@@ -271,16 +289,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.7.tgz
     version: "1.7"
   kafka-connect-hive-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.665255912Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.139892602Z"
     description: A chart for kafka-connect-hive-sink
-    digest: 2e67d791c6e73f6a01993b574147283a65455ddc03925c127a70a044d6c24e69
+    digest: e747bfb5baf08f8c408b765d363e6869e26c9f3a759ae2d541098fa7f94005e2
     name: kafka-connect-hive-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hive-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.664835076Z"
+    created: "2019-12-03T17:57:22.139418787Z"
     description: A chart for kafka-connect-hive-sink
     digest: e49f4b418fe4ecfe036d981f6d010a46b3fa5a3baf51409add1b3887d438e2b6
     name: kafka-connect-hive-sink
@@ -288,16 +307,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hive-sink-1.7.1.tgz
     version: 1.7.1
   kafka-connect-hive-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.665873982Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.140742603Z"
     description: A chart for kafka-connect-hive-source
-    digest: aebcc418156e22bde2f5b52a6980c549656772605b544acc2ce4316f2ab189fb
+    digest: 77851718f3b30c7cf6e45d9b5e9157def6bae6b5485fce47b50ab28bfc3ea13f
     name: kafka-connect-hive-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hive-source-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.66557736Z"
+    created: "2019-12-03T17:57:22.140309636Z"
     description: A chart for kafka-connect-hive-source
     digest: 6a9a51c4c85611d6ea6bb30662b0cd86a33d1d9ab0978a70f69a94e875a79b8a
     name: kafka-connect-hive-source
@@ -305,16 +325,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-hive-source-1.7.1.tgz
     version: 1.7.1
   kafka-connect-influx-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.666544512Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.141526737Z"
     description: A chart for kafka-connect-influx-sink
-    digest: 054bd97550d2162c03ee7e57d4c5fc6cb6c3052117e6ca5bd33db3cb731cccae
+    digest: fcb01e80a410149494549e2bff118aa540048b01a6ae7adbfeaf0b28e1516475
     name: kafka-connect-influx-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.666215444Z"
+    created: "2019-12-03T17:57:22.141184246Z"
     description: A chart for kafka-connect-influx-sink
     digest: fb12e51ee1a49e9cf133a6d18d95ca75abb3130b33d47b6fca36a1dc94703fe3
     name: kafka-connect-influx-sink
@@ -322,16 +343,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.7.tgz
     version: "1.7"
   kafka-connect-jms-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.667302045Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.142279713Z"
     description: A chart for kafka-connect-jms-sink
-    digest: 8a1af88f9dc2b15e39b50e941c47c459116e27742ea29709a6c80b080d0e0251
+    digest: 892238a6cb5f38d26acf17055a63abe564ba93f7c522b1ad240a3be3396d0ae0
     name: kafka-connect-jms-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.666880172Z"
+    created: "2019-12-03T17:57:22.141927165Z"
     description: A chart for kafka-connect-jms-sink
     digest: 2b346bea5216d19ee24473a27e57ebc4bd6b923c29eb3d5c6aab6c0e0be2a576
     name: kafka-connect-jms-sink
@@ -339,16 +361,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.7.tgz
     version: "1.7"
   kafka-connect-jms-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.668021262Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.143139406Z"
     description: A chart for kafka-connect-jms-source
-    digest: 9a5adf58cd8494f562eb77a5e65fe6af18a8de541b0b9afa017923414a9a17e3
+    digest: f2d02dcdf6aeca88bd8af6911c1dc6052769687d759a198659d08383baab7218
     name: kafka-connect-jms-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-jms-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.667650485Z"
+    created: "2019-12-03T17:57:22.14266004Z"
     description: A chart for kafka-connect-jms-source
     digest: 65cbff22d70df07151b29ac3e3625d818116734714386282ae7b4086e04c2280
     name: kafka-connect-jms-source
@@ -356,16 +379,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-jms-source-1.7.tgz
     version: "1.7"
   kafka-connect-kudu-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.668650236Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.143832365Z"
     description: A chart for kafka-connect-kudu-sink
-    digest: b2d4a72fffef46e8cee861939fb328764e885a6fa71f7f0f09567d506df060eb
+    digest: f3162680811ed0e48ee816d430d97ea9ee6789376abb572461fbb89fe4f2f8b1
     name: kafka-connect-kudu-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.66835022Z"
+    created: "2019-12-03T17:57:22.143484577Z"
     description: A chart for kafka-connect-kudu-sink
     digest: e981b9332cdda6d485933852a861f70f247f0c6d89734383239652e46d63e30d
     name: kafka-connect-kudu-sink
@@ -373,16 +397,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.7.tgz
     version: "1.7"
   kafka-connect-mongo-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.669404331Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.144642385Z"
     description: A chart for kafka-connect-mongo-sink
-    digest: 2f0f05251fd8abef7e5832cc17b817c92ce8919a1bf4d753a3b5caf820644768
+    digest: 04340b38b7871ba6817029ff232bb535a282f5234528ff7d511b8c4ae281074d
     name: kafka-connect-mongo-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.669042405Z"
+    created: "2019-12-03T17:57:22.144228347Z"
     description: A chart for kafka-connect-mongo-sink
     digest: 4c15b2de3336a0c382a255e4b92f6bd52dd9f6762d13f76bae787f819cbcb19e
     name: kafka-connect-mongo-sink
@@ -390,16 +415,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.7.tgz
     version: "1.7"
   kafka-connect-mqtt-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.670964639Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.145604611Z"
     description: A chart for kafka-connect-mqtt-sink
-    digest: c38b7f69375562cb01a29d1c0746b1f6b2f1445fa6f8adb6c09ede67a7f5db40
+    digest: 836fff557fb533c0854a7dd27896d378b887fb0970b8060e608a570a8a9c94e1
     name: kafka-connect-mqtt-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.670327458Z"
+    created: "2019-12-03T17:57:22.145187866Z"
     description: A chart for kafka-connect-mqtt-sink
     digest: 78ae1f5cfb9b3374ec97f9757377e1f67310e21360402cb292307e7abe1f0cb6
     name: kafka-connect-mqtt-sink
@@ -407,16 +433,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.7.tgz
     version: "1.7"
   kafka-connect-mqtt-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.67244802Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.146337279Z"
     description: A chart for kafka-connect-mqtt-source
-    digest: 243d8b0be8288a01ea8914363fc86c03e4854ede6e4644d29f5262fd977904f6
+    digest: b274ebe5a80d26159a1cb44b4e7a3a1191673b1f75581b81af58a3e53cf2c2bd
     name: kafka-connect-mqtt-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.67181246Z"
+    created: "2019-12-03T17:57:22.145965116Z"
     description: A chart for kafka-connect-mqtt-source
     digest: ce296efb2df9206d810df2c6dd12fb27182c6a8909661454f68ef8fa71ebc03a
     name: kafka-connect-mqtt-source
@@ -424,16 +451,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.7.tgz
     version: "1.7"
   kafka-connect-pulsar-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.673941536Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.147297179Z"
     description: A chart for kafka-connect-pulsar-sink
-    digest: 990d1b15e76065215944059e907ed54cd296b4a755bb3037c21c00cfe3aa26dd
+    digest: 70e444928171bac3caf954539de9d1cd41f9f9711ebe0b2afe37e9d30cf5c847
     name: kafka-connect-pulsar-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.673008858Z"
+    created: "2019-12-03T17:57:22.14675518Z"
     description: A chart for kafka-connect-pulsar-sink
     digest: d7a0697ea8bfeb0c2e854acd0cd664357e48780654f6c7e7529fed0635190c0c
     name: kafka-connect-pulsar-sink
@@ -441,16 +469,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.7.tgz
     version: "1.7"
   kafka-connect-pulsar-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.674812072Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.148503911Z"
     description: A chart for kafka-connect-pulsar-source
-    digest: eac87dd9909917cc7ef80a001844ecb95cc101ac5662d7bff8f05a920d4373b1
+    digest: 0a911132b2978c92975bb868f8fecdd365dfb14227f60852e90be9317c07e8a4
     name: kafka-connect-pulsar-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.674463708Z"
+    created: "2019-12-03T17:57:22.147686535Z"
     description: A chart for kafka-connect-pulsar-source
     digest: a2f39f3f36608b24af1b5161f064d809fd006ddc763499b4951d378451372cc2
     name: kafka-connect-pulsar-source
@@ -458,16 +487,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.7.tgz
     version: "1.7"
   kafka-connect-redis-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.675550551Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.149836615Z"
     description: A chart for kafka-connect-redis-sink
-    digest: 791e1a04667ec4e7fc8967333bc5d8dde71fc39ba5b649aeda1fa0abf45a014d
+    digest: 247b1641395cc8e7a9cf158f34de67a00220815c7cd55ace5e45c9d9f6ddd8c6
     name: kafka-connect-redis-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.2
-    created: "2019-10-11T13:38:14.675978016Z"
+    created: "2019-12-03T17:57:22.150434276Z"
     description: A chart for kafka-connect-redis-sink
     digest: e57f65983f3cc6f90a9e12d725212cbced25419a22b0bcb462838477edb8e668
     name: kafka-connect-redis-sink
@@ -475,7 +505,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.675179129Z"
+    created: "2019-12-03T17:57:22.149173163Z"
     description: A chart for kafka-connect-redis-sink
     digest: 7d056971a157fdac2f7eab0372add27f18477e712e594ce39b1d9fe2c303700c
     name: kafka-connect-redis-sink
@@ -483,16 +513,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.7.tgz
     version: "1.7"
   kafka-connect-rethink-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.676615362Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.151872884Z"
     description: A chart for kafka-connect-rethink-sink
-    digest: ecdae5ccd051471c04806992bcca31be1cb2f065253ddd0b831be0882ac9b727
+    digest: 589b127b0ba740bb67ab09b9f00c07c44d1b3af802f5aa96e92b2e0aa62c0c5e
     name: kafka-connect-rethink-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.676297521Z"
+    created: "2019-12-03T17:57:22.151064151Z"
     description: A chart for kafka-connect-rethink-sink
     digest: 1a7600c7ac6706398d2f926a1ef5b0094a0d6dcfea39e692d11cb15aaa6172d9
     name: kafka-connect-rethink-sink
@@ -500,16 +531,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.7.tgz
     version: "1.7"
   kafka-connect-rethink-source:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.677240083Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.153260545Z"
     description: A chart for kafka-connect-rethink-source
-    digest: 4dd2ed5784df90d0225c84b1303e76b8fba3393b984c27cc4ea3b8a08ce8c9ce
+    digest: c03f76d93de6924b21800224721480d624f79b000bf6befdaeb15a1f4126a964
     name: kafka-connect-rethink-source
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.676938455Z"
+    created: "2019-12-03T17:57:22.152737064Z"
     description: A chart for kafka-connect-rethink-source
     digest: 4cfd3fffad21bd152f86a35d326c1dc2f7f19e16d14fdf538ddcef1ddfaa06f4
     name: kafka-connect-rethink-source
@@ -517,16 +549,17 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.7.tgz
     version: "1.7"
   kafka-connect-volt-sink:
-  - appVersion: 1.2.3
-    created: "2019-10-11T13:38:14.677922235Z"
+  - apiVersion: v1
+    appVersion: 1.2.3
+    created: "2019-12-03T17:57:22.153938058Z"
     description: A chart for kafka-connect-volt-sink
-    digest: c67758448781db2e702d60df21d0cb7c0cc8b2371caefa3dbe37588ceeeec7b3
+    digest: c647f8ff0e976cdd918b646cd3b2c6c1589a51541577dd9a2edff8df27912c4b
     name: kafka-connect-volt-sink
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2019-10-11T13:38:14.677591602Z"
+    created: "2019-12-03T17:57:22.15360781Z"
     description: A chart for kafka-connect-volt-sink
     digest: 3b450f514bd3399b89eb9ab45ec98cb28b85f4fa9cb992b670d45a8525fb3c1e
     name: kafka-connect-volt-sink
@@ -534,16 +567,27 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.7.tgz
     version: "1.7"
   kafka-secrets:
-  - created: "2019-10-11T13:38:14.678076596Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.154104417Z"
     description: A chart for Kafka SSL and SASL. Base64 encode the key/truststores
-    digest: d29ceca8bae4f1f49d678336e331ad1b296223ee96062e4dc75d241fba1aada6
+    digest: d0e6bcaf843d687e60983fffc88dca186dd1a7d3212aaac36d9f1bc5286cd4fa
     name: kafka-secrets
     urls:
     - https://lensesio.github.io/kafka-helm-charts/kafka-secrets-0.0.2.tgz
     version: 0.0.2
   lenses:
+  - apiVersion: v1
+    appVersion: 3.0.3
+    created: "2019-12-03T17:57:22.170182775Z"
+    description: A chart for Lenses
+    digest: 194a78ba36093d8eb93c62bfdf9fc7f5fcf2241d02ba73fc8f7d3a84d3b5baee
+    icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
+    name: lenses
+    urls:
+    - https://lensesio.github.io/kafka-helm-charts/lenses-3.0.3.tgz
+    version: 3.0.3
   - appVersion: 3.0.1
-    created: "2019-10-11T13:38:14.69461871Z"
+    created: "2019-12-03T17:57:22.169567825Z"
     description: A chart for Lenses
     digest: d290735578bfb6f0a9edb407a433fa10896a9af5921f0767223e3ff51e702e42
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -552,7 +596,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-3.0.1.tgz
     version: 3.0.1
   - appVersion: 3.0.0
-    created: "2019-10-11T13:38:14.693524742Z"
+    created: "2019-12-03T17:57:22.168975737Z"
     description: A chart for Lenses
     digest: 63e884f0ca90ee2a9114ffa8a0e90c75ff51b5a7ab4e831e2a6f3f5dff8a39bd
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -561,7 +605,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-3.0.0.tgz
     version: 3.0.0
   - appVersion: 2.3.6
-    created: "2019-10-11T13:38:14.687234471Z"
+    created: "2019-12-03T17:57:22.161863559Z"
     description: A chart for Lenses
     digest: a7983769900d6fb237234056559fed793301613d993b0f472bda4bd3d9c41ff8
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -570,7 +614,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.17.tgz
     version: 2.3.17
   - appVersion: 2.3.6
-    created: "2019-10-11T13:38:14.686598049Z"
+    created: "2019-12-03T17:57:22.160761696Z"
     description: A chart for Lenses
     digest: 02aea65c4e650f0873586deb147cc3ac9b4ff739530cf196b1a2b1e9861edbc3
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -579,7 +623,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.16.tgz
     version: 2.3.16
   - appVersion: 2.3.5
-    created: "2019-10-11T13:38:14.685963903Z"
+    created: "2019-12-03T17:57:22.159925951Z"
     description: A chart for Lenses
     digest: 5cea588f747975cc30daea367ef2fac532888248a18a6da8a287af11d5ce5ddd
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -588,7 +632,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.15.tgz
     version: 2.3.15
   - appVersion: 2.3.4
-    created: "2019-10-11T13:38:14.685382533Z"
+    created: "2019-12-03T17:57:22.159241938Z"
     description: A chart for Lenses
     digest: 3a7a6b028ccd92d5d679035d08923ef0b9f5255ed385bed6e071d3e68b5f5d8e
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -597,7 +641,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.14.tgz
     version: 2.3.14
   - appVersion: 2.3.4
-    created: "2019-10-11T13:38:14.684166351Z"
+    created: "2019-12-03T17:57:22.158513599Z"
     description: A chart for Lenses
     digest: da65b0806299cc0d2eee7e2cafacbab7bebb18e7b40703a02d294f614d57815e
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -606,7 +650,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.13.tgz
     version: 2.3.13
   - appVersion: 2.3.4
-    created: "2019-10-11T13:38:14.68315425Z"
+    created: "2019-12-03T17:57:22.157849787Z"
     description: A chart for Lenses
     digest: f2eb379606bc142ec9d7c885fbb535859757b6284921a9ff7543262999ff705b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -615,7 +659,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.12.tgz
     version: 2.3.12
   - appVersion: 2.3.4
-    created: "2019-10-11T13:38:14.682071247Z"
+    created: "2019-12-03T17:57:22.157108918Z"
     description: A chart for Lenses
     digest: 6f7228fbd1c83148a2af2f280c9e418881f095bd14bf6a38b5fdda15a7f1998d
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -624,7 +668,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.11.tgz
     version: 2.3.11
   - appVersion: 2.3.3
-    created: "2019-10-11T13:38:14.681131728Z"
+    created: "2019-12-03T17:57:22.156511739Z"
     description: A chart for Lenses
     digest: 0a925ad4b9d39d119a5449e3ca7971ebb2bf42805027ac75ec61176b2318c811
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -633,7 +677,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.10.tgz
     version: 2.3.10
   - appVersion: 2.3.3
-    created: "2019-10-11T13:38:14.692599005Z"
+    created: "2019-12-03T17:57:22.168312551Z"
     description: A chart for Lenses
     digest: c5a15905dd03866362ac7dd86833adba35f03ade665a46793ba239efb6b1563b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -642,7 +686,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.9.tgz
     version: 2.3.9
   - appVersion: 2.3.3
-    created: "2019-10-11T13:38:14.691138764Z"
+    created: "2019-12-03T17:57:22.1676471Z"
     description: A chart for Lenses
     digest: 864fcae83fd14022877616653c2e38e0697a1a44d514334826ec20b712a00809
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -651,7 +695,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.7.tgz
     version: 2.3.7
   - appVersion: 2.3.2
-    created: "2019-10-11T13:38:14.690474307Z"
+    created: "2019-12-03T17:57:22.166917559Z"
     description: A chart for Lenses
     digest: 83bb34ba42c9240aa12edf7dc6fb2553ef52b36db8be92f6f57364f5f2bb5624
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -660,7 +704,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.6.tgz
     version: 2.3.6
   - appVersion: 2.3.2
-    created: "2019-10-11T13:38:14.68978742Z"
+    created: "2019-12-03T17:57:22.166263772Z"
     description: A chart for Lenses
     digest: db34a0a25f689e59d1469ef4589ee7ce36ce456bd400ad5794282c4df412cf72
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -669,7 +713,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.5.tgz
     version: 2.3.5
   - appVersion: 2.3.2
-    created: "2019-10-11T13:38:14.688956996Z"
+    created: "2019-12-03T17:57:22.165036711Z"
     description: A chart for Lenses
     digest: dda96dcb13d76d5c19b4cf85790415c01f956c2efdd37fe985e7e7a7ad841c3b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -678,7 +722,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.4.tgz
     version: 2.3.4
   - appVersion: 2.3.1
-    created: "2019-10-11T13:38:14.688361877Z"
+    created: "2019-12-03T17:57:22.163956718Z"
     description: A chart for Lenses
     digest: 8536475b9dd3f05690b2608cabe8dd3913d222fd01b2790899b766d4db12bcb4
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -687,7 +731,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.3.tgz
     version: 2.3.3
   - appVersion: 2.3.1
-    created: "2019-10-11T13:38:14.687783687Z"
+    created: "2019-12-03T17:57:22.162894791Z"
     description: A chart for Lenses
     digest: 4ca26df2b82ddb0dceb26f828c3460787d1a5a1387de58417522a2465fd40813
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -696,7 +740,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.2.tgz
     version: 2.3.2
   - appVersion: 2.3.1
-    created: "2019-10-11T13:38:14.679866116Z"
+    created: "2019-12-03T17:57:22.155782208Z"
     description: A chart for Lenses
     digest: 893986f433f0dcf55022562d7abac9acc8a180cecdf4f5ab58aab0a2f5389d53
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -705,7 +749,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.1.tgz
     version: 2.3.1
   - appVersion: 2.3.0
-    created: "2019-10-11T13:38:14.679298867Z"
+    created: "2019-12-03T17:57:22.155204791Z"
     description: A chart for Lenses
     digest: 1a98dbbef8f2d3b92585fb810a6f34bd89ad5b96efb247b0b081656f18e7a8f1
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -714,7 +758,7 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.3.0.tgz
     version: 2.3.0
   - appVersion: 2.2.9
-    created: "2019-10-11T13:38:14.678688907Z"
+    created: "2019-12-03T17:57:22.154651793Z"
     description: A chart for Lenses
     digest: 97f9078379de6bb8fa6c73d72ad24c4b7b0b208782777f86451b318505fd4b1a
     icon: https://www.landoop.com/images/landoop-dark.svg
@@ -723,19 +767,21 @@ entries:
     - https://lensesio.github.io/kafka-helm-charts/lenses-2.2.14.tgz
     version: 2.2.14
   services:
-  - created: "2019-10-11T13:38:14.694918748Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.170398514Z"
     description: A chart containing the services and endpoints of an environment
-    digest: 26edf7db87b512b0996093258c15f17e777975fab9e875eb689b1c56ba3167c1
+    digest: 1e1743b21ca91137012987d4c161247daa865a6047664d0b9356b62dfafe357d
     name: services
     urls:
     - https://lensesio.github.io/kafka-helm-charts/services-0.2.0.tgz
     version: 0.2.0
   services-external-name:
-  - created: "2019-10-11T13:38:14.695253016Z"
+  - apiVersion: v1
+    created: "2019-12-03T17:57:22.170538586Z"
     description: A chart containing the services and endpoints of an environment
-    digest: 1f9eac6401dfd8bb0d7a36bd274eee1e48d0ab06c4a347928b4a1103753b382d
+    digest: 457d4cf2e9c75943458481349531ff52dc7aa39710936496a4116e0b23d6eeae
     name: services-external-name
     urls:
     - https://lensesio.github.io/kafka-helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
-generated: "2019-10-11T13:38:14.6477194Z"
+generated: "2019-12-03T17:57:22.121119379Z"
