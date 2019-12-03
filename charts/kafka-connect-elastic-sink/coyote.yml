@@ -9,7 +9,7 @@
       command: >
         bash -c '
           for ((i=0;i<30;i++)); do
-            sleep 5;
+            sleep 10;
             POD=`kubectl get pods --field-selector=status.phase=Running -l=app=test-kafka-connect-elastic -o jsonpath='{.items[0].metadata.name}'`
             kubectl exec $POD -c kafka -- curl "http://localhost:8083/connectors" && break;
           done'
