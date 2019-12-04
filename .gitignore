@@ -4,3 +4,5 @@ packages
 landoop
 *.compare
 .history/
+*.gpg
+build/

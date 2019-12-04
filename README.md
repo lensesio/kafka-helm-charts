@@ -52,3 +52,25 @@ If all good, checkin, tag and push the ```docs`` folder. This charts are hosted 
 # Contribute
 
 Contributions are welcome for any Kafka Connector or any other component that is useful for building Data Streaming pipelines
+
+# Signing 
+For integrity we sign the Helm Charts. For more information see this document https://helm.sh/docs/topics/provenance/.
+
+The steps to do so are as follows:
+
+* Create a GPG key, and follow the steps to create it noting the name of the key which is later used for signing the charts.
+```
+  gpg --full-generate-key
+```
+* then export the key
+```
+  gpg --export-secret-keys > key.gpg
+```
+* encrypt the key following the manual steps in this doc https://docs.travis-ci.com/user/encrypting-files/
+```
+  openssl aes-256-cbc -k "HELM_KEY_PASSPHRASE" -in key.gpg -out key.gpg.enc
+```
+* And commit the key.gpg.enc to Git.
+
+The ```package.sh``` then needs to be updated with the key name, and an environment variable ```HELM_KEY_PASSPHRASE``` 
+created in the travis build settings with the pass phrase used to encrypt the key.

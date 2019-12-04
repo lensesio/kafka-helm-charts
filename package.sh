@@ -12,7 +12,7 @@ echo "Packaging charts..."
 # Iterate over all charts are package them
 for dir in ${TRAVIS_BUILD_DIR}/charts/*; do
     helm dep update $dir
-    helm package -d ${TRAVIS_BUILD_DIR}/build $dir
+    helm package --sign --key 'Lenses.io Helm Charts' --keyring key.gpg -d ${TRAVIS_BUILD_DIR}/build $dir
 done
 
 # Indexing of charts
