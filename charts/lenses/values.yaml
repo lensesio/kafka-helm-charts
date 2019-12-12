@@ -102,6 +102,11 @@ lenses:
     logBackOpts:
     #performanceOpts are any jvm tuning options to add to the jvm
     performanceOpts:
+    # base64 encoded truststore data
+    trustStoreFileData: |-
+
+    # trust store password
+    trustStorePassword:
 
   # broker details
   ## Brokers should be behind a service, if so set one entry in the hosts

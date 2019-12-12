@@ -234,6 +234,20 @@ spec:
           value: {{ include "kafkaSchemaBasicAuth" . | quote }}
 
         # ssl/sasl
+        {{- if .Values.lenses.jvm.trustStoreFileData }}
+        - name: FILECONTENT_JVM_SSL_TRUSTSTORE
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "jvm.truststore.jks"
+        {{- end }}
+        {{- if .Values.lenses.jvm.trustStorePassword }}
+        - name: FILECONTENT_JVM_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "jvm.truststore.password"
+        {{- end }}
         - name: LENSES_KAFKA_SETTINGS_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
         - name: LENSES_KAFKA_SETTINGS_SASL_MECHANISM
