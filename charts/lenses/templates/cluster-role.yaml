@@ -28,6 +28,7 @@ rules:
     - ingresses
     - secrets
     - statefulsets
+    - services
   verbs: 
     - list
     - watch
