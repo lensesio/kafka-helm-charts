@@ -322,6 +322,8 @@ spec:
           value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
         - name: LENSES_KUBERNETES_PROCESSOR_SCHEMA_REGISTRY_SETTINGS_BASIC_AUTH_AUTH_USER_INFO
           value: {{ include "kafkaSchemaBasicAuth" . | quote }}
+        - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SECURITY_PROTOCOL
+          value: {{ include "securityProtocol" . | quote }}
 
         {{- if and .Values.lenses.sql.ssl.trustStoreFileData .Values.lenses.kafka.ssl.enabled }}   
         - name: LENSES_KUBERNETES_PROCESSOR_KAFKA_SETTINGS_SSL_TRUSTSTORE_LOCATION
