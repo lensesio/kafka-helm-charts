@@ -243,8 +243,12 @@ PLAINTEXT
   {{ range $index, $element := .Values.lenses.schemaRegistries.hosts }}
   {{- if not $index -}}{url: "{{$element.protocol}}://{{$element.host}}:{{$element.port}}{{$element.path}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
-    type: "{{$element.metrics.type}}",
+    {{- if eq $element.metrics.type "JMX" -}}
+    url: "{{$element.host}}:{{$element.metrics.port}}",
+    {{- else }}
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+    {{- end }}
+    type: "{{default "JMX" $element.metrics.type}}",
     ssl: {{default false $element.metrics.ssl}}
     {{- if $element.metrics.username -}},
     user: {{$element.metrics.username | quote}},
@@ -256,7 +260,11 @@ PLAINTEXT
   {{- else}},
   {url: "{{$element.protocol}}://{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    {{- if eq $element.metrics.type "JMX" -}}
+    url: "{{$element.host}}:{{$element.metrics.port}}",
+    {{- else }}
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+    {{- end }}
     type: "{{default "JMX" $element.metrics.type}}",
     ssl: {{default false $element.ssl}}
     {{- if $element.metrics.username -}},
@@ -292,7 +300,11 @@ PLAINTEXT
         {{- if not $index -}}
         {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
         {{- if $element.metrics -}}, metrics: {
-          url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- if eq $element.metrics.type "JMX" -}}
+        url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- else }}
+        url: "{{$protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+        {{- end }}
           type: "{{default "JMX" $element.metrics.type}}",
           ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
@@ -305,7 +317,11 @@ PLAINTEXT
         {{- else -}},
         {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
         {{- if $element.metrics -}}, metrics: {
-          url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- if eq $element.metrics.type "JMX" -}}
+        url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- else }}
+        url: "{{$protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+        {{- end }}
           type: "{{default "JMX" $element.metrics.type}}",
           ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
@@ -333,7 +349,11 @@ PLAINTEXT
         {{- if not $index -}}
         {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
         {{- if $element.metrics -}}, metrics: {
-          url: "{{$element.host}}:{{$element.metrics.port}}", 
+        {{- if eq $element.metrics.type "JMX" -}}
+        url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- else }}
+        url: "{{$protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+        {{- end }}
           type: "{{default "JMX" $element.metrics.type}}",
           ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
@@ -346,7 +366,11 @@ PLAINTEXT
         {{- else -}},
         {url: "{{$protocol}}://{{$element.host}}:{{$port}}"
         {{- if $element.metrics -}}, metrics: {
-          url: "{{$element.host}}:{{$element.metrics.port}}", 
+        {{- if eq $element.metrics.type "JMX" -}}
+        url: "{{$element.host}}:{{$element.metrics.port}}",
+        {{- else }}
+        url: "{{$protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+        {{- end }}
           type: "{{default "JMX" $element.metrics.type}}",
           ssl: {{default false $element.metrics.ssl}},
           {{- if $element.metrics.username -}}
