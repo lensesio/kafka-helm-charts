@@ -6,4 +6,4 @@ landoop
 .history/
 *.gpg
 build/
-coyote.html
+charts/*/coyote.html
