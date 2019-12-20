@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-elastic6-sink
+name: kafka-connect-elastic6-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-elastic6-sink-1.8.tgz: sha256:1816cdcdf41ef9d08d99d7d293ddfb845a52815c03d30c60b56ed9b5e7467662
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGDCRAVUWrc2VIn2AAAXkkIAB/0C9sou3HHlIgu2dgnfIjJ
+aGoqPex+1/BG6AKHMf9qZRt4vlJ2iapyZY4CsTe4QfU3jeRuWDkWygIvgy2DU9he
+pRSs3WuI0QkGygeK2Fha37OSlnichFNe6lQOxdCR/glX1zBtAU6oO1/wA2e6OcDW
+186owuLlKJ7qtHnDAT1zs+sU1bAFUdLB3VOHyMKsVFix7hye8Gm8p6oSWgkXwnYl
+NXSiMZBf8amEkxYQuSMVffeHVNBKNqbYtErFiQLrmVQTroP+L3lrX4IJTMlR8KQB
+KOz3a49dRDbPQa/+ie23CUc4XPTZO42JVNxVWccV7VM/ji7Eo2gpxYfgek+VDqw=
+=GMdQ
+-----END PGP SIGNATURE-----

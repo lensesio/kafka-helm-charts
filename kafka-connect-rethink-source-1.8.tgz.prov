@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-rethink-source
+name: kafka-connect-rethink-source
+version: "1.8"
+
+...
+files:
+  kafka-connect-rethink-source-1.8.tgz: sha256:e0598e6f2a09724d5c927aeceae35de27240e677fee56b20b12fa465fbcad106
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGGCRAVUWrc2VIn2AAAR5gIANiYJozXR9aXY7V4esnQJaFA
+8C/U2F8GSgmjyRJH5NutY/QIbp35fRPC02EGJyOUN5B8rN84ZXs1OorHQ6FKi8wn
+BXNLDP+odD91/IjWuwUqxfKsVBl7wGGs4HOqOSg+akphXNVDGiMndY+Zhl7JYcmA
+sei/E66d89ZL2b+ibGSALS9Yj1NDMk5eSknkkzs1C2zn6h7Pz3ar81Z+R2RJRTJf
+UGz9Ho/pjnUvYr2bmi9A79ZRFaYGkNuNTXAt5KuAAHTT1SvepDSDe2VGJOLII8xj
+5dvK4+tC7TvaVN/8g6qiqeWAhYVf/5Cf7v7Tqb0ZxjmAsaq3i4HFcPA7lc8zpZo=
+=gYTb
+-----END PGP SIGNATURE-----

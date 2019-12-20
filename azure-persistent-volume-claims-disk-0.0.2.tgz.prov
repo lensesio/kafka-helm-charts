@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+description: A chart containing the persistent volumes for azure
+name: azure-persistent-volume-claims-disk
+version: 0.0.2
+
+...
+files:
+  azure-persistent-volume-claims-disk-0.0.2.tgz: sha256:507f4cd300743ca377b4c12ff05b279c1532f902fa8e03b793c7866b3298462f
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGBCRAVUWrc2VIn2AAAbXEIAHcFwbQMyq4szlt8WixctvUv
+EX80mHy0/BIYQ26AgdSZj9iKk9cY6JZidZOra1dVkYSw+CnW7uvflcYRHbyjYfG2
+cTHfXv+licdQpDfr3SeNCg+fO1HD54/TOGIqHfvtlygksq6Y5DwQicOBJFWUNGqF
++9FUpHAGWvk7MVntBlyZX54J2u8PsR6o7AMI4wM/GpMxJAWjftBied+0lY5OTXbN
+VCliVwiDd1/EY5pLuAIbnlz1dR+W0QAT1AjTCO03WlK5mUk+tX7ih3hE1pq+FDNt
+zLZS0vU15bRJ6EQqzSbvfEU14/vGXLckkWPSKyoQ6dCAbJzYcv3WqCQ/4uwsYco=
+=oVkK
+-----END PGP SIGNATURE-----

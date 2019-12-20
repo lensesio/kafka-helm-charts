@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-mongo-sink
+name: kafka-connect-mongo-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-mongo-sink-1.8.tgz: sha256:effa57686857e8e420abc8c07a127c4a180893f0b39393c87ff4bd5f20a26ec7
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGFCRAVUWrc2VIn2AAAL08IABB1XxfiPCdL5mtfeUDyoFDO
+Z+JPSRA9ZcwDrywmLduHct2JI6bZTYGa1Opl2eSGntqPB85Lf97ZH83dibh8cNCW
+hNfUIVXfCmkRDec/atcwOYJt8wG2iSynRQGwZV2JtAuo6uteoFftJVvTEdgb/bId
+3rG4qyy6W4mA/fovWMNnHYx996sH6+yK/MULpOxqb9HcRUtAVKl/ZRX+iM+Y4NMS
+QmvLNarBCREBo/+cJ78a2FPl34n1IrN9ZhIVa7Law20NJP+j7vNmnH1RlRrA/WjZ
+KLyeMIm1GViAbnMiyUmdMkZLwE10tPttYyMzQP8Xzm1pkYJXG9cC4KDqgL8lgbE=
+=pFpg
+-----END PGP SIGNATURE-----

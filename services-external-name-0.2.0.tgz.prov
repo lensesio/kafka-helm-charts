@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+description: A chart containing the services and endpoints of an environment
+name: services-external-name
+version: 0.2.0
+
+...
+files:
+  services-external-name-0.2.0.tgz: sha256:c6ec6afcec320d822af7df49afb52a5d38075624b336a0c6be762f1ac83c5e37
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGHCRAVUWrc2VIn2AAAXLQIAHfBzmoq58TG42b5gBpAfxxp
+HLZD3abbb2uSAWbKv0/TLTzqjqEj8KW6iaYCBBJTR02e0vcA/ShA6Sc57vinQMD1
+S4Zk89670LDF2KM9xXrOAtlrNIaUEHS9IQaom80pRr/C+zRgStqOG8Xmp7+lzS4Y
+EPCadr8fOLbalzx7W1XAp4vFCKS/8wLsvQaStYVM8S3cvuOff8qKwJT6OXnT+ViC
+YOpsuUDnx7KFMC7IYARO/Ltv5q/g0TjWRE12V7X0dDzXiPdaUvgVBExocOArBT6h
+deZmwtrMPCe5P+QYSdlXoK8qFKz7yXqmbB7iu3RcBFwzeoMlecmCEGXsNlXLFIA=
+=b7MM
+-----END PGP SIGNATURE-----

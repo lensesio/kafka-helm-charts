@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-mqtt-sink
+name: kafka-connect-mqtt-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-mqtt-sink-1.8.tgz: sha256:e1a7efa8b2982690dc6589953c4555a9bc8eed7dc0750a45125818b36f450ad8
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGFCRAVUWrc2VIn2AAAeLgIAK1jY+i/yvLSNOWieGwGiM7G
+F5PjkaDGmbmPx1IMfEKugVTQNLS0eJTW5Ytfu1xH9mERdxylfC9dq+BBLg5BR0Wr
+2BV/PelaYDQnRZtb6dUjRQUT5WdbZPYnNK8oSFB/AA3hHL+Jytpl4AMLTZ+FPQMt
+XZm4Z5U9cRsy/5IMtawJPbmB9MfjskKmEnaALrrygRcCv/NF5UlBF56LKdJZOZDa
+mcrIQKgz5fA1fQP5Vk6hZUonTQOOr+Ne96aiGkCxY4F5eK53aBcO5ULpFrETgEtN
+MP88HqQW0OYKFwlh7dMXzAog2Y1IsRQ9k1vqAs7iFSP+l4SZcRw69rE3Abah5T0=
+=SwAU
+-----END PGP SIGNATURE-----

@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-coap-source
+name: kafka-connect-coap-source
+version: "1.8"
+
+...
+files:
+  kafka-connect-coap-source-1.8.tgz: sha256:eeb1c931e55fb66de9a7305af50fd0dfcb41d48f5b80d76f3e726364fc067920
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGCCRAVUWrc2VIn2AAAfK8IAGjEek3uvbb6+b2AvWc+IB0k
+B1ckBTlscKf7WQLHXuHA852jJVb9hy7Dz6mhgmxOZAkhTCCHjKL2f9hErSk/135N
+sWkov+Dzw/4B7VS8G2gDfskqgIrkrM8F2A6zDQkkc2uP79eU/guKhiQS61lIFu0p
+/nkNf+Vx509Xw6u0KHhPpdy2O+95knn4UpE9/Wl4Z3G+Q0sgCI8jMbaROw6GSFUM
+a1q4JrZfvv27NVwjVWdFKYzDTZn4+bxu2Q82pDMjM4fJRJjKim4vRLo9wBkxxISF
+WEeBSRv8AbTZun8xjjWP3CW6u1s+sOJc0OSZK0hDal07Dae3t3Ucp/d7Ll5u090=
+=ja/2
+-----END PGP SIGNATURE-----

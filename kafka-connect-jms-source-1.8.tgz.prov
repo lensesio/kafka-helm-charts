@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-jms-source
+name: kafka-connect-jms-source
+version: "1.8"
+
+...
+files:
+  kafka-connect-jms-source-1.8.tgz: sha256:ccfc7b3b4078685f280bd3dd3a19a74868b501aca87dd254ad5460b15508d633
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGFCRAVUWrc2VIn2AAA0A0IAEQCPQWZ5MsE/Tq23zp9t6MB
+NUVo5m7EnvyXmcm5pZ/sxoa5WbRbx+p1WZv8vSCKReEqJk0o8KAY/36JtKhaSisn
+6IDRevwScfKZ+/IXQm69WyUywQAXUaFmPa3FC3C3mDSwb8dPpLJW8b5cZwIPGztv
+keCXqJXbOhEV/SbHNecGNte1s35KTn/ptlGBfZa/9RiW9cWymMiK5TWMyHN8EhzI
+JFEu47p2y10n0fZnrWC5O61K4vsYRhFoh7Ty2GLEIj5sbJkg7mPZZ0W4spzS9/ix
+PyNr0vRyCzDuENysaSe8reUiHbzRh1ph5ajYha2SVk/RV9kHDPt42c9XFkIH638=
+=bPcV
+-----END PGP SIGNATURE-----

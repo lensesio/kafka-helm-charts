@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-hazelcast-sink
+name: kafka-connect-hazelcast-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-hazelcast-sink-1.8.tgz: sha256:78755ab8ab6412e0a4506194e4e40c176b26a6653e3cf9f382a56a89dbc184f5
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGECRAVUWrc2VIn2AAAouUIAJsLnaGruMwq5mCEbAGtjAQ/
+eYAd4sHAHU+FDUXnjet2xDdDyC7OWVKURpr8uth1YVbH798d8mMB3JOuIOOtPrSP
+hCrUFjqlVJuN/F6jyJA5wO648FZaAomFUZGq1f8/sx1vnv8buMiCuPy8Q2dMFgTX
+uC9NrifbiKwTIFnYFUjqWXaQbGlRNgo6X5To4gzYMR/Go1ZOBJs2oDR+OAH6rOK4
+/r1alzPV31VrdRV3HcJu3v8/J2iA6yd31uZcBa0ergOwAnLJIWWCtzYkrvy3hU4P
+I1VZ73sQjhjp4cFxcM9YyiisrHjDK/Lr6hYKuG3qvhbGNv6eNpgbE13K2UHE29o=
+=lEGN
+-----END PGP SIGNATURE-----

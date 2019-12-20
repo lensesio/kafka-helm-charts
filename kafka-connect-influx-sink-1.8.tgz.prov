@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-influx-sink
+name: kafka-connect-influx-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-influx-sink-1.8.tgz: sha256:ae0d92b93c0704862f442a8f375ada09950f902a576f95516012c9368a6d8d1a
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGECRAVUWrc2VIn2AAAOsUIAFSPGhmPbxzeVsHyTwo5gYr3
+OVAEWEPchHiGfXuU8f0iwXKRt+bLcEfZkxcADpGx0Npkr2xpkIl/iy7TrKJnoael
+CkDU728iBTbT1+Uhe47dYMM28w9nMYKkGggkMDwk49N4JS6/SODDDgyGQCKBYEDK
+cQWntN38qpaS3DCoKvSMONP2bbLuu/wj1SYQs85d7pddFxVOwG+FeyIrgB84jPyK
+hJmudBqNKsJ7ap0W7wnp7OQohmfhwLlbcZzs3yUMCVdfeW36tRaAJR3cuBIR5xDH
+YgCPgdhBCgfE26fXHF5sDx2zonAoDBwGZgVaxvCmB/E72pNE2/nJ9W5ngxtk0PY=
+=pD/t
+-----END PGP SIGNATURE-----

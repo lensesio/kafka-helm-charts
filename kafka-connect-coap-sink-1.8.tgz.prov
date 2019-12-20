@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-coap-sink
+name: kafka-connect-coap-sink
+version: "1.8"
+
+...
+files:
+  kafka-connect-coap-sink-1.8.tgz: sha256:d803457d839ede7412c8fe2343881d86d25c581ffe56400eb51eea98dd657154
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGCCRAVUWrc2VIn2AAA+VoIAAdlK/mG7na4Yu4Fol0f2uZB
+2k8VEswTpjkoxqzC03O5/SeIIbmEZ+TsHDWj6+JOnDhVF7Kx06Xee0cV/PpHtyr0
+RsesVdef7W+HWOq0wki/doxDG7TwR8RLeD277IT+x3y5CLRkE0rddPwZ/E7CGbRl
+valJJcINufT+dXZFL4L28vyewQ4YFQNRdSA9+EHROAEmq0lGda0utVXtAE/lxJ48
+P7JWDvZxOmFmvycbC+mNgen7OMysutkXB0M8POI2LqbdkPKJr+Xek1Rt3qrPXKrF
+xYG3iJa3auDTV2WRSjI8Zn9yb+yfiXeWAFPQxWY3vUtN6kSDAPwNNu57PNQ+GEQ=
+=AGjy
+-----END PGP SIGNATURE-----

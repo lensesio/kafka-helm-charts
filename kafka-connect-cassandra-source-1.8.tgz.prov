@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-cassandra-source
+name: kafka-connect-cassandra-source
+version: "1.8"
+
+...
+files:
+  kafka-connect-cassandra-source-1.8.tgz: sha256:98fc2be574bfe2aa04ecff7afada335d7b794e5c15773c3da23754b41126d00a
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJd/NGCCRAVUWrc2VIn2AAAlucIAMtRwy9vP2ueX0S35wS338UQ
+zKmTQm8bOLlMrWRaJaQ9lDPmqv7c0fp1x9SsDhbqjjljUMN7w7GDD//ZqVeF78MV
+Xwe7BAKgmGbXWXfCeXqZVr12cdkbSiG/3jHPZtlT7hM96rZljqK/B6N0iLjUTV6J
+QDFpEZ7JtTzlX/c5Ss6/gYaoG6lL3d9LbmZI6cb8odE5yYTP1DQlYQPHbV8Wlb8W
+D+xTe+fFXhw+qnOW5HfNPGnMrCjKM1vEjMWrX5nvMkSw1qD4gudjrcNwkFY3H/Gw
+mZBqxgjlDdpgZ99sU7pe0VUVHlyi6h7d46ysEMFpSZZDH2/DXL1Bsyuac0NgUOc=
+=HqzL
+-----END PGP SIGNATURE-----
