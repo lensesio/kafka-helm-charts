@@ -9,7 +9,7 @@ ARTIFACTORY_URL=https://lensesio.github.io/kafka-helm-charts/
 git clone -b gh-pages https://github.com/lensesio/kafka-helm-charts.git build
 
 # decrypt gpg key
-openssl aes-256-cbc -k "$(HELM_KEY_PASSPHRASE)" -in key.gpg.enc -out key.gpg -d
+openssl aes-256-cbc -k "${HELM_KEY_PASSPHRASE}" -in key.gpg.enc -out key.gpg -d
 
 echo "Packaging charts..."
 # Iterate over all charts are package them
