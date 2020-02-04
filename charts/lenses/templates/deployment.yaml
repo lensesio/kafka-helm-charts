@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "fullname" . | quote }}
@@ -132,7 +132,7 @@ spec:
         {{- end }}
         {{- if.Values.lenses.jmxBrokers}}
         - name: LENSES_JMX_BROKERS
-          values: |-
+          value: |-
 {{ include "jmxBrokers" . | indent 12 }}
         {{- end }}
         {{- if .Values.lenses.zookeepers.enabled }}
