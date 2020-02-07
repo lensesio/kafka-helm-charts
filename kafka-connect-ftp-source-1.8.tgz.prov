@@ -9,14 +9,14 @@ version: "1.8"
 
 ...
 files:
-  kafka-connect-ftp-source-1.8.tgz: sha256:5a023ccb6a402172b6be7c1329a38cd31a56bb76fcd5fcbc68dac224b653c706
+  kafka-connect-ftp-source-1.8.tgz: sha256:bd7509de9ca66579cd7618bf2a08ae7859e4f215e376640b90802c74de4e2235
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJd/NGDCRAVUWrc2VIn2AAAJYEIAMKb20OD/lSFcUtXSsocle0G
-EFk3DX6btUg1WSs/5W8h9rBI1enmFJwYBmrmfoCMwuAONG/tAI5fDsWBs2jkTvHN
-JAsjunCL5bS6k+LVcDGiGn3EGltSG5CGFvVxphz9uyXLqFZcfgXL89toN8N6fGja
-V23h6F9UdyFL5ABbohYxvvJqRnvK6jQErOmnHJkngaOZtED84ufea6unb+rp9kbG
-kAdyiTVD9ZiZRyOfnlppbO4TX3ubpNETq5CkIvbUJYsF4m/8Vdy7GwtxTGMIp8Jc
-VrpDsbkQa5oiyjv1gYgKnt6H+GrLF8LOhwId7mxgZCbryWB8I1nHo1XHZAyug1Q=
-=HBgH
+wsBcBAEBCgAQBQJePXzBCRAVUWrc2VIn2AAAzQ8IABKv/ny0fHaonm/wZ/D1Z7mY
+7wdnuyZPlZqCSNW7XVmqsuQnKHLR2ZiV4n/r+d0WdS9Z63EZzIJQhiG05X8XPFBS
+YhoiKeYHTCki9wO8M1lsZ8+eFSunh/CYEz74qiDXdCVejahBpkjVIS1yvTuN6PWQ
+7Nm4iL/v9sqhKcspAH8lrg+kOZfGdkM9+Ee9mERJKXW776EirTcgWWfXp7zUJqxn
+hCY/Tx9aeUFFLKwhd1/ELpYmzBgr3nFFfJjYXwr0MymslzLsaownTu/qdMhE/Yyp
+W+dkTjwqurexFT0GKT9C4xHwZvg9tSvfDR1jozla0LYNy5PPId/5sxJdA3JIr5c=
+=o382
 -----END PGP SIGNATURE-----

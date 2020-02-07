@@ -9,14 +9,14 @@ version: "1.8"
 
 ...
 files:
-  kafka-connect-kudu-sink-1.8.tgz: sha256:01dc19b49aa81957c610057f67d799e19782b099ef82e60b77225b8145237b86
+  kafka-connect-kudu-sink-1.8.tgz: sha256:c6fd9b587903f99afb042af855c1b4fd6696b8fa317acea7e6bbdcf1856c8eb8
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJd/NGFCRAVUWrc2VIn2AAATmAIADAclPAayzgbGZPG4/jtNP5r
-Lj53H/ywenZgVmEyWBhgD0Qtcu/gsVur9Di1HeMfD1VJzdWYe/RFOcErounpROmJ
-txICZPUQjm6GaecSLzcBmq8aoJrqzLTrQgnlv+K6bUitI1L9Sd/YuwLYzgySCT5c
-wWj1z5CvzAfNlwgPxviNV835BL2UOP6h9jLH/y3gd+Jc4emHDwLed/k1glZ+4OW8
-fUUgO1hUzdvdCY4uxqED/CbfpYab69fP1HVvtMsmhTSVkTYwMu61Hl/7I9MAayvl
-xGAyrkt+jcy3gcw+F9cloez3/GFLv9wP5IQ1p+wGccCzV8VRfVA569KPZMKbFtU=
-=m5tt
+wsBcBAEBCgAQBQJePXzCCRAVUWrc2VIn2AAA8k0IAGd86UrGpaEg7GJq0DisUfzP
+OA/41mXSV+EBFb2N83k+7n/HJ1sOY5e3NbNC1mJ5eKSn+DQ8VKFbfc/1upvIwigP
+xTZ2G/5ta+vsUJ+crs/60Qf8bA7yO3n9kHFThlSPlCdp2Qir8Es+xVO9xw2AC4zZ
+VRJBbY0ozZFJP9f+iuDkIwL6bVlLnshDyU0ib30JN2HytLmHrcFeoY5+RiRils17
+37vr20PI2I0krCj4RvxyOR881AbkwCvw1QHyQbY7I6H2kqqWmmAuYFkwKaHpGoqq
+c2EB+LD2F661mvXDRRbPQB5oxjeh9W/syOf1eS7BgBfHZksF3n/o9dzl7ud2Ke8=
+=NXPX
 -----END PGP SIGNATURE-----
