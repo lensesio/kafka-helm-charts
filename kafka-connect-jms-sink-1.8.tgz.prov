@@ -9,14 +9,14 @@ version: "1.8"
 
 ...
 files:
-  kafka-connect-jms-sink-1.8.tgz: sha256:7581624f16423dd13a9438a89071d5ec96bb822879e4972480f0ffb3fbb965cf
+  kafka-connect-jms-sink-1.8.tgz: sha256:3feaa6882ab6e3b949511c999d68fa1af9ad9bd95e9516a3fff2ca0e4db440a4
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJePXzCCRAVUWrc2VIn2AAAerkIAFnGbDB4s0qkl3wsqsk9a+tR
-hTBWfnhcbjEzFPQf+e38/av0z6UPvwgAt3avLdXq3R9EXlES8NFk3Ea64om6WMKx
-6D5yAIjSe60UX4sZx6bS+nQoLy568YzSmJTjTrzk+ec3ebJoUgRQ+A2EE1arVJmH
-9jhc0LK70v4/jyTE8bNw65a2vnH9vXmVtuGX+Vo3LtXnQxsfbtgWGmFh3DElXrQT
-bT9RGfgWRtLpimwS4uSaMQXYYLZIdeWLNBnzWDiLvpaxMkAHm3iVGe0mznmoWfVv
-eTwxgB1oXMVFik9WdJmEMUu8hrhJE6k4QsiohS4GwvhWUlMv8K7N3edaiOtib7Y=
-=JPRb
+wsBcBAEBCgAQBQJeQPs4CRAVUWrc2VIn2AAAyfEIAC0KqwpAWLljefghNSdPhZ4A
+lDESgXl5wO9v9A6VcwrrdQ4wRWM2xWLnMxHP+wyq278dPDoupwURa1nnoMMzgvo6
+4aNdPBvpmTVivLvyaXd6tFJBd15JyJzBlbqw8Xy2qOHgwt3p6sVRC0bW+LF1+Uus
+DpE0LoTmLukXMDok0iClaYBbPQKBh3+Kor47t3Wn04MIpiIfh6rhvU0u9NLAihFg
+7vGS4zD29NHaTv8KztE0crBeOyYcKIV5gztobM+UFVPKZ+hkYr/f1CRzd0dFbN24
+rpLtPvl7AF7IMDKenogMgQyeX5dh56kVczM8zhXwRtkf2LGKKuW6vIIPaDJvqX4=
+=WHpR
 -----END PGP SIGNATURE-----
