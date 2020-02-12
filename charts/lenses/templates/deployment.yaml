@@ -12,6 +12,9 @@ metadata:
     lenses.io/app.type: lenses
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "fullname" . | quote }}
   template:
     metadata:
       labels:
