@@ -40,7 +40,7 @@ spec:
     protocol: TCP
     port: 9200
 ---
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-kafka-connect-elastic
