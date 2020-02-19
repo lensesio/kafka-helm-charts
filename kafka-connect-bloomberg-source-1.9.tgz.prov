@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-bloomberg-source
+name: kafka-connect-bloomberg-source
+version: "1.9"
+
+...
+files:
+  kafka-connect-bloomberg-source-1.9.tgz: sha256:411d186fdc3e51b053a5e4c993cb3d4f9cbff393a944eee24ab71b690975164b
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQYCRAVUWrc2VIn2AAAmSoIALKuVaF148Dikdzq/XA2HwAK
+fTUqnsF3rR2krJrjrfIXcW8pImrvOyNahmFy3u7Q6BUMH385yp2OBBUd09gDT1bL
+O/0ANAkBvswQPquU4J4RtQb5Wxm5uJ5FO7ErsSxhNWG7N4CdXtRVdwSbfO2WZJH1
+wjKoBkDyrJMrBGHGqtmq/Jyjrg+MlmSlaSwqpUYV6J4DpdfZ0OqY7sVMSEz6IF8b
+w2wqLduH+FUqXKUmlfoX+s8tHSCbAmXIZ8RpEdVV3VJXVgVUve3h5b7JSfe9Tu11
+ychbkgH6Q7uGcgq322e409Azv/2Fgf09eNDTxHcQcHjtuCb2+WQtojWAViu7nMg=
+=T2mE
+-----END PGP SIGNATURE-----

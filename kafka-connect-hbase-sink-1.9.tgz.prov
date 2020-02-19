@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-hbase-sink
+name: kafka-connect-hbase-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-hbase-sink-1.9.tgz: sha256:602d257649ca3b77de3b8d2472d1404b29c75fb9f19931d8058db8d41d13c92f
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQaCRAVUWrc2VIn2AAAWLwIAGhovR7tObFooSWHCF4KknQx
+T/FWYeUjInFMKYb+reJ55G6vBAKJHQ3lQYSDtjunQ7KKPpvRaem2yOXC7oVDn/wE
+SFRCfW9EoZW5ro4adtfgru9U9PF04IDX53Y7/xq0oSa04n+sdkG5FQpsH2ZSsjO/
+fOa+EZEtNmlKr2wHRmXFGTh8v+RL9gcw64SmW/HhLcEj2BjmFETVh1jXXHZOF+zb
+Rfs9uyLWjHSNQhHCiXKMJuZ9gclBf7tWS0afgjJJMWLznannI45wTXoqJvslJbHa
+KZDGgqH45weXDtjnY2grw4z3c2+GGfopQW+VyfprYCXnermVq1oJJvS+m7MxyjM=
+=sXX+
+-----END PGP SIGNATURE-----

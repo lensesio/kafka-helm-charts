@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-pulsar-source
+name: kafka-connect-pulsar-source
+version: "1.9"
+
+...
+files:
+  kafka-connect-pulsar-source-1.9.tgz: sha256:2bd1795e9d68695a4d34f3b9a0d61d42a19ba336d169e787f07d9ce9b1b8f135
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQcCRAVUWrc2VIn2AAA/iUIAEg2gl1/d+77GnJQ+eZyS3DJ
+I1p9I7/iaMxJQulaQNrmpkioCDycoTbu2I/G5jIz93OpE3gv8LJniedv6to4a+oF
+y6dI8bvOogiqMlnIu2Qkr9UiwQSmloybnwJOSqVnad/Mthk+7OmGCPI1XPmjFCNB
+qexcHJqpKlVvrEW35YlydCnWC3XU5VV8UMffbHcMZSDWnEbsiSvIgO63ektdxsL9
+yOrYBpM9oGsPLDQKuVVWol8hqfY1x6OknzAOT3U30/6t/+/Z993iv/SOgiPmyH1a
+//FfEgdGCd9IV0vyJOYsh9S484GU34iYhZdYaPTO0KhyH8Wqg/cGKKEE75MHgZs=
+=9cgr
+-----END PGP SIGNATURE-----

@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-ftp-source
+name: kafka-connect-ftp-source
+version: "1.9"
+
+...
+files:
+  kafka-connect-ftp-source-1.9.tgz: sha256:f37b7194c0dbad1683cf556a29313e39faa378334863187fb3646d4a71f3677d
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQaCRAVUWrc2VIn2AAA7xAIAF6++kSgUkNTGdh9QVhLzUTD
+cnTaGfhT1g15bGPR/Z99wn1q1N4uZ4aKkigb6Y6vsfPazwKDL0c8Eum3FUKx6LvC
+eMq4r/jA3227RKet2MIPSNSgVj7TVfMdSWNRO49oNptHVqQJ3Wze+NopdiffwjUB
+KomRTGd+lZl0vNHDSAg1ncxnxi1BoLtLXQSPAfy1eCc8xTfAFzfD/9rCh15bc6Us
+rH8kijCQGnlZMbMBoYVfCKiI5KPMQwE2bYPaj73ahJInXvYo95CsLwlTn16JuWfE
+ettq9Ez4+dIapKcRCe6TblojNWGsiG1iSA1J/Z6pSTGdxPPBnx2enBAlfjLeP14=
+=eQy/
+-----END PGP SIGNATURE-----

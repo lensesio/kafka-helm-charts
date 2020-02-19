@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-hive-sink
+name: kafka-connect-hive-sink
+version: 1.9.1
+
+...
+files:
+  kafka-connect-hive-sink-1.9.1.tgz: sha256:b979b18d805fbb2f71f71ebab25f9b0a5738d21e3cd66db8e2cfe94ae926558c
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQaCRAVUWrc2VIn2AAARVgIAEpbFGzIU7SjlsqyK3I1eLsO
+W50ZE37YP3z2DfFBiR0+WQLAe9vjGFvFoSHPNdf0FvzZFFvIswiP5nvz+Np1xwCM
+HgY9M5dU9uPpkoZ7g2O5rgK0zTH7SjiKWlikhuSf7PHP9QZDwzeTeLNMbrNjo3xH
+MiyGt2fEQ+1KvlC7Ksv8bfrKvtNzWxbDBGR2oZeyFSU/Yznu9A0cPV5u0rFBO4CX
+/UNdq+Hqn7fc//fJbH0quN8Ar9yo9LyYJ1A2Js3lGavvubCG1HVzhXR+egQ/ofmO
+zCh2XbBZH82LbtNQz4WVzPRpOcMpw2l0epf7vIg9o5Zun//UcWxp9Jz/1ZTUtMo=
+=Fi7t
+-----END PGP SIGNATURE-----

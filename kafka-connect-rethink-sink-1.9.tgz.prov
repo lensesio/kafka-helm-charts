@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-rethink-sink
+name: kafka-connect-rethink-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-rethink-sink-1.9.tgz: sha256:de0e6d872590ca3b0799baa1d3ea0421d12385a055b7b9da309eab2221167629
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQcCRAVUWrc2VIn2AAAnC0IAEHF502qhAR3V3s+5jqWwkle
+8KALlhDvCsYPi/kC5md2xpBaOwKjj6KXM1sf0c5VyRfV2oTAO8LO7XAHT2cirCs+
+RKOCaRXoAEb5TcGNMg48A3PM95znKpWODMraQrw1cva7oGBuRLHACn6k5eM24kpd
+NIyAsxiOxvUDKZciRmyIYHu5mpwufs06dWC2PstJcSMaLlIlHgGPadpbHtVjaaMO
+OU69W/fY6VUQdFOUUWte9fMP5ykq3Thsh3JijDqEzTSkOB64XqNPPKpMpWYRiCxl
+hEqsaYxiKrO2UNuzHHJauNJcwoEkMkelR9oIbBU8hFrt1WhP/GA3DdDshW5YfTw=
+=4Fid
+-----END PGP SIGNATURE-----

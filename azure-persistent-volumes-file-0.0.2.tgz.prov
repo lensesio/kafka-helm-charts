@@ -8,14 +8,14 @@ version: 0.0.2
 
 ...
 files:
-  azure-persistent-volumes-file-0.0.2.tgz: sha256:8916932ee02b9aa88a0369effdb74ba9e9296838a49b171fb20dc07e7a76022b
+  azure-persistent-volumes-file-0.0.2.tgz: sha256:9f22599eb9156903083e59221f34581f9b5e29e9e324d0dedebb8800b3a62fff
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeTWkXCRAVUWrc2VIn2AAAf4YIAHe0ZfesFYL5FQE4ksPmSDgW
-ejVKdR5UayV6iUbZ3BUSIkhf/ng7bEdCTXJtpc3IqOPUewVYdtZcUF89rMkNxWVJ
-olFdeybMcaeFUxG1sCXl6hAkG1VddzPrmuwp7WwQO0jVkdkjpQcq/VTwY+m/yWW7
-yGXm5LwokRjP0lD6t2qR1REzLF+8Sxc36K46a95mXhyoufDLSqITvyvcekpptfjS
-nmH8LhyEvJmfH5wa2pLJEk3+nGL115evm0siAeevpxYj6hLtwH4fjrXngOxg+ob1
-LSur17vzfeFhNa+s2SAsVN+xrPJKJkYRjHAqLq9Qwy9emyLRC7+4Up4ou02BQEw=
-=Qq53
+wsBcBAEBCgAQBQJeTYQXCRAVUWrc2VIn2AAAzEoIAMR9eaySTCLHmFEF+zeYGZLR
+IArz7qJAxvu5P3J97mUa7PqsUI8QbuoW8oUi0ArmzbHtWqz3tuR/1otjLPGi3jLV
+TGf0/R8QxSPGAffV2fK+sKqNSyIHOf8oideo0Gc155pnvuOpuEeVn7/LrF5NfdkZ
+Qf5u5OsFW3AfVrLWKD1mOQ0v5RlgiXGzkAIZuTayLHJjWH2LJcxCr9Irf/ve13sC
+ReXk00HBrNwjnMwmNJ1OUa/FZTxGyxmJxm6FNs4nwepMMBwdHreyx3v6JijSD51D
+qZ2uN5UYkosZRKtGv9giL7/Em+t8Y+nUhqW0KlCyoEMfMVsjLoN630MFnSfKGGU=
+=ogXF
 -----END PGP SIGNATURE-----

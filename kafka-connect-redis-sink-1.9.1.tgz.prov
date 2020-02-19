@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-redis-sink
+name: kafka-connect-redis-sink
+version: 1.9.1
+
+...
+files:
+  kafka-connect-redis-sink-1.9.1.tgz: sha256:09c83a78b2cd7e4492987b0242e018c7f35c012a5b1258dd915892d7b74ae3eb
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQcCRAVUWrc2VIn2AAAc8YIAE1Hpbqn4k8jqaWPJ/d69TNl
+GqnM7B7IdmzDh0O7wq20P5xLVgouO21q1Hrdg7grdjbqHQCTBWlJrh1CyX5Ea5ah
+6bfbt5VDcHiOwfMEc9SNgthotiekB6373bDF7ZGiDXGcZTaOToWImnuuo1k2Aluv
+vSmnxvqvyEPkb98tGSqPFquvp0+ZCU7wgQYo2gr63/Oe5BQKIkXvKYH6k6xDKxDG
+LClnKn2cf5yxr3XfYPaZJRRysCJzxKT1HaxmUGchCAhX1BS4Z6UQRjBJ4/UpZWuA
+yHZM/D06QX+Z0UYwYGQImJvZbmFI3z1vyX2IK81JFh/J3SMed2hcaGqmkkVZLnA=
+=dnkI
+-----END PGP SIGNATURE-----

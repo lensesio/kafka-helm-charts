@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-druid-sink
+name: kafka-connect-druid-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-druid-sink-1.9.tgz: sha256:c839e6f4365536009f17447895dd42ce34c99d34f47bfb7432233faf6ed7dbc3
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQZCRAVUWrc2VIn2AAAyc8IALGI8vOlZEzDQd5NZY8Vbt3D
+X5LYYXI32I2t3+SJttP+fVrBssojpcReY8NTQNHfPcg4po8RFkFXRSmDPunIeESi
+ytmpkW4aL/ATJl+Kr+JIHcVq/TpfIhdpn3y1YWQdxxS4Ox5zjBuDJW9yrT4bAaBS
+q0ElKBbCM4Eem5d/IoyLVRHApouOjBt7Kdy1pkFK93k/GAvjBofB7WgRdXc1AkSo
+R2YUYgTeK3DODTAJQ94Mq549Z+eYT9dPXh1DOih4Jf/uvx5rn121UUCjWUz52zC3
+MSRHSzfI4eEQ4GEjFv+sdiFqGWjnB/PS2nM3k3LXfANbxyNuYWKaVOlUfz/H+8A=
+=2HxV
+-----END PGP SIGNATURE-----

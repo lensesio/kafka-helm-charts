@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-kudu-sink
+name: kafka-connect-kudu-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-kudu-sink-1.9.tgz: sha256:7bf8dff7f4ceb1c6e18f2e1695882ee521262c6ebde664d7e6444dc6f9692dcf
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQbCRAVUWrc2VIn2AAA3koIABiEQduldllVEnIcQys+niJk
+ZVCVoXIVDxx0CpaZ6iWeA41ohjvUvm6T7TL8X4iinGJS9lpsD8zESQIJCuc86ZSU
+I+4BQXBf+yIhw8bLM616DXstEcJh7VnD6QYEPNbaGKDAxw1O53UOxxEL/nNDn50y
+7Q2T9SctPacfV5FT8e1WxGJVmT73l0qzJNT0InAxsVkRmlfBQeMqdYljaCP5i5Cl
+B+r6PrMRoU8DEcJxUbATwvZRovLS4XXwQRKAHVgDYlxFm0GqEtfjVSolbkBXp3Sp
+JgaGtv1IIGpmW3d4JAxQKEJWKqyTEYjEViQJHZI/ap7+qfHvCMs/qkTzgLgZli0=
+=t8Vn
+-----END PGP SIGNATURE-----

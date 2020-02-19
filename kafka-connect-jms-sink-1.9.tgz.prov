@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-jms-sink
+name: kafka-connect-jms-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-jms-sink-1.9.tgz: sha256:14c94ec5e7a118a3c726d75606d3c1475e88c08a924ff7fe73ef3d672c617294
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQbCRAVUWrc2VIn2AAAEloIAMGCVJEnyz/vOjclvq7ggXAP
+72VVN9C6O8BmKfFN5jw51w30FYYkTAme6hpjPfPYu/N5DXDCnhFU8msYpWVS6iUo
+QTaFMqRpIsCW4HU0dQzpf5PMTw+6bCnn74pi98XCjolSWpg98Z8OK5d/4kqCEJf2
+CAvb1sz+d8aBoI3+VhVQAno9clBEMRN7dOxMaVOjxXPfddd4nbsaMxdrHrCuceIY
+9z7+YIsUItYUSQD/ySWvYSoXmkiABRWkq3s1qG/iKKjYM1CNriwbFRSUxXlK1Vff
+ZsvaTq6KVI/2W92c7QHHSfRXwcWhUWfEYhJSxQZV+K+M/fkgJsE2TLWdJg23aog=
+=EIWO
+-----END PGP SIGNATURE-----

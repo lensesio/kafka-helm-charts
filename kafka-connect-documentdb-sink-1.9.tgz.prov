@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-documentdb-sink
+name: kafka-connect-documentdb-sink
+version: "1.9"
+
+...
+files:
+  kafka-connect-documentdb-sink-1.9.tgz: sha256:2053e40297dcdbe0be4c110ebdb4fcae09fb5ae8da844c777c41c98e0147836b
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQZCRAVUWrc2VIn2AAAYSkIADJVGwuIJeyMVsOHbj5nskLF
+pAYLHZnrYaZrir/ZIUfi/igPuk7XeXsZnL96Nz1VfasQkCPWqhYpkD1KJxe9BWqB
+rAmYwBv5i06tzKl6ukCjMn2pAspzQ2Hhga9Umc+cELoLcaR6cI9W9fTO3l4/fxep
+juPJCypcpCEPjoiphlMuZzIh+sEKLk7Qa6X4ThbJ6JkO3VSiH9jsXMx0hmZKWCJS
+6FsU4ixtCQaoN7vZMrGnnfW1joL7jtP50Je1U9ureGMdJO9F9lUnw0GLoGshRqAq
+zvlm1aEEEWeMlzo3aMs8/NFGQJQWDhn4z+OOABsb3sP9xQ2s5uwTP66Q11I4JMg=
+=Mh9G
+-----END PGP SIGNATURE-----

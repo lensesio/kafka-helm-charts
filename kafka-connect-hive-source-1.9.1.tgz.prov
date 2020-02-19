@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 1.2.3
+description: A chart for kafka-connect-hive-source
+name: kafka-connect-hive-source
+version: 1.9.1
+
+...
+files:
+  kafka-connect-hive-source-1.9.1.tgz: sha256:be1f6fb066b18148f4c5b6900eaf3ae0336828061876f71f1ff6e90dbe2387c9
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJeTYQbCRAVUWrc2VIn2AAAMkoIAMPxpHtn3yk91mFfBKxxPgJl
+0nYVigvBFPxGtuMk2dAidHz5ufzHjcJu3DonDiqVz+D/mEn8jW0tQTVVsqevyHNp
+zQpo6NYeuyumRW0VBolwfPwlIDyd4vgpjPdxSgpMffLZ6MrZySLSsAoiLCeCqwXi
+3FUt2rojtGExRRNKkPqPPRfNudlpSd9bi5B+XFVgh04cCHNvCK4kBB0rMERdmGLw
+Lf9JScuq7CaJ98x05ejLco7CSTAOBwfP2oTlB7+Snxe8AIxhjIbz0kcekLLmEGML
+NhIBaA9+Me7QzAOTYakmeH2F+B9TJM4fJ4h1/Gr1FLnf9SMVaKpZHDgCK09JGE8=
+=sCBW
+-----END PGP SIGNATURE-----
