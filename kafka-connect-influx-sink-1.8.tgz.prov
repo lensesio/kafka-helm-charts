@@ -9,14 +9,14 @@ version: "1.8"
 
 ...
 files:
-  kafka-connect-influx-sink-1.8.tgz: sha256:39abd41e274d3cf87ccd8800cee69bba8faa7ad8652f0435e7c62dd8d028168d
+  kafka-connect-influx-sink-1.8.tgz: sha256:21f37305b864f94ea02441246aea75ac0082feeb27663faa8564e9bd647bb7da
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeQPs4CRAVUWrc2VIn2AAAT84IAGE79RKIJmJ/DvhB5RMy1U7P
-nbFk3Yw7JtV7dBr+fwmNkmTVpJfZBbuZHxXgjaiU/a//HwZP7ny/LbiHwglfGgbg
-Qvgw6C3RqtbP//wipp0QmjOjGQrJwVKV+4drdxdT2vuRMpfBwjOOyuC78KTfKe/d
-vLx0f3nikHhuC6/y1O4/buDcFA7hOyC67alVVVL2g3IWiYBGvCSHGcEVPc0R4ULf
-lUP5ZUVmS3rsr8nSInrJIkliTeCAGIpT6/vPeYNscMuGmveMDjWdYBkmfZuBDrsd
-cMDNZKkvPRmGU+F1MN2K9JVdh982JyR1bUnlyCbE7bGS/tU8jvGOK+vSiws0/FE=
-=86mQ
+wsBcBAEBCgAQBQJeTWkaCRAVUWrc2VIn2AAArt8IAOMcwGQcpGvscfH6wTNJAPOY
+pTFRJAB0e+EBkyU812S58E2mR2kQHu4Cdg+owMpbMOoES438jO0crM/g0dlwOH9T
+V0NaPlnch2+RTQujyeRsE5ABaKUwuZ23RGAeP+ILYXpwqGHSevt9/hCtispVerYo
+fpPD3D0fBCjkdkp89HYkivwCaBf1IDr6UUwTtzzdSOYznZy6hpSsT77Yie6K1aoS
+gJmoW89VknZzY8AqxMPKD++jDhcnUQUS5E5alPn+s3WB+SmyIMby9Dn3H7VAvfZL
+Dlh8SGyTu+WpYa+eFFwAPQ6E5hu7+eZyJ5T754kF6h8zK0mA/kyy/p7rkS4q7dY=
+=aQ8f
 -----END PGP SIGNATURE-----

@@ -8,14 +8,14 @@ version: 0.2.0
 
 ...
 files:
-  services-external-name-0.2.0.tgz: sha256:e8310e26860d0b7efabc75acc9edc204cecca9889dd1e55c6246c73434f46528
+  services-external-name-0.2.0.tgz: sha256:cb04bd3da58d73bd4f4cad5ba7091c61a262e84d2ef22f6ecd93cf3e9db63499
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeQPs7CRAVUWrc2VIn2AAAz6QIACCa2eqNMLETSG8pmL/c7C+a
-oKycKJ671a1cDoaxRIRZExb5r7efcYcsDVaGebKOMnPyzUIhxTwAzLvCggZvThRs
-cgkks1bWwicpZfgbVjq+iEd7ytB49WwanXzUObwk3Xeh7/XrRfrKQi7JM6O5zJVn
-cvY2KEoH/7Igwf2jX/+GSY3mqcaImpkjsWO/VyEO3liYfJv3pA3WZ1e1SU2/UiKd
-HUdahE1zxR2Rq0Kl8Ozy+LUnE2ortE+nFAusWqs3QXvRD1nAaT/DD07m9jd6kbNS
-wLoDjXErNozmtGH+DlReKZ3ryX9W5Ysis4OFbtM19hYXSZQf5y91TsJG8IVmfHQ=
-=3mIT
+wsBcBAEBCgAQBQJeTWkdCRAVUWrc2VIn2AAAtuQIABaFJ5lNc48N24sR0/h9I6tj
+ItgOeWIq/0VMJyE13Vh7snRE+j6aao5HX8WojsbakRhoCUROqyyVdO6AwhBzcCGq
+aTrDHe7dat1g5ytsl+p/wyseDQOPkLCVlauzv/sIEZbbo65I/TA8AFsURttnVagw
+AZvKVHCdU27Wr5CAm4qOn5P/menV3i+YO0Hc0lzZ6aBVL9p9vVBbqPpZDoTuIlO5
+XFbSbtvczg1eMDWcVhOd67kThNJRd1WBOqfPYjMwm95r/2Vjw4xRqtwuFoYiVWWk
+aYealgWUkYcqyMnWTQ7pjUuy0XiHC+pXv20HD/a2yr1Ld30ZEtKlORNDq3WK66E=
+=NSvq
 -----END PGP SIGNATURE-----

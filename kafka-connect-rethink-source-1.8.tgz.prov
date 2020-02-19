@@ -9,14 +9,14 @@ version: "1.8"
 
 ...
 files:
-  kafka-connect-rethink-source-1.8.tgz: sha256:74e7a349e2b0c2796abda861c4436d8d7a5acfb6a5bd4ca96189260d2b016876
+  kafka-connect-rethink-source-1.8.tgz: sha256:1fd3405ddeeefa0038f38d6ab9cacb0d2ef8b0ac8035133c1f0f8c4b58c36cec
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeQPs6CRAVUWrc2VIn2AAAMDIIAC9pm4x8apWzBXYiUw+RkPuN
-zVVkT2C5R94beDg/0jdmGXr0FM5EI+EuxkdtlVdI3xuRJv6BM2pmbgOiWfOjydFg
-+IIiyBb/s9tugbp6Pi36xhjWMRNXSGUjgvHClN3Jxtbpxag+5I0VzMCIFyUC1aIO
-42ofrqXg7GP3dPlgQCD3EQQ67zKQ6RtnVOt5jalv5MiybAhjxcuwKXkUgjkvWgdH
-e/W8pSKBrx5jrrVQRSjkGwqB3hM1JZw/SEnV6yctvwz5BjQkuoSukv/LZz1oNcAD
-gTpotdmZjV6xxffO2ELK+REQ4bBtH0NOMZjI+5avdczIvHEyrGkQPHLjRSWj3eA=
-=Gahw
+wsBcBAEBCgAQBQJeTWkcCRAVUWrc2VIn2AAAxgIIALczjWGXNdtfBzvSJwPOzsZ8
+VfBsqr25700tqwlAKyX92G1vVZPENZ3BiDIFUWqRYSAmiMHhkUYfMAyg4yqfAA4Z
+xK2YWijzGpzSWjA23xtUAp59syaxGXnayMHcqHbCUHq0s3zUfe3X+/tLE2Kt/6tH
+DkCvzOAhvP4vJDR6JqXCO5OQTHYa0V3h6/Jlp3fZFFs5yHjk4IVqaGsXmtX3BQ6U
+zQaka/dvKRNDhoT4ya9yncTBkOp8DUa3wnoZnHOb6lFO/wK7AMUYeS2vxaMp5t8n
+d/cXV6EBGbBz6x5l7XE7h8nW+Eur/c7aiGngaud3knhzLF8mlBaM9eli2rpPstY=
+=xTbp
 -----END PGP SIGNATURE-----
