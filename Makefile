@@ -8,8 +8,8 @@ before_script:
 	sudo apt-get install -y socat
 	go get -u github.com/landoop/coyote
 	sudo mount --make-rshared /
-	curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-	curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+	curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+	curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.6.2/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 	sudo minikube start --vm-driver=none --bootstrapper=kubeadm --kubernetes-version=v1.17.0 --memory 4096
 	minikube update-context
 	until kubectl get nodes -o jsonpath='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' 2>&1 | grep -q "Ready=True"; do sleep 1; done

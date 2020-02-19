@@ -1,7 +1,7 @@
 language: go
 dist: xenial
 go:
-- go1.10
+- go1.13
 
 sudo: required
 install: true
