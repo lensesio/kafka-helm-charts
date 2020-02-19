@@ -11,6 +11,9 @@ metadata:
     lenses.io/app.type: lenses-connector
     lenses.io/pipeline: {{ .Values.monitoring.pipeline | quote }}
 spec:
+  selector:
+    matchLabels:
+      app: {{ include "fullname" . | quote }}
   replicas: {{ .Values.replicaCount }}
   serviceName: {{ template "fullname" . }}-headless
   podManagementPolicy: {{ .Values.podManagementPolicy }}
