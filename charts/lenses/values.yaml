@@ -140,13 +140,16 @@ lenses:
 
       # krb5Conf is the kerberos config data to be mounted into /etc
       krb5Conf: |-
+
     # JMX/JOLOKIA Metrics
-    # metrics:
-    #   type: "JMX"
-    #   port: 9102
-    #   username:
-    #   password:
-    #   ssl:
+    metrics:
+      enabled: false
+      type: "JMX"
+      port: 9102
+      username:
+      password:
+      ssl:
+
     bootstrapServers:
       - name: kafka
         port: 9092

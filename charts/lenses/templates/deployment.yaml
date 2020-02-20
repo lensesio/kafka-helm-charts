@@ -128,7 +128,7 @@ spec:
           value: "9101"
         - name: LENSES_KAFKA_BROKERS
           value: {{ include "bootstrapBrokers" . | quote }}
-        {{- if.Values.lenses.kafka.metrics}}
+        {{- if.Values.lenses.kafka.metrics.enabled }}
         - name: LENSES_KAFKA_METRICS
           value: |-
 {{ include "kafkaMetrics" . | indent 12 }}

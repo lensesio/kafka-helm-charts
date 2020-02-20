@@ -159,6 +159,7 @@ PLAINTEXT
 {{- end -}}
 
 {{- define "kafkaMetrics" -}}
+{{- if and .Values.lenses.kafka.metrics .Values.lenses.kafka.metrics.enabled -}}
 {
   type: {{ default "JMX" .Values.lenses.kafka.metrics.type | quote}},
   ssl: {{ default false .Values.lenses.kafka.metrics.ssl}},
@@ -169,18 +170,28 @@ PLAINTEXT
   password: {{ .Values.lenses.kafka.metrics.password | quote}},
   {{- end }}
   {{- if .Values.lenses.kafka.metrics.port}}
-  default.port: {{ .Values.lenses.kafka.metrics.port }},
+  default.port: {{ .Values.lenses.kafka.metrics.port }}
   {{- else}}
   port: [
+    {{- if eq .Values.lenses.kafka.metrics.type "AWS" }}
+    {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
+    {{- if not $index -}}{id: {{$element.id}}, url: "{{$element.url}}"}}
+    {{- else}},
+    {id: {{$element.id}}, url: "{{$element.url}}"}
+    {{- end}}
+    {{- end}}
+    {{- else -}}
     {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
     {{- if not $index -}}{id: {{$element.id}}, port: {{$element.port}}, host: "{{$element.host}}"}
     {{- else}},
     {id: {{$element.id}}, port: {{$element.port}}, host: "{{$element.host}}"}
     {{- end}}
-  {{- end}}
+    {{- end}}
+    {{- end }}
   ]
   {{- end}}
 }
+{{- end -}}
 {{- end -}}
 
 {{- define "kafkaSchemaBasicAuth" -}}
