@@ -43,5 +43,5 @@ Lenses has been deployed!
 ==================================================
 Ingress enabled.
 
-Visit the UI at https://{{ .Values.ingress.host }}{{ .Values.ingress.path }}:{{ .Values.restPort }}/
+Visit the UI at https://{{ .Values.ingress.host }}{{ .Values.ingress.path }}:{{ .Values.servicePort }}/
 {{- end}}
