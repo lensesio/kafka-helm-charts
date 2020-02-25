@@ -228,72 +228,45 @@ spec:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key: "schema.registry.password"
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_BASIC_AUTH_CREDENTIALS_SOURCE
+        - name: LENSES_KAFKA_SETTINGS_BASIC_AUTH_CREDENTIALS_SOURCE
           value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_BASIC_AUTH_USER_INFO
-          value: {{ include "kafkaSchemaBasicAuth" . | quote }}
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_BASIC_AUTH_CREDENTIALS_SOURCE
-          value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_BASIC_AUTH_USER_INFO
+        - name: LENSES_KAFKA_SETTINGS_BASIC_AUTH_USER_INFO
           value: {{ include "kafkaSchemaBasicAuth" . | quote }}
 
         # ssl/sasl
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SECURITY_PROTOCOL
+        - name: LENSES_KAFKA_SETTINGS_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SECURITY_PROTOCOL
-          value: {{ include "securityProtocol" . | quote }}  
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SASL_MECHANISM
-          value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}    
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SASL_MECHANISM
+        - name: LENSES_KAFKA_SETTINGS_SASL_MECHANISM
           value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}
         {{- if and .Values.lenses.kafka.ssl.trustStoreFileData .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_LOCATION
+        - name: LENSES_KAFKA_SETTINGS_SSL_TRUSTSTORE_LOCATION
           value: "/mnt/secrets/client.truststore.jks"
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_TRUSTSTORE_LOCATION
-          value: "/mnt/secrets/client.truststore.jks"          
         {{- end -}}
         {{- if and .Values.lenses.kafka.ssl.keyStoreFileData .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEYSTORE_LOCATION
+        - name: LENSES_KAFKA_SETTINGS_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/client.keystore.jks"
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEYSTORE_LOCATION
-          value: "/mnt/secrets/client.keystore.jks"          
         {{- end -}}
         {{- if and .Values.lenses.kafka.ssl.trustStorePassword .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_TRUSTSTORE_PASSWORD
+        - name: LENSES_KAFKA_SETTINGS_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key:  "client.truststore.password" 
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_TRUSTSTORE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key:  "client.truststore.password"               
+              key:  "client.truststore.password"
         {{- end -}}  
         {{- if and .Values.lenses.kafka.ssl.keyStorePassword .Values.lenses.kafka.ssl.enabled }}                             
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEYSTORE_PASSWORD
+        - name: LENSES_KAFKA_SETTINGS_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key:  "client.keystore.password"
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEYSTORE_PASSWORD
+        {{- end -}}
+        {{- if and .Values.lenses.kafka.ssl.keyPassword .Values.lenses.kafka.ssl.enabled }}
+        - name: LENSES_KAFKA_SETTINGS_SSL_KEY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key:  "client.keystore.password"              
-        {{- end -}}  
-        {{- if and .Values.lenses.kafka.ssl.keyPassword .Values.lenses.kafka.ssl.enabled }}              
-        - name: LENSES_KAFKA_SETTINGS_CONSUMER_SSL_KEY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key:  "client.key.password"  
-        - name: LENSES_KAFKA_SETTINGS_PRODUCER_SSL_KEY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ include "fullname" . | quote }}
-              key:  "client.key.password"                  
-        {{- end }} 
+              key:  "client.key.password"
+        {{- end }}
 
         # Kubernetes processors
         {{- if eq .Values.lenses.sql.mode "KUBERNETES"}}
