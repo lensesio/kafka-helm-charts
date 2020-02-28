@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-rethink-source-1.9.tgz: sha256:08967a5907d13f1de2b312dc76edbc662e11bce4b7b2d25fd1e1e7eda4c06179
+  kafka-connect-rethink-source-1.9.tgz: sha256:53aeeaca4c536c3324a0cee58f471411dbff676448423fd0d1a914a329e6b3ae
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeVTLZCRAVUWrc2VIn2AAAZc4IANbhI8efGRm+YXj0umqQ1Ce1
-PuA1pijq8aWdGcr93hqUR4xyergdhWobRvD2EYobbBEzElNvV0EdZwj9936Nr5+Z
-Vf0itFEmoaOahGLI2XTSg1JixmD01H/pDo6/5fa3v8jNsM/IkrnrameBobM2fcwk
-kDzDAwO3fcRfx/cBJ0rgoK8rguICryBkgOjaeq6GzHPqRB4lsbc3cYLOWSpDwTh9
-5xarNVEZyyuLvqXvppXU7tQck/fUhjH47mwX+vkJbaA/mnzvGGDUrP1KkOONepW5
-Q2QwZ1wsocHhLvOJdPGZxgKKoqtlaTCPk9SG1OBl1r5KKIG1bkUmy7RuwSI8JCs=
-=nomd
+wsBcBAEBCgAQBQJeWPXiCRAVUWrc2VIn2AAAKHUIAEe1fCaRYDWKKt44dxYlRCXC
+L2Z2bP9+RQx3/EOOleEwV8R2VbUbDcpRIyKdpPU7mvAlsAi/LGV9hYOGg2067OVc
+/faNaL/vlAPCZAiuF6BzllqcDE7QK56tRsIo5yhSw0kurF5wxFcy8ykwKTaHV9Uk
+7QFSQ5YqAfgDkAeR4DnYPUaq9v0/Dp9W8AWRsFM/+CHMLGaYe3cC3/VWsKBx5CoE
+oN9j8wRnRUkQVEEaYIPz7rBnsKDmQ47qbjw2nCfHsWMA+09j+huTSFg3OY33wlH1
+PB6hMWfW9bjzh5WKioWRVUve8KLdVEGsW5ti+//zqrh4zOJKuB5MAVyj+3mcZ2Y=
+=APkU
 -----END PGP SIGNATURE-----

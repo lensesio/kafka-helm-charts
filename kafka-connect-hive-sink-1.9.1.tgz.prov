@@ -9,14 +9,14 @@ version: 1.9.1
 
 ...
 files:
-  kafka-connect-hive-sink-1.9.1.tgz: sha256:4b07cbab0abfd65d0b3cc13f7f65731866b461826e4e953e2b088f80851f9417
+  kafka-connect-hive-sink-1.9.1.tgz: sha256:2c7daa4056d72ef18bdd4aadf002dd50d64dddeec77bbc3e45a7b0b04bb1d8c2
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeVTLXCRAVUWrc2VIn2AAAFg4IAItiV56O5npjifWwJZetY4lC
-B1VCN+ID3so3JDDYUYimTioRIPHQE8p6Mgyd1/uWq903DU4zVhXYRQ72RIFgswrY
-1bVAxy/O2Ew6snKHvKB0WxfJkvYq4zvx5yhXnlzngiaW2HsbilQbDT4DcayZIH2m
-cW7Ef36HQ56n+Wz1nUVe883pEqXTswepa6gHHhp4lVGZCCnCSO+0UrDCsgUpkPHg
-i7p4h36ubw+ZtxQeunC5mJFcGp9GLZsjKiLgzJVGlBggEjoVkRv6A06QeYs4kGmP
-Yexw/HKBtO/O2lbVjwntbOXc6D5GMGY4nzBrg52NuiANUwiHyz67kvhAPU5Tlv0=
-=Ja4c
+wsBcBAEBCgAQBQJeWPXgCRAVUWrc2VIn2AAA66gIAF+ohwx1mYRaR9n3FIikim3V
+maV2KSYVDC1wkWsh8j37s0LaxsZomz8PCb/sMik3z35nUNunUp6Etrl0jTcT3VWq
+EwRIsAj7Qef0x/kWqywtc8oTcjqIYGRV/5NtS+DvE5Mqg+vEXCxMoBcpLFe5CRYw
+cG5EubVd7GZPbJmZ5UFyIrxsa2vv+uIGYA2sqIwM/gS6cNnSVj9xB6yK5DtE7JEp
+EizaGoqPa20YcwlAE8CI2HX4b6/AOSr2iDI9b610ItIQ/O3thkOC0kEGSj6m94Ti
+q5IoXD7iLt5WnsNHN2y+jFRCgq5knIVOctdbaiC01blXQ+ymkda14lqoW249weg=
+=flwo
 -----END PGP SIGNATURE-----
