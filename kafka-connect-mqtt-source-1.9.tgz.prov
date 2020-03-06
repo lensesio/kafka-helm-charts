@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-mqtt-source-1.9.tgz: sha256:9c6a7ab29ca769c6e22acf0452969351173e443d8c078720c5ac5af60fb67439
+  kafka-connect-mqtt-source-1.9.tgz: sha256:3273da6a32f28f6aaa2d9632a9ad4133377e7b9dd6b61ae2fcc66db6d97eedcd
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeWPXhCRAVUWrc2VIn2AAAZUQIAFI8a/nkOlZQonTa2FhKYSax
-5bKvSXoYVq0BWkHaufcFAseygljF3bSNrF9VP3do6lJRvc2Zqc+cjkzlxg5fGSd1
-R4huTdytYjzWk8eZ8sN1acQ70Tk8fYti693GE+3zHUq5uMM2eTE5QZ2vLV6f/mn0
-8tP+euvztlRt9dEgjYTmdiLFVlGai98vu4bzIso2bFIiA7hLd0EUVEVXSgGPRVX0
-pAwX+RMnb6KaAVDFrqej6xQBdWgZ5Xu0eilGbbS+B06qess5biUBZ3cJ5fraDLAz
-9U3cvOGvpyVIHnWrRu2XWSG47USV6ancXvQ8oKcOKNzAlbdqQh04p243rys5YoE=
-=bZn3
+wsBcBAEBCgAQBQJeYskPCRAVUWrc2VIn2AAA8pMIAIkB4lCkb8Sotsn+hSv12b7H
+Iy38p+SW/Ge5HiLXBJtos0j5PoDvKIQtSrNRIsk4B9URXae5NT/yv3inM24ZM+Av
+yOJ4Y3fNnnidgxcCpwgfY7gMOwQMVsV9Mp4zmqP0f5xHAwixhuLbt9Vq42XgEGsA
+OmyMAqfCElkq7l/tX3v91yqTBTu6/nuF5IlYLjoTm1Z3rGQqlt7LUcJKdiIspSan
+fuizuLN5Td3wpqrc1DvLXYpW3TxKUTmEVGzvvgCVWD66JQJgx2wFYfiXoIVIRKyG
+8T40Rc/0WbfcIBsBcsbSLHa3l+iv99qP4FgQD/yctGoDvRWx/LGMysBvtNCaX4Q=
+=ohhV
 -----END PGP SIGNATURE-----

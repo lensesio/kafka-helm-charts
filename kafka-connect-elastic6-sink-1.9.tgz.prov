@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-elastic6-sink-1.9.tgz: sha256:371ce45ce2b0b835628cba9f06d67daf6f304f3d8edf8a8a79ec20da65fabdd6
+  kafka-connect-elastic6-sink-1.9.tgz: sha256:7fb950c5221ebffef6740125738f838486c231cfcdaca30cbb7dfdfeb053ddbb
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeWPXeCRAVUWrc2VIn2AAABpoIAEPerjM2NxDm/hdoRjSP5mH0
-OfXOkicbF6m97InOIuYhe4+EjuFwuZ1kPL3E5aiwkFLOU1cWbdMtez2YJ5QHrSdQ
-ddcWUCS/wv5RJUzquiUTXDxK6PyvscflIl6tpa/7BgQ1ba+EaIfPSSox2tIGc+nv
-Cx3NloxdSxJJThq3i/ua5jwgP3kBWuGgDMtQajpc5Rz+5ljDQTIBr3y+WI8eF08G
-+LAmsh0HRZSP/MJnhn6DDfGgD4y8iFruHfBgGl8XXrLxVsoQhk+c8j5Scbfy3cci
-fPxXc3pb8d4YqO3eRabTT/ZnCP8tXKzVer37Ar/yEwdk1HesQxI1zPIJlbeXwSA=
-=HhKX
+wsBcBAEBCgAQBQJeYskNCRAVUWrc2VIn2AAANOoIAK9tMmSqgF4sHnYvm0D5jOdn
+aR0xH0DbgQxFTZSTt334wWAYyh9b0DBN7W/NIygQqQrSgIMWjsgGpVJJPMsNW5k/
+/N9zeoW88IGgE1jn3Thd2CVtuJfvee1V/RlRl5G+xs9gkpVqSVuwsGOdOFySk/6C
+kxSRDcUsA5A/FQBrWmbyqfx6OvxXe0Gm/FamS+DtDRmrpL2WbkBsceC7cBMoSlSO
+ShENIruzaOP07E5gojMPpi+S/wlfxMuKcZvqmIILfow9I/3SSuKvCmuw8yFKMqGi
+PB+C3bA0XV4agSjynWQ2lQ6ywJJnqVl5dMGTEEcivgCP5rodfIp0Yt3VGFALCb8=
+=y96A
 -----END PGP SIGNATURE-----
