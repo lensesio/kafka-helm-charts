@@ -226,9 +226,9 @@ spec:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key: "schema.registry.password"
-        - name: LENSES_KAFKA_SETTINGS_BASIC_AUTH_CREDENTIALS_SOURCE
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_BASIC_AUTH_CREDENTIALS_SOURCE
           value: {{ default "" .Values.lenses.schemaRegistries.security.authType | quote }}
-        - name: LENSES_KAFKA_SETTINGS_BASIC_AUTH_USER_INFO
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_BASIC_AUTH_USER_INFO
           value: {{ include "kafkaSchemaBasicAuth" . | quote }}
 
         # ssl/sasl
@@ -246,34 +246,34 @@ spec:
               name: {{ include "fullname" . | quote }}
               key:  "jvm.truststore.password"
         {{- end }}
-        - name: LENSES_KAFKA_SETTINGS_SECURITY_PROTOCOL
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SECURITY_PROTOCOL
           value: {{ include "securityProtocol" . | quote }}
-        - name: LENSES_KAFKA_SETTINGS_SASL_MECHANISM
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SASL_MECHANISM
           value: {{ default "GSSAPI" .Values.lenses.kafka.sasl.mechanism | quote }}
         {{- if and .Values.lenses.kafka.ssl.trustStoreFileData .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_SSL_TRUSTSTORE_LOCATION
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SSL_TRUSTSTORE_LOCATION
           value: "/mnt/secrets/client.truststore.jks"
         {{- end -}}
         {{- if and .Values.lenses.kafka.ssl.keyStoreFileData .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_SSL_KEYSTORE_LOCATION
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SSL_KEYSTORE_LOCATION
           value: "/mnt/secrets/client.keystore.jks"
         {{- end -}}
         {{- if and .Values.lenses.kafka.ssl.trustStorePassword .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_SSL_TRUSTSTORE_PASSWORD
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SSL_TRUSTSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key:  "client.truststore.password"
         {{- end -}}  
         {{- if and .Values.lenses.kafka.ssl.keyStorePassword .Values.lenses.kafka.ssl.enabled }}                             
-        - name: LENSES_KAFKA_SETTINGS_SSL_KEYSTORE_PASSWORD
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SSL_KEYSTORE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
               key:  "client.keystore.password"
         {{- end -}}
         {{- if and .Values.lenses.kafka.ssl.keyPassword .Values.lenses.kafka.ssl.enabled }}
-        - name: LENSES_KAFKA_SETTINGS_SSL_KEY_PASSWORD
+        - name: LENSES_KAFKA_SETTINGS_CLIENT_SSL_KEY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
