@@ -204,7 +204,9 @@ spec:
         - name: LENSES_TOPICS_METADATA
           value: {{ include "metadataTopic" . | quote }}                                                           
         - name: LENSES_TOPICS_EXTERNAL_TOPOLOGY
-          value: {{ include "topologyTopic" . | quote }}    
+          value: {{ include "topologyTopic" . | quote }}
+        - name: LENSES_SCHEMA_REGISTRY_TOPICS
+          value:  {{ .Values.lenses.schemaRegistries.topic | quote }}
         {{- if .Values.lenses.kafka.jmxPort }}
         - name: LENSES_JMX_BROKER_PORT
           value: {{ .Values.lenses.kafka.jmxPort | quote }}
