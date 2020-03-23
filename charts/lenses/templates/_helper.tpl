@@ -219,7 +219,7 @@ PLAINTEXT
   {{ range $index, $element := .Values.lenses.zookeepers.hosts }}
   {{- if not $index -}}{url: "{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}", 
     type: "{{$element.metrics.type}}",
     ssl: {{default false $element.metrics.ssl}},
     {{- if $element.metrics.username -}}
@@ -232,7 +232,7 @@ PLAINTEXT
   {{- else}},
   {url: "{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}", 
     type: "{{default "JMX" $element.metrics.type}}",
     ssl: {{default false $element.ssl}},
     {{- if $element.metrics.username -}}
