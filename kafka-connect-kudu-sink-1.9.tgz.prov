@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-kudu-sink-1.9.tgz: sha256:87a167e9d7b39e86f70dfca8b315266b13c172ac847647e0cbb288b4e1f2a8d3
+  kafka-connect-kudu-sink-1.9.tgz: sha256:41b27bb8cc2f382759173820f89767a063fc06ba0410a2755538ee7edb1009b9
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJeYskOCRAVUWrc2VIn2AAAEdQIANgp1OqGnOa0BAzzju8OrP+6
-A5MO7sk3WTr7OCfDBpMjxKdzboQCa8ymXpZzwZJwi2ckfNTfvNRijlExf1sXPz7r
-jSir9AM0+a+icJrrjjEvRnR4Kgi/sqWifYa8UDPBQtA9TVdMi2I8XOODiQSgGciG
-dnAZnMJsmdTa0nXqWufATc2Kz9wxvT6WtM1DoI40CAb6IkwLLB+geWbmAgsfbceD
-XO/AoUzgGRnkjsh1UnzxITP8sX+oWIhHG8N+jMi38kXeZmyErcLei1N33sMkm+v4
-vKTKj1rOFQkmAS5k7ow2ebQG5gcLfno8Gsepb7lVNlwmaCaEgjco1OMRwK0xeN8=
-=lt7R
+wsBcBAEBCgAQBQJeeGAeCRAVUWrc2VIn2AAAPWoIAC8uDYW6TjmENMd+ogQt9zsP
+B6S88e27LicztgAXGIKaMSWSZrmNEeG6ZJFhgLvPGgqmqPf160FQmMqLokKYsvas
+gqTpfbps5rEvGXwlMozumJLJeF76UCkFV3ID5KIIFDL3xvLaRk9ThuxzD4SaWSE2
+6HbNiOtkPnWynF6Hp/rVkK7qYJnMRX9fySwxL52Bcd9sdgsF4/M8hdFuXeDwZAuU
+BOhwiMN4kV8WZ0MTiCR9KJoe+gX8vdcqA0owLqVk2GBl+kz2UwpvB6r3CRMvblWX
+ov79wg2Dvo9gj3kytsqElHbTZT5c/J8ushzik6gVRmliyoJBjOYrAjx3A3ICUo8=
+=1zUW
 -----END PGP SIGNATURE-----
