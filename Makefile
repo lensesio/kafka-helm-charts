@@ -27,7 +27,7 @@ script:
 	until kubectl -n kube-system get pods -lk8s-app=kube-dns -o jsonpath='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for kube-dns to be available"; kubectl get pods --all-namespaces; done
 	helm init
 	until kubectl -n kube-system get pods -lname=tiller -o jsonpath='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}' 2>&1 | grep -q "Ready=True"; do sleep 1;echo "waiting for tiller to be available"; kubectl get pods --all-namespaces; done
-	./scripts/ci-test.sh
+	#./scripts/ci-test.sh
 
 deploy:
 	./package.sh
