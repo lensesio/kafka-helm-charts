@@ -219,7 +219,11 @@ PLAINTEXT
   {{ range $index, $element := .Values.lenses.zookeepers.hosts }}
   {{- if not $index -}}{url: "{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    {{- if eq $element.metrics.type "JMX" -}}
+    url: "{{$element.host}}:{{$element.metrics.port}}",
+    {{- else }}
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+    {{- end }} 
     type: "{{$element.metrics.type}}",
     ssl: {{default false $element.metrics.ssl}},
     {{- if $element.metrics.username -}}
@@ -232,7 +236,11 @@ PLAINTEXT
   {{- else}},
   {url: "{{$element.host}}:{{$element.port}}"
   {{- if $element.metrics -}}, metrics: {
-    url: "{{$element.host}}:{{$element.metrics.port}}", 
+    {{- if eq $element.metrics.type "JMX" -}}
+    url: "{{$element.host}}:{{$element.metrics.port}}",
+    {{- else }}
+    url: "{{$element.protocol}}://{{$element.host}}:{{$element.metrics.port}}",
+    {{- end }}
     type: "{{default "JMX" $element.metrics.type}}",
     ssl: {{default false $element.ssl}},
     {{- if $element.metrics.username -}}
@@ -427,15 +435,15 @@ lenses.security.user={{ .Values.lenses.security.defaultUser.username | quote }}
 lenses.security.password={{ .Values.lenses.security.defaultUser.password | quote }}
 {{- end -}}
 {{- if .Values.lenses.security.ldap.enabled }}
-lenses.security.ldap.url={{ .Values.lenses.security.ldap.url }}
-lenses.security.ldap.base={{ .Values.lenses.security.ldap.base }}
-lenses.security.ldap.user={{ .Values.lenses.security.ldap.user }}
-lenses.security.ldap.password={{ .Values.lenses.security.ldap.password }}
-lenses.security.ldap.filter={{ .Values.lenses.security.ldap.filter }}
-lenses.security.ldap.plugin.class={{ .Values.lenses.security.ldap.plugin.class }}
-lenses.security.ldap.plugin.memberof.key={{ .Values.lenses.security.ldap.plugin.memberofKey }}
-lenses.security.ldap.plugin.group.extract.regex={{ .Values.lenses.security.ldap.plugin.groupExtractRegex }} 
-lenses.security.ldap.plugin.person.name.key={{ .Values.lenses.security.ldap.plugin.personNameKey }}
+lenses.security.ldap.url={{ .Values.lenses.security.ldap.url | quote }}
+lenses.security.ldap.base={{ .Values.lenses.security.ldap.base | quote }}
+lenses.security.ldap.user={{ .Values.lenses.security.ldap.user | quote }}
+lenses.security.ldap.password={{ .Values.lenses.security.ldap.password | quote }}
+lenses.security.ldap.filter={{ .Values.lenses.security.ldap.filter | quote }}
+lenses.security.ldap.plugin.class={{ .Values.lenses.security.ldap.plugin.class | quote }}
+lenses.security.ldap.plugin.memberof.key={{ .Values.lenses.security.ldap.plugin.memberofKey | quote }}
+lenses.security.ldap.plugin.group.extract.regex={{ .Values.lenses.security.ldap.plugin.groupExtractRegex | quote }}
+lenses.security.ldap.plugin.person.name.key={{ .Values.lenses.security.ldap.plugin.personNameKey | quote }}
 {{- end -}} 
 {{- if .Values.lenses.security.kerberos.enabled -}}
 {{ include "kerberos" .}}

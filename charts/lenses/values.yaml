@@ -175,6 +175,7 @@ lenses:
         # metrics:
         #   type: "JMX"
         #   port: 9102
+        #   protocol:
         #   username:
         #   password:
         #   ssl:
@@ -185,6 +186,7 @@ lenses:
   schemaRegistries:
     enabled: true
     mode:
+    topic:
     hosts:
       - host: schema-registry
         protocol: http
@@ -195,6 +197,7 @@ lenses:
         # metrics:
         #   type: "JMX"
         #   port: 9102
+        #   protocol:
         #   username:
         #   password:
         #   ssl:
@@ -234,6 +237,7 @@ lenses:
             # metrics:
             #   type: "JMX"
             #   port: 9102
+            #   protocol:
             #   username:
             #   password:
             #   ssl:
