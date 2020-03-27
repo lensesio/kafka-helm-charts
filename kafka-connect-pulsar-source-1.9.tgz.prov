@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-pulsar-source-1.9.tgz: sha256:5ba9269b866c8889e30ee074dbf165a5b133e3dbd02be006f7107a21256fbc07
+  kafka-connect-pulsar-source-1.9.tgz: sha256:799504674d8414fbbad87e7daeb9b906103feff5e2e941f53a71b648954e31af
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJefGa+CRAVUWrc2VIn2AAAi14IAORdkKQZY/GUBb1//hfJ3JiC
-3ozA7s71Kn00qDYBbwNzSQhULFdvR+8P81mxrKTvYL36eyBjKyr6fMzOfc8aLW7T
-78gXv3tgbmuIbDlwT5aZYUPFUvbCxnoHPMpsMFfQW6Ex8F//rkbzi7iYWx7pRElY
-xxqTvP6oV8um5d1LAuolcXTPgBwNULbcm0JW31sYIbblyCb4Ed6fGMcZoz9YSeBB
-RQ0GKJOYLgDIbonyr+waeBmzojaREU4a0Tvr6UvyNZ81HzxQF/X7tRMme2z07yeF
-do/7DcstnTgsrU/MlBrwHTjZV3F4b7gKeewEcoMuDcAzJfUEgTA89msCbxcdHq0=
-=95N0
+wsBcBAEBCgAQBQJefbtOCRAVUWrc2VIn2AAAVgEIAFjVlWxjzVTTZibEJImSRl+w
+K+8XyUI6xayONUl6JLKmvJIbrcVDVwza2ADChsZpfbbQVc2/mbpMcgINxHDaj5xx
+rsbyjyQtFiT35BMZuvxsMdt3GwzU6y8DN0qdAQyERIx11izewRoJ9ZymZUuMUTtV
+b8Ie2Bkoan7xT1hWZECDQxTQyjLILnY2hBxtiRIr1q33/49lrkVd/2HSf2RDmjTy
+bOFmEpN/O8EYqOlnKujB3Z75gW72LEDACti04u59xa9hWSHECPS36R3RzgIncof8
+d7w9sI5grq3YmjELO0LzeySzeQaOI7+9NxO9zLhuCNFZxy4cceUotSlhW3LdLZw=
+=knnp
 -----END PGP SIGNATURE-----

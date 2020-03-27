@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-bloomberg-source-1.9.tgz: sha256:19f83c1314de2e84cef0d88e4fe99885be096a3724b8f7d215c785e85210f273
+  kafka-connect-bloomberg-source-1.9.tgz: sha256:7e80df84db483584f58f877e4a59c51709dd03be3cc4f0471688c826b1b633ec
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJefGa6CRAVUWrc2VIn2AAAYLUIAGyURePhNCYccYVzdwnW657B
-3xj+tJ68kEoQW/dlaeHLrHPat1uPCEIa/Bx9YDrXRcFzJOjHQE508AtcHEqnDtBg
-5QV2fwpuU7mbdYMPbjmSau77cskshy3AzyR7USPHh81diqqAD7UNgBgn2bx7RAFn
-fkouhJ5rtKsZV7ZmjVcBnsAxfwlENYWtczqi6ByJqLWSbWlcGD8lWTngKULR/yGh
-YIHqP2wwoq1uAluzhnrslZqNxOyQQ4N1EW8KpSQdhMFlWwpl6Be7Z9auodeyVkTI
-WZv9mcERwzXVYZy1n8+XCjEtV64d3hfKmZOJzh8u5qMF4QbR8t+b2CyumTyvwIs=
-=Hps+
+wsBcBAEBCgAQBQJefbtKCRAVUWrc2VIn2AAAdSMIAGW57jowM/cCDOLzHPSSvJDI
+43GjuwE4+VEbm1JEVkXbRYof4nUVvTfgosRRJVKPdA7NG+2ZizmparKZXbUqPAvh
+BAQdiJ2ojjfCxYcRelLtQCEpj72oYJJuoprferqJg+Ya2lzuUe1StzJN8zdleIXo
+tNh74VP3/rn8fpAUVadlCE7YnyePzwijNca9VeeeOpK46nVTNK8/YgrW/KsSWwJb
+onK4kNOI0V1hFgOXlRopQrbVVHK6VvEHUaOpREhQNAie7BRCYBXsSbZZlRK7OqJv
+U3NvsKATdedtUtVj3enzV97YZaXj/IsurLvqMgawLQDbkfPw5VDN7I0nAYq13GE=
+=/Emy
 -----END PGP SIGNATURE-----
