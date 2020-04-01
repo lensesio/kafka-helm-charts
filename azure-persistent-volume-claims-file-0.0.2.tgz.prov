@@ -8,14 +8,14 @@ version: 0.0.2
 
 ...
 files:
-  azure-persistent-volume-claims-file-0.0.2.tgz: sha256:2c6cb07de4abfbcc037f121880f6cd32f4afb64bdcc764e4e725530fd60853b4
+  azure-persistent-volume-claims-file-0.0.2.tgz: sha256:caaa0255db78dbf572cad62e0f27351da43cd459a10c37869b204ef88ff0bce2
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJefbtKCRAVUWrc2VIn2AAAN0wIAIfKuSg+5VSZXJ7gbjd661xS
-AggVlFOrnXQvlWiA44BrjO2ip1r1Myjh7jqwcXlfwYl9mm8F/+WxakxnviVBsK5s
-vfGibw4aAxnQfVwzZgVS+nPL5vgKi1gPzMxaWU3Ux/2ulqoQ+iBEKERjLgnRYLXu
-yjhuXjmXzA6g1O+wgnYB2rDpR7FZjZpDrt7QFTtO6HMjN2FsM3OVaMzt5BT2wKno
-9vv9Kvj829L35JfozEHkSBrh/wRpyDBcAmk80i4JWtQvno+9MBfUA8MJRcl8zM34
-LIjsHPUXeK8LzfF7btble3MuTMYheFmkRj0K4JfTzf3JzZ78BMRXj9j3LUJOiSI=
-=tR4r
+wsBcBAEBCgAQBQJehExBCRAVUWrc2VIn2AAAYfwIAGdlOFHSo9VjCWuJPFPXgQRr
+iepKVg49xGy9PRwEVwZvbuGXAS7f4cvjHfr6fmFIm49094blQIQsN7R5BXG11nGW
+PvN4JrHCxMgulT7Ts+gMk3kKJOerqguulJIz8CYb1yNArddtil0ak/moDzwHdYwB
+mZoEgMI6KiEvK/BWCXXKyDGJPzuNnFcmwJsCdycohKuQEbLkanfBR2rbBkMZsfJY
+gCV/c4w8OBC5z3tTDTSS+doYyGy8iUjn6pXF0iCArl+V2+IULnrPO1ExmT5M8RGq
+JbCYIIn1vWYtkkfcCmawHn2oZz4bWxFFoAnq5LyjGcM6bDXPVi4DBrr0LePWM3M=
+=Wg4L
 -----END PGP SIGNATURE-----

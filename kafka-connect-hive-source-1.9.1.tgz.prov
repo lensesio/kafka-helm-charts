@@ -9,14 +9,14 @@ version: 1.9.1
 
 ...
 files:
-  kafka-connect-hive-source-1.9.1.tgz: sha256:9c5c4d6d2c2967d039971c2bc6db19e79294d7ccebbbf7882f1d91dfb8f4fc44
+  kafka-connect-hive-source-1.9.1.tgz: sha256:b941571fffdd436aad6a43077d2007c44192431c8cb8b902954eef37cd7603e7
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJefbtNCRAVUWrc2VIn2AAAtwwIADLKCdFJl+OwkQNuqRXpWi2b
-5PblW6kHkwVBj9Eb5mMyBwA+rRZnRfOIPgBUcY25/JveczhWABUQBc9vml8LfO57
-G5xzayEY5nPzxzYkVTR1pIlCkzqs9LukAy6nTyoNyijHWHTLgqZhJGR8rUxCet/W
-/xLktaInzkCaZrs6JqrzOxMQzHvZ1ke4vPZUBMlPwCfAsfQt3OWCKEgqHCt+r+m2
-jmEgfuzBysa+/ix0MuzInDAlfqMVrkkzzML0V9+0JbJGcDh8Nuwwm9ndcXMPh8w+
-oF+KkKesdh8DWz9wBplhSIThuq6IumiHiS+MHw+eyi7widuX34+vabUMe0j04kc=
-=sOxQ
+wsBcBAEBCgAQBQJehExECRAVUWrc2VIn2AAAkO8IACKfWCF1UyavL2nN1A118qeF
+ATF8nQ1UVvy/IgMYdSCBve2+GcRoPkUrNmTfwoatPP5a0AyGrmOiwsHQhMPuqbkl
+cm5tNAEV9b72RJ6x2flfzeGqaH6yjU+yB9gA4zMK69nNczwkJvs9yMO4Fv2Qkbig
+wvt7s1ffdMBAWhifbIHVUmxdsWnjvYBT7KK0XPNjtJlSqMJ8dIx9pN3mctCmQRtm
+kEMrMqX7HBn7ZQx0IjvE3deF1loFJgP9KlJ8wpUXn0N98gKE1dmwRkDZyTFXIUYU
+QOl1W3/Mq+ru40yf60z+dQRKFILhpDz/9TDpVWwAiMBjTksHT6x8+UPUK3tHPlE=
+=evf/
 -----END PGP SIGNATURE-----
