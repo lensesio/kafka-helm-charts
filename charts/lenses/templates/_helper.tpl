@@ -175,7 +175,7 @@ PLAINTEXT
   port: [
     {{- if eq .Values.lenses.kafka.metrics.type "AWS" }}
     {{ range $index, $element := .Values.lenses.kafka.metrics.ports }}
-    {{- if not $index -}}{id: {{$element.id}}, url: "{{$element.url}}"}}
+    {{- if not $index -}}{id: {{$element.id}}, url: "{{$element.url}}"}
     {{- else}},
     {id: {{$element.id}}, url: "{{$element.url}}"}
     {{- end}}
