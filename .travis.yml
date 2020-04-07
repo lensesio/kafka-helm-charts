@@ -22,7 +22,7 @@ deploy:
   - provider: script
     script: make deploy
     on:
-      branch: master
+      branch: "3.0"
   - provider: pages
     local-dir: build
     skip-cleanup: true
@@ -30,4 +30,4 @@ deploy:
     github-token: $GITHUB_TOKEN
     committer-from-gh: true
     on:
-      branch: master
+      branch: "3.0"
