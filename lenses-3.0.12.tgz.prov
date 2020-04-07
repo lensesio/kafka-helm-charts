@@ -1,0 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 3.0.9
+description: A chart for Lenses
+icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
+name: lenses
+version: 3.0.12
+
+...
+files:
+  lenses-3.0.12.tgz: sha256:a509e59b4b42b604e3924ca6b29e327716b943388525d56276a078f502ab10d8
+-----BEGIN PGP SIGNATURE-----
+
+wsBcBAEBCgAQBQJejKfKCRAVUWrc2VIn2AAA8d8IAK2G8N3oAEF+JYqYaDtwFsnk
+nn2Vmn66R7MIwCDxDTK9eNVAO6+Ncvu42Wqz2d/4G/UMsalqMRp7aoa+8WKOHv+d
+G5t4GnYAkU7vKMkybykXmqY7aU3459qiML/Er2gucTNLyXyDW1C5tiayABDqdwg+
+Ta5yZ/QyditDOPm3xBdw+1ggcG+j0VSsWq/UWkJcMWnULsBWQ1ZqCMC/qe/kEnHB
+IL5A3KqT2X8rWW7Gh8zO9Fu0HCfvBj4tVIO7DgPa5EXF2ZlAhomeMCxSOT+ao4CI
+8YYICbPXf/wOexlOukVkZe0TfncupARJet2pgGpzGVPD0bBmgh2DF32U8tivgsU=
+=7qRZ
+-----END PGP SIGNATURE-----
