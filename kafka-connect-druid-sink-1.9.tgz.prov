@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-druid-sink-1.9.tgz: sha256:bee33b6a549967f5ca57909d319ce7322fa1b6fdd332f7e33168854dc531d2ce
+  kafka-connect-druid-sink-1.9.tgz: sha256:a95ca2909f7bf72a222fbeeead6350b5ccc7bd196f0be7c75f98f85bd6acee6c
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJehExDCRAVUWrc2VIn2AAAjjcIAN7hzxFrh0XWISSRK7NHaM1/
-JRtePW8q6+0f/A5KsGyWDzu2E7ArK3R0ZQh4qhCk9KX9mmd3CaMu+xzXWwulEJRv
-kM57o+KF0Ox7lJyNH3MxjR9KCz5CeQPLH36lvv6RvLt4Z0//u2kxo7bkLIvSJzLc
-8z1PVC7+gedem1Ehiysd16JN/4BYJ8EGpjVidkBRiyeIxK8uG8Jd95ZVdD20/ze7
-EXI75JMlySBS+zKbcqJSQdPqtFnppJpyIzIQNSl7N+kob8S0mx+iBI8dqRIxu+uA
-JcAgQ+B4giyNiF8522iHMToK8wakrseJkc2gVH4RKBkaFl3K8GsegVkePpipDmY=
-=1Vny
+wsBcBAEBCgAQBQJejKAoCRAVUWrc2VIn2AAABF4IACHq8E66/TlM21VN5E+ccsXD
+QasaMQkO5+5hLyDnsFiPlPZjAUJfdYPqYGrexZD+4+LREztCr1NRXJoJDob1jqqx
+HdUeNVcp9BUv61kzVa5gGY7CFHFfy69L3UrTXqAbBctip5egPuqOv39a7JSaP4Yf
+pR9Zorp0kcf9Q2j9VXrTeGdGvddMiTmZjaCyK+LrTsPETehIfnyHTW8AZ5XHbhJK
+cjpL2rz+ozHuD/cx2ZqiOiGemJUyu2c7b+e4YGzDaZ9ewlufmRrPXuFq/z8c0WN9
+4CyqaVITanBq+vWSAAmeADBGfVy9Ip6j2XL6nzGCF/DIO+XN+I8cPD7ebVp12Sw=
+=uQjk
 -----END PGP SIGNATURE-----

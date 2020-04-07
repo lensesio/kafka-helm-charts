@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-coap-source-1.9.tgz: sha256:6a6cef0cbc046ab79c9e1abd7b29901bb4c05a1cbabbf5587b56619442fa17c7
+  kafka-connect-coap-source-1.9.tgz: sha256:6ad38367fc96f71f38c11831b0cdcbc1c6d46ccde48c61e225db5124e94225b6
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJehExCCRAVUWrc2VIn2AAAGKUIAFd8DbFrDHdxajAM3Wj0laWN
-Z71e8Jv0kyCox2Gei6letFSDrFGSlXoqNbNcyKcsLyzoMAnzaiBpmN3ylkAg4ahV
-fs093njJhB05YpGTFgGRvIQ9d1U5zCf1sAkeRelUxB1LstarHMeUqhCY19A/y8G+
-urW+2lBcaoJbpY0rtocXwdSedPEtuBriWZOvaZNNeQfuMkb+MZePt0jSD+jZybr9
-0FupEnG5uP90zhqh7CZSy7ICEJKLc+8Aui7wED8F9cuT1tFZk/kfPP3sqKFdmSEH
-Aja3Yjbn6I07vfrFVCzbRhbWJioiDj3LAGSChfwUQv4c/nT4DmFZ3JxFgG7wxgM=
-=/NMy
+wsBcBAEBCgAQBQJejKAoCRAVUWrc2VIn2AAA1ywIANesDX1tyLLAH3xkktmVIc3u
+yviviZYLWmN7wIhHKiG9qgoGqGjhXyISjGlqsRHXapjBb9zBFlmW3+xsMv3LKoOl
+T6m93S1ABh7/e1+b4VSf56eheNYDJS5IiJkeZ8aN92PbowLHqHnoLukdaI0hQ6y7
+coK1e7n5SwV/tChwNTMERMHbqSrBM3K8hGrGwlF2nV6LfWH4sd1NN1vzLAD5lrqM
+/TFVawuz3+F7do0SPKn0i9qfHWAHbp6vAn6PI/OLKFBJhMxbcXtUIQTGF9HkAorK
+yeOzphUOh3vxNTY0/hmLbQ+7NghvdVCZ63ro/ja8bsV5Lz8vQ3dK19ZUwclCLgc=
+=4VVh
 -----END PGP SIGNATURE-----

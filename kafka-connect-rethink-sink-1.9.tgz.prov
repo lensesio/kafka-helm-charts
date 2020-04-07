@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-rethink-sink-1.9.tgz: sha256:824c82a314ea4fa82c6e6c90d129a5696f6e836b22fcdbb9602e34fa6fdb38db
+  kafka-connect-rethink-sink-1.9.tgz: sha256:6f794a7a312428bbafd511ba6ebb9a8ab5c8a47ade023089820642e7b1592e7c
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJehExGCRAVUWrc2VIn2AAAKqoIAKmbL6wJnG1UrdnS4QYx7NXf
-xJs5HJmSiV3LEwJ9USB0NhSbb3/zCtg20jt3Rm03r2XBakhHERmrunobK++jHmQ0
-MY/Lrrld96RBUhvrCTN5DNAnvkEhJEi1w3v6aDpeuvjm3ytbupgDLxeMSifto+Sn
-GBVtPP4t21XseOItRGldNWEhyFeozPCT/qi79em+vmEhgQvtYgngnENpEGfF4SFQ
-j3yEsRFhmKMv4FWBscl/CuuT4rldzWtV4n/8hLrFbHMIx+sHJZYEk2rtlVDPcs+7
-1PS5NSjHCQoZkJHQgnpJ0np7UuKPHjN7/m02/h3TWccwuLbWZwheERYO2vHN030=
-=SkFe
+wsBcBAEBCgAQBQJejKAsCRAVUWrc2VIn2AAAW6sIAFOmcprU3VYI3Ud0WOvK0Fng
+UNEf60kPk+6xOnLzxU8vmhAzBTSXJdTiaxiEj/wb/nwNjOvJ6P7g7PgN3SHyM0Ic
+Dr8pm7ywBmAmvumEIrLSdKUB7iH2YSzpsUWcIPFRFDv82/zfx+G4BFT5dUdyEWbn
+x/BRBdZhRQnCC17UM3UBdDmNkq5SlJawUkMRxmA+fjHuetIRcPeFF8IRrEaT3XPO
+O2/dR21gk6uMHb1g7Ra/wYRNdiXyuFRwO+/FyvmNnJFcufzpJYck5FJArNRPIwvD
+/NMjAmbLBnuXAkxvM/9nKg70Kqz6tQN/5QpzDLkbBZzK+/iuK7cuaSpxIwGbahM=
+=6IrI
 -----END PGP SIGNATURE-----
