@@ -4,7 +4,7 @@ replicaCount: 1
 secretsRef: "__REQUIRED__"
 image:
   repository: streamreactor/hazelcast
-  tag: 1.2.3
+  tag: 1.2.7
   pullPolicy: IfNotPresent
 
 # Resource management
