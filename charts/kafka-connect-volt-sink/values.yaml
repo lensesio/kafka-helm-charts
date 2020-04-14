@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: streamreactor/voltdb
-  tag: 1.2.3
+  tag: 1.2.7
   pullPolicy: IfNotPresent
 
 # Resource management
