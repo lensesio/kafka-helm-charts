@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-mqtt-sink-1.9.tgz: sha256:6e6912b53bef938747776cc1588108f9defa0fbe00baa1a98fd91ca17d33e773
+  kafka-connect-mqtt-sink-1.9.tgz: sha256:2b64665e47619ed1c2a9b81b785ac41c7b157ff948c6b24a2adee16f3a2d3f10
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJejKfICRAVUWrc2VIn2AAA/S8IAH1qiFFBoQzgG/HyFZHnjpON
-SKq8fadaKTzSCRfYAw1AVyXLUWAQAXGlly0gyzH8fT/zthDrtfnAkOFS34usfu4o
-EJ4ktkK/TeC1od8dZBC+2dC6QWmnK6jMH2QCkBVrphFczxsbBYq2BwP5TbbgHHds
-NLdU4dcLbSLcpqlsZqGxyclZzDvuF8VFjZSn83BGq8b1qlFIljshBsdzzX21/b0k
-gKh8NxnbxzxG38wIqFJmCW3Nw+QwG15+zj8QF3a2UDJzv84FoWJ670iVxuz/JvdS
-RxGUnCHxEkrEBSWeXbiezYzbupkSRw+EOLGtD6/wRwgS3SW4dugjQoxKDFBRCtY=
-=aZQu
+wsBcBAEBCgAQBQJenBmdCRAVUWrc2VIn2AAAup0IALGp7duWe9Sk3xrdZHaRpuD8
+jCA3r1mb5Ob3cuqc/DLrNJmf4F5C4Kmjwu9kHqdOt+LhWFPrGOiGO79XO50FNcgR
+ImlGEPjYunVcf3+un0MyfPIUPuPiSkaLx4H7a/ufCHPRUpUNo/DeOkDerzvkB7Wh
+ZdvPcYcyQhM5iaK9dBo3UR93vd+dpCCN7KOI2iQCzFUFOP435uWxyUxj5mHWNyS/
+oEJPj9y/oiyl7xtULQQyjNkoXVsRupjk013mwB8L6mv87cA6qn8cMLUe0n7CHfs4
+nFManLwtl43n9nCrzRHTCdauZd9dAXSnL75juGKVcAb+lnHMOVbfdexZzTmPs1k=
+=Yc5x
 -----END PGP SIGNATURE-----
