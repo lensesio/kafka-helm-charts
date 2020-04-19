@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-volt-sink-1.9.tgz: sha256:067246f9ce058ed070ec67b35b68741224fe11db4f2e7bb25e5e1c1a3d1f0a6e
+  kafka-connect-volt-sink-1.9.tgz: sha256:097571bfcfa67cc5007b011d1c5eb096a77ccc959848dd5c72509794b04bfbc6
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenBmeCRAVUWrc2VIn2AAAHvAIACQIwwcPYOZYXDaobCsjuk3t
-D48tbgyxp+Z+5gCvTX6VdHzs/9cAxaB/xz/zlpbjnQtsDKgXObFyAmFWijlyX4fZ
-NIQD/FzhzPk0A7WRgfe7lyn2qs4odPAc5JGwMUrirq4//Fpdr6A31T20+W4TD4by
-W5k/oy1t9D4PVekEc6oVEwjMlhV/Imqucc6a+MtoKKUm4dHZxY99s24ELS4ra8pQ
-FNF9EeA0uWfg/ikz3f6prUTMucswjHxIJIAr6ZPlJQQOs5gCwnuQ7vZYskl3rtIX
-zfZOpL48mjxwQOy2+VK/P8H+nCKj92RRjqgTkECcJJhT/MKira0T2nifr1PbX+A=
-=O6SY
+wsBcBAEBCgAQBQJenCA+CRAVUWrc2VIn2AAANAYIAH01b/wIYjbwVc+XK5jISsib
+WazQnDGAEn0jYgFOSvY+cxpD2h8F4VGavUB6cYGnKgGc1zKmU2P6G00mKHuoPLHH
+Jr/cScVSBqcZi+lmsq8vdvl+BdrRdLUrdLprmrr4XlG+QyuuLnRXJcrxPv4d+bQo
+2FbZcu5VzVHBtDJ9T0o+yhCgDTBeNTIpHZ5/sXCdfqClgPSp44f0eeHRq8yyhLEg
+MyqMNp3bxDnRAfhx1p2clmQnM2/GgaYE3OAAMG792aQJGp01BPveKtSJMRtirnoT
+i7NASrFa5GH5u4f2jNEvAfx//aoGIp8ulC5UHL0whWJm26GD6RsnGxgVdV+3Q/8=
+=G+sY
 -----END PGP SIGNATURE-----

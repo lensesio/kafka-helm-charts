@@ -9,14 +9,14 @@ version: 1.9.1
 
 ...
 files:
-  kafka-connect-redis-sink-1.9.1.tgz: sha256:ed3e1abda285ca72b260469c9c61e3f6de154ac5e69a2bf460a738f0ae86b14a
+  kafka-connect-redis-sink-1.9.1.tgz: sha256:bc0b54fe03db0313a8b7031df665d81df70bc982ab9ee8e197bfa2029b035f00
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenBmdCRAVUWrc2VIn2AAAptEIANw2bmWQu7Y7QrwQ06j77B8g
-gJfJXV2ptq0iYwNvlRkjUuMgAGj/9VRt0Swbv80kv2ePhbtSjXpiRbYlbpZfPCdl
-u/PncUhbLUO7clFA6jPwiEcSscGjbdrbBq9PFqspjDq7k4PB7xNz88VrD0zij7Hl
-lIQArQVjocfXQ3hc/JyC/Hpns4ICUrimCQ0b9F2BU4KvcvWidF3aTUWWke9DUh0i
-1gKaBIA+7ZZUN8nszW8wPUqpq48AekSxtVjvv3NW8WGOMss4yg8MKMdzharS4S2D
-2GkzY8Nb9lUrzbNYpOKnHqYJou0QB9TSEyBBUALmda3sxdspoP/IcKWe0ZQygSM=
-=L9QO
+wsBcBAEBCgAQBQJenCA+CRAVUWrc2VIn2AAApY8IAErt4dp5/jVYlP5EAXmDveUv
+wEyxNLj/m6vTHVBD+gdevWaD+uAJhMqSNaYj/ZZLQZtVEux2WOpvRZQbxKxCPtg3
+Vc4vLfYlujapu+AxK5mZfUZhXRLsYCzBwJCqiHDF0Bh0xBu2fwZNBdUScZua9qp6
+nnkGs6zZ8ZUZC3A6CjT/Z75vKcGAiONrUFrWetmscNJRXihtJ9nsAUXFNZXIrARZ
+jljhsheS/jj6Ken/PT/qHKClh9EAE6oM2hpE/4HnvZe2o8nws9t4LIem5HMqAJtS
+RpvcqSbF4JhRAERMJ80Dp9kfobWS+WERpDy3VDbHFXO74dqXr/q8blVYPx3ZkXo=
+=AUWd
 -----END PGP SIGNATURE-----

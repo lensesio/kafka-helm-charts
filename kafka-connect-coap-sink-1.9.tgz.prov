@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-coap-sink-1.9.tgz: sha256:f0c24fb6b7fe90ac8e266ebdf0e580986ca6a3b79762a640928838ce92a78f41
+  kafka-connect-coap-sink-1.9.tgz: sha256:21a6d1049d767eeb82bf6d4d839ac9f7decbe7f36b7557aa047289f096b43ec7
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenBmZCRAVUWrc2VIn2AAANQkIAK6bCt86kf/9s/5RuguEkMZr
-MNrppNsuG0r7V4GZkWVCdHw6SHNnhZRREnekrDO24spsXaSiyhaUUqdu30wjveUi
-FEQ/lp+vbVnZPNTBOYZmExiM/rdwvv/nM8DtrOLfg65mNWmt1wt82+5BcyMs+Y1a
-XBxJwd9/kUswGwUgwdIe7iXP8pPLNDEg53HZ9iNx2Npqd8D39fpwtk0lm5CBN8rC
-zWKnQTi6V24WIcrjBgrQ6ZHOca5NM3Yjfor+pWe6+3Ipq9V1Gt+x/LX558UtDTYl
-UZtQpBO4hGwFtUa88a5XBcdF86bMOUzfusFdh1KGKXAUC6H7UUajMZbkA+7FLWw=
-=KpuP
+wsBcBAEBCgAQBQJenCA6CRAVUWrc2VIn2AAALPcIAHdKNJvAJM/Sv0/9MLaTq2gq
+4okeuDwjuxv2RKzw2vQfF/Bgy08VH7G5dcdOiavDR9ntNgJMXGdH5fexHEAnsddB
+QigIYsQsu5OvZ/Vogtvc62Y8jowf8tvKq2uhugutqKTqqPcVYEyHTFfgFDRu6oZ3
+dMmeHrTP4Ys22Q112vPZ30aalMbdXOAyvRk3PgapdzupLH6Q+/0cUCjEUmdWpWsB
+/vvmpn+7uRlUo3Yt1qQQd+BcCdHmyfH5koPd6/Rs3E6EGWSs7VSJa649emezPGPl
+stH+TP//Zyzzv9DpdBSTyXehoUpeKFbX/M+9pwu0chmxd/0NiS5I6lanpEdjH8I=
+=fjcH
 -----END PGP SIGNATURE-----
