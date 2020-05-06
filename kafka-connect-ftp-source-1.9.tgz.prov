@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-ftp-source-1.9.tgz: sha256:a71f48bc922bb7c9488b3b569f52ab626c4e64a069d96dd84807264dd3faae1d
+  kafka-connect-ftp-source-1.9.tgz: sha256:84510f34b0350b16f30d1926ed2e5e763db85cb33123c6bf6843de4f00e3caa7
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenCA7CRAVUWrc2VIn2AAAT78IAK4vNYGFQa+vzOQNWYyPzRv+
-CFfqM+F5zxdNFl0L6o1TShiB+VF7yNJSfsLmwMXfRKWUGErTWIGVGpqKx/Ncqand
-S5lIUq16HbzdWDrexfKKtlOk2XHvr80pG8GVDks2waECj7vnk2W8nE6Jjfo+z0m0
-zteanBrvuo6wbi1mEVx+GZh2/Zb5wjY4PONzN+WkRjfPkvY43S2P1jjo/B9I6jdW
-c0kspNzyFF+RwWTl3wbjNGrrwed5nBCNydgR8jaw8GB2O/0sDV7IkmedHe23Vejf
-rZ9M/ieYjBGnF0wEwRAXKmwdrcNmZQAAThifhW2rsg7WtmtvPThhHLy+va1D8pE=
-=h7ui
+wsBcBAEBCgAQBQJesnZjCRAVUWrc2VIn2AAAz0UIAD/tGNlTgq0+aMP0v6N3vFwO
+dg/mqXvqrum36JCeSDsQH87ifvqoZvb72QtUjjutZwSsb6nG6NdVrPcZvEplsxfi
+DL797DU+JpnyQ/UCgtFJar8nfwVEWx+Lz5Gi0CoBoqnjt1Uf7s/NSo0srHUVSc2/
+Y6pu1xAJa+nWdnEjKuAtztuB5W+4ZI8we8yyihNqz2hZqrwUxdjquxeHNU5WUd1p
+MVT+sgO9OYLCEYrC7opiXQcXXVAKcL2XgiD0sWfIflVoGGe/FlbRuM1IbV0E6R/c
+6ClR8hOMcgz/TLEqv27XN/txKVsipb/iF/h2YKF6sHguLHL0kSwiCarxwiSHaQQ=
+=CTBi
 -----END PGP SIGNATURE-----

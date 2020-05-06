@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-jms-sink-1.9.tgz: sha256:be390e5c71a5fa8d8db6f553a07fb2df4d8ef11a8188a7e2198e7de71da509be
+  kafka-connect-jms-sink-1.9.tgz: sha256:91ae92442813c70e732d98ca67acef9bd5cc78c5903352bff34b0a7c5530ad48
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenCA8CRAVUWrc2VIn2AAALfkIANt45RebhJ6q/gVgWQx2JDb6
-svYp2vwemcOGj+XTsfQXuLNdU1RCZYeaRsaUVwdryhmd7sOGVVW6bLsHepWuZQJg
-hk+3jD4CK/UdxNX0GEwaEw8m7qQRIMjgDSlTXKAoPRkqYOyZMD+PD/qg5eoYHIy7
-qwvIeZV8dBidhoPoiIhRUkVDpUuZ04iwmHqocWCzVAlFXcYzGno8bOtjgPebXw24
-OezSqQeHHRqoPIaiGX4K+Mwy86Qmhxuw55yRybg1MDeuuls0UYRcKtEGJ7MEPQuH
-ymcO2T/DMadJv8dVE8WHa0tD15oj7lHnwkFcsKm8dw7rpBckjUEHK+j3RFy6hGg=
-=ihhI
+wsBcBAEBCgAQBQJesnZkCRAVUWrc2VIn2AAAznAIAHnO8p7IWNvXwdoeX/Yk1PSx
+CsbAp8OREdj7qjr1ZOKdmBnaM4U+JzFihveIT16f9KOKs6VWx67vjsP3j9SsZOBq
+Ji1k2OcZfkh+tps/SSh7jfOhqX5BlrPh+nWhcMCUrmdC/LL3Dhb9Rl5zgtIDt2QJ
+knqtJJJAVDb1Emk02yxz7MtSxQaYdvWMFqgCE/Tbbf0eRbv5kzZ1zhQT41w6TiaR
+q92l/eBiN12AITGzqDfX9QN5xn+AkRn8Y7RLI4acO6NUMSVKPrNfzLFSNFjXHcmX
+tlMoP3oHvNrDCfZF0URbf8jv1E8ajYWB/KdfOWDfBEsrNiJb6a2fFvVEvGe/pFM=
+=rEwh
 -----END PGP SIGNATURE-----

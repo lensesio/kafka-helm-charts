@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-influx-sink-1.9.tgz: sha256:c59d3b2a14818bde933dc1c469b2cadf7800e909ab7fb45279624b776839a4d5
+  kafka-connect-influx-sink-1.9.tgz: sha256:d80006a35a4fd37d5215ec99e9cc962280114b61390a8f800f0b2d86f4cb7d27
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJenCA8CRAVUWrc2VIn2AAAgLsIAAc7tOak1GRzEL0FEZD6u0o7
-n0+KDwJXRUf0R1SVpL3MfVNxXogWEajhVf7OTKgZ7eaWl2GHcwHZpznpZkVuhFc9
-kZuRSE6cNZNqEj9/juRurTGZec4mvAiWxp7Eh/e/GyUOnKCkcdDeeEXGHDUSL/y5
-mb3QAVXyPXD8pkaz1Sq+R43XA51V29kTrnM7p95rl+NWsNv74RFasjhRpTctzJdS
-3ssfZbuu2JwBirDzISDGsJlgNCXV/JOgFKHos75tOxXdzPhK9fAKQeDjGpmtkgle
-oPbGvEXSoDQh+rG0O2uozcOrkJu/jYggl7y/b9Wsadw+rLXdxGy+rJgbPy1Knl8=
-=XiP4
+wsBcBAEBCgAQBQJesnZkCRAVUWrc2VIn2AAA2pYIANXDcCnJUKd+PuPQjDl0Xpxe
+yiG4Q7BIoQiVJ472ekaZnv1QayIj+xpCHgriwt75/rD/ikBsb5bXzgPDps199JWs
+yDtXCqUVoUN0I16K1pqoeGvBMZ6dOM7oCbFmUTaDXZibOZh2JvitkZXyTMW32EY2
+hxm/EhClA5aFPd6QndCHDRTTu5FgPIe1ZUn1nvgEoAE809D2gdfLoXjYxdv/zt2L
+Hqz6II8Un615dzLjtieIqsO125ycRMmPGwNLmE2RuOkxKn7lQ3DY/oDsjensJ68e
+tyfpBL/upVvrP9Dq/m6QvDb3u2O0oLsvOlvXHCvnqyWR5KE107SaNeIzoqUvJUw=
+=dl/x
 -----END PGP SIGNATURE-----
