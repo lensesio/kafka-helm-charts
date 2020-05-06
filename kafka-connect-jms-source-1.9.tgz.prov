@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-jms-source-1.9.tgz: sha256:ace1757a6534c5c443592766a52ab9b20680081f3a5129e7c81153dd203dcfca
+  kafka-connect-jms-source-1.9.tgz: sha256:3dc422edbb496ce46753f5b15f32f67c076a9c1b29e3e7786b28ff0f4dfc3e2f
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJesnZkCRAVUWrc2VIn2AAAlUsIANm90DeD52HT+SpOxrZKlUWj
-To1I4aSmU92mhS3+5yOsq3ayk0jYErXYrkvYropCYGdODlpKUZV0t2LlirjtOqwI
-g43+Tyn652tc/sktQb3YMtp4KJXV8qZNu08B3nXCJLvpit3RB5euGOcPGYoHLSS6
-frOpCrb2mijPIPqBNUP3iN+KXjIyxx0im49nbakpMhQkfen1ofeh954vkZIbA0LW
-ZOJIN6JF7cKR+kbQ4qxNSNbpICOVCMvlPup6iXmeKWVowPh8cRni1Svd5t4xdeF1
-sGc2eUactrVZf2Obl56mA7oMA69oZJo0UTAuuGbd/v3Kx4DarvAm3Ye3g9/whsc=
-=MBJR
+wsBcBAEBCgAQBQJesohYCRAVUWrc2VIn2AAA9qAIAJW26WswA3yWIrXVvSARyskn
+ffyi6iVzyywyGjpmiUcgZfHwE2eWHYGy0J0wIOc6JRlh9mJNGDYPi3nkEydb49yn
+foyrEVhemsbt2bdW3WfeAYrXeIix8pfVklmzv+xcJlaJVxxK4PQQ6pmCmgIf+scw
+7OUDy27KeGk2d8LW9BTlyj79nBiqn2EcrARQuDXKm1S/Zp2nbznsDjBIjKRsi78V
+GgoVVUnCnSnjC4vP100dK0lRBstH2cNLmrXeKp/OZ8zWIaKNNCqZTcD1Osx6FBeS
+olKZhBLiwC5I0NiWvUEtOxoplWqnr5hqczOq/do3AaL98aptYR80qmMK48V5k20=
+=dPUn
 -----END PGP SIGNATURE-----
