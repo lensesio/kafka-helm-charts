@@ -10,7 +10,7 @@ git clone -b gh-pages https://github.com/landoop/kafka-helm-charts.git build
 
 echo "Packaging charts..."
 # Iterate over all charts are package them
-for dir in ${TRAVIS_BUILD_DIR}/charts/*; do
+for dir in ${TRAVIS_BUILD_DIR}/charts/lenses; do
     helm dep update $dir
     helm package -d ${TRAVIS_BUILD_DIR}/build $dir
 done

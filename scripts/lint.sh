@@ -5,7 +5,7 @@ NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 
 echo -e "==> ${GREEN}Linting charts..${NC}."
-for chart in `ls -1 charts`; do
+for chart in lenses; do
   echo -e "==> ${GREEN}Linting chart: $chart ${NC}"
   output=`helm lint charts/$chart --debug 2> /dev/null`
   if [ $? -ne 0 ]; then
