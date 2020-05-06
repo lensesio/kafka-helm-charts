@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   azure-persistent-volume-claims-disk:
-  - created: "2020-05-06T15:38:16.963720321Z"
+  - created: "2020-05-06T20:01:54.930770105Z"
     description: A chart containing the persistent volumes for azure
     digest: 7e7029edc181678ee2073bffb008f7ad9fe6dc8285b1393128163ed367575c3d
     name: azure-persistent-volume-claims-disk
@@ -9,7 +9,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-disk-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volume-claims-file:
-  - created: "2020-05-06T15:38:16.964300624Z"
+  - created: "2020-05-06T20:01:54.93098009Z"
     description: A chart containing the persistent volumes for azure
     digest: f3f25bd3e16dcd36676b63c01270f9efcb3d7a032761ccbeb51e83820718d85b
     name: azure-persistent-volume-claims-file
@@ -17,7 +17,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volume-claims-file-0.0.2.tgz
     version: 0.0.2
   azure-persistent-volumes-file:
-  - created: "2020-05-06T15:38:16.96463229Z"
+  - created: "2020-05-06T20:01:54.931134746Z"
     description: A chart containing the persistent volume claims for azure
     digest: ceca4abae4ec160a1ef03d9340e57a6bc619880d12184bb55c183c1f3def3bbd
     name: azure-persistent-volumes-file
@@ -25,7 +25,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/azure-persistent-volumes-file-0.0.2.tgz
     version: 0.0.2
   azure-storage-class:
-  - created: "2020-05-06T15:38:16.965036289Z"
+  - created: "2020-05-06T20:01:54.931276272Z"
     description: A chart containing the storage class for azure
     digest: 2f4ab488a54696e2b02034471b1f03499b0f01c0bbc231cf9928ad265eff8887
     name: azure-storage-class
@@ -35,7 +35,7 @@ entries:
   kafka-connect-blockchain-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.966739822Z"
+    created: "2020-05-06T20:01:54.93228485Z"
     description: A chart for kafka-connect-blockchain-source
     digest: c9619771559654a6f85ceecc476b6e728f35687b96532d888c8a8604f1a9a0d8
     name: kafka-connect-blockchain-source
@@ -43,7 +43,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.966209438Z"
+    created: "2020-05-06T20:01:54.932024459Z"
     description: A chart for kafka-connect-blockchain-source
     digest: 4f4ba7f52b95cfe99efbd25a08b31085643f8416fc8e2606e0a0f0642fa95d43
     name: kafka-connect-blockchain-source
@@ -51,7 +51,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-blockchain-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.965613425Z"
+    created: "2020-05-06T20:01:54.931766448Z"
     description: A chart for kafka-connect-blockchain-source
     digest: f83d8f92f86ef94900d7a6667a8206a805919a761e5f91d3b78b55615ecc732d
     name: kafka-connect-blockchain-source
@@ -61,7 +61,7 @@ entries:
   kafka-connect-bloomberg-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.968376088Z"
+    created: "2020-05-06T20:01:54.933055494Z"
     description: A chart for kafka-connect-bloomberg-source
     digest: 4e4a3e5f2f4804a6907eda435ff70a924fc4afa5f12861827ae15cf0f950fab5
     name: kafka-connect-bloomberg-source
@@ -69,7 +69,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.968001754Z"
+    created: "2020-05-06T20:01:54.932807461Z"
     description: A chart for kafka-connect-bloomberg-source
     digest: f0cc89459e0c62a7ff6965c69116c88febdf0840de4588181f79e783b300ed02
     name: kafka-connect-bloomberg-source
@@ -77,7 +77,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-bloomberg-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.967684146Z"
+    created: "2020-05-06T20:01:54.932561102Z"
     description: A chart for kafka-connect-bloomberg-source
     digest: 53fdb53b22ea9161a6ac2b413f451aacd69c964b68888780c77b4195b409f432
     name: kafka-connect-bloomberg-source
@@ -87,7 +87,7 @@ entries:
   kafka-connect-cassandra-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.969461304Z"
+    created: "2020-05-06T20:01:54.934031334Z"
     description: A chart for kafka-connect-cassandra-sink
     digest: 64f74f489514940538ac53eabbc25ae3d2e368a1dda7c2a6bdd43833fee74807
     name: kafka-connect-cassandra-sink
@@ -95,7 +95,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.9.1.tgz
     version: 1.9.1
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.969157269Z"
+    created: "2020-05-06T20:01:54.933696911Z"
     description: A chart for kafka-connect-cassandra-sink
     digest: f433fc114b3e1973f998b42f9aa2db7671df4a76d4bb0d2c0b3f6de977aabc31
     name: kafka-connect-cassandra-sink
@@ -103,7 +103,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.968847807Z"
+    created: "2020-05-06T20:01:54.933401679Z"
     description: A chart for kafka-connect-cassandra-sink
     digest: ac95d7439adfcf7a32f48084c9936dab8a21b91639d555be8a0867c9a645106c
     name: kafka-connect-cassandra-sink
@@ -113,7 +113,7 @@ entries:
   kafka-connect-cassandra-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.97043876Z"
+    created: "2020-05-06T20:01:54.935010975Z"
     description: A chart for kafka-connect-cassandra-source
     digest: 020a6984e43f232d5fb436cf90a450a2a8a8d378950dfb5b7320aae6e4068ada
     name: kafka-connect-cassandra-source
@@ -121,7 +121,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.970094473Z"
+    created: "2020-05-06T20:01:54.934669473Z"
     description: A chart for kafka-connect-cassandra-source
     digest: 60d082bb975cd9283a4c3c80e65006a4760ba70f1acf71aba99df2274bbce05a
     name: kafka-connect-cassandra-source
@@ -129,7 +129,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-cassandra-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.969771473Z"
+    created: "2020-05-06T20:01:54.93434088Z"
     description: A chart for kafka-connect-cassandra-source
     digest: 026cfd73cc1aedeac1370d3e2b3636ff563649795025dc00079cbd2281767724
     name: kafka-connect-cassandra-source
@@ -139,7 +139,7 @@ entries:
   kafka-connect-coap-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.971386509Z"
+    created: "2020-05-06T20:01:54.936051378Z"
     description: A chart for kafka-connect-coap-sink
     digest: 6adfbaaa461548e083bf6a03ed51b701d8bd4625e1043475b9e81e0d5496808c
     name: kafka-connect-coap-sink
@@ -147,7 +147,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.971058186Z"
+    created: "2020-05-06T20:01:54.935718367Z"
     description: A chart for kafka-connect-coap-sink
     digest: d0b2015d82e20f08953b73c55bb0c77ac2f6d48efad2f1c5217a32d31be5d405
     name: kafka-connect-coap-sink
@@ -155,7 +155,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.970728743Z"
+    created: "2020-05-06T20:01:54.935324142Z"
     description: A chart for kafka-connect-coap-sink
     digest: 68a11078e28600ce4b423383067d97666f5134f0435a3636bb1d3b17e43a9489
     name: kafka-connect-coap-sink
@@ -165,7 +165,7 @@ entries:
   kafka-connect-coap-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.972345255Z"
+    created: "2020-05-06T20:01:54.937010789Z"
     description: A chart for kafka-connect-coap-source
     digest: c160d6fd7d54b6ddf512fb1bf617ea18b182d0deb87c285eaf2ce2da934fe6cf
     name: kafka-connect-coap-source
@@ -173,7 +173,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.972019428Z"
+    created: "2020-05-06T20:01:54.936700988Z"
     description: A chart for kafka-connect-coap-source
     digest: 37cf4802321018e2bac9b260c69d2d6fd080ae394a05bc318cf9f6c96560a94a
     name: kafka-connect-coap-source
@@ -181,7 +181,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-coap-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.971694926Z"
+    created: "2020-05-06T20:01:54.936393414Z"
     description: A chart for kafka-connect-coap-source
     digest: 9eae1519690e001f75eaff02904e7bc4fa86dc1289f6597260a89933f77bbea3
     name: kafka-connect-coap-source
@@ -191,7 +191,7 @@ entries:
   kafka-connect-documentdb-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.973284488Z"
+    created: "2020-05-06T20:01:54.937908441Z"
     description: A chart for kafka-connect-documentdb-sink
     digest: 71c788351ac5c4e783b9e0d91bf2998af93d583f2b6ed9432031b94f21fd7aff
     name: kafka-connect-documentdb-sink
@@ -199,7 +199,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.972981527Z"
+    created: "2020-05-06T20:01:54.9376029Z"
     description: A chart for kafka-connect-documentdb-sink
     digest: 569f99aa471135541e15f95dea1108639866d411d27ad9097375add1cfe52c97
     name: kafka-connect-documentdb-sink
@@ -207,7 +207,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-documentdb-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.972679492Z"
+    created: "2020-05-06T20:01:54.937313944Z"
     description: A chart for kafka-connect-documentdb-sink
     digest: 4dfe8be515d31fd655b48ee808e66250862ed90eedad495e38c3357221fd3565
     name: kafka-connect-documentdb-sink
@@ -217,7 +217,7 @@ entries:
   kafka-connect-druid-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.974117052Z"
+    created: "2020-05-06T20:01:54.93964511Z"
     description: A chart for kafka-connect-druid-sink
     digest: 69065b4d0e355e076714583ee7e73c087a067cfb647387a813d5b0abf2778631
     name: kafka-connect-druid-sink
@@ -225,7 +225,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.973808711Z"
+    created: "2020-05-06T20:01:54.939094855Z"
     description: A chart for kafka-connect-druid-sink
     digest: c5466c897206627bb833667e446a0d4c323517e2e7587b612c6f47664f4e337d
     name: kafka-connect-druid-sink
@@ -233,7 +233,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-druid-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.973537589Z"
+    created: "2020-05-06T20:01:54.938594048Z"
     description: A chart for kafka-connect-druid-sink
     digest: a41b6ff352779774085a654e0a64dc44da5cdc8e1d7744e68f8a8b2c8d1f8b62
     name: kafka-connect-druid-sink
@@ -243,7 +243,7 @@ entries:
   kafka-connect-elastic-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.975920073Z"
+    created: "2020-05-06T20:01:54.941292324Z"
     description: A chart for kafka-connect-elastic-sink
     digest: c6d75c1a1c341878edeaafd99af82136922a1635798206a9367e271b00a435d8
     name: kafka-connect-elastic-sink
@@ -251,7 +251,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.975388195Z"
+    created: "2020-05-06T20:01:54.940685897Z"
     description: A chart for kafka-connect-elastic-sink
     digest: 6a79d3e3dc6b1e996b23314f8a69ad45565d6698632ca1b94dc9ac68351b80d7
     name: kafka-connect-elastic-sink
@@ -259,7 +259,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.974807362Z"
+    created: "2020-05-06T20:01:54.940162742Z"
     description: A chart for kafka-connect-elastic-sink
     digest: c17c4365c558f9c003291f612c24454169aafcf0d5e2f22b3305128f3fa96127
     name: kafka-connect-elastic-sink
@@ -269,7 +269,7 @@ entries:
   kafka-connect-elastic5-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.977720698Z"
+    created: "2020-05-06T20:01:54.94267551Z"
     description: A chart for kafka-connect-elastic5-sink
     digest: 940d4b717086fb4e0d69d0a4f949527615413db4562af631c030290564299d78
     name: kafka-connect-elastic5-sink
@@ -277,7 +277,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.977098596Z"
+    created: "2020-05-06T20:01:54.942382377Z"
     description: A chart for kafka-connect-elastic5-sink
     digest: 0d91790c54036150bcf6bd22abfee2298a89830f3862eb9422ecd7e8fe38ed26
     name: kafka-connect-elastic5-sink
@@ -285,7 +285,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic5-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.976505411Z"
+    created: "2020-05-06T20:01:54.941961083Z"
     description: A chart for kafka-connect-elastic5-sink
     digest: 1753ee9bd8501a0d9638b39792ac7d4aa495428cfab0fc811b7e71375eac783e
     name: kafka-connect-elastic5-sink
@@ -295,7 +295,7 @@ entries:
   kafka-connect-elastic6-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.979124056Z"
+    created: "2020-05-06T20:01:54.943581637Z"
     description: A chart for kafka-connect-elastic6-sink
     digest: d3b9126128a1241668ecde798f69c817b9cff32ae9fce94dfc0e25c2feb54847
     name: kafka-connect-elastic6-sink
@@ -303,7 +303,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.978827951Z"
+    created: "2020-05-06T20:01:54.943248179Z"
     description: A chart for kafka-connect-elastic6-sink
     digest: a3c0d3a5e1f7721e0a28ab357dcd62e82cf416fd61eaf980b78d991f6d503b56
     name: kafka-connect-elastic6-sink
@@ -311,7 +311,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-elastic6-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.978430786Z"
+    created: "2020-05-06T20:01:54.942953126Z"
     description: A chart for kafka-connect-elastic6-sink
     digest: 372ffee31cdc19ebe7917798f2d3022b577e9d07c9209a4f7605334e0c333d2c
     name: kafka-connect-elastic6-sink
@@ -321,7 +321,7 @@ entries:
   kafka-connect-ftp-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.979977226Z"
+    created: "2020-05-06T20:01:54.944392018Z"
     description: A chart for kafka-connect-ftp-source
     digest: 7ad509e3df1a668ba4815b866767b7ed56c37d86c48c63028cced74c55ba9c93
     name: kafka-connect-ftp-source
@@ -329,7 +329,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.979661834Z"
+    created: "2020-05-06T20:01:54.94411105Z"
     description: A chart for kafka-connect-ftp-source
     digest: dab65345cd06d8f7316feab5add67f8301acaf272e6aab16bb8a8234365f554b
     name: kafka-connect-ftp-source
@@ -337,7 +337,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-ftp-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.979388468Z"
+    created: "2020-05-06T20:01:54.943839967Z"
     description: A chart for kafka-connect-ftp-source
     digest: 65a7e7d0e93e3bb6811cfa6c5ae9a809b02c3d153cd4a5574a0080aa097f6bfe
     name: kafka-connect-ftp-source
@@ -347,7 +347,7 @@ entries:
   kafka-connect-hazelcast-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.981014725Z"
+    created: "2020-05-06T20:01:54.945329287Z"
     description: A chart for kafka-connect-hazelcast-sink
     digest: a6fb867196b2dd1422c77b1c635a951309542dd89efbe653f47c2ae2df87a8e0
     name: kafka-connect-hazelcast-sink
@@ -355,7 +355,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.980661059Z"
+    created: "2020-05-06T20:01:54.944964798Z"
     description: A chart for kafka-connect-hazelcast-sink
     digest: 96d3ecf987b9627a385cec3cbd4409c39dc804e94e6b0a78f6e83c58f033d2d0
     name: kafka-connect-hazelcast-sink
@@ -363,7 +363,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hazelcast-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.980317855Z"
+    created: "2020-05-06T20:01:54.944682286Z"
     description: A chart for kafka-connect-hazelcast-sink
     digest: b68bb36a501b62dcc143b79beaf1105ff0be5be0be57f0c77aa219c81ed067fe
     name: kafka-connect-hazelcast-sink
@@ -373,7 +373,7 @@ entries:
   kafka-connect-hbase-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.981829678Z"
+    created: "2020-05-06T20:01:54.946127383Z"
     description: A chart for kafka-connect-hbase-sink
     digest: 33eafcd54c25e6ee67010b377e91cf296b37383756dd3762f186e94daad063a6
     name: kafka-connect-hbase-sink
@@ -381,7 +381,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.981544404Z"
+    created: "2020-05-06T20:01:54.94584291Z"
     description: A chart for kafka-connect-hbase-sink
     digest: 39c722eba87c60c28d50fe8840661652cfb12dd86daa614c95e679c878690d04
     name: kafka-connect-hbase-sink
@@ -389,7 +389,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hbase-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.9812844Z"
+    created: "2020-05-06T20:01:54.945578945Z"
     description: A chart for kafka-connect-hbase-sink
     digest: 3c1503d6301662d0296f5885073061643bfe12db5741cf707b113763e5e7e509
     name: kafka-connect-hbase-sink
@@ -399,7 +399,7 @@ entries:
   kafka-connect-hive-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.982687613Z"
+    created: "2020-05-06T20:01:54.94692078Z"
     description: A chart for kafka-connect-hive-sink
     digest: c54ccf90e438358a380ad62cd444508fe111508b9bb9bdb04c3709c0638eca6b
     name: kafka-connect-hive-sink
@@ -407,7 +407,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hive-sink-1.9.1.tgz
     version: 1.9.1
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.982381575Z"
+    created: "2020-05-06T20:01:54.946652542Z"
     description: A chart for kafka-connect-hive-sink
     digest: b42bdb06669fe90d9ce2fe2bbf6857801ab8d262dba44a234965fc1c5f37b700
     name: kafka-connect-hive-sink
@@ -415,7 +415,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hive-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.982124454Z"
+    created: "2020-05-06T20:01:54.946381548Z"
     description: A chart for kafka-connect-hive-sink
     digest: e49f4b418fe4ecfe036d981f6d010a46b3fa5a3baf51409add1b3887d438e2b6
     name: kafka-connect-hive-sink
@@ -425,7 +425,7 @@ entries:
   kafka-connect-hive-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.983476148Z"
+    created: "2020-05-06T20:01:54.947814456Z"
     description: A chart for kafka-connect-hive-source
     digest: 47dadc89bf9b7f3976611ec2ae93c60d0d27f713f2a3baf4015bbfd55b69a0d1
     name: kafka-connect-hive-source
@@ -433,7 +433,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hive-source-1.9.1.tgz
     version: 1.9.1
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.983194123Z"
+    created: "2020-05-06T20:01:54.947513857Z"
     description: A chart for kafka-connect-hive-source
     digest: c1f413f274ba58271d0e5aa44b6da9e7864173a0920778408a0bc26f8312b6fd
     name: kafka-connect-hive-source
@@ -441,7 +441,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-hive-source-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.982937778Z"
+    created: "2020-05-06T20:01:54.947183868Z"
     description: A chart for kafka-connect-hive-source
     digest: 6a9a51c4c85611d6ea6bb30662b0cd86a33d1d9ab0978a70f69a94e875a79b8a
     name: kafka-connect-hive-source
@@ -451,7 +451,7 @@ entries:
   kafka-connect-influx-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.984378333Z"
+    created: "2020-05-06T20:01:54.94867411Z"
     description: A chart for kafka-connect-influx-sink
     digest: d9fddaad9772a0e1c79a07464d91cfee4413c2e268a50ff813c32663929dcb88
     name: kafka-connect-influx-sink
@@ -459,7 +459,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.984086266Z"
+    created: "2020-05-06T20:01:54.948399287Z"
     description: A chart for kafka-connect-influx-sink
     digest: f1b676766ac8ca8a43cd02769a9faac71a5b54c962852ad067ad468b2f86045b
     name: kafka-connect-influx-sink
@@ -467,7 +467,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-influx-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.983749824Z"
+    created: "2020-05-06T20:01:54.948115954Z"
     description: A chart for kafka-connect-influx-sink
     digest: fb12e51ee1a49e9cf133a6d18d95ca75abb3130b33d47b6fca36a1dc94703fe3
     name: kafka-connect-influx-sink
@@ -477,7 +477,7 @@ entries:
   kafka-connect-jms-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.985273412Z"
+    created: "2020-05-06T20:01:54.950461993Z"
     description: A chart for kafka-connect-jms-sink
     digest: 2fcb6f893feaa809c195f66232e2542ccc7d49f137e346676575f9274624a169
     name: kafka-connect-jms-sink
@@ -485,7 +485,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.984994005Z"
+    created: "2020-05-06T20:01:54.949918657Z"
     description: A chart for kafka-connect-jms-sink
     digest: 455774f571edd2ad3a64ad535b560f2bda6b897bf3adf8c7ebbd3155410b726d
     name: kafka-connect-jms-sink
@@ -493,7 +493,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.984699456Z"
+    created: "2020-05-06T20:01:54.949438697Z"
     description: A chart for kafka-connect-jms-sink
     digest: 2b346bea5216d19ee24473a27e57ebc4bd6b923c29eb3d5c6aab6c0e0be2a576
     name: kafka-connect-jms-sink
@@ -503,7 +503,7 @@ entries:
   kafka-connect-jms-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.987000817Z"
+    created: "2020-05-06T20:01:54.952169821Z"
     description: A chart for kafka-connect-jms-source
     digest: 3dc422edbb496ce46753f5b15f32f67c076a9c1b29e3e7786b28ff0f4dfc3e2f
     name: kafka-connect-jms-source
@@ -511,7 +511,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.986460655Z"
+    created: "2020-05-06T20:01:54.95159544Z"
     description: A chart for kafka-connect-jms-source
     digest: c000b3161b3929ee6cc7c8adc373f596d81298738769d612aae432d29931b8c2
     name: kafka-connect-jms-source
@@ -519,7 +519,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-jms-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.98586542Z"
+    created: "2020-05-06T20:01:54.951023265Z"
     description: A chart for kafka-connect-jms-source
     digest: 65cbff22d70df07151b29ac3e3625d818116734714386282ae7b4086e04c2280
     name: kafka-connect-jms-source
@@ -529,7 +529,7 @@ entries:
   kafka-connect-kudu-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.98851282Z"
+    created: "2020-05-06T20:01:54.953247266Z"
     description: A chart for kafka-connect-kudu-sink
     digest: a6f8a7fe67933536ab5e83e10a9a3f609796d4c0bec522e44431f02bae886076
     name: kafka-connect-kudu-sink
@@ -537,7 +537,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.987978621Z"
+    created: "2020-05-06T20:01:54.952990246Z"
     description: A chart for kafka-connect-kudu-sink
     digest: 6f792de5d55b406e0cab454aa5558a8b08152c66ba95846620e6b1a65fa97588
     name: kafka-connect-kudu-sink
@@ -545,7 +545,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-kudu-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.987475427Z"
+    created: "2020-05-06T20:01:54.952682234Z"
     description: A chart for kafka-connect-kudu-sink
     digest: e981b9332cdda6d485933852a861f70f247f0c6d89734383239652e46d63e30d
     name: kafka-connect-kudu-sink
@@ -555,7 +555,7 @@ entries:
   kafka-connect-mongo-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.990124557Z"
+    created: "2020-05-06T20:01:54.954130169Z"
     description: A chart for kafka-connect-mongo-sink
     digest: 5ae6ef4ef714145af64c9507722e66f73be773c355cd0f9753138f8a0a562838
     name: kafka-connect-mongo-sink
@@ -563,7 +563,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.989734312Z"
+    created: "2020-05-06T20:01:54.953805134Z"
     description: A chart for kafka-connect-mongo-sink
     digest: 7c82c1ad83703f76ae26cd929317fb0fcacddbfa1445f0c5c7712c2049663d72
     name: kafka-connect-mongo-sink
@@ -571,7 +571,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mongo-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.989134466Z"
+    created: "2020-05-06T20:01:54.953530938Z"
     description: A chart for kafka-connect-mongo-sink
     digest: 4c15b2de3336a0c382a255e4b92f6bd52dd9f6762d13f76bae787f819cbcb19e
     name: kafka-connect-mongo-sink
@@ -581,7 +581,7 @@ entries:
   kafka-connect-mqtt-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.991092222Z"
+    created: "2020-05-06T20:01:54.954951717Z"
     description: A chart for kafka-connect-mqtt-sink
     digest: 1d54090368328683f1975775afba7cc593ae49d5192b1fa0efab4d50f0e1d617
     name: kafka-connect-mqtt-sink
@@ -589,7 +589,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.990789321Z"
+    created: "2020-05-06T20:01:54.954677285Z"
     description: A chart for kafka-connect-mqtt-sink
     digest: 83c99bd7d7c5c1187a54c2dda0ceaba8c75a9cf2162c41a52eeba6436db05f5e
     name: kafka-connect-mqtt-sink
@@ -597,7 +597,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.990491142Z"
+    created: "2020-05-06T20:01:54.954407509Z"
     description: A chart for kafka-connect-mqtt-sink
     digest: 78ae1f5cfb9b3374ec97f9757377e1f67310e21360402cb292307e7abe1f0cb6
     name: kafka-connect-mqtt-sink
@@ -607,7 +607,7 @@ entries:
   kafka-connect-mqtt-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.99193864Z"
+    created: "2020-05-06T20:01:54.955819938Z"
     description: A chart for kafka-connect-mqtt-source
     digest: 93fb66915f6305d04899ff5ac16ff96e914e27063dc71cfc31e93c418ef9f654
     name: kafka-connect-mqtt-source
@@ -615,7 +615,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.991653425Z"
+    created: "2020-05-06T20:01:54.955540632Z"
     description: A chart for kafka-connect-mqtt-source
     digest: c53a4950f60f1f1fbe51661bb795d766edcd76dd17f7003d282b6f4cc1e30b5a
     name: kafka-connect-mqtt-source
@@ -623,7 +623,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-mqtt-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.991380985Z"
+    created: "2020-05-06T20:01:54.955223662Z"
     description: A chart for kafka-connect-mqtt-source
     digest: ce296efb2df9206d810df2c6dd12fb27182c6a8909661454f68ef8fa71ebc03a
     name: kafka-connect-mqtt-source
@@ -633,7 +633,7 @@ entries:
   kafka-connect-pulsar-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.99281646Z"
+    created: "2020-05-06T20:01:54.956686524Z"
     description: A chart for kafka-connect-pulsar-sink
     digest: 2a34ed9a950e83fc580b51e27a1d86188763a8099f1323c2666e3a63ea98d824
     name: kafka-connect-pulsar-sink
@@ -641,7 +641,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.992544345Z"
+    created: "2020-05-06T20:01:54.956344232Z"
     description: A chart for kafka-connect-pulsar-sink
     digest: 4f9d96aa29f3fb96bf17452fdb287e2a6c272a8ffe124c40d9a71b5f7354ac47
     name: kafka-connect-pulsar-sink
@@ -649,7 +649,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.992205469Z"
+    created: "2020-05-06T20:01:54.956088381Z"
     description: A chart for kafka-connect-pulsar-sink
     digest: d7a0697ea8bfeb0c2e854acd0cd664357e48780654f6c7e7529fed0635190c0c
     name: kafka-connect-pulsar-sink
@@ -659,7 +659,7 @@ entries:
   kafka-connect-pulsar-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.993627334Z"
+    created: "2020-05-06T20:01:54.957529008Z"
     description: A chart for kafka-connect-pulsar-source
     digest: 7ea9b990f77f5c352ea54d9e7803785c46fdfdf5a366f7020ba3b2961e02562f
     name: kafka-connect-pulsar-source
@@ -667,7 +667,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.99336024Z"
+    created: "2020-05-06T20:01:54.95726723Z"
     description: A chart for kafka-connect-pulsar-source
     digest: 735b8f66abf2da171630d63cb3866876cc096363804940e3b1d70a9ae25f6d89
     name: kafka-connect-pulsar-source
@@ -675,7 +675,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-pulsar-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.993097006Z"
+    created: "2020-05-06T20:01:54.956999186Z"
     description: A chart for kafka-connect-pulsar-source
     digest: a2f39f3f36608b24af1b5161f064d809fd006ddc763499b4951d378451372cc2
     name: kafka-connect-pulsar-source
@@ -685,7 +685,7 @@ entries:
   kafka-connect-redis-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.994775126Z"
+    created: "2020-05-06T20:01:54.958924502Z"
     description: A chart for kafka-connect-redis-sink
     digest: 8f552bc59ae07d70e5ce88ce3a0ab134817f4789202d184d4755e2e22a735511
     name: kafka-connect-redis-sink
@@ -693,7 +693,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.9.1.tgz
     version: 1.9.1
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.994232112Z"
+    created: "2020-05-06T20:01:54.958061544Z"
     description: A chart for kafka-connect-redis-sink
     digest: 54d98566b4a77e3df7c699e0283f0d26b128b65ed87e35943b6731e260ef33ff
     name: kafka-connect-redis-sink
@@ -701,7 +701,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.8.1.tgz
     version: 1.8.1
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.99449589Z"
+    created: "2020-05-06T20:01:54.958307112Z"
     description: A chart for kafka-connect-redis-sink
     digest: e57f65983f3cc6f90a9e12d725212cbced25419a22b0bcb462838477edb8e668
     name: kafka-connect-redis-sink
@@ -709,7 +709,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-redis-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.993905732Z"
+    created: "2020-05-06T20:01:54.957787556Z"
     description: A chart for kafka-connect-redis-sink
     digest: 7d056971a157fdac2f7eab0372add27f18477e712e594ce39b1d9fe2c303700c
     name: kafka-connect-redis-sink
@@ -719,7 +719,7 @@ entries:
   kafka-connect-rethink-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.99582156Z"
+    created: "2020-05-06T20:01:54.960540804Z"
     description: A chart for kafka-connect-rethink-sink
     digest: 7b36cf78ccd98d91bae7917e3b91ad794f0028217fde281836a0b159995c9a52
     name: kafka-connect-rethink-sink
@@ -727,7 +727,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.995467569Z"
+    created: "2020-05-06T20:01:54.959746805Z"
     description: A chart for kafka-connect-rethink-sink
     digest: 89dec2cbc09b610eddd80f66886c3df834fcb54721aa890ca708bdf531755b19
     name: kafka-connect-rethink-sink
@@ -735,7 +735,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.995055953Z"
+    created: "2020-05-06T20:01:54.959404902Z"
     description: A chart for kafka-connect-rethink-sink
     digest: 1a7600c7ac6706398d2f926a1ef5b0094a0d6dcfea39e692d11cb15aaa6172d9
     name: kafka-connect-rethink-sink
@@ -745,7 +745,7 @@ entries:
   kafka-connect-rethink-source:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.996713849Z"
+    created: "2020-05-06T20:01:54.962130024Z"
     description: A chart for kafka-connect-rethink-source
     digest: c1aad0dc7fe22e66c7acb2357bcd4e15ee71c35eb1212b59ecc3a573508f182d
     name: kafka-connect-rethink-source
@@ -753,7 +753,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.996396966Z"
+    created: "2020-05-06T20:01:54.96160212Z"
     description: A chart for kafka-connect-rethink-source
     digest: fc2a9044a6a4c26bbccdec7e7260c5a4c3cb6fc6fe2f19e361b6a28ff1078f4e
     name: kafka-connect-rethink-source
@@ -761,7 +761,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-rethink-source-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.996121185Z"
+    created: "2020-05-06T20:01:54.961074084Z"
     description: A chart for kafka-connect-rethink-source
     digest: 4cfd3fffad21bd152f86a35d326c1dc2f7f19e16d14fdf538ddcef1ddfaa06f4
     name: kafka-connect-rethink-source
@@ -771,7 +771,7 @@ entries:
   kafka-connect-volt-sink:
   - apiVersion: v1
     appVersion: 1.2.3
-    created: "2020-05-06T15:38:16.998400348Z"
+    created: "2020-05-06T20:01:54.964108729Z"
     description: A chart for kafka-connect-volt-sink
     digest: 94598c567e62d450b596755d369bb9d11824eaab1f0db0050e255e78d568a4f2
     name: kafka-connect-volt-sink
@@ -779,7 +779,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.9.tgz
     version: "1.9"
   - appVersion: 1.2.2
-    created: "2020-05-06T15:38:16.997905915Z"
+    created: "2020-05-06T20:01:54.963240517Z"
     description: A chart for kafka-connect-volt-sink
     digest: 59ba87c1594a82a5e3ab494d8f48eb6ef6eb584f9ad5d842150a267b9c14b88c
     name: kafka-connect-volt-sink
@@ -787,7 +787,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.8.tgz
     version: "1.8"
   - appVersion: 1.2.1
-    created: "2020-05-06T15:38:16.997440861Z"
+    created: "2020-05-06T20:01:54.962748658Z"
     description: A chart for kafka-connect-volt-sink
     digest: 3b450f514bd3399b89eb9ab45ec98cb28b85f4fa9cb992b670d45a8525fb3c1e
     name: kafka-connect-volt-sink
@@ -795,7 +795,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/kafka-connect-volt-sink-1.7.tgz
     version: "1.7"
   kafka-secrets:
-  - created: "2020-05-06T15:38:16.998658716Z"
+  - created: "2020-05-06T20:01:54.964230836Z"
     description: A chart for Kafka SSL and SASL. Base64 encode the key/truststores
     digest: ce3b7e8047dc577b8ca62bcebd87081d7c8c7613ed2e5388c22945130184af82
     name: kafka-secrets
@@ -805,7 +805,7 @@ entries:
   lenses:
   - apiVersion: v1
     appVersion: 3.1.2
-    created: "2020-05-06T15:38:17.021404392Z"
+    created: "2020-05-06T20:01:54.986807287Z"
     description: A chart for Lenses
     digest: ec4d50839bd8fad6c1571259a6d4e73bc5e1fc9941585f7f72215a1a6b8cd635
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -815,7 +815,7 @@ entries:
     version: 3.1.3
   - apiVersion: v1
     appVersion: 3.1.1
-    created: "2020-05-06T15:38:17.020304793Z"
+    created: "2020-05-06T20:01:54.98634172Z"
     description: A chart for Lenses
     digest: a1ab14a1f18c45faf1c7a57d9a3b69682ef917aec38314355235939acb67bcd0
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -825,7 +825,7 @@ entries:
     version: 3.1.2
   - apiVersion: v1
     appVersion: 3.1.0
-    created: "2020-05-06T15:38:17.019854509Z"
+    created: "2020-05-06T20:01:54.985873141Z"
     description: A chart for Lenses
     digest: 3d17234611e1ed40006e7526441d2049672fc71ae4df73318cb2e3a5a673b085
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -835,7 +835,7 @@ entries:
     version: 3.1.1
   - apiVersion: v1
     appVersion: 3.1.0
-    created: "2020-05-06T15:38:17.019405602Z"
+    created: "2020-05-06T20:01:54.984845044Z"
     description: A chart for Lenses
     digest: 4a381bf910c227ae2d62268773b7dd1781f2a7463d1b0ca048eb4a0ec45a62fe
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -845,7 +845,7 @@ entries:
     version: 3.1.0
   - apiVersion: v1
     appVersion: 3.0.11
-    created: "2020-05-06T15:38:17.015839712Z"
+    created: "2020-05-06T20:01:54.979513381Z"
     description: A chart for Lenses
     digest: 33a953902b7c2330b8d654702dade610641c66e3ac193367eafd5798178efa86
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -855,7 +855,7 @@ entries:
     version: 3.0.14
   - apiVersion: v1
     appVersion: 3.0.10
-    created: "2020-05-06T15:38:17.015256115Z"
+    created: "2020-05-06T20:01:54.979016602Z"
     description: A chart for Lenses
     digest: c97d14fa21609dd6b6a6e8a7df5ba3649fd329e359f600230be425eab604eaea
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -865,7 +865,7 @@ entries:
     version: 3.0.13
   - apiVersion: v1
     appVersion: 3.0.9
-    created: "2020-05-06T15:38:17.014757576Z"
+    created: "2020-05-06T20:01:54.978543847Z"
     description: A chart for Lenses
     digest: a509e59b4b42b604e3924ca6b29e327716b943388525d56276a078f502ab10d8
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -875,7 +875,7 @@ entries:
     version: 3.0.12
   - apiVersion: v1
     appVersion: 3.0.8
-    created: "2020-05-06T15:38:17.014248514Z"
+    created: "2020-05-06T20:01:54.978087411Z"
     description: A chart for Lenses
     digest: 9499727d8624211916089336602544b221db50f29395dee57832aa553a853ad6
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -885,7 +885,7 @@ entries:
     version: 3.0.11
   - apiVersion: v1
     appVersion: 3.0.8
-    created: "2020-05-06T15:38:17.013707755Z"
+    created: "2020-05-06T20:01:54.977626942Z"
     description: A chart for Lenses
     digest: 3b2fd6b4a32f9a2bf7972519452e3f91ee8b7b32f3e7a0595d93582ced5ca444
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -895,7 +895,7 @@ entries:
     version: 3.0.10
   - apiVersion: v1
     appVersion: 3.0.8
-    created: "2020-05-06T15:38:17.018938301Z"
+    created: "2020-05-06T20:01:54.98387729Z"
     description: A chart for Lenses
     digest: 08fb74beb2b3189c15707969c39d6912b6382754713dcdd238edcd103e48c73d
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -905,7 +905,7 @@ entries:
     version: 3.0.9
   - apiVersion: v1
     appVersion: 3.0.8
-    created: "2020-05-06T15:38:17.0183413Z"
+    created: "2020-05-06T20:01:54.982174783Z"
     description: A chart for Lenses
     digest: e55ecafb4d64fa31555a9a609c03877c8048445719bb2d9afe28d4c37e438678
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -915,7 +915,7 @@ entries:
     version: 3.0.8
   - apiVersion: v1
     appVersion: 3.0.8
-    created: "2020-05-06T15:38:17.017869854Z"
+    created: "2020-05-06T20:01:54.9813259Z"
     description: A chart for Lenses
     digest: ea1b5d1c2f41c1227fc374f9bfa1a687cb97b2dc381ee1be2e370e86f49b27c0
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -925,7 +925,7 @@ entries:
     version: 3.0.7
   - apiVersion: v1
     appVersion: 3.0.6
-    created: "2020-05-06T15:38:17.017391684Z"
+    created: "2020-05-06T20:01:54.98085574Z"
     description: A chart for Lenses
     digest: 8b6844d1fdb5c399ec6d8da8b19be5becd43d4b41450c0244ec1f9ef4b32bd41
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -935,7 +935,7 @@ entries:
     version: 3.0.6
   - apiVersion: v1
     appVersion: 3.0.4
-    created: "2020-05-06T15:38:17.016874346Z"
+    created: "2020-05-06T20:01:54.980418545Z"
     description: A chart for Lenses
     digest: 2d1ecca2c1047d2a3a321c1138385883984d7ac7cd87c7b1eb1f1f596bd5a9e2
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -945,7 +945,7 @@ entries:
     version: 3.0.4
   - apiVersion: v1
     appVersion: 3.0.3
-    created: "2020-05-06T15:38:17.016325822Z"
+    created: "2020-05-06T20:01:54.9799645Z"
     description: A chart for Lenses
     digest: 194a78ba36093d8eb93c62bfdf9fc7f5fcf2241d02ba73fc8f7d3a84d3b5baee
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -954,7 +954,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-3.0.3.tgz
     version: 3.0.3
   - appVersion: 3.0.1
-    created: "2020-05-06T15:38:17.013205722Z"
+    created: "2020-05-06T20:01:54.977182474Z"
     description: A chart for Lenses
     digest: d290735578bfb6f0a9edb407a433fa10896a9af5921f0767223e3ff51e702e42
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -963,7 +963,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-3.0.1.tgz
     version: 3.0.1
   - appVersion: 3.0.0
-    created: "2020-05-06T15:38:17.012169573Z"
+    created: "2020-05-06T20:01:54.976722587Z"
     description: A chart for Lenses
     digest: 63e884f0ca90ee2a9114ffa8a0e90c75ff51b5a7ab4e831e2a6f3f5dff8a39bd
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -973,16 +973,16 @@ entries:
     version: 3.0.0
   - apiVersion: v1
     appVersion: 2.3.10
-    created: "2020-05-06T15:38:17.006321245Z"
+    created: "2020-05-06T20:01:54.97107293Z"
     description: A chart for Lenses
-    digest: 0c2c7b403db51e565cfd13e7fc6327f053331aa2a027725f4d68a8629bd06409
+    digest: 43b2265fc8a91452c0db898c5e5f54857e4ca0d2988792f8b616898189d87751
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
     name: lenses
     urls:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.18.tgz
     version: 2.3.18
   - appVersion: 2.3.6
-    created: "2020-05-06T15:38:17.005830978Z"
+    created: "2020-05-06T20:01:54.970280551Z"
     description: A chart for Lenses
     digest: a7983769900d6fb237234056559fed793301613d993b0f472bda4bd3d9c41ff8
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -991,7 +991,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.17.tgz
     version: 2.3.17
   - appVersion: 2.3.6
-    created: "2020-05-06T15:38:17.005350482Z"
+    created: "2020-05-06T20:01:54.969808206Z"
     description: A chart for Lenses
     digest: 02aea65c4e650f0873586deb147cc3ac9b4ff739530cf196b1a2b1e9861edbc3
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1000,7 +1000,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.16.tgz
     version: 2.3.16
   - appVersion: 2.3.5
-    created: "2020-05-06T15:38:17.004857575Z"
+    created: "2020-05-06T20:01:54.96928203Z"
     description: A chart for Lenses
     digest: 5cea588f747975cc30daea367ef2fac532888248a18a6da8a287af11d5ce5ddd
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1009,7 +1009,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.15.tgz
     version: 2.3.15
   - appVersion: 2.3.4
-    created: "2020-05-06T15:38:17.004213644Z"
+    created: "2020-05-06T20:01:54.9688145Z"
     description: A chart for Lenses
     digest: 3a7a6b028ccd92d5d679035d08923ef0b9f5255ed385bed6e071d3e68b5f5d8e
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1018,7 +1018,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.14.tgz
     version: 2.3.14
   - appVersion: 2.3.4
-    created: "2020-05-06T15:38:17.003710309Z"
+    created: "2020-05-06T20:01:54.968316103Z"
     description: A chart for Lenses
     digest: da65b0806299cc0d2eee7e2cafacbab7bebb18e7b40703a02d294f614d57815e
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1027,7 +1027,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.13.tgz
     version: 2.3.13
   - appVersion: 2.3.4
-    created: "2020-05-06T15:38:17.003218335Z"
+    created: "2020-05-06T20:01:54.967835556Z"
     description: A chart for Lenses
     digest: f2eb379606bc142ec9d7c885fbb535859757b6284921a9ff7543262999ff705b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1036,7 +1036,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.12.tgz
     version: 2.3.12
   - appVersion: 2.3.4
-    created: "2020-05-06T15:38:17.002733319Z"
+    created: "2020-05-06T20:01:54.967226004Z"
     description: A chart for Lenses
     digest: 6f7228fbd1c83148a2af2f280c9e418881f095bd14bf6a38b5fdda15a7f1998d
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1045,7 +1045,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.11.tgz
     version: 2.3.11
   - appVersion: 2.3.3
-    created: "2020-05-06T15:38:17.002231678Z"
+    created: "2020-05-06T20:01:54.966763Z"
     description: A chart for Lenses
     digest: 0a925ad4b9d39d119a5449e3ca7971ebb2bf42805027ac75ec61176b2318c811
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1054,7 +1054,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.10.tgz
     version: 2.3.10
   - appVersion: 2.3.3
-    created: "2020-05-06T15:38:17.01130141Z"
+    created: "2020-05-06T20:01:54.976273661Z"
     description: A chart for Lenses
     digest: c5a15905dd03866362ac7dd86833adba35f03ade665a46793ba239efb6b1563b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1063,7 +1063,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.9.tgz
     version: 2.3.9
   - appVersion: 2.3.3
-    created: "2020-05-06T15:38:17.010447038Z"
+    created: "2020-05-06T20:01:54.97579285Z"
     description: A chart for Lenses
     digest: 864fcae83fd14022877616653c2e38e0697a1a44d514334826ec20b712a00809
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1072,7 +1072,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.7.tgz
     version: 2.3.7
   - appVersion: 2.3.2
-    created: "2020-05-06T15:38:17.009589422Z"
+    created: "2020-05-06T20:01:54.975256077Z"
     description: A chart for Lenses
     digest: 83bb34ba42c9240aa12edf7dc6fb2553ef52b36db8be92f6f57364f5f2bb5624
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1081,7 +1081,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.6.tgz
     version: 2.3.6
   - appVersion: 2.3.2
-    created: "2020-05-06T15:38:17.008529748Z"
+    created: "2020-05-06T20:01:54.974670741Z"
     description: A chart for Lenses
     digest: db34a0a25f689e59d1469ef4589ee7ce36ce456bd400ad5794282c4df412cf72
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1090,7 +1090,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.5.tgz
     version: 2.3.5
   - appVersion: 2.3.2
-    created: "2020-05-06T15:38:17.007893679Z"
+    created: "2020-05-06T20:01:54.973642299Z"
     description: A chart for Lenses
     digest: dda96dcb13d76d5c19b4cf85790415c01f956c2efdd37fe985e7e7a7ad841c3b
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1099,7 +1099,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.4.tgz
     version: 2.3.4
   - appVersion: 2.3.1
-    created: "2020-05-06T15:38:17.007345144Z"
+    created: "2020-05-06T20:01:54.972783491Z"
     description: A chart for Lenses
     digest: 8536475b9dd3f05690b2608cabe8dd3913d222fd01b2790899b766d4db12bcb4
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1108,7 +1108,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.3.tgz
     version: 2.3.3
   - appVersion: 2.3.1
-    created: "2020-05-06T15:38:17.006818095Z"
+    created: "2020-05-06T20:01:54.971933739Z"
     description: A chart for Lenses
     digest: 4ca26df2b82ddb0dceb26f828c3460787d1a5a1387de58417522a2465fd40813
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1117,7 +1117,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.2.tgz
     version: 2.3.2
   - appVersion: 2.3.1
-    created: "2020-05-06T15:38:17.001366414Z"
+    created: "2020-05-06T20:01:54.966262085Z"
     description: A chart for Lenses
     digest: 893986f433f0dcf55022562d7abac9acc8a180cecdf4f5ab58aab0a2f5389d53
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1126,7 +1126,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.1.tgz
     version: 2.3.1
   - appVersion: 2.3.0
-    created: "2020-05-06T15:38:17.000295835Z"
+    created: "2020-05-06T20:01:54.965652086Z"
     description: A chart for Lenses
     digest: 1a98dbbef8f2d3b92585fb810a6f34bd89ad5b96efb247b0b081656f18e7a8f1
     icon: https://www.lenses.io/images/logos/icon_ellipse2red.png
@@ -1135,7 +1135,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.3.0.tgz
     version: 2.3.0
   - appVersion: 2.2.9
-    created: "2020-05-06T15:38:16.999425982Z"
+    created: "2020-05-06T20:01:54.965049146Z"
     description: A chart for Lenses
     digest: 97f9078379de6bb8fa6c73d72ad24c4b7b0b208782777f86451b318505fd4b1a
     icon: https://www.landoop.com/images/landoop-dark.svg
@@ -1144,7 +1144,7 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/lenses-2.2.14.tgz
     version: 2.2.14
   services:
-  - created: "2020-05-06T15:38:17.022102212Z"
+  - created: "2020-05-06T20:01:54.986997895Z"
     description: A chart containing the services and endpoints of an environment
     digest: d20dee3b6d9585e10d603e4e0b5c41614e6713e19ec5d2dcabda2296678014f7
     name: services
@@ -1152,11 +1152,11 @@ entries:
     - https://landoop.github.io/kafka-helm-charts/services-0.2.0.tgz
     version: 0.2.0
   services-external-name:
-  - created: "2020-05-06T15:38:17.022315626Z"
+  - created: "2020-05-06T20:01:54.98711677Z"
     description: A chart containing the services and endpoints of an environment
     digest: 923f3e2132012636713b15f472d8334ce08116a53c3f6fbb88ef0d9f51018595
     name: services-external-name
     urls:
     - https://landoop.github.io/kafka-helm-charts/services-external-name-0.2.0.tgz
     version: 0.2.0
-generated: "2020-05-06T15:38:16.963308086Z"
+generated: "2020-05-06T20:01:54.930346751Z"
