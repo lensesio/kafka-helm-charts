@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-documentdb-sink-1.9.tgz: sha256:71c788351ac5c4e783b9e0d91bf2998af93d583f2b6ed9432031b94f21fd7aff
+  kafka-connect-documentdb-sink-1.9.tgz: sha256:d8c1a5d3bce7f54515163a3cf8eaf67b3fcbc883d83689e6bf8a6cb9ca4208e2
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJesohWCRAVUWrc2VIn2AAAvtQIAHLKyFkNXOt13/WEbTG+P0o/
-/UwQuf6xdasJn0DmwzfsVgX9EBzq9n1FGJqeK+RWQxxBh3W4CanQYysgij3TbRgp
-7lzyJ/InqaSLjFRXCM1Cs53XplHqZS4YHYyuXoRgxF+mhtoEznj4y9O32SDqV50L
-6OOTeW0CEr9yjaBbNVJn9mdae7YpKk+69ykGVoKl6nwsBk+pPILNLnnUpns7u20n
-FzGjwM/Ghn0XVh8Mr9TZkwV1cMur9ddpaB/2RrLEJ6mdYdwRUUruncJB7OnLyWqd
-G7aFYBbpDhH22uj2n4EOm3i0hA4A5aL/Rc9z5LhuD/UHFgG+bE1gN7liT3yCTfc=
-=wVwX
+wsBcBAEBCgAQBQJes8vlCRAVUWrc2VIn2AAAC10IACyEdDuYfYgYWbjzZjddqXWV
+U3OlECWLk5jPQbr9X0dsJ95PWTucPqmcuK6JjZAuDLa2bN/LCXRwmlLp/A1puTeB
+HCHU4feD0P0BEsMrLLlWuwqzqB8YeURD6nA5yvgR8OyuZLaZMYJaMbnexWCr3wjW
+99UnaAlFc/t7CwXd8o6epHhX350C7PHaBiCCK7cIw8MJMS/5yojnllz2BXzFqMqW
+q/vh3tk64dFVtoK+cCr89T2LmVEiRwcSMs95rFBsxwI7cthrvvywJWg9tluAndyD
+J9N9nBUKcKuVlgUYVXRJBGMxPuKEXqXk5loYvTV2iqqTX5h7M0mrFm6qt29FsbM=
+=EgO9
 -----END PGP SIGNATURE-----

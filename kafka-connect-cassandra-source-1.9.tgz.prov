@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-cassandra-source-1.9.tgz: sha256:020a6984e43f232d5fb436cf90a450a2a8a8d378950dfb5b7320aae6e4068ada
+  kafka-connect-cassandra-source-1.9.tgz: sha256:a3355f11d9405394a69a0bbebb65d71349574aa561d383eb11b7c7dee22be7dd
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJesohVCRAVUWrc2VIn2AAA1CAIAGtkpeTo076anLn2HTuaqUTr
-Tapsm7Xnob+MlLXju6R4xIOtATMkTJXSVUvx4X2hstp88Zpt/rab+YxZCYRsqn7C
-qo/s0RYb8LmRJbjdRHKmI0iFOvMGnUExsRpRnj//zUcY/SC4TMjvJ9dHllsY8L4/
-VX7v3dwmf4aIBmmmCQmbqOakrqVq02/pC+Z1JSYpKuBu8HScYwRWYI2kuodfqFXh
-CMMqk88/2ixOHC7jbMQxQY/d3T53p9VPjQAnSef86cNAqYhcbNCs2hM5RVusKkO3
-eyErGfYpiWqvWIpsCwjzuHX+5uUXu0h7mYHz7KdBieeyDl6+lOJqNoI8U+H/qgI=
-=0S5n
+wsBcBAEBCgAQBQJes8vlCRAVUWrc2VIn2AAAxVYIAJkEjTZI5XNaEzEPeDIktyVJ
++w7tOl0gw3YvW7JxWPqW2fVjvLHftsni5bPa3gVaKM/LDoT+LOvrQRlbBEs5Ldhw
+A8YuZxxOWNw4dvVaWBSJfWTgyW7XmpB+e0lWq2ns7OjlC7bHcMgqjZLcCAIo6/j3
+nTDXZfc1zSYTHj3MZIg4Ph1shaEEEzUpJOsPUCWMjfGEW7f2YAToZsAU/pjIaU91
+KVx5IXDMwQ/78vN6FWoSRJizh2IAGLO5OzP9aY6WaAZUqRT+hNF1bmmkP1bCYjfJ
+S9+/FaONTIDY2cLEoKkKimzJTi3dkd5h5wNWeurpHyIFP7GT4uZKH/ccgswsdeU=
+=cEx1
 -----END PGP SIGNATURE-----
