@@ -8,14 +8,14 @@ version: 0.0.2
 
 ...
 files:
-  azure-storage-class-0.0.2.tgz: sha256:801982f25448d1b6b18ed7a0409f86cd22b193c4f7b53a8bef1021cff132069c
+  azure-storage-class-0.0.2.tgz: sha256:f6e180ee3d8a0e097aa59ffd81d829f85233f0e6d24d7efafba38d0e6551b497
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJes8vkCRAVUWrc2VIn2AAAg2sIABOQc1DDOmL5h8dVpaP3bqhq
-jcZpdgV2COFj/xy1hs5QL/8TC6wrtb6F9+sM89DlWXMUXWuD01wU6Nt5r+57az3o
-3sniamXtOJmV3tXqqGZbpqy+NNt8DdvrjR8voJsDyoM7Znb2gBIP+jF4XsXjM0HB
-jrj/rGp7D/ZPQfG1Wk7+hlfPrH9ERgg6kk0wo8kIpcfPLLtVzqGAHTbftDnux1di
-xl2zNdEmm7oGiwctnJIC//TOSxK4sGHIiRArfGRDFvOkz/iyN1A+oddzSLUKPN5D
-aozrzcogKimht8k2EyKk6Mh9TnHJkt/Kr0RnFDH/AKG+Z8z+e1JlKlLa/cWcdqI=
-=pdrY
+wsBcBAEBCgAQBQJezTkUCRAVUWrc2VIn2AAAUuEIAC0Z+Bs/yBMjg5EQmhh8HnuC
+d6z8RQygfINnz/APN8Bq3FiCz3ssF+bdC+mCaG00wmy9MhSOPHA7uU1VNPk5Gu9q
+6vuPtutdlgD/muBHyprFvoRCM/ql3+Sljlf1f6w3i+xXtW7Oj3MJ8cUywHZUV3IA
+k7fX+7cmqOgHKeZWripb+WTo7UcNwoc+T8I9mCoidlGJDlHlwp0zEhTY6ftBeuGS
+EfD1s1ixW4Oo4awCksZXWt2r0fJsv8JpDMENFSBDtxgXf5N3zXH71Ap2tAOjspAZ
+qFf3KbeXWoYbxGL52+ah/obSonOOhKKurdkfSdZZoZqCkerIH1E0BPptvXUGGog=
+=11fz
 -----END PGP SIGNATURE-----

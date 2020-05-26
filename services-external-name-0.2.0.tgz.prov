@@ -8,14 +8,14 @@ version: 0.2.0
 
 ...
 files:
-  services-external-name-0.2.0.tgz: sha256:a7daede765bac4f713d0ee5d076dae03d19a61fcbd299ea905b067c96484484a
+  services-external-name-0.2.0.tgz: sha256:e8e19802138f25c2563e90e0f32ceb19f935ce4bdfe1ab5f50ee108dc2a45313
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJes8vpCRAVUWrc2VIn2AAAsqYIAG30KXSxZqIho3Y5u6zBWEdj
-9lT5ibyvq472Zbe/KU9GvhyXZPXFj1riUuCtBmzViXCPivRTK6ILGKvNrJdcmJhl
-YpqbAZEsyU/Q8aCBwdXOG9+cWJ3Ti+2z5O9O2qjLMhHlbunk/Pl5O1dina4AR1cu
-hPqQ+yPcaaCMswf3qIX/LajaS8YN8usEiStpUgJU7nr7RbNdt4xZywP3is77y/Ib
-VK5J4FwfSlOhruPyPhH4pluEd947tIPtVOMM0ImUZQnnX3tSdOjs3BM8adRzlfAu
-W5UIfBYHHpULnRInbIDUo0thwSOzgFXnh7nkh6lD8cU0jBSZqcX+sjCHfdM/nmA=
-=/lBo
+wsBcBAEBCgAQBQJezTkaCRAVUWrc2VIn2AAAeV8IAJGYkL3WYFt5oD4xGTZVGv97
+dIg6lq0iCGZ6cTeuFTJqC8qxfqwXhxItBtlMsXEQBme3yyZfnFrWv+/tvDiCYRwu
+EZT8U3GlggIzqz4kTV3k5Lh62h22Y6zDILYaTbE5Qvcurfwdv68dkJXerTkCBG6h
+JKlkqy7UTLxON3ujAm0keixt/Sjz3Jnm7cBpL7h16UMJFiRUVp5dDTAsl0TM8ZSo
+Duk7SMHmAI2E+HJQOxWcdbT+uArAaeO4r/pTwxxXqR4ggUleHhWAogpthc9RewJy
+ocGL4FeZosocVq0L2PhlhNXMFE0i/+4bGzaHeS8JzK504UfGo4jHmyVXHbFsIt0=
+=o6cJ
 -----END PGP SIGNATURE-----
