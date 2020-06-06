@@ -112,13 +112,13 @@ lenses:
     # base64 encoded truststore data
     trustStoreFileData: |-
 
-    # trust store password
+    # base64 trust store password
     trustStorePassword: |-
 
     # base64 encoded truststore data
     keyStoreFileData: |-
 
-    # keystore password
+    # base64 keystore password
     keyStorePassword: |-
 
   # broker details

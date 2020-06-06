@@ -100,10 +100,6 @@ spec:
           {{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}     
-        # command:
-        # - bash
-        # - -c
-        # - "sleep 10000000"
         env:
         - name: LENSES_OPTS
           value: ""
