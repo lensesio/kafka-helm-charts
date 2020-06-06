@@ -108,6 +108,19 @@ lenses:
     # trust store password
     trustStorePassword:
 
+  opts:
+    # base64 encoded truststore data
+    trustStoreFileData: |-
+
+    # trust store password
+    trustStorePassword: |-
+
+    # base64 encoded truststore data
+    keyStoreFileData: |-
+
+    # keystore password
+    keyStorePassword: |-
+
   # broker details
   ## Brokers should be behind a service, if so set one entry in the hosts
   ## If your brokers are outside explicitly add them to the hosts. Note you only need one to bootstrap
