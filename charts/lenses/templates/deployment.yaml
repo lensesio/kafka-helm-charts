@@ -37,7 +37,7 @@ spec:
               - key: lenses.keytab
                 path: lenses.keytab 
               - key: keytab
-                path: keytab                               
+                path: keytab
               - key: client.keystore.jks
                 path: client.keystore.jks
               - key: client.truststore.jks 
@@ -54,6 +54,10 @@ spec:
                 path: processor.keytab
               - key: registry.keytab
                 path: registry.keytab
+              - key: lenses.opts.keystore.jks
+                path: lenses.opts.keystore.jks
+              - key: lenses.opts.truststore.jks
+                path: lenses.opts.truststore.jks
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}
@@ -109,13 +113,45 @@ spec:
 {{ toYaml .Values.tolerations | indent 10 }}
         {{- end }}
         env:
+        - name: LENSES_OPTS
+          value: ""
+        {{- if .Values.lenses.opts.keyStoreFileData }}
+        - name: CLIENT_OPTS_KEYSTORE_FILE
+          value: "/mnt/secrets/lenses.opts.keystore.jks"
+        - name: LENSES_OPTS
+          value: "$(LENSES_OPTS) -Djavax.net.ssl.keyStore=$(CLIENT_OPTS_KEYSTORE_FILE)"
+        {{- end }}
+        {{- if .Values.lenses.opts.keyStorePassword }}
+        - name: CLIENT_OPTS_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "lenses.opts.truststore.password"
+        - name: LENSES_OPTS
+          value: "$(LENSES_OPTS) -Djavax.net.ssl.keyStorePassword=$(CLIENT_OPTS_KEYSTORE_PASSWORD)"
+        {{- end }}
+        {{- if .Values.lenses.opts.trustStoreFileData }}
+        - name: CLIENT_OPTS_TRUSTSTORE_FILE
+          value: "/mnt/secrets/lenses.opts.truststore.jks"
+        - name: LENSES_OPTS
+          value: "$(LENSES_OPTS) -Djavax.net.ssl.trustStore=$(CLIENT_OPTS_TRUSTSTORE_FILE)"
+        {{- end }}
+        {{- if .Values.lenses.opts.trustStorePassword }}
+        - name: CLIENT_OPTS_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "lenses.opts.truststore.password"
+        - name: LENSES_OPTS
+          value: "$(LENSES_OPTS) -Djavax.net.ssl.trustStorePassword=$(CLIENT_OPTS_TRUSTSTORE_PASSWORD)"
+        {{- end }}
         {{- if .Values.lenses.licenseUrl }} 
         - name: LICENSE_URL
           value: {{ .Values.lenses.licenseUrl }}
         {{- end }}
         {{- if .Values.lenses.kafka.sasl.enabled }}
         - name: LENSES_OPTS
-          value: "-Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/mnt/secrets/jaas.conf"
+          value: "$(LENSES_OPTS) -Djava.security.krb5.conf=/etc/krb5.conf -Djava.security.auth.login.config=/mnt/secrets/jaas.conf"
         {{- end }}
         {{- if.Values.lenses.jvm.heapOpts}}
         - name: LENSES_HEAP_OPTS

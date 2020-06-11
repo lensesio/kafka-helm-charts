@@ -112,6 +112,23 @@ lenses:
     # trust store password
     trustStorePassword:
 
+  opts:
+    # base64 encoded truststore data
+    # openssl base64 < kafka.truststore.jks | tr -d '\n'
+    trustStoreFileData: |-
+
+    # base64 trust store password
+    # echo "$password" | tr -d '\n' | base64
+    trustStorePassword: |-
+
+    # base64 encoded truststore data
+    # openssl base64 < kafka.truststore.jks | tr -d '\n'
+    keyStoreFileData: |-
+
+    # base64 keystore password
+    # echo "$password" | tr -d '\n' | base64
+    keyStorePassword: |-
+
   # broker details
   ## Brokers should be behind a service, if so set one entry in the hosts
   ## If your brokers are outside explicitly add them to the hosts. Note you only need one to bootstrap
