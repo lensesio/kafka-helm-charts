@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-hazelcast-sink-1.9.tgz: sha256:29c1580709003d0b7330f0caadec45c09bca8acfbc9eb6676d8045a9131bd4d4
+  kafka-connect-hazelcast-sink-1.9.tgz: sha256:7315e918b917eb05ab7e34504f3b83e564667ac74fead96288aeb6f9ac4af6af
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJe4jgFCRAVUWrc2VIn2AAARogIAN6FTlOLHtos9I4m6vQk/F4L
-SRC+ZQ7pJqclTnCoBW+PyoGjygKMD8wtRTZKRP3ElvYCeTxmobsqARRm0Q8tqTAZ
-Brseg1PZ5ah7aQIVaT2AXNwG7tW9O1Lprx8VSgDB6R/eYN9nPnn8C+oVWPCwxQYf
-LcLZPXidWk1ZLA9LAuHa3SBWhl/vC+qdceySHQ3JH3dKTsNg/sEcnl0+GjzMYepZ
-ao6kVjKl9rA15ipDFvOna5X9kL6xMDbxqnB1f769jby3/sT+pnOA0chwOISI7qxP
-a4t0EA6IClHTmEfSCvXFfqZuaQw/mavF4pf4VvGXRkt2ijZweibQu6n6FyaKg5U=
-=GvcH
+wsBcBAEBCgAQBQJe9HJbCRAVUWrc2VIn2AAAc2AIAAONg5EuCw1y8myfIZ9s5rJC
+hJrcLzft+hbuO4S0V1EbPJ5o/84j+ev++6v1mX6Dww/4eo6ZSiBv/lYI9SamS+aC
+lMpRqw8adFA1qKZsTxHOyG+fVeeYQt+M8urUbb/PAGiBkt5/dtCr355aBrKkOuM9
+u7w/j3Y7nirtKdP87eYQzNfU3UFVxYulLjOcp6QJ1uaEC5zArNLfJGt2pNVNuD0Y
+IPpP38pd+FpY0ySvcsrz1Bb/xfkhI6ZW5OucI5TXo0AyrOPvCRegFJQ4AQ+jd5rv
+GrFufa8PU9xX6czXnd3ldlCR35yku0XaYMaCTtgNsLNDH1KYQ6hjtszqgYBRoEo=
+=2eS+
 -----END PGP SIGNATURE-----
