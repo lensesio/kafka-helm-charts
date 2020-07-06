@@ -9,14 +9,14 @@ version: 1.9.1
 
 ...
 files:
-  kafka-connect-cassandra-sink-1.9.1.tgz: sha256:21acd8a5f81553d05faa1be2682b32976111b5fe23cfa7e1994c0a0c7a4e42c9
+  kafka-connect-cassandra-sink-1.9.1.tgz: sha256:ed6455016166946df0bad35307ce43b06142d821617654b3dad419b57f859e1d
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJfAt8ZCRAVUWrc2VIn2AAAF28IAM3tLVNpISjWDL8g8KxMKpcC
-KGb5tMXsshLKJ9HmYYaHkdVtWbuWg4cY9zfcdWfwmXbu12O9Rt4XKdahtrgXSCbC
-hYv5yI5rzTx+UPGXP9GAOvK1UpDJM+0Dyuy2nQ/CNUDBwxBi1j7Dqk7lTFX/H749
-oppr9WUojj5TFM+oJc6wqWp51De22WY8jTP1WruhMnqQpPbKn5yVLTOyYkOVl5Sq
-NepicA+CDsG4wA6MrsyzBZFFXJ9oDLVkW286X5WIdkTr+sZgCvrv6rYHNGEBmADJ
-PicaS+sVQJSh+1PAfwi1i9Lkf7buQnv/yf3jqJj/UBNEHAj8//DhrgoLz7Fmpug=
-=jHEY
+wsBcBAEBCgAQBQJfAuHWCRAVUWrc2VIn2AAAiZAIAK53JxPVOrJyt+GGdcorMK5V
+mCp4BYCtnJ/uPmCN406EUOCzvv6ENiPj4zoA4iuNbXjrIpLoBeGUJ/gJrMf6xhmE
+1GLfIUpeNvn8PrwdOuu2vOEQIp8mxfvan1l1eQnxIJ41GKcTdpIV3/D+pcxTKMsI
+0sCjh2H0dvm+MreJXad3gZsybMmD0b1EuCjnGM0blhIgvHfAhXjEnBgk8woR+E5W
+v75UnEPkknJ2tqCvxTnoBl7fJg4lkvf0/24vJrs8gmbufFugqqmPdDyZaxjel+5f
+TJWgcwgh8fQVevaJqDCUeXBQYVusekYzH0o+m7Y5gdgTerUawhUb06w/geLIfk0=
+=rx09
 -----END PGP SIGNATURE-----
