@@ -58,6 +58,13 @@ spec:
                 path: lenses.opts.keystore.jks
               - key: lenses.opts.truststore.jks
                 path: lenses.opts.truststore.jks
+              # SAML Secrets
+              {{- if .Values.lenses.security.saml.enabled }}
+              - key: saml.keystore.jks
+                path: saml.keystore.jks
+              - key: saml.idp.xml
+                path: saml.idp.xml
+              {{- end }}
         - name: krb
           configMap:
             name: {{ include "fullname" . | quote }}

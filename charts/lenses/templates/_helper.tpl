@@ -445,6 +445,14 @@ lenses.security.ldap.plugin.memberof.key={{ .Values.lenses.security.ldap.plugin.
 lenses.security.ldap.plugin.group.extract.regex={{ .Values.lenses.security.ldap.plugin.groupExtractRegex | quote }}
 lenses.security.ldap.plugin.person.name.key={{ .Values.lenses.security.ldap.plugin.personNameKey | quote }}
 {{- end -}} 
+{{- if .Values.lenses.security.saml.enabled }}
+lenses.security.saml.base.url={{ .Values.lenses.security.saml.baseUrl | quote }}
+lenses.security.saml.idp.provider={{ .Values.lenses.security.saml.provider | quote }}
+lenses.security.saml.idp.metadata.file="/mnt/secrets/saml.idp.xml"
+lenses.security.saml.keystore.location="/mnt/secrets/saml.keystore.jks"
+lenses.security.saml.keystore.password={{ .Values.lenses.security.saml.keyStorePassword | quote }}
+lenses.security.saml.key.password={{ .Values.lenses.security.saml.keyPassword | quote }}
+{{- end }}
 {{- if .Values.lenses.security.kerberos.enabled -}}
 {{ include "kerberos" .}}
 {{- end -}}

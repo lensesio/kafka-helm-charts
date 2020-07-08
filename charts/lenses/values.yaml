@@ -364,6 +364,39 @@ lenses:
         groupExtractRegex: ""
         personNameKey: ""
 
+    saml:
+      enabled: false
+      # The HTTPS URL of the Lenses deployment.
+      # This needs to match the Service Provider (SP) URL
+      # given to the Identity Provider (IdP)
+      # as it will be used as part of the SAML handshake protocol.
+      baseUrl:
+
+      # Provider type.
+      # Supported values:
+      # "azure"    - Microsoft Azure
+      # "okta"     - Okta
+      # "onelogin" - OneLogin
+      # "keycloak" - Keycloak
+      provider:
+
+      # XML File provided by the external Identity Provider.
+      # This is needed in order for Lenses SAML to understand how to communicate
+      # with the Idenity Provider.
+      # content of the XML file - base64 encoded
+      #  openssl base64 < idp.xml | tr -d '\n'
+      metadataFileData: |-
+
+      # base64 encoded keystore data to be used for SAML crypto.
+      #  openssl base64 < saml.jks | tr -d '\n'
+      keyStoreFileData: |-
+
+      # Password to for accessing the keystore.
+      keyStorePassword:
+
+      # Password to use for the SAML generated key within the keystore.
+      keyPassword:
+
 
   # license is the Lenses license
   license: |-
