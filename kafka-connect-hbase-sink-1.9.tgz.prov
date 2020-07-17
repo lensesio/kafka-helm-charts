@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-hbase-sink-1.9.tgz: sha256:c59a04c12846f7ff0da42d75e270dfd3d7738359f253de62a6196ab6d437090e
+  kafka-connect-hbase-sink-1.9.tgz: sha256:190bcaf9a129ce60cbb303f66e0112fd9d4562c85692322d2755bb6f3ffe6768
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJfCCvXCRAVUWrc2VIn2AAAiBQIAMuutybticn/+5I4JoC1ORPG
-xMgRbbj4asAmkus3PMlgAh+mRt+W0R/sVQjvKMwTVwWoqvPRUtx5YEgWOJaCx4NT
-+8BuGtptG7MqHRr6cEtZvBxglPRPLR4S4czG8wZnzmI61QRwPj7BbPDGRObevsg6
-0MoRQaGLNLqW/sgu0ZKWNEmyP1CKQiYrQhoLSjY0JZcFabddfE8Uua/lTRu+7kRs
-iNqJWAmcGdLV5ZIoZdpTVNdVg9TL2cU+UsZ+1t14Lujvw3S5yUTBy99HGxMRMZsu
-XAcHWCoTYjYs1fzGM8ozqLM2B8gylGnNcxsbssgu5lDEVcvQWofatsrpdt+8NEg=
-=Ry1I
+wsBcBAEBCgAQBQJfEXXRCRAVUWrc2VIn2AAAglQIANaccz/Du0/UcZyHBbyRlpFo
+HqVVHPeGAvGlS8HV5kmQvjS/WBt3wYVkmRcwUNufFqjQEHVAJCk7bLgCzxhUjsam
+/+owdzI8IjnAJRvDs3zZmv5f6Bf7fMryRHjbPbgf+e/adYzkl36RrxO7FRmR82aZ
+QD3zG9TL0+p2R2jYAWlcOkpiOlhTJAJDQTPYzCZtliMRZ739c/HdBu98VVprxVqn
+Q45wZ1jj+5xyoZhVrWM7a08O3928yu1vp3Wtfa9a1vdtFAw04l8QdzPD3cdetYV/
+1knl0HF4Ks9JDlWD4fk4cBbfcBFto9Uoxliuf7OAZd6VadxvZohRHoADa2hj+xQ=
+=blKD
 -----END PGP SIGNATURE-----
