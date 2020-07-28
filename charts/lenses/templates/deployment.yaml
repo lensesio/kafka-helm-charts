@@ -58,6 +58,12 @@ spec:
                 path: lenses.opts.keystore.jks
               - key: lenses.opts.truststore.jks
                 path: lenses.opts.truststore.jks
+              {{- if .Values.lenses.tls.enabled }}
+              - key: lenses.tls.keystore.jks
+                path: lenses.tls.keystore.jks
+              - key: lenses.tls.truststore.jks
+                path: lenses.tls.truststore.jks
+              {{- end }}
               # SAML Secrets
               {{- if .Values.lenses.security.saml.enabled }}
               - key: saml.keystore.jks
@@ -84,6 +90,9 @@ spec:
           httpGet:
             path: /
             port: {{ .Values.restPort }}
+          {{- if .Values.lenses.tls.enabled }}
+            scheme: HTTPS
+          {{- end }}
           initialDelaySeconds: 120
           periodSeconds: 3
         volumeMounts:
@@ -120,6 +129,42 @@ spec:
 {{ toYaml .Values.tolerations | indent 10 }}
         {{- end }}
         env:
+        {{- if .Values.lenses.tls.enabled }}
+        {{- if .Values.lenses.tls.keyStoreFileData }}
+        - name: LENSES_SSL_KEYSTORE_LOCATION
+          value: "/mnt/secrets/lenses.tls.keystore.jks"
+        {{- end }}
+        {{- if .Values.lenses.tls.keyStorePassword }}
+        - name: LENSES_SSL_KEYSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "lenses.tls.keystore.password"
+        {{- end }}
+        {{- if .Values.lenses.tls.keyPassword }}
+        - name: LENSES_SSL_KEY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "lenses.tls.key.password"
+        {{- end }}
+        {{- if .Values.lenses.tls.auth }}
+        - name: LENSES_SSL_CLIENT_AUTH
+          value: {{ .Values.lenses.tls.auth }}
+        {{- end }}
+        {{- if .Values.lenses.tls.trustStoreFileData }}
+        - name: LENSES_SSL_TRUSTSTORE_LOCATION
+          value: "/mnt/secrets/lenses.tls.truststore.jks"
+        {{- end }}
+        {{- if .Values.lenses.tls.trustStorePassword }}
+        - name: LENSES_SSL_TRUSTSTORE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "fullname" . | quote }}
+              key:  "lenses.tls.truststore.password"
+        {{- end }}
+        {{- end }}
+
         - name: LENSES_OPTS
           value: ""
         {{- if .Values.lenses.opts.keyStoreFileData }}
@@ -133,7 +178,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ include "fullname" . | quote }}
-              key:  "lenses.opts.truststore.password"
+              key:  "lenses.opts.keystore.password"
         - name: LENSES_OPTS
           value: "$(LENSES_OPTS) -Djavax.net.ssl.keyStorePassword=$(CLIENT_OPTS_KEYSTORE_PASSWORD)"
         {{- end }}
