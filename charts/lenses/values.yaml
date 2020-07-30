@@ -102,10 +102,13 @@ lenses:
   jvm:
     # heapOpts are any overrides for Lenses Heap JVM options
     heapOpts: |-
+
     # logBackOpts are any logging options
     logBackOpts:
+
     #performanceOpts are any jvm tuning options to add to the jvm
     performanceOpts:
+
     # base64 encoded truststore data
     trustStoreFileData: |-
 
@@ -128,6 +131,30 @@ lenses:
     # base64 keystore password
     # echo "$password" | tr -d '\n' | base64
     keyStorePassword: |-
+
+  tls:
+    enabled: false
+    # base64 encoded truststore data
+    # openssl base64 < kafka.truststore.jks | tr -d '\n'
+    trustStoreFileData: |-
+
+    # base64 trust store password
+    # echo "$password" | tr -d '\n' | base64
+    trustStorePassword: |-
+
+    # base64 encoded truststore data
+    # openssl base64 < kafka.truststore.jks | tr -d '\n'
+    keyStoreFileData: |-
+
+    # base64 keystore password
+    # echo "$password" | tr -d '\n' | base64
+    keyStorePassword: |-
+
+    # base64 key password
+    # echo "$password" | tr -d '\n' | base64
+    keyPassword: |-
+
+    clientAuth: false
 
   # broker details
   ## Brokers should be behind a service, if so set one entry in the hosts
