@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-pulsar-sink-1.9.tgz: sha256:4aa144ff270fe3a560a488b912daac341d0416a834c6f54285eefd96352b0990
+  kafka-connect-pulsar-sink-1.9.tgz: sha256:50c94c749cb2358cf5f8bb9c228f57dc1c75497b2e347d5f7ddf89e7b13d625d
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJfEXXTCRAVUWrc2VIn2AAA6fwIAOD6JI/TF+6ol7O30XdEyY6S
-xTkHDbqdZMV8GB+/swOmh3z8K94PvPAirM20ZXwRaHzXhErqEykz9qkF+jaDHSpa
-P7g4+zA4lWpurJcw046hlzx7NfWAzIYGSv3LmHwHaH3PcGY6zBzrBJcM3uiJN1mF
-V2PZtaXaQVQ91vPJPF/rgFxe+UpUXDeIRIv53Er0O64oAztxSM6PD1NxwiQz0l06
-DvLwfqre0S7Kzu54h9w+vtxzN5gMUG7f+r8CetwtcvHkfQ/cJzj9gIBhziSl+C+r
-HwDI0a0oue9xiJC/ntILCNZspZNg/jY41w0lb66adS4Ct2sfYY6z2+4NGHuRyNo=
-=2w7u
+wsBcBAEBCgAQBQJfIqUwCRAVUWrc2VIn2AAA6voIAIZsXruOPnlzLsuuplauOSgp
+q7bUSO4Q3tft7LuH2GglF6Tk+fUAfKR/LyBKw4/MCbyxxjWAXYzslZkVLh7O/jsV
+voj6rIb0QaGJE0FuUIDGAinJ+v9/Q0foH2yBNjmp9DM6WwJYlerJ7Y9PpAbTRE2g
+ydsEwNkRPX6OydqK74v/htrS1a1wkk/ljMHtAhlBpUjEGMk52utndKYzydI/mJuR
+ISsC7uQDCLt4HNtigtdjpNY2bLUwsgUyAS8htUuzBWgJUwSOb8g28FwFgdOkNBFC
+/e2RVEpIs2F37H9S5doua/iN5OhPFRxsheGfWPHFLrBBMoKMx+IcQ/sHNuRZBos=
+=MSCe
 -----END PGP SIGNATURE-----

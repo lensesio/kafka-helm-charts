@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-blockchain-source-1.9.tgz: sha256:18f4d19cd3c26d767f0fff66c0c73e022a98d376c9f67e0d73ac3b16f370d4e4
+  kafka-connect-blockchain-source-1.9.tgz: sha256:3e71538ddad315fbf84092c8c3a9327288d2b7c96769cf6317dc6d039a459f8e
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJfEXXPCRAVUWrc2VIn2AAAF64IAIodcqvwbbFmy9UxynoolkuY
-jo8lJBaYfc1izNbFXSt52F/9bp/QD/7+nkKeTnAPNCnDW7czOkKbYFVY2rfRUpME
-mZZYkG2mza3xiuhgdETsec5zpp6yOUSnnKsbS+h4J5R2+sOebdPH9plP9eXWplxO
-e+GFNq0oJail7YiSvb6qVe0fSWLzw12tB8tMMX2ZNEOGnVyqw1ZKRzH4dVGYL3vZ
-/aHjP7ZPiTVizZy02ZneZ2Q2eFSrqTKpNnZo2YKEWUgHS3q4MpSBT9UCpkmSPwse
-3/k6/AHBvlgOm05+2FC66LJNJfYkcDj8ESyclj/giAxL6+lnMTFT3qz9SVpMJxU=
-=6FF4
+wsBcBAEBCgAQBQJfIqUsCRAVUWrc2VIn2AAA/r8IACwj/f5nm4e4AyLuNcfkGMIj
+Dof7eiID0Daxub6biySdlL2AsvsyJisDO8m1LxzvkCze2ac7cJS41WyAmv8kipa6
+MPaGRpwN4zw2piCmnw2XyhXi1ypganKG//Q1ECX4NIMpDCU/lShJqyQdhBHOaJWJ
+0cYzpDcNb6VFS2O0zFe70LwwhZONwLNZUKb8E+gbCTBmpNnWxtOphWLAK9hKUsdf
+IjRPwgOjfwxnMKgmDMLFPH8UX3QuZ3jJZAp/6oTAR8ZPFKgFk4cjo3gE2OuppmCU
+sUYvbcspqXgVzxMBLDH6Eeo8Lw1fyWuRKFPzCA94BWsjBZU+68yTEthbeQ1fAEw=
+=mHWD
 -----END PGP SIGNATURE-----
