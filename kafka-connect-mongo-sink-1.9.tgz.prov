@@ -9,14 +9,14 @@ version: "1.9"
 
 ...
 files:
-  kafka-connect-mongo-sink-1.9.tgz: sha256:87b0fc2c36bc82688edc5f433e6ee2d5c0be6a0e2c2668743c9f7532f4acda32
+  kafka-connect-mongo-sink-1.9.tgz: sha256:0c6130bfa6b1c295a241bdb4404799eead0b0d2ff52e50e4c50418adc7c3135b
 -----BEGIN PGP SIGNATURE-----
 
-wsBcBAEBCgAQBQJfIqUvCRAVUWrc2VIn2AAAiBwIAFXymnL0SjakyahecOjYnWd7
-HqKRYseIOv0nfuymVd6iKk7reA9j/aykdoMdWNkK3otnzNnJwl8iIoriO1xi+8yi
-MA+b/NogeEn/HukKFE8REe3Upkj0e2nB8zvcYaxkAtOEwOUHQ5nIUlQSqtM/NCL9
-PdPy03Bn+Rocqtsl1PhCvyNvFyXZLv9y4NqqRFNhBqgHOUvfXtfaeViqci02f+LK
-LPDvZrWub9MIBProgYOPxf3E1wPMvjfH2FfBwKkCjBYAMX85YFf8P7+/u8T9ExZG
-lSQBv5aB4hWPGxTLyKmqXRXRVbjCz579wwyXyUrBHFoYFXYDEkZgEB/MfYu0tCY=
-=0t/o
+wsBcBAEBCgAQBQJfJuwmCRAVUWrc2VIn2AAAY2YIAB8Q81oQ/sygDGJ5eEtALvdY
+7b7UnRVDXe56IaE6/n432ygWftL4Ehsup+DrAgFnJ+kEeZAj+1gg0v1hVGbJSIAv
+jQCJbzhbcCJc9DfIwewrq787ZAwNZuoNWR0EVqSzh6OUmcXb4xmxsSK62rrJrWvT
+rsFNlbl64gEwTQTQxUpD0HqBbkySiH0vyBRBlFtlufb6RGfj6BIy5fddYoIziRlK
+OR+BdZA8Oyjz5srFSP2Fp5J3Hjkue8yfuxYdUR5c6Z3rmFCsogsh7PiyvAKQMgye
+lXeHpqYbSC+CXQ6Xyi3dESfEeryznDbtAXc8OGr8MM7ozlB++kAbPA45u8guXAY=
+=W0Le
 -----END PGP SIGNATURE-----
